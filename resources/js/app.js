@@ -19,11 +19,8 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-
-Vue.component('review2', require('./components/reviewslider2.vue').default);
-Vue.component('firebase', require('./components/Firebase.vue').default);
+Vue.component('vtntest', require('./components/ExampleComponent.vue').default);
 Vue.component('login-register', require('./components/LoginRegister.vue').default);
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -34,5 +31,3 @@ Vue.component('login-register', require('./components/LoginRegister.vue').defaul
 const app = new Vue({
     el: '#app',
 });
-
-
