@@ -1,0 +1,56 @@
+@media screen {
+
+
+
+    #page-wrap {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        z-index: 9999;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+
+    /*** canvas ***/
+
+    #canvas {
+        height: 100vh;
+        width: 100vw;
+    }
+    .curtain {
+        position: absolute;
+        top: 0%;
+        width: 49%;
+        bottom: 0%;
+        left: 0%;
+        visibility: hidden;
+    }
+    .first-curtain{
+   
+    }
+    .second-curtain{
+        left:50%;
+    }
+    .curtain img {
+        display: none;
+    }
+
+    /*** handling errors ***/
+
+    .no-curtains .curtain {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .no-curtains .curtain img {
+        display: block;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+    }
+
+}
