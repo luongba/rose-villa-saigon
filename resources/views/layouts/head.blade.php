@@ -22,7 +22,5 @@
     <link href="{{asset('public/assets/css/curtain.css')}}" rel="stylesheet" media="screen">
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css" rel="stylesheet">
     <link href="{{asset('public/assets/css/bootstrap-pincode-input.css')}}" rel="stylesheet">  
-{{--     <link rel="stylesheet" href="{{asset('public/css/prism.css')}}">
-    <link rel="stylesheet" href="{{asset('public/css/intlTelInput.css')}}">
-    <link rel="stylesheet" href="{{asset('public/css/isValidNumber.css')}}"> --}}
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>

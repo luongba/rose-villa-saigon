@@ -5,7 +5,7 @@
     @include('layouts.nav')
     @include('layouts.header')
     @if(!Auth::user())
-      @include('popup.login-popup')
+      @include('popups.login-popup')
     @endif
       @yield('content')
       @include('layouts.footer')
@@ -14,6 +14,8 @@
     <script src="{{asset('public/js/app.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.bundle.js')}}"></script>
+    @yield('script')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#menu-btn').click(function () {
