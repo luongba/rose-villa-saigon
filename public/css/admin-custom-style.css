@@ -1,0 +1,13 @@
+.main-header{
+	background:#02c39a;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+}
+.main-sidebar .brand-link {
+	background:#05668d;
+	border-bottom: 1px solid #fff;
+}
+.main-sidebar{
+	background:#05668d;
+}

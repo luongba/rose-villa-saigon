@@ -1,0 +1,74 @@
+
+@import url("css/style.css");
+
+
+.slideshow-overlay{
+	bottom:inherit;
+	top:30%;
+        max-width: 535px;
+}
+.slideshow-overlay h1{
+	font-size: 1.7em;
+}
+.slideshow-overlay p{
+	font-size: 1.1em;
+}
+
+.slideshow-overlay {
+	/*display: block !important;*/
+}
+@media screen and (orientation:portrait) {
+
+.slideshow-overlay {
+font-size: 0.5em !important;
+max-width: 70% !important;
+}
+
+
+}
+
+/*
+Modification taille texte header
+*/
+@media screen and (orientation:landscape) {
+
+.illumination-link{
+font-size : .90rem;
+}
+
+}
+
+/*
+Modification cadres links
+*/
+.cadre{
+border:solid 1px rgba(230, 175, 81, 0.70);
+padding: 0 8px;
+}
+.slideshow-overlay .cadre{
+border:solid 1px rgba(230, 175, 81, 0.70);
+padding: 0 8px;
+background:rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+/*
+Modification affichage mobile
+*/
+.slideshow-overlay.mobile {
+    display: block;
+    top:15% !important;
+   width:100% !important;
+}
+.slideshow-overlay.mobile a{
+    color: #FFF;
+}
+@media screen and (min-width: 770px){
+.slideshow-overlay.mobile {
+    display: none;
+}
+}
+
