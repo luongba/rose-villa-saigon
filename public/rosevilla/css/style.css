@@ -1,0 +1,792 @@
+
+body {
+  margin: 0; }
+
+.brand-color {
+  color: #E6AF51; }
+
+.dark a {
+  color: black !important; }
+.dark .sm-nowrap li {
+  text-shadow: 0 0 7px white !important; }
+
+/*------------------------------------*\
+    #PAGE
+\*------------------------------------*/
+html {
+  cursor: default; }
+
+@media screen and (min-width: 770px) {
+  body.fade-gradient:before, body.fade-gradient:after {
+    display: block;
+    content: '';
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    width: 100%;
+    pointer-events: none; }
+  body.fade-gradient:before {
+    top: 0;
+    height: 14em;
+    background: -webkit-linear-gradient(top, #ffffff 80%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to bottom, #ffffff 80%, rgba(255, 255, 255, 0) 100%); }
+  body.fade-gradient:after {
+    bottom: 0;
+    height: 160px;
+    background: -webkit-linear-gradient(bottom, #ffffff 35%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(to top, #ffffff 35%, rgba(255, 255, 255, 0) 100%); } }
+
+
+
+
+.layout {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: -26px; }
+
+/**
+     * 1. Cause columns to stack side-by-side.
+     * 2. Space columns apart.
+     * 3. Align columns to the tops of each other.
+     * 4. Full-width unless told to behave otherwise.
+     * 5. Required to combine fluid widths and fixed gutters.
+     */
+.layout__item {
+  display: inline-block;
+  /* [1] */
+  padding-left: 26px;
+  /* [2] */
+  vertical-align: top;
+  /* [3] */
+  width: 100%;
+  /* [4] */ }
+
+
+/*------------------------------------*\
+    #LIST-BARE
+\*------------------------------------*/
+/**
+ * The list-bare object simply removes any indents and bullet points from lists.
+ */
+.list-bare {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+/**
+ * #COMPONENTS
+ */
+
+
+
+
+.scroller {
+  z-index: 3; }
+
+.scroller__launcher {
+  cursor: pointer;
+  z-index: 5; }
+
+@media screen and (min-width: 770px) {
+  .scroller {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100%; }
+  .scroller__launcher {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: 0; } }
+
+.slideshow {
+  position: relative;
+  background-color: black; }
+  .slideshow:before {
+    content: '';
+    pointer-events: none;
+    display: block;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    height: 8em;
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%); }
+    @media screen and (min-width: 770px) {
+      .slideshow:before {
+        height: 12em;
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%); } }
+
+.slideshow__item {
+  background-color: black;
+  background-size: cover;
+  background-position: center; }
+
+.slideshow__item__description {
+  color: white;
+  text-align: center;
+  position: fixed;
+  width: 50%;
+  top: 11rem;
+  left: 0;
+  display: none; }
+  .slideshow__item__description p {
+    margin-left: 15%;
+    margin-right: 15%; }
+  @media screen and (min-width: 770px) {
+    .slideshow__item__description {
+      display: block; } }
+
+.slideshow__item__description__title {
+  font-size: 30px; }
+  @media screen and (min-width: 770px) {
+    .slideshow__item__description__title {
+      font-size: 45px; } }
+
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
+.slick-list {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+  padding: 0; }
+  .slick-list:focus {
+    outline: none; }
+  .slick-list.dragging {
+    cursor: pointer; }
+
+.slick-slider .slick-list, .slick-track, .slick-slide, .slick-slide img {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0); }
+
+.slick-track {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: block;
+  zoom: 1; }
+  .slick-track:before, .slick-track:after {
+    content: "";
+    display: table; }
+  .slick-track:after {
+    clear: both; }
+  .slick-loading .slick-track {
+    visibility: hidden; }
+
+.slick-slide {
+  float: left;
+  height: 100%;
+  min-height: 1px;
+  display: none; }
+  [dir="rtl"] .slick-slide {
+    float: right; }
+  .slick-slide img {
+    display: block; }
+  .slick-slide.slick-loading img {
+    display: none; }
+  .slick-slide.dragging img {
+    pointer-events: none; }
+  .slick-initialized .slick-slide {
+    display: block; }
+  .slick-loading .slick-slide {
+    visibility: hidden; }
+  .slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent; }
+
+/* Arrows */
+.slick-prev, .slick-next {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  background: url(../image/arrow-left.png) no-repeat center 48%;
+  width: 40px;
+  background-size: 12px;
+  top: 0;
+  bottom: 0;
+  color: transparent;
+  border: none;
+  outline: none; }
+  @media screen and (min-width: 770px) {
+    .slick-prev, .slick-next {
+      width: 105px;
+      background-size: 25px; } }
+  .slick-prev.slick-disabled:before, .slick-next.slick-disabled:before {
+    opacity: 0.25;
+      outline-style:none;
+ }
+
+.slick-prev {
+  left: 0; }
+  [dir="rtl"] .slick-prev {
+    left: auto;
+    right: 0; }
+
+.slick-next {
+  right: 0;
+  background-image: url(../image/arrow-right.png); }
+  [dir="rtl"] .slick-next {
+    left: 0;
+    right: auto; }
+
+.slideshow-overlay {
+  display: none;
+  position: absolute;
+  bottom: 8em;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  pointer-events: none;
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 5px black, 0 0 10px black, 0 0 20px black, 0 0 50px black; }
+  @media screen and (min-width: 770px) {
+    .slideshow-overlay {
+      display: block; } }
+  @media screen and (min-width: 770px) {
+    .slideshow-overlay {
+      width: 60%; } }
+  @media screen and (min-width: 1200px) {
+    .slideshow-overlay {
+      width: 45%; } }
+  .slideshow-overlay a {
+    pointer-events: auto; }
+
+.slideshow-overlay__heading {
+  margin-bottom: 0.9rem; }
+
+.slideshow-overlay__aside {
+  font-size: 0.7rem; }
+
+.slideshow-overlay__hr {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.3em;
+  width: 1em;
+  border-bottom: solid 1px white; }
+
+.slideshow-overlay__closer {
+  text-decoration: none;
+  font-size: 3em;
+  color: white;
+  display: inline-block;
+  line-height: 0.3em; }
+
+.illumination-link {
+  display: block;
+  letter-spacing: 2px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  -webkit-transition: opacity 0.5s;
+          transition: opacity 0.5s; }
+  .illumination-link:hover, .illumination-link:focus, .illumination-link:active {
+    opacity: 0.75; }
+  @media screen and (min-width: 770px) {
+    .illumination-link {
+      font-size: 15px;
+      font-size: 0.83333rem; } }
+
+.illumination-link__image {
+  margin-top: -1em;
+  max-width: 30px;
+  height: 10px; }
+  @media screen and (min-width: 770px) {
+    .illumination-link__image {
+      margin-top: -0.85em;
+      max-width: 42px; } }
+
+.poster {
+  z-index: 1;
+  padding: 1em 5% 5em 5%;
+  background-color: #ffffff;
+  text-align: center; }
+  @media screen and (min-width: 770px) {
+    .poster {
+      padding: 9rem 5% 8rem 5%;
+      width: 50%; } }
+  .poster p {
+    margin-bottom: 0.5rem; }
+  .poster a:hover, .poster a:active, .poster a:focus {
+    text-decoration: underline; }
+
+.poster__title {
+  font-size: 30px;
+  -webkit-transition: color 0.5s, text-shadow 0.5s, opacity 0.5s;
+          transition: color 0.5s, text-shadow 0.5s, opacity 0.5s;
+  text-align: center;
+  left: 0;
+  right: 0;
+  position: relative; }
+  @media screen and (min-width: 770px) {
+    .poster__title {
+      margin-bottom: 1.2em;
+      font-size: 25px;
+      z-index: 4;
+      position: fixed;
+      padding: 0 5% 0 5%;
+      width: 50%;
+      top: 8rem; } }
+  .poster.hidden .poster__title {
+    color: white;
+    text-shadow: 0 0 7px rgba(0, 0, 0, 0.4); }
+    .poster.hidden .poster__title:hover, .poster.hidden .poster__title:focus, .poster.hidden .poster__title:active {
+      opacity: 0.75; }
+
+.poster__title--ghost {
+  display: none;
+  position: relative;
+  color: #ffffff;
+  opacity: 0;
+  padding: 0;
+  top: auto;
+  width: auto; }
+  @media screen and (min-width: 770px) {
+    .poster__title--ghost {
+      display: block; } }
+
+.poster__body {
+  max-width: 25em;
+  margin-left: auto;
+  margin-right: auto; }
+
+@media screen and (min-width: 770px) and (min-height: 800px) {
+  .poster__title {
+    margin-bottom: 1.5em; }
+  .room-details__description p, .poster__body p {
+    margin-bottom: 2em; } }
+
+.room-details__amenities {
+  font-size: 14px;
+  margin-bottom: 1em;
+  color: #E6AF51; }
+  .room-details__amenities li {
+    display: inline-block;
+    margin-right: 1em;
+    line-height: 1.9em; }
+
+.room-details__icons {
+  margin-bottom: 1.4em; }
+  .room-details__icons img {
+    border-right: solid 1px #b5b5b5;
+    max-width: 49%;
+    margin-bottom: 0.5em; }
+    .room-details__icons img:last-child {
+      border-right: 0; }
+    @media screen and (min-width: 1200px) {
+      .room-details__icons img {
+        max-width: initial;
+        padding-bottom: 0.5em;
+        display: block;
+        margin-left: auto;
+        border-right: 0;
+        border-bottom: solid 1px #b5b5b5; }
+        .room-details__icons img:last-child {
+          border-bottom: 0; } }
+
+@media screen and (min-width: 1200px) {
+  .room-details__amenities, .room-details__description {
+    margin-top: -0.4rem; }
+  .room-details__amenities {
+    text-align: right;
+    padding-top: 0.25rem;
+    line-height: 1.4rem;
+    margin-bottom: 0; }
+    .room-details__amenities li {
+      display: block;
+      margin-right: 0; }
+  .room-details__description {
+    text-align: left;
+    background: url(image/hair.gif) repeat-y 19.5px 0; }
+    .room-details__description > * {
+     
+      }
+    .room-details__description > *:last-child {
+      margin-bottom: 0; } }
+
+
+
+
+
+
+/**
+ * #TRUMPS
+ */
+/*------------------------------------*\
+    #CLEARFIX
+\*------------------------------------*/
+/**
+ * Micro clearfix, as per: css-101.org/articles/clearfix/latest-new-clearfix-so-far.php
+ * Extend the clearfix class with Sass to avoid the `.clearfix` class appearing
+ * over and over in your markup.
+ */
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }
+
+/*------------------------------------*\
+    #WIDTHS
+\*------------------------------------*/
+/**
+ * A series of width helper classes that you can use to size things like grid
+ * systems. Classes can take a fraction-like format (e.g. `.2/3`) or a spoken-
+ * word format (e.g. `two-thirds`). Toggle formats by overriding the
+ * `$inuit-use-fractions` variable defined below.
+ */
+/**
+     * Whole.
+     */
+[class~="1/1"] {
+  width: 100% !important; }
+
+/**
+     * Halves.
+     */
+[class~="1/2"], [class~="2/4"], [class~="3/6"], [class~="4/8"], [class~="5/10"], [class~="6/12"] {
+  width: 50% !important; }
+
+/**
+     * Thirds.
+     */
+[class~="1/3"], [class~="2/6"], [class~="3/9"], [class~="4/12"] {
+  width: 33.33333% !important; }
+
+[class~="2/3"], [class~="4/6"], [class~="6/9"], [class~="8/12"] {
+  width: 66.66667% !important; }
+
+/**
+     * Quarters.
+     */
+[class~="1/4"], [class~="2/8"], [class~="3/12"] {
+  width: 25% !important; }
+
+[class~="3/4"], [class~="6/8"], [class~="9/12"] {
+  width: 75% !important; }
+
+/**
+     * Fifths.
+     */
+[class~="1/5"], [class~="2/10"] {
+  width: 20% !important; }
+
+[class~="2/5"], [class~="4/10"] {
+  width: 40% !important; }
+
+[class~="3/5"], [class~="6/10"] {
+  width: 60% !important; }
+
+[class~="4/5"], [class~="8/10"] {
+  width: 80% !important; }
+
+/**
+     * Sixths.
+     */
+[class~="1/6"], [class~="2/12"] {
+  width: 16.66667% !important; }
+
+[class~="5/6"], [class~="10/12"] {
+  width: 83.33333% !important; }
+
+/**
+     * Eighths.1/8 modiifé pour gérer le menu à 9 sections
+     */
+[class~="1/8"] {
+  width: 11.1% !important; }
+
+[class~="3/8"] {
+  width: 37.5% !important; }
+
+[class~="5/8"] {
+  width: 62.5% !important; }
+
+[class~="7/8"] {
+  width: 87.5% !important; }
+
+/**
+     * Ninths.
+     */
+[class~="1/9"] {
+  width: 11.11111% !important; }
+
+[class~="2/9"] {
+  width: 22.22222% !important; }
+
+[class~="4/9"] {
+  width: 44.44444% !important; }
+
+[class~="5/9"] {
+  width: 55.55556% !important; }
+
+[class~="7/9"] {
+  width: 77.77778% !important; }
+
+[class~="8/9"] {
+  width: 88.88889% !important; }
+
+/**
+     * Tenths.
+     */
+[class~="1/10"] {
+  width: 10% !important; }
+
+[class~="3/10"] {
+  width: 30% !important; }
+
+[class~="7/10"] {
+  width: 70% !important; }
+
+[class~="9/10"] {
+  width: 90% !important; }
+
+/**
+     * Twelfths.
+     */
+[class~="1/12"] {
+  width: 8.33333% !important; }
+
+[class~="5/12"] {
+  width: 41.66667% !important; }
+
+[class~="7/12"] {
+  width: 58.33333% !important; }
+
+[class~="11/12"] {
+  width: 91.66667% !important; }
+
+/*------------------------------------*\
+    #WIDTHS-RESPONSIVE
+\*------------------------------------*/
+/**
+ * Some simple, crude, starting-point widths to use alongside the layout system.
+ */
+
+
+@media screen and (min-width: 770px) and (max-width: 1023px) {
+  .lap-one-whole {
+    width: 100%; }
+  .lap-one-half {
+    width: 50%; }
+  .lap-one-third {
+    width: 33.33333%; }
+  .lap-two-thirds {
+    width: 66.66667%; }
+  .lap-one-quarter {
+    width: 25%; }
+  .lap-three-quarters {
+    width: 75%; }
+  .lap-one-fifth {
+    width: 20%; }
+  .lap-two-fifths {
+    width: 40%; }
+  .lap-three-fifths {
+    width: 60%; }
+  .lap-four-fifths {
+    width: 80%; }
+  .lap-one-tenth {
+    width: 10%; }
+  .lap-three-tenths {
+    width: 30%; }
+  .lap-seven-tenths {
+    width: 70%; }
+  .lap-nine-tenths {
+    width: 90%; } }
+
+@media screen and (min-width: 770px) {
+  .lap-and-up-one-whole {
+    width: 100%; }
+  .lap-and-up-one-half {
+    width: 50%; }
+  .lap-and-up-one-third {
+    width: 33.33333%; }
+  .lap-and-up-two-thirds {
+    width: 66.66667%; }
+  .lap-and-up-one-quarter {
+    width: 25%; }
+  .lap-and-up-three-quarters {
+    width: 75%; }
+  .lap-and-up-one-fifth {
+    width: 20%; }
+  .lap-and-up-two-fifths {
+    width: 40%; }
+  .lap-and-up-three-fifths {
+    width: 60%; }
+  .lap-and-up-four-fifths {
+    width: 80%; }
+  .lap-and-up-one-tenth {
+    width: 10%; }
+  .lap-and-up-three-tenths {
+    width: 30%; }
+  .lap-and-up-seven-tenths {
+    width: 70%; }
+  .lap-and-up-nine-tenths {
+    width: 90%; } }
+
+@media screen and (max-width: 1199px) {
+  .portable-one-whole {
+    width: 100%; }
+  .portable-one-half {
+    width: 50%; }
+  .portable-one-third {
+    width: 33.33333%; }
+  .portable-two-thirds {
+    width: 66.66667%; }
+  .portable-one-quarter {
+    width: 25%; }
+  .portable-three-quarters {
+    width: 75%; }
+  .portable-one-fifth {
+    width: 20%; }
+  .portable-two-fifths {
+    width: 40%; }
+  .portable-three-fifths {
+    width: 60%; }
+  .portable-four-fifths {
+    width: 80%; }
+  .portable-one-tenth {
+    width: 10%; }
+  .portable-three-tenths {
+    width: 30%; }
+  .portable-seven-tenths {
+    width: 70%; }
+  .portable-nine-tenths {
+    width: 90%; } }
+
+@media screen and (min-width: 1200px) {
+  .desk-one-whole {
+    width: 100%; }
+  .desk-one-half {
+    width: 50%; }
+  .desk-one-third {
+    width: 33.33333%; }
+  .desk-two-thirds {
+    width: 66.66667%; }
+  .desk-one-quarter {
+    width: 25%; }
+  .desk-three-quarters {
+    width: 75%; }
+  .desk-one-fifth {
+    width: 20%; }
+  .desk-two-fifths {
+    width: 40%; }
+  .desk-three-fifths {
+    width: 60%; }
+  .desk-four-fifths {
+    width: 80%; }
+  .desk-one-tenth {
+    width: 10%; }
+  .desk-three-tenths {
+    width: 30%; }
+  .desk-seven-tenths {
+    width: 70%; }
+  .desk-nine-tenths {
+    width: 90%; }
+  .desk-push-one-tenth {
+    position: relative;
+    left: 10%; } }
+
+/*------------------------------------*\
+    #SPACING
+\*------------------------------------*/
+/**
+ * Margin and padding helper classes. Use these to tweak layout on a micro
+ * level.
+ *
+ * `.(m|p)(t|r|b|l|h|v)(-|+|0) {}` = margin/padding top/right/bottom/left/horizontal/vertical less/more/none
+ */
+/**
+     * Add huge paddings.
+     */
+.p\+\+ {
+  padding: 104px !important; }
+
+.pt\+\+ {
+  padding-top: 104px !important; }
+
+.pr\+\+ {
+  padding-right: 104px !important; }
+
+.pb\+\+ {
+  padding-bottom: 104px !important; }
+
+.pl\+\+ {
+  padding-left: 104px !important; }
+
+.ph\+\+ {
+  padding-right: 104px !important;
+  padding-left: 104px !important; }
+
+.pv\+\+ {
+  padding-top: 104px !important;
+  padding-bottom: 104px !important; }
+
+.text-centered {
+  text-align: center; }
+
+.text-right {
+  text-align: right; }
+
+.sticky, .header, .footer {
+  position: fixed;
+  z-index: 6; }
+
+.sticky--top, .sticky--bottom{
+  left: 0;
+  right: 0; }
+
+.sticky--top{
+  top: 0; }
+
+.sticky--bottom{
+  bottom: 0; }
+
+.ma {
+  margin-top: 2em;
+  width: 32px;
+  height: 13px; }
+
+.ms {
+  margin-top: 2em;
+  width: 26px;
+  height: 26px; }
+
+.visual-pull-left, .slideshow__item__description {
+  margin-left: -1rem; }
+
+.visual-pull-right {
+  margin-right: -1rem; }
+
+@media screen and (min-width: 770px) {
+  .visual-pull-left-lap-and-up {
+    margin-left: -1rem; }
+  .visual-pull-right-lap-and-up {
+    margin-right: -1rem; } }
+
+.scroll-lock {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  position: fixed; }
+
+
+
+
+
+
+
+
