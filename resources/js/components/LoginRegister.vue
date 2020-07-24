@@ -141,6 +141,7 @@
     appId: "1:456137702762:web:8ed55e2f0f17b91b8a3913",
     measurementId: "G-R4YZGNFX95"
   };
+  let app = firebase.initializeApp(firebaseConfig)
 
   export default {
   	components: {

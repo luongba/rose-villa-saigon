@@ -28,34 +28,41 @@ use App\Rules\CheckGiftRule;
 
 class HomeController extends Controller
 {
-   	public function welcome(Request $request)
-    	{
-        	return view('pages.index');
-    	} 
-   	public function events(Request $request)
-    	{
-        	return view('pages.events');
-   		} 
-   	public function spa(Request $request)
-    	{
-        	return view('pages.spa');
-   		} 
-   	public function fooddrink(Request $request)
-    	{
-        	return view('pages.food-drink');
-   		} 
+    public function welcome(Request $request)
+    {
+        return view('pages.index');
+    } 
+
+    public function events(Request $request)
+    {
+        return view('pages.events');
+    } 
+
+    public function spa(Request $request)
+    {
+        return view('pages.spa');
+    } 
+
+    public function fooddrink(Request $request)
+    {
+        return view('pages.food-drink');
+    } 
+
     public function about(Request $request)
-      {
-          return view('pages.about');
-      }
+    {
+        return view('pages.about');
+    }
+
     public function contact(Request $request)
-      {
-          return view('pages.contact');
-      }
+    {
+        return view('pages.contact');
+    }
+
     public function singleroom(Request $request)
-      {
-          return view('pages.single-room');
-      }
+    {
+        return view('pages.single-room');
+    }
+
     /* ACCOUNT */
     public function validateLogin($request){
         $validator = Validator::make($request, [
@@ -70,6 +77,7 @@ class HomeController extends Controller
             }
         }
     }
+
     public function login_web(Request $request){
         $resultValidate = $this->validateLogin($request->all());
         if($resultValidate != ""){
@@ -96,7 +104,6 @@ class HomeController extends Controller
         }
     }
 
-
     public function logout_web(){
         Session::flush();
         Auth::logout();
@@ -106,6 +113,7 @@ class HomeController extends Controller
     public function register_page(){
         return view('pages.register');
     }
+    
     public function validateRegister($request){
         $validator = Validator::make($request, [
             'name' => 'required',
@@ -120,6 +128,7 @@ class HomeController extends Controller
             }
         }
     }
+
     public function register_web(Request $request){
         $resultValidate = $this->validateRegister($request->all());
         if($resultValidate != ""){
@@ -135,6 +144,7 @@ class HomeController extends Controller
             ]);
         }
     }
+
     public function confirm_register(Request $request){
         $user = User::create([
             'name' => $request['name'],
@@ -149,6 +159,7 @@ class HomeController extends Controller
             "message" => "Chúc mừng bạn đã đăng ký thành công"
         ]);
     }
+
     public function forgot_web(Request $request){
         $user = User::where('users.phone','=',$request->phone)->first();
         if($user){
@@ -163,6 +174,7 @@ class HomeController extends Controller
             ]);
         }
     }
+
     public function check_pin(Request $request){
         $check_pin = "123456";
         $pin = $request->pin;
@@ -178,6 +190,7 @@ class HomeController extends Controller
             ]);
         }
     }
+
     public function update_password(Request $request){
         $user = User::where('users.phone','=',$request->phone)->first();
         $validator = Validator::make($request->toArray(), [
@@ -190,7 +203,7 @@ class HomeController extends Controller
                 "message" => $validator->errors()->first()
             ]);
         }
-        
+
 
         $user->password = bcrypt($request->password);
         $user->save();
