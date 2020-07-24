@@ -56,6 +56,14 @@ class HomeController extends Controller
       {
           return view('pages.single-room');
       }
+    public function membership(Request $request)
+      {
+          return view('pages.membership');
+      }
+
+
+
+      
     /* ACCOUNT */
     public function validateLogin($request){
         $validator = Validator::make($request, [
