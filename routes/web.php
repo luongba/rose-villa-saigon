@@ -45,6 +45,11 @@ Route::get('/single-room', [
 	'uses' => 'HomeController@singleroom'
 ]);
 
+Route::get('/membership',[
+	'as' => 'membership',
+	'uses' => 'HomeController@membership'
+]);
+
 Route::post('/login-web',[
 	'as' => 'login_web',
 	'uses' => 'HomeController@login_web'
@@ -72,11 +77,6 @@ Route::post('/check_pin',[
 Route::post('/confirm-registration',[
 	'as' => 'confirm_register',
 	'uses' => 'HomeController@confirm_register'
-]);
-
-Route::post('/membership',[
-	'as' => 'membership',
-	'uses' => 'HomeController@membership'
 ]);
 
 Route::post('/update_password',[
