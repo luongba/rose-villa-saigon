@@ -21,6 +21,5 @@
     <link href="{{asset('public/style.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('public/assets/css/curtain.css')}}" rel="stylesheet" media="screen">
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css" rel="stylesheet">
-    <link href="{{asset('public/assets/css/bootstrap-pincode-input.css')}}" rel="stylesheet">  
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>

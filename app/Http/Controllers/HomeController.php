@@ -59,9 +59,11 @@ class HomeController extends Controller
     }
 
     public function singleroom(Request $request)
-    {
-        return view('pages.single-room');
-    }
+
+      {
+          return view('pages.single-room');
+      }
+
     public function membership(Request $request)
     {
         return view('pages.membership');

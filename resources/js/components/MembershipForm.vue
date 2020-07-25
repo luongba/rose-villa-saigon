@@ -26,22 +26,17 @@
          		<div class="stepmbs step3rd" v-if="step == 3">
           		<div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" v-for="option in options">
-                    <div class="content-tp-mbs">
-                        <h3>{{ option }}</h3>
+                    <label :for="option.id" class="content-tp-mbs">
+                        <h3>{{ option.name }}</h3>
                         <ul>
-                          <li>service 1</li>
-                          <li>service 1</li>
-                          <li>service 1</li>
-                          <li>service 1</li>
-                          <li>service 1</li>
-                          <li>service 1</li>
-                          <li>service 1</li>
+                          <li v-for="item in option.benefit_members">{{ item.name }}</li>
                         </ul>
-                        <button>Choose Plan</button>
-                    </div>
+                        <button type="button">Choose Plan</button>
+                    </label>
+                    <input :id="option.id" type="radio" :value="option.id" v-model="model.type_id">
                 </div>
             	</div>
-              <button v-if="step==3" type="submit">Submit</button>
+              <button class="btn btn-primary" v-if="step==3" type="submit">Submit</button>
 						</div>
           </form>
         </div>
@@ -59,18 +54,11 @@ Vue.use(VueFormGenerator)
 export default {
 	data() {
 		return {
-			options: [
-        'MEMBERSHIP - DESCRIPTION',
-        'MEMBERSHIP INCLUDING WELLNESS ACCESS - DESCRIPTION ',
-        'U30 MEMBERSHIP - DESCRIPTION',
-        'U30 MEMBERSHIP INCLUDING WELLNESS ACCESS - DESCRIPTION',
-        'TRAVELLER MEMBERSHIP - DESCRIPTION',
-        'TRAVELLER MEMBERSHIP INCLUDING WELLNESS ACCESS - DESCRIPTION'
-			],
+			options: {},
 			steps: [
 				'About You', 'Why You?', 'Membership Type'
 			],
-			step: 1,
+			step: 3,
 			user_data: [],
 			type: null,
 			model: {
@@ -234,7 +222,13 @@ export default {
 		};
 	},
 	mounted() {
-
+    let _this = this
+    axios.get(
+      './membership-type'
+    ).then(function(response){
+      _this.options = response.data
+      console.log(response)
+    });
 	},
 	methods: {
 		onValidated(isValid, errors) {

@@ -2443,7 +2443,7 @@ body.welcome {
 	margin-left:-55px;
 	top:0;
 	display: block;
-	z-index:9999;
+	z-index:999;
 }
 .logo-landing a{
 	width:100%;
@@ -3078,6 +3078,27 @@ ul.step-membership{
 	left:-50px;
 	line-height:50px;
 }
+/* fix modal */
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+
 /* Responsive */
 
 @media only screen and (min-width: 360px) and (max-width: 768px){
