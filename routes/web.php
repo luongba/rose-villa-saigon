@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 Route::get('/', [
 	'as' => 'welcome',
@@ -86,5 +86,21 @@ Route::post('/update_password',[
 
 
 Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
+	Voyager::routes();
 });
+
+/*MANH_TU*/
+//Route::get('register', 'UserController@regis')->name('regis');
+
+Route::post('register', 'UserController@register')->name('user.register');
+
+Route::post('login', 'UserController@login')->name('user.login');
+
+Route::prefix('/')->middleware('auth')->group(function() {
+	Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
+
+	Route::post('register-membership', 'UserController@registerMembership')->name('user.register_membership');
+});
+
+Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
+/*END MANH_TU*/

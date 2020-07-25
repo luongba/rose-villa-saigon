@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MembershipType extends Model
+class BenefitMember extends Model
 {
-    use Sluggable, SoftDeletes,SluggableScopeHelpers;
+    use Sluggable,SluggableScopeHelpers;
+
+    protected $fillable = ['name', 'slug', 'description'];
 
     /**
      * Return the sluggable configuration array for this model.
@@ -25,15 +26,14 @@ class MembershipType extends Model
             ]
         ];
     }
-    protected $fillable = ['name', 'slug', 'logo', 'day', 'description', 'status'];
 
-    public function benefitMembers()
-    {
-        return $this->belongsToMany('App\Models\BenefitMember', 'membership_type_benefit_members', 'membership_type_id', 'benefit_member_id');
-    }
+	public function membershipTypes()
+	{
+		return $this->belongsToMany('App\Models\MembershipType', 'membership_type_benefit_members', 'benefit_member_id', 'membership_type_id');
+	}
 
     /*QUERY DATABASE*/
-    public function listMembershipType()
+    public function listBenefit()
     {
         return static::all();
     }
