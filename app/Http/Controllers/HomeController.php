@@ -59,55 +59,15 @@ class HomeController extends Controller
     }
 
     public function singleroom(Request $request)
-      {
-          return view('pages.single-room');
-      }
+    {
+        return view('pages.single-room');
+    }
     public function membership(Request $request)
-      {
-          return view('pages.membership');
-      }
+    {
+        return view('pages.membership');
+    }
 
     /* ACCOUNT */
-    public function validateLogin($request){
-        $validator = Validator::make($request, [
-            'phone' => 'required',
-            'password' => 'required|min:6|max:32'
-        ]);
-        if($validator->fails()){
-            if($validator->errors()->first('phone') != null){
-                return $validator->errors()->first('phone');
-            }else if($validator->errors()->first('password') != null){
-                return $validator->errors()->first('password');
-            }
-        }
-    }
-
-    public function login_web(Request $request){
-        $resultValidate = $this->validateLogin($request->all());
-        if($resultValidate != ""){
-            return response()->json([
-                "status" => false,
-                "message" => $resultValidate
-            ]);
-        }
-        $credentials = [
-            'phone' => $request->phone,
-            'password' => $request->password
-        ];
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            return response()->json([
-                'status' => true,
-                'message' => 'Chúc mừng bạn đã đăng nhập thành công!!!'
-            ]);
-        } else {
-            return response()->json([
-                "status" => false,
-                'message' => 'Số điện thoại hoặc mật khẩu không chính xác!!!'
-            ]);
-        }
-    }
-
     public function logout_web(){
         Session::flush();
         Auth::logout();
@@ -117,7 +77,7 @@ class HomeController extends Controller
     public function register_page(){
         return view('pages.register');
     }
-    
+
     public function validateRegister($request){
         $validator = Validator::make($request, [
             'first_name' => 'required',
@@ -132,39 +92,6 @@ class HomeController extends Controller
                 return $validator->errors()->first('password');
             }
         }
-    }
-
-    public function register_web(Request $request){
-        $resultValidate = $this->validateRegister($request->all());
-        if($resultValidate != ""){
-            return response()->json([
-                "status" => false,
-                "message" => $resultValidate
-            ]);
-        }else{
-            // Auth::loginUsingId($user->id);
-            return response()->json([
-                "status" => true,
-                "message" => "Nhập mã xác minh nhận được từ hệ thống",
-            ]);
-        }
-    }
-
-    public function confirm_register(Request $request){
-        $user = User::create([
-            'first_name' => $request['first_name'],
-            'last_name' => $request['last_name'],
-            'email' => $request['phone'].'@rosevilla.com',
-            'phone' => $request['phone'],
-            'password' => bcrypt($request['password']),
-            'role_id' =>$request['role']
-        ]);
-        $user->phone_verified_at = Carbon::now();
-        $user->save();
-        return response()->json([
-            "status" => true,
-            "message" => "Chúc mừng bạn đã đăng ký thành công"
-        ]);
     }
 
     public function forgot_web(Request $request){
@@ -193,8 +120,6 @@ class HomeController extends Controller
                 "message" => $validator->errors()->first()
             ]);
         }
-
-
         $user->password = bcrypt($request->password);
         $user->save();
         return response()->json([
@@ -202,5 +127,4 @@ class HomeController extends Controller
             "message" => "Cập nhật mật khẩu thành công!!!"
         ]);
     }
-
 }
