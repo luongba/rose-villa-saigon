@@ -19,29 +19,22 @@
       </div>   
     </section>
     <section class="innercontent">
-      <div class="event-elm event-left">
-        <div class="event-ct">
-          <div class="bgevent-ct">
-            <h3 class="title-post-1">Wellness</h3>
-            <div class="ctevent">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac mollis risus. Vivamus sed ex porttitor, ullamcorper eros vitae, feugiat elit. Sed fermentum et metus vel lobortis. Maecenas sit amet ante laoreet, efficitur eros a, rutrum nulla. Suspendisse at nulla tempor, sollicitudin mi ut, tempus est. Nam vel sapien at velit lobortis suscipit in eu urna. Fusce enim justo, ullamcorper id diam id, consectetur mollis magna. Quisque pellentesque magna a leo eleifend rhoncus. Aliquam eu accumsan diam, vel rhoncus augue.
-            </div>
-            <a href="#" class="bookingaction radius_4">View menu</a>
-            <a href="#" class="bookingaction radius_4">Booking Event</a>
-            <div class="clear"></div>
-          </div>
-        </div>
-        <div class="eventimg">
-          <img  src="{{asset('public/images/spa-img1.png')}}" />
-        </div>
-      </div>
+      @foreach($list_wellness_beauty as  $key =>$val)
+      @php
+          $so_du = $key % 2;
+          if ($so_du == 0){
+           $float = 'event-left';
+         }else{
+          $float = 'event-right';
+        }
+        @endphp
 
-      <div class="event-elm event-right">
+      <div class="event-elm {{$float}}">
         <div class="event-ct">
           <div class="bgevent-ct">
-            <h3 class="title-post-1">Beauty</h3>
+            <h3 class="title-post-1">{{$val->name}}</h3>
             <div class="ctevent">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac mollis risus. Vivamus sed ex porttitor, ullamcorper eros vitae, feugiat elit. Sed fermentum et metus vel lobortis. Maecenas sit amet ante laoreet, efficitur eros a, rutrum nulla. Suspendisse at nulla tempor, sollicitudin mi ut, tempus est. Nam vel sapien at velit lobortis suscipit in eu urna. Fusce enim justo, ullamcorper id diam id, consectetur mollis magna. Quisque pellentesque magna a leo eleifend rhoncus. Aliquam eu accumsan diam, vel rhoncus augue.
+              {!!$val->description!!}
             </div>
             <a href="#" class="bookingaction radius_4">View menu</a>
             <a href="#" class="bookingaction radius_4">Booking Event</a>
@@ -49,9 +42,10 @@
           </div>
         </div>
         <div class="eventimg">
-          <img  src="{{asset('public/images/spa-img2.png')}}" />
+          <img  src="{{$val->UrlThumb}}" />
         </div>
-      </div>  
+      </div> 
+      @endforeach
         
     </section>
   </div>

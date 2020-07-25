@@ -19,58 +19,30 @@
       </div>   
     </section>
     <section class="innercontent">
-      <div class="fd-elm fd-left">
-        <div class="fdct">
-            <h3 class="title-post-1">The Dinnering</h3>
-            <div class="ctevent">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac mollis risus. Vivamus sed ex porttitor, ullamcorper eros vitae, feugiat elit. Sed fermentum et metus vel lobortis. Maecenas sit amet ante laoreet, efficitur eros a, rutrum nulla. Suspendisse at nulla tempor, sollicitudin mi ut, tempus est. Nam vel sapien at velit lobortis suscipit in eu urna. Fusce enim justo, ullamcorper id diam id, consectetur mollis magna. Quisque pellentesque magna a leo eleifend rhoncus. Aliquam eu accumsan diam, vel rhoncus augue.
-            </div>
-            <a href="#" class="bookingaction radius_4">Booking Table</a>
-        </div>
-        <div class="fdimg">
-          <img  src="{{asset('public/images/food/res-img1.png')}}" />
-        </div> 
-      </div>
+      @foreach($list_food_drink as $key =>$val)
+          @php
+          $so_du = $key % 2;
+          if ($so_du == 0){
+           $float = 'fd-left';
+         }else{
+          $float = 'fd-right';
+        }
+        @endphp
 
-      <div class="fd-elm fd-right">
-        <div class="fdct">
-            <h3 class="title-post-1">The Dinnering</h3>
-            <div class="ctevent">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac mollis risus. Vivamus sed ex porttitor, ullamcorper eros vitae, feugiat elit. Sed fermentum et metus vel lobortis. Maecenas sit amet ante laoreet, efficitur eros a, rutrum nulla. Suspendisse at nulla tempor, sollicitudin mi ut, tempus est. Nam vel sapien at velit lobortis suscipit in eu urna. Fusce enim justo, ullamcorper id diam id, consectetur mollis magna. Quisque pellentesque magna a leo eleifend rhoncus. Aliquam eu accumsan diam, vel rhoncus augue.
-            </div>
-            <a href="#" class="bookingaction radius_4">Booking Table</a>
+        <div class="fd-elm {{$float}}">
+          <div class="fdct">
+              <h3 class="title-post-1">{{$val->title}}</h3>
+              <div class="ctevent">
+                {!!$val->description!!}
+              </div>
+              <a href="#" class="bookingaction radius_4">Booking Table</a>
+          </div>
+          <div class="fdimg">
+            <img  src="{{$val->UrlThumb}}" />
+          </div> 
         </div>
-        <div class="fdimg">
-          <img  src="{{asset('public/images/food/res-img2.png')}}" />
-        </div> 
-      </div>
-
-      <div class="fd-elm fd-left">
-        <div class="fdct">
-            <h3 class="title-post-1">The Dinnering</h3>
-            <div class="ctevent">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac mollis risus. Vivamus sed ex porttitor, ullamcorper eros vitae, feugiat elit. Sed fermentum et metus vel lobortis. Maecenas sit amet ante laoreet, efficitur eros a, rutrum nulla. Suspendisse at nulla tempor, sollicitudin mi ut, tempus est. Nam vel sapien at velit lobortis suscipit in eu urna. Fusce enim justo, ullamcorper id diam id, consectetur mollis magna. Quisque pellentesque magna a leo eleifend rhoncus. Aliquam eu accumsan diam, vel rhoncus augue.
-            </div>
-            <a href="#" class="bookingaction radius_4">Booking Table</a>
-        </div>
-        <div class="fdimg">
-          <img  src="{{asset('public/images/food/res-img3.png')}}" />
-        </div> 
-      </div>
-
-      <div class="fd-elm fd-right">
-        <div class="fdct">
-            <h3 class="title-post-1">The Dinnering</h3>
-            <div class="ctevent">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac mollis risus. Vivamus sed ex porttitor, ullamcorper eros vitae, feugiat elit. Sed fermentum et metus vel lobortis. Maecenas sit amet ante laoreet, efficitur eros a, rutrum nulla. Suspendisse at nulla tempor, sollicitudin mi ut, tempus est. Nam vel sapien at velit lobortis suscipit in eu urna. Fusce enim justo, ullamcorper id diam id, consectetur mollis magna. Quisque pellentesque magna a leo eleifend rhoncus. Aliquam eu accumsan diam, vel rhoncus augue.
-            </div>
-            <a href="#" class="bookingaction radius_4">Booking Table</a>
-        </div>
-        <div class="fdimg">
-          <img  src="{{asset('public/images/food/res-img4.png')}}" />
-        </div> 
-      </div>
-        
+       
+      @endforeach
     </section>
   </div>
 @endsection
