@@ -29,10 +29,12 @@
 			<h3 class="modal-title">Đăng Ký</h3>
 	        <form data-parsley-validate @submit.prevent="dangky">
 	        	<input type="hidden" name="role" value="2">
-              <!-- <span v-if="err_text" class="text-danger">{{ err_text }}</span> -->
-	            <div class="form-group popup-input-style">
-                   <input v-model="name" type="text" class="form-control-elm input-user" placeholder="Họ Và Tên" autocomplete="off" data-parsley-required>
-                </div> 
+              <div class="form-group popup-input-style">
+                <input v-model="first_name" type="text" class="form-control-elm input-user" placeholder="First Name" autocomplete="off" data-parsley-required>
+              </div> 
+              <div class="form-group popup-input-style">
+                <input v-model="last_name" type="text" class="form-control-elm input-user" placeholder="Last Name" autocomplete="off" data-parsley-required>
+              </div> 
                 <div class="form-group popup-input-style">
                   <vue-tel-input v-model="phone_number2"  @validate="checkPhone" :preferredCountries="['VN', 'US']" ></vue-tel-input>
                   <p v-if="validphone">{{ validphone }}</p>
@@ -154,6 +156,8 @@
         phone_number2: '',
         phone_number3: '',
         name: '',
+        first_name: '',
+        last_name: '',
         phone: '',
         password: '',
         repassword: '',
@@ -215,7 +219,7 @@
         if(this.validphone == ''){
           axios.post(
             './registration',
-            { name: this.name, phone: this.phone, password: this.password, password_confirmation: this.repassword }
+            { first_name: this.first_name, last_name: this.last_name, phone: this.phone, password: this.password, password_confirmation: this.repassword }
           ).then(function(response){
             // _this.err_text = ''
             if(response.data.status == false){
@@ -288,6 +292,11 @@
       },
       checkpin: function(e){
         let _this = this
+        axios.post(
+            './confirm-registration',
+            { first_name: _this.first_name, last_name: _this.last_name, phone: _this.phone, password: _this.password, password_confirmation: _this.repassword }
+          )
+        return
         // console.log(window.confirmationResult)
         var code = this.pincode;
         confirmationResult.confirm(code).then(function (result) {
@@ -298,7 +307,7 @@
           }
           axios.post(
             './confirm-registration',
-            { name: _this.name, phone: _this.phone, password: _this.password, password_confirmation: _this.repassword }
+            { first_name: _this.first_name, last_name: _this.last_name, phone: _this.phone, password: _this.password, password_confirmation: _this.repassword }
           ).then(function(response){
             // _this.err_text = ''
             if(response.data.status == false){
@@ -306,7 +315,7 @@
               toastr.error(response.data.message)
             }else {
               // _this.err_text = response.data.message
-               toastr.success(response.data.message)
+              toastr.success(response.data.message)
               setTimeout(() => _this.view = 'dangnhap', 500)
             }
           });
@@ -314,8 +323,7 @@
         }).catch(function (error) {
           // User couldn't sign in (bad verification code?)
           console.log(error)
-          // _this.err_text = 'Mã Pin không chính xác'
-           toastr.error('Mã Pin không chính xác')
+          toastr.error(error.message)
         });
       },
     }

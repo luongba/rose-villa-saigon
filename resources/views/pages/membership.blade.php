@@ -11,7 +11,8 @@
         </div>
       </div> 
     </section>
-    <section class="content-membership">
+    <membership-form></membership-form>
+    {{-- <section class="content-membership">
       <div class="container">
         <ul class="step-membership">
           <li class="currentstep"><span class="numberstep radius_50">1</span><span class="textli">About You<span></li>
@@ -138,7 +139,7 @@
             </div>
         </div>
       </div>
-    </section>  
+    </section>  --}} 
   </div>
 @endsection
 

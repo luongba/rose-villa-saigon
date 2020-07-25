@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Auth;
 use DB;
 use Session;
-use App\Models\User;
+use App\User;
 use App\Models\Store;
 use App\Models\Gift;
 use App\Models\Room;
@@ -116,7 +116,8 @@ class HomeController extends Controller
     }
     public function validateRegister($request){
         $validator = Validator::make($request, [
-            'name' => 'required',
+            'first_name' => 'required',
+            'first_name' => 'required',
             'phone' => 'required|unique:users,phone',
             'password' => 'required|min:6|max:32|confirmed'
         ]);
@@ -145,7 +146,9 @@ class HomeController extends Controller
     }
     public function confirm_register(Request $request){
         $user = User::create([
-            'name' => $request['name'],
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
+            'email' => $request['phone'].'@rosevilla.com',
             'phone' => $request['phone'],
             'password' => bcrypt($request['password']),
             'role_id' =>$request['role']
@@ -168,21 +171,6 @@ class HomeController extends Controller
             return response()->json([
                 "status" => false,
                 'message' => 'Số điện thoại không chính xác!!!'
-            ]);
-        }
-    }
-    public function check_pin(Request $request){
-        $check_pin = "123456";
-        $pin = $request->pin;
-        if($pin != $check_pin){
-            return response()->json([
-                "status" => false,
-                'message' => 'Mã PIN không tồn tại!!!'
-            ]);
-        }else{
-            return response()->json([
-                "status" => true,
-                "phone" => $request->phone
             ]);
         }
     }
