@@ -2443,7 +2443,7 @@ body.welcome {
 	margin-left:-55px;
 	top:0;
 	display: block;
-	z-index:9999;
+	z-index:999;
 }
 .logo-landing a{
 	width:100%;
