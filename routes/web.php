@@ -102,5 +102,5 @@ Route::prefix('/')->middleware('auth')->group(function() {
 	Route::post('register-membership', 'UserController@registerMembership')->name('user.register_membership');
 });
 
-//Route::get('test', 'MembershipTypeController@list');
+Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
 /*END MANH_TU*/
