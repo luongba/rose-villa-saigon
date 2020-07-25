@@ -137,14 +137,84 @@ class UserController extends Controller
 		}
 	}
 
+	private function validateRegisterMembership($request)
+	{
+		$validator = Validator::make($request, [
+            'first_name' => 'required',
+            'last_name' => 'required|email',
+            'email' => 'required|email',
+            'gender' => 'required|min:0|max:1',
+            'dob' => 'required',
+            'occupation' => 'required',
+            'address_one' => 'required',
+            'address_two' => 'required',
+            'city' => 'required',
+            'post_code' => 'required',
+            'country' => 'required',
+            'post_code' => 'required',
+            'avatar' => 'required',
+            'type_user' => 'required',
+            'reason' => 'required',
+            'usage_criteria' => 'required',
+            'bring_to' => 'required',
+            'member_other' => 'required',
+            'membership_type' => 'required|min:1|max:2',
+        ]);
+        if ($validator->fails()) {
+            if ($validator->errors()->first('first_name') != null) {
+                return $validator->errors()->first('first_name');
+            } else if($validator->errors()->first('last_name') != null) {
+                return $validator->errors()->first('last_name');
+            } else if($validator->errors()->first('email') != null) {
+                return $validator->errors()->first('email');
+            } else if($validator->errors()->first('gender') != null) {
+                return $validator->errors()->first('gender');
+            } else if($validator->errors()->first('dob') != null) {
+                return $validator->errors()->first('dob');
+            } else if($validator->errors()->first('occupation') != null) {
+                return $validator->errors()->first('occupation');
+            } else if($validator->errors()->first('address_one') != null) {
+                return $validator->errors()->first('address_one');
+            } else if($validator->errors()->first('address_two') != null) {
+                return $validator->errors()->first('address_two');
+            } else if($validator->errors()->first('city') != null) {
+                return $validator->errors()->first('city');
+            } else if($validator->errors()->first('post_code') != null) {
+                return $validator->errors()->first('post_code');
+            } else if($validator->errors()->first('country') != null) {
+                return $validator->errors()->first('country');
+            } else if($validator->errors()->first('avatar') != null) {
+                return $validator->errors()->first('avatar');
+            } else if($validator->errors()->first('type_user') != null) {
+                return $validator->errors()->first('type_user');
+            } else if($validator->errors()->first('reason') != null) {
+                return $validator->errors()->first('reason');
+            } else if($validator->errors()->first('usage_criteria') != null) {
+                return $validator->errors()->first('usage_criteria');
+            } else if($validator->errors()->first('bring_to') != null) {
+                return $validator->errors()->first('bring_to');
+            } else if($validator->errors()->first('member_other') != null) {
+                return $validator->errors()->first('member_other');
+            } else if($validator->errors()->first('membership_type') != null) {
+                return $validator->errors()->first('membership_type');
+            }
+        }
+	}
+
 	public function registerMembership(Request $request)
 	{
+        $resultValidate = $this->validateRegisterMembership($request->all());
+        if ($resultValidate != "") {
+            return response()->json([
+                "status" => false,
+                "message" => $resultValidate
+            ]);
+        }
 		DB::beginTransaction();
 		try {
-			$avatar = "avatar.png";
-			$pack = 1;
+			$avatar = 'avatar.png';
 
-			$paramUser = $request->only('first_name', 'last_name', 'email', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar');
+			$paramUser = $request->only('first_name', 'last_name', 'email', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user');
 			$this->user->editUserById(Auth::id(), $paramUser);
 
 			$request->request->add([
@@ -153,19 +223,19 @@ class UserController extends Controller
 			$paramUserMeta = $request->only('user_id', 'reason', 'usage_criteria', 'bring_to', 'member_other');
 			$this->userMeta->addNewUserMeta($paramUserMeta);
 
-			$this->membershipType()->sync($pack);
+			$this->membershipType()->sync($request->membership_type);
 
 			DB::commit();
 		} catch (\Exception $ex) {
 			DB::rollBack();
 			return response()->json([
 				'status' => false,
-				'message' => "Member registration error",
+				'message' => 'Member registration error',
 			]);
 		}
 		return response()->json([
 			'status' => true,
-			'message' => "Member registration successfully",
+			'message' => 'Member registration successfully',
 		]);
 	}
 }

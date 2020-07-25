@@ -26,8 +26,18 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use App\Rules\CheckGiftRule;
 
+use App\Models\BookingEvent;
+use App\Models\BookingParty;
+use App\Models\BookingWellnessBeauty;
+
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->bookingEvent = new BookingEvent;
+        $this->bookingParty = new BookingParty;
+        $this->bookingWellnessBeauty = new BookingWellnessBeauty;
+    }
     public function welcome(Request $request)
     {
         return view('pages.index');
@@ -126,5 +136,74 @@ class HomeController extends Controller
             "status" => true,
             "message" => "Cập nhật mật khẩu thành công!!!"
         ]);
+    }
+
+    private function validateBooking($request)
+    {
+        $validator = Validator::make($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'number_guest' => 'required|min:1',
+            'start_at' => 'required',
+            'description' => 'required',
+            'type_booking' => 'required|min:0|max:2',
+            'booking_id' => 'required|integer',
+        ]);
+        if ($validator->fails()) {
+            if ($validator->errors()->first('name') != null) {
+                return $validator->errors()->first('name');
+            } else if($validator->errors()->first('email') != null) {
+                return $validator->errors()->first('email');
+            } else if($validator->errors()->first('phone') != null) {
+                return $validator->errors()->first('phone');
+            } else if($validator->errors()->first('number_guest') != null) {
+                return $validator->errors()->first('number_guest');
+            } else if($validator->errors()->first('start_at') != null) {
+                return $validator->errors()->first('start_at');
+            } else if($validator->errors()->first('description') != null) {
+                return $validator->errors()->first('description');
+            } else if($validator->errors()->first('type_booking') != null) {
+                return $validator->errors()->first('type_booking');
+            } else if($validator->errors()->first('booking_id') != null) {
+                return $validator->errors()->first('booking_id');
+            }
+        }
+    }
+
+    public function booking(Request $request)
+    {
+        $resultValidate = $this->validateBooking($request->all());
+        if ($resultValidate != "") {
+            return response()->json([
+                "status" => false,
+                "message" => $resultValidate
+            ]);
+        }
+        $params = $request->only('name', 'email', 'phone', 'number_guest', 'start_at', '', 'description');
+        if ($request->type_booking == 0) {
+            //book event
+            $params['area_event_id'] = $request->booking_id;
+            $result = $this->bookingEvent->addNewBookingEvent($params);
+        } elseif ($request->type_booking == 1) {
+            //booking food & drink
+            $params['area_party_id'] = $request->booking_id;
+            $result = $this->bookingParty->addNewBookingParty($params);
+        } else if ($request->type_booking == 2) {
+            //booking wellness & beauty
+            $params['wellness_beauty_id'] = $request->booking_id;
+            $result = $this->bookingWellnessBeauty->addNewWellnessBeauty($params);
+        }
+        if ($result) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Booking successfully'
+            ]);
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Booking error'
+            ]);
+        }
     }
 }

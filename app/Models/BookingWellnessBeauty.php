@@ -19,7 +19,7 @@ class BookingWellnessBeauty extends Model
 		return static::all();
 	}*/
 
-    public function addWellnessBeauty($param)
+    public function addNewWellnessBeauty($param)
     {
         return static::create($param);
     }

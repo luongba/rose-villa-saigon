@@ -76,7 +76,8 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 /*MANH_TU*/
-//Route::get('register', 'UserController@regis')->name('regis');
+Route::get('test', 'TestController@test');
+Route::post('test', 'HomeController@booking');
 
 Route::post('register', 'UserController@register')->name('user.register');
 
@@ -88,6 +89,8 @@ Route::prefix('/')->middleware('auth')->group(function() {
 	Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
 
 	Route::post('register-membership', 'UserController@registerMembership')->name('user.register_membership');
+
+	Route::post('booking', 'HomeController@booking')->name('user.booking');
 });
 
 Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
