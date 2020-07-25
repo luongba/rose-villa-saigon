@@ -4,7 +4,7 @@
       @auth 
       @else
           <div class="account-section">
-              <a class="loginlink-landing" href="javascript:;"  data-toggle="modal" data-target="#popup-login">Đăng Nhập</a>
+              <a class="loginlink-landing" href="javascript:;"  data-toggle="modal" data-target="#popup-login">Login</a>
           </div>
       @endauth
       <button type="button" id="menu-btn" class="menuhome navbar-toggle collapsed">
