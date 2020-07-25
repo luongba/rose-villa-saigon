@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('vtntest', require('./components/ExampleComponent.vue').default);
 Vue.component('login-register', require('./components/LoginRegister.vue').default);
+Vue.component('membership-form', require('./components/MembershipForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -45,38 +45,24 @@ Route::get('/single-room', [
 	'uses' => 'HomeController@singleroom'
 ]);
 
-Route::post('/login-web',[
-	'as' => 'login_web',
-	'uses' => 'HomeController@login_web'
+Route::get('/membership',[
+	'as' => 'membership',
+	'uses' => 'HomeController@membership'
 ]);
+
 Route::get('/logout-web',[
 	'as' => 'logout_web',
 	'uses' => 'HomeController@logout_web'
 ]);
+
 Route::get('/dang-ky',[
 	'as' => 'registeruser',
 	'uses' => 'HomeController@register_page'
 ]);
-Route::post('/registration',[
-	'as' => 'register_web',
-	'uses' => 'HomeController@register_web'
-]);
+
 Route::post('/forgot_password',[
 	'as' => 'forgot_web',
 	'uses' => 'HomeController@forgot_web'
-]);
-Route::post('/check_pin',[
-	'as' => 'check_pin',
-	'uses' => 'HomeController@check_pin'
-]);
-Route::post('/confirm-registration',[
-	'as' => 'confirm_register',
-	'uses' => 'HomeController@confirm_register'
-]);
-
-Route::post('/membership',[
-	'as' => 'membership',
-	'uses' => 'HomeController@membership'
 ]);
 
 Route::post('/update_password',[
@@ -93,6 +79,8 @@ Route::group(['prefix' => 'admin'], function () {
 //Route::get('register', 'UserController@regis')->name('regis');
 
 Route::post('register', 'UserController@register')->name('user.register');
+
+Route::post('confirm-registration', 'UserController@confirmRegister')->name('user.confirm_register');
 
 Route::post('login', 'UserController@login')->name('user.login');
 
