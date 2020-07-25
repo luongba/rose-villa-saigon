@@ -3,14 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AreaEvent extends Model
 {
-    /*QUERY DATABASE*/
-    public function listAreaEvent()
-    {
-        return static::all();
-    }
+	use SoftDeletes;
+
+	protected $fillable = ['title', 'description', 'thumbnail', 'gallery', 'status'];
+	
+	public function bookingEvents()
+	{
+		return $this->hasMany('App\Models\BookingEvent');
+	}
+
+	/*QUERY DATABASE*/
+	public function listAreaEvent()
+	{
+		return static::all();
+	}
 
     /*public function addNew($param)
     {
