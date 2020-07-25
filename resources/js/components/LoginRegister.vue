@@ -198,7 +198,7 @@
         let _this = this
         if(this.validphone == ''){
           axios.post(
-            './login-web',
+            './login',
             { phone: this.phone, password: this.password }
           ).then(function(response){
             // _this.err_text = ''
@@ -218,7 +218,7 @@
         _this.typepin = ''
         if(this.validphone == ''){
           axios.post(
-            './registration',
+            './register',
             { first_name: this.first_name, last_name: this.last_name, phone: this.phone, password: this.password, password_confirmation: this.repassword }
           ).then(function(response){
             // _this.err_text = ''
