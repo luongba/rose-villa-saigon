@@ -43,9 +43,9 @@ class User extends \TCG\Voyager\Models\User
         return $this->belongsToMany('App\Models\MembershipType', 'membership_type_users', 'user_id', 'membership_type_id');
     }
 
-    public function userMetas()
+    public function userMeta()
     {
-        return $this->hasMany('App\Models\UserMeta');
+        return $this->hasOne('App\Models\UserMeta');
     }
 
     /*QUERY DATABASE*/
@@ -63,7 +63,7 @@ class User extends \TCG\Voyager\Models\User
     /*ATTRIBUTE*/
     public function getStatusUserMetaAttribute()
     {
-        return optional($this->userMetas)->status;
+        return optional($this->userMeta)->status;
     }
     /*END ATTRIBUTE*/
 }
