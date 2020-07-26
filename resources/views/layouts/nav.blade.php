@@ -1,8 +1,8 @@
 <nav class="navbar nav-site">
 	<div class="closemenu"><i class="fas fa-times"></i></div>
     <ul class="navbar-nav">
-        <li class="nav-item">
-        	<a class="nav-link has-child-menu" href="#">Rooms</a>
+        <li class="nav-item has-child-menu">
+        	<a class="nav-link" href="javascript:;">Rooms</a>
         	<ul class="sub-menu">
         		<li><a href="javascript:;">2 Bedroom Suites</a></li>
         		<li><a href="javascript:;">Junior Suites</a></li>

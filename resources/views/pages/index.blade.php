@@ -1,9 +1,14 @@
 @extends('master')
 @section('content')
-  <section class="landing landingstyle">
-    <div class="container">
+  <div class="landing landingstyle">
+    <div class="innerpage-style1">
+      <span class="leftpageimg"></span>
+      <span class="rightpageimg"></span>
+      <div class="container">
+          @include('layouts.nav')
+      </div>
     </div>
-  </section>
+  </div>
 @endsection
 
 @section('script')
