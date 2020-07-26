@@ -1,39 +1,51 @@
 <template>
 		<section v-if="step==0">
       <div class="container">
-				<input id="ef" type="radio" v-model="model.type" @change="next" value="0">
+				<input id="ef" type="radio" v-model="model.type_user" @change="next" value="0">
 				<label for="ef">Early Founder</label>
-				<input id="re" type="radio" v-model="model.type" @change="next" value="1">
+				<input id="re" type="radio" v-model="model.type_user" @change="next" value="1">
 				<label for="re">Regular Member</label>
 			</div>
 		</section>
     <section v-else class="content-membership">
       <div class="header-mbs">
         <div class="container">
-        	<h3>Regular Member</h3>
+          <h3>Regular Member</h3>
           <ul class="step-membership">
-          	<li v-for="(item,key) in steps" :class="step==key+1 ? 'currentstep' : ''">
-          		<span class="numberstep radius_50">{{ key+1 }}</span><span class="textli">{{ item }}</span>
-          	</li>
+            <li v-for="(item,key) in steps" :class="step==key+1 ? 'currentstep' : ''">
+              <span class="numberstep radius_50">{{ key+1 }}</span><span class="textli">{{ item }}</span>
+            </li>
           </ul>
         </div>
       </div>
-
       <div class="stepmbs step1st">
-        <form class="form-mbs1" method="post" action="" @submit.prevent="submit" style="float: left">
-       		<div class="stepmbs step1st" v-if="step == 1">
+        <form class="form-mbs1" method="post" action="" @submit.prevent="submit" style="float: left; width: 100%">
+          <div class="stepmbs step1st" v-if="step == 1">
             <div class="container">
-        		  <vue-form-generator :schema="step1" :model="model" :options="formOptions"></vue-form-generator>
+              <vue-form-generator :schema="step1" :model="model" :options="formOptions"></vue-form-generator>
+              <div class="form-group valid required field-input">
+                <label for="ava"><span>Avatar</span></label>
+                <div class="field-wrap">
+                  <div class="wrapper">
+                    <input id="ava" type="file" accept="image/*" @change="onFileChange">
+                    <div id="preview" style="display:flex;">
+                      <img width="100" v-if="image_preview" :src="image_preview" />
+                    </div>
+                  </div> 
+                </div>
+              </div>
+              <button class="btn btn-primary" v-if="step<3" type="button" @click="next">Next</button>
             </div>
-					</div>
-       		<div class="stepmbs step2nd" v-if="step == 2">
+          </div>
+          <div class="stepmbs step2nd" v-if="step == 2">
             <div class="container">
-        		  <vue-form-generator :schema="step2" :model="model" :options="formOptions"></vue-form-generator>
+              <vue-form-generator :schema="step2" :model="model" :options="formOptions"></vue-form-generator>
+              <button class="btn btn-primary" v-if="step<3" type="button" @click="next">Next</button>
             </div>
-					</div>
-       		<div class="stepmbs step3rd" v-if="step == 3">
+          </div>
+          <div class="stepmbs step3rd" v-if="step == 3">
             <div class="container">
-          		<div class="row">
+              <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" v-for="option in options">
                     <label :for="option.id" class="content-tp-mbs">
                         <h3>{{ option.name }}</h3>
@@ -42,12 +54,14 @@
                         </ul>
                         <button type="button">Choose Plan</button>
                     </label>
-                    <input :id="option.id" type="radio" :value="option.id" v-model="model.type_id">
+                    <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
                 </div>
-            	</div>
-              <button class="btn btn-primary" v-if="step==3" type="submit">Submit</button>
-					  </div> 
+              </div>
+            </div> 
           </div>
+            <div class="container">
+              <button class="btn btn-primary" v-if="step==3" type="submit">Submit</button>
+            </div>
         </form>
       </div>
     </section>
@@ -67,9 +81,10 @@ export default {
 			steps: [
 				'About You', 'Why You?', 'Membership Type'
 			],
-			step: 3,
+			step: 0,
 			user_data: [],
 			type: null,
+      image_preview: null,
 			model: {
         /*name: 'John Doe',
         password: 'J0hnD03!x4',
@@ -141,7 +156,7 @@ export default {
             type: 'input',
             inputType: 'text',
             label: 'Stress Address line one',
-            model: 'address_1',
+            model: 'address_one',
             required: true,
             validator: VueFormGenerator.validators.string
           },
@@ -149,7 +164,7 @@ export default {
             type: 'input',
             inputType: 'text',
             label: 'Stress Address line two',
-            model: 'address_2',
+            model: 'address_two',
             required: true,
             validator: VueFormGenerator.validators.string
           },
@@ -165,19 +180,19 @@ export default {
             type: 'input',
             inputType: 'text',
             label: 'Postal Code',
-            model: 'postal_code',
+            model: 'post_code',
             required: true,
             validator: VueFormGenerator.validators.string
           },
-          {
+          /*{
             type: 'submit',
             buttonText: 'Next',
-            class: 'dsagds',
             onSubmit(model, schema) {
+              alert(this.step);
               this.step++
             },
             validateBeforeSubmit: true
-          },
+          },*/
 
         ]
       },
@@ -186,7 +201,7 @@ export default {
           {
             type: 'textArea',
             label: 'WHY DO YOU WANT TO JOIN ROSE VILLA?',
-            model: 'why_you',
+            model: 'reason',
             // max: 500,
 				    rows: 4,
             required: true
@@ -194,7 +209,7 @@ export default {
           {
             type: 'textArea',
             label: 'HOW WILL YOU USE THE CLUB?',
-            model: 'how_you',
+            model: 'usage_criteria',
             // max: 500,
 				    rows: 4,
             required: true
@@ -202,7 +217,7 @@ export default {
           {
             type: 'textArea',
             label: 'WHAT WILL YOU BRING TO THE ROSE VILLA COMMUNITY?',
-            model: 'what_you',
+            model: 'bring_to',
             // max: 500,
 				    rows: 4,
             required: true
@@ -210,21 +225,25 @@ export default {
           {
             type: 'textArea',
             label: 'DO YOU KNOW ANY OTHER RV MEMBERS WHO ARE PREPARED TO PROPOSE YOU?',
-            model: 'who_are',
+            model: 'member_other',
             // max: 500,
 				    rows: 4,
             required: true
           },
-          {
+          /*{
             type: 'submit',
-            buttonText: 'thu xem sao',
+            buttonText: 'Next',
+            onSubmit(model, schema) {
+              alert('step 2');
+              this.step++
+            },
             validateBeforeSubmit: true
-          },
+          },*/
         ]
       },
       formOptions: {
         validateAfterLoad: false,
-        validateAfterChanged: true,
+        validateAfterChanged: false,
         validateAsync: true
       },
 			err_text: ''
@@ -236,22 +255,70 @@ export default {
       './membership-type'
     ).then(function(response){
       _this.options = response.data
-      console.log(response)
     });
 	},
 	methods: {
-		onValidated(isValid, errors) {
-	  	console.log("Validation result: ", isValid, ", Errors:", errors);
-      if(isValid){
-        // this.step++
+		onFileChange(e) {
+      const image = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = e =>{
+          this.image_preview = e.target.result;
+          // console.log(this.image_preview);
+      };
+    },
+		next: function(){
+      if(this.step == 0){
+          this.step++
+          return
       }
-	  },
-		submit: function(){
-      if(this.step < 3){
-        this.step++
-      }else {
-        console.log(this.model)
+      if(this.step == 1){
+        if(
+          !this.model.first_name || !this.model.last_name || !this.model.email
+           || !this.model.gender || !this.model.dob || !this.model.occupation 
+           || !this.model.country || !this.model.address_one || !this.model.address_two 
+           || !this.model.city || !this.model.post_code
+          ){
+          toastr.error("Please fill all fields")
+        }else if(!this.image_preview) {
+          toastr.error("Please select Avatar")
+          return
+        }else {
+          this.step++
+          return
+        }
       }
+
+      if(this.step == 2){
+        if(
+          !this.model.reason || !this.model.bring_to || !this.model.usage_criteria|| !this.model.member_other
+          ){
+          toastr.error("Please fill all fields")
+          return
+        }else {
+          this.step++
+          return
+        }
+      }
+    },
+    submit: function(){
+      console.log(this.step)
+        let _this = this
+        let params = _this.model
+        params.gender = (_this.model.gender == "Male") ? 0 : 1
+        params.dob = moment(_this.model.dob).format('MM-DD-YYYY')
+        params.avatar = _this.image_preview
+        console.log(params)
+        axios.post(
+          './register-membership', params
+        ).then(function(response){
+          if(response.data.status == false){
+            toastr.error(response.data.message)
+          }else {
+            toastr.success(response.data.message)
+            setTimeout(() => window.location.href = './', 1500)
+          }
+        });
 		}
 	}
 }

@@ -35,7 +35,7 @@
               <div class="ctevent">
                 {!!$val->description!!}
               </div>
-              <a href="#" class="bookingaction radius_4">Booking Table</a>
+              <a  href="javascript:;"  data-toggle="modal" data-target="#res-popup" class="bookingaction radius_4">Booking Table</a>
           </div>
           <div class="fdimg">
             <img  src="{{$val->UrlThumb}}" />
@@ -46,7 +46,7 @@
     </section>
   </div>
 @endsection
-
+@include('popups.res-popup')
 @section('script')
 <script>
       // function ready() {

@@ -37,7 +37,7 @@
               {!!$val->description!!}
             </div>
             <a href="#" class="bookingaction radius_4">View menu</a>
-            <a href="#" class="bookingaction radius_4">Booking Event</a>
+            <a href="#" class="bookingaction radius_4" href="javascript:;"  data-toggle="modal" data-target="#spa-popup">Booking Event</a>
             <div class="clear"></div>
           </div>
         </div>
@@ -46,11 +46,10 @@
         </div>
       </div> 
       @endforeach
-        
     </section>
   </div>
 @endsection
-
+@include('popups.spa-popup')
 @section('script')
 <script>
       // function ready() {

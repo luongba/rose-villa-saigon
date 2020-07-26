@@ -37,6 +37,8 @@ class HomeController extends Controller
 {
     public function __construct()
     {
+        $this->areaParty = new AreaParty;
+        $this->wellnessBeauty = new WellnessBeauty;
         $this->bookingEvent = new BookingEvent;
         $this->bookingParty = new BookingParty;
         $this->bookingWellnessBeauty = new BookingWellnessBeauty;

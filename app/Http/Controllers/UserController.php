@@ -110,10 +110,11 @@ class UserController extends Controller
 		if (Auth::attempt($credentials)) {
 			$user = Auth::user();
 			if ($user->type_user === 0) {
+				Auth::login($user);
 				$data['url'] = route('membership');
 				return response()->json([
-					'status' => false,
-					'message' => 'Please add registration form',
+					'status' => true,
+					'message' => 'Login successfully',
 					'data' => $data
 				]);
 			} else {
@@ -141,7 +142,7 @@ class UserController extends Controller
 	{
 		$validator = Validator::make($request, [
             'first_name' => 'required',
-            'last_name' => 'required|email',
+            'last_name' => 'required',
             'email' => 'required|email',
             'gender' => 'required|min:0|max:1',
             'dob' => 'required',
@@ -158,7 +159,7 @@ class UserController extends Controller
             'usage_criteria' => 'required',
             'bring_to' => 'required',
             'member_other' => 'required',
-            'membership_type' => 'required|min:1|max:2',
+            'membership_type' => 'required|min:1|max:9',
         ]);
         if ($validator->fails()) {
             if ($validator->errors()->first('first_name') != null) {
