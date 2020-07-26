@@ -35,7 +35,13 @@
               <div class="ctevent">
                 {!!$val->description!!}
               </div>
-              <a  href="javascript:;"  data-toggle="modal" data-target="#res-popup" class="bookingaction radius_4">Booking Table</a>
+              {{-- <a href="javascript:;" data-toggle="modal" data-target="#res-popup" class="bookingaction radius_4">Booking Table</a> --}}
+              <button-show-modal 
+                :classname="'bookingaction radius_4'" 
+                :text="'Booking Table'"
+                :type="'1'"
+                :booking_id="{{$val->id}}"
+              ></button-show-modal>
           </div>
           <div class="fdimg">
             <img  src="{{$val->UrlThumb}}" />
@@ -43,10 +49,10 @@
         </div>
        
       @endforeach
+      <booking-form :text="'Booking Table'"></booking-form>
     </section>
   </div>
 @endsection
-@include('popups.res-popup')
 @section('script')
 <script>
       // function ready() {

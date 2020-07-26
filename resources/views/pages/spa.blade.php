@@ -36,8 +36,14 @@
             <div class="ctevent">
               {!!$val->description!!}
             </div>
-            <a href="#" class="bookingaction radius_4">View menu</a>
-            <a href="#" class="bookingaction radius_4" href="javascript:;"  data-toggle="modal" data-target="#spa-popup">Booking Event</a>
+            <a href="javascript:;" class="bookingaction radius_4">View menu</a>
+            {{-- <a href="#" class="bookingaction radius_4" href="javascript:;"  data-toggle="modal" data-target="#spa-popup">Booking Event</a> --}}
+              <button-show-modal 
+                :classname="'bookingaction radius_4'" 
+                :text="'Booking Event'"
+                :type="'2'"
+                :booking_id="{{$val->id}}"
+              ></button-show-modal>
             <div class="clear"></div>
           </div>
         </div>
@@ -46,10 +52,10 @@
         </div>
       </div> 
       @endforeach
+      <booking-form :text="'Booking Event'"></booking-form>
     </section>
   </div>
 @endsection
-@include('popups.spa-popup')
 @section('script')
 <script>
       // function ready() {
