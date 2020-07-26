@@ -11,11 +11,11 @@
       @include('layouts.footer')
     </div>
     <script src="{{asset('public/js/jquery-2.1.3.min.js')}}"></script>
-    <script src="{{asset('public/js/app.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.bundle.js')}}"></script>
-    @yield('script')
+    <script src="{{asset('public/js/app.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    @yield('script')
     <script>
         $(document).ready(function() {
             $('#menu-btn').click(function () {
@@ -23,6 +23,20 @@
             });
             $('.closemenu').click(function () {
                 $('.nav-site').slideUp('slow');
+            });
+            $('.has-child-menu').click(function () {
+                // $(this).find('ul').slideToggle('slow');
+                var aa = $(this).find('ul');
+                if(aa.is(":visible")){
+                        $(this).removeClass('showsubmenu');
+                        aa.slideUp('slow');
+                    }else {
+                        $(this).addClass('showsubmenu');
+                        aa.slideDown('slow');
+                    }
+                });
+            $('.username-bar').click(function () {
+                $('.custom-dropmenu').slideToggle('slow');
             });
         });
     </script>
