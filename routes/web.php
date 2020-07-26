@@ -77,7 +77,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 /*MANH_TU*/
 Route::get('test', 'TestController@test');
-Route::post('test', 'HomeController@booking');
+Route::get('test-mail', 'TestController@testMail');
 
 Route::post('register', 'UserController@register')->name('user.register');
 

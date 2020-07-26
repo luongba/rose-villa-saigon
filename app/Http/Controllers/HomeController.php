@@ -86,7 +86,11 @@ class HomeController extends Controller
 
     public function membership(Request $request)
     {
-        return view('pages.membership');
+        if (Auth::user() && !Auth::user()->userMeta) {
+            return view('pages.membership');
+        } else {
+            return redirect()->route('welcome');
+        }
     }
 
     /* ACCOUNT */
