@@ -27,4 +27,7 @@ class AreaParty extends Model
         return static::create($param);
     }*/
     /*END QUERY DATABASE*/
+    public function getUrlThumbAttribute(){
+        return asset('').'public/storage/'.$this->thumbnail;
+    }
 }

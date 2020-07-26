@@ -21,6 +21,9 @@ use App\Models\OrderFood;
 use App\Models\OrderFoodDetail;
 use App\Models\AreaResort;
 use App\Models\Package;
+/*knight*/
+use App\Models\AreaParty;
+use App\Models\WellnessBeauty;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Log;
@@ -28,6 +31,12 @@ use App\Rules\CheckGiftRule;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->areaParty = new AreaParty;
+        $this->wellnessBeauty = new WellnessBeauty;
+    }
+
     public function welcome(Request $request)
     {
         return view('pages.index');
@@ -40,12 +49,14 @@ class HomeController extends Controller
 
     public function spa(Request $request)
     {
-        return view('pages.spa');
+        $list_wellness_beauty = $this->wellnessBeauty->listWellnessBeauty();
+        return view('pages.spa',compact('list_wellness_beauty'));
     } 
 
     public function fooddrink(Request $request)
     {
-        return view('pages.food-drink');
+        $list_food_drink = $this->areaParty->listAreaParty();
+        return view('pages.food-drink',compact('list_food_drink'));
     } 
 
     public function about(Request $request)

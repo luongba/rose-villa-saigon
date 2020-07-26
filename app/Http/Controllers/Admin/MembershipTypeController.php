@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
+use TCG\Voyager\Facades\Voyager;
+//use TCG\Voyager\Http\Controllers\VoyagerBaseController as BaseVoyagerBaseController;
 
-use TCG\Voyager\Http\Controllers\VoyagerBaseController as BaseVoyagerBaseController;
-
-class MembershipTypeController extends BaseVoyagerBaseController
+class MembershipTypeController extends VoyagerBaseController
 {
      public function show(Request $request, $id)
     {
