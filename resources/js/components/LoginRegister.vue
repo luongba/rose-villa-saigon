@@ -199,16 +199,19 @@
         if(this.validphone == ''){
           axios.post(
             './login',
-            { phone: this.phone, password: this.password }
+            { phone: _this.phone, password: _this.password }
           ).then(function(response){
             // _this.err_text = ''
             if(response.data.status == false){
               // _this.err_text = response.data.message
               toastr.error(response.data.message)
             }else {
-              // _this.err_text = response.data.message
               toastr.success(response.data.message)
-              setTimeout(() => window.location.reload(), 1500)
+              if(response.data.data.url){
+                setTimeout(() => window.location.href = response.data.data.url, 1500)
+              }else{
+                setTimeout(() => window.location.reload(), 1500)
+              }
             }
           });
         }
