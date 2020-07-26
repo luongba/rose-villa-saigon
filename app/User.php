@@ -16,7 +16,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'role_id', 'email', 'avatar', 'type_user', 'password', 'phone', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'status'
+        'first_name', 'last_name', 'role_id', 'email', 'email_verified_at', 'avatar', 'type_user', 'password', 'phone', 'phone_verified_at', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'status'
     ];
 
     /**
@@ -40,7 +40,7 @@ class User extends \TCG\Voyager\Models\User
 
     public function membershipType()
     {
-        return $this->belongsToMany('App\Models\MembershipType');
+        return $this->belongsToMany('App\Models\MembershipType', 'membership_type_users', 'user_id', 'membership_type_id');
     }
 
     public function userMetas()
