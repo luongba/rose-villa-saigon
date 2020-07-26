@@ -24,6 +24,7 @@ use App\Models\Package;
 /*knight*/
 use App\Models\AreaParty;
 use App\Models\WellnessBeauty;
+use App\Models\AreaEvent;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Log;
@@ -42,6 +43,7 @@ class HomeController extends Controller
         $this->bookingEvent = new BookingEvent;
         $this->bookingParty = new BookingParty;
         $this->bookingWellnessBeauty = new BookingWellnessBeauty;
+        $this->areaEvent = new AreaEvent;
     }
     public function welcome(Request $request)
     {
@@ -50,7 +52,8 @@ class HomeController extends Controller
 
     public function events(Request $request)
     {
-        return view('pages.events');
+        $list_area_event = $this->areaEvent->listAreaEvent();
+        return view('pages.events',compact('list_area_event'));
     } 
 
     public function spa(Request $request)
