@@ -53,7 +53,6 @@
     </section>
   </div>
 @endsection
-@include('popups.res-popup')
 @section('script')
 <script>
       // function ready() {

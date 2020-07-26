@@ -229,6 +229,7 @@
               // _this.err_text = response.data.message
               toastr.error(response.data.message)
             }else {
+              toastr.success(error.data.message)
               var phoneNumber = _this.phone;
               var appVerifier = window.recaptchaVerifier;
               firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
@@ -295,11 +296,6 @@
       },
       checkpin: function(e){
         let _this = this
-        axios.post(
-            './confirm-registration',
-            { first_name: _this.first_name, last_name: _this.last_name, phone: _this.phone, password: _this.password, password_confirmation: _this.repassword }
-          )
-        return
         // console.log(window.confirmationResult)
         var code = this.pincode;
         confirmationResult.confirm(code).then(function (result) {
@@ -319,7 +315,8 @@
             }else {
               // _this.err_text = response.data.message
               toastr.success(response.data.message)
-              setTimeout(() => _this.view = 'dangnhap', 500)
+              setTimeout(() => window.location.href = response.data.data.url, 1500)
+              // setTimeout(() => _this.view = 'dangnhap', 500)
             }
           });
           // ...

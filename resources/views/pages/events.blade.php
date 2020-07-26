@@ -36,6 +36,12 @@
               {!!$val->description!!}
             </div>
             <a href="javascript:;" class="bookingaction radius_4" data-toggle="modal" data-target="#events-popup">Booking Event</a>
+              <button-show-modal 
+                :classname="'bookingaction radius_4'" 
+                :text="'Booking Event'"
+                :type="'0'"
+                :booking_id="{{$val->id}}"
+              ></button-show-modal>
             <div class="clear"></div>
           </div>
         </div>
@@ -47,7 +53,7 @@
     </section>
   </div>
   <div class="vl"></div>
-  @include('popups.events-popup')
+  <booking-form :text="'Booking Event'"></booking-form>
 @endsection
 
 

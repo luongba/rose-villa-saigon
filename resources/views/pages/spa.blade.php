@@ -41,7 +41,7 @@
               <button-show-modal 
                 :classname="'bookingaction radius_4'" 
                 :text="'Booking Event'"
-                :type="'1'"
+                :type="'2'"
                 :booking_id="{{$val->id}}"
               ></button-show-modal>
             <div class="clear"></div>
@@ -56,7 +56,6 @@
     </section>
   </div>
 @endsection
-@include('popups.spa-popup')
 @section('script')
 <script>
       // function ready() {
