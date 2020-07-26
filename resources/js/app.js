@@ -7,6 +7,12 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,12 +28,15 @@ window.Vue = require('vue');
 Vue.component('vtntest', require('./components/ExampleComponent.vue').default);
 Vue.component('login-register', require('./components/LoginRegister.vue').default);
 Vue.component('membership-form', require('./components/MembershipForm.vue').default);
+Vue.component('button-show-modal', require('./components/ButtonShowModal.vue').default);
+Vue.component('booking-form', require('./components/BookingForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+Vue.prototype.$eventBus = new Vue(); // Global event bus
 
 const app = new Vue({
     el: '#app',
