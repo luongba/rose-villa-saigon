@@ -306,7 +306,7 @@ export default {
         let _this = this
         let params = _this.model
         params.gender = (_this.model.gender == "Male") ? 0 : 1
-        params.dob = moment(_this.model.dob).format('MM-DD-YYYY')
+        params.dob = moment(_this.model.dob).format('YYYY-MM-DD')
         params.avatar = _this.image_preview
         console.log(params)
         axios.post(
