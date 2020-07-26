@@ -8,22 +8,31 @@
 			</div>
 		</section>
     <section v-else class="content-membership">
-      <div class="container">
-      	<h3>Regular Member</h3>
-        <ul class="step-membership">
-        	<li v-for="(item,key) in steps" :class="step==key+1 ? 'currentstep' : ''">
-        		<span class="numberstep radius_50">{{ key+1 }}</span><span class="textli">{{ item }}</span>
-        	</li>
-        </ul>
-        <div class="stepmbs step1st">
-          <form class="form-mbs1" method="post" action="" @submit.prevent="submit" style="float: left">
-         		<div class="stepmbs step1st" v-if="step == 1">
-          		  <vue-form-generator :schema="step1" :model="model" :options="formOptions"></vue-form-generator>
-						</div>
-         		<div class="stepmbs step2nd" v-if="step == 2">
-          		<vue-form-generator :schema="step2" :model="model" :options="formOptions"></vue-form-generator>
-						</div>
-         		<div class="stepmbs step3rd" v-if="step == 3">
+      <div class="header-mbs">
+        <div class="container">
+        	<h3>Regular Member</h3>
+          <ul class="step-membership">
+          	<li v-for="(item,key) in steps" :class="step==key+1 ? 'currentstep' : ''">
+          		<span class="numberstep radius_50">{{ key+1 }}</span><span class="textli">{{ item }}</span>
+          	</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stepmbs step1st">
+        <form class="form-mbs1" method="post" action="" @submit.prevent="submit" style="float: left">
+       		<div class="stepmbs step1st" v-if="step == 1">
+            <div class="container">
+        		  <vue-form-generator :schema="step1" :model="model" :options="formOptions"></vue-form-generator>
+            </div>
+					</div>
+       		<div class="stepmbs step2nd" v-if="step == 2">
+            <div class="container">
+        		  <vue-form-generator :schema="step2" :model="model" :options="formOptions"></vue-form-generator>
+            </div>
+					</div>
+       		<div class="stepmbs step3rd" v-if="step == 3">
+            <div class="container">
           		<div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" v-for="option in options">
                     <label :for="option.id" class="content-tp-mbs">
@@ -37,9 +46,9 @@
                 </div>
             	</div>
               <button class="btn btn-primary" v-if="step==3" type="submit">Submit</button>
-						</div>
-          </form>
-        </div>
+					  </div> 
+          </div>
+        </form>
       </div>
     </section>
 </template>
