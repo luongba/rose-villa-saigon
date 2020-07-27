@@ -73,6 +73,11 @@ class HomeController extends Controller
         return view('pages.about');
     }
 
+     public function shop(Request $request)
+    {
+        return view('pages.shop');
+    }
+
     public function contact(Request $request)
     {
         return view('pages.contact');
@@ -160,8 +165,8 @@ class HomeController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'number_guest' => 'required|min:1',
-            'start_at' => 'required',
+            'number_guest' => 'required|integer|min:1',
+            'start_at' => 'required|date|after:now',
             'description' => 'required',
             'type_booking' => 'required|min:0|max:2',
             'booking_id' => 'required|integer',
@@ -196,7 +201,7 @@ class HomeController extends Controller
                 "message" => $resultValidate
             ]);
         }
-        $params = $request->only('name', 'email', 'phone', 'number_guest', 'start_at', '', 'description');
+        $params = $request->only('name', 'email', 'phone', 'number_guest', 'start_at', 'description');
         if ($request->type_booking == 0) {
             //book event
             $params['area_event_id'] = $request->booking_id;

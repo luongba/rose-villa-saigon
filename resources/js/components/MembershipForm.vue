@@ -40,22 +40,26 @@
           <div class="stepmbs step2nd" v-if="step == 2">
             <div class="container">
               <vue-form-generator :schema="step2" :model="model" :options="formOptions"></vue-form-generator>
-              <button class="btn btn-primary" v-if="step<3" type="button" @click="next">Next</button>
+              <button class="btn btn-primary buttonmbs" v-if="step<3" type="button" @click="next">Next</button>
             </div>
           </div>
           <div class="stepmbs step3rd" v-if="step == 3">
             <div class="container">
-              <div class="row">
+              <div class="row flexrow">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" v-for="option in options">
-                    <div class="options-mbs radius_4">
+                    <div class="options-mbs radius_4 styleshadow">
                       <label :for="option.id" class="content-tp-mbs">
                           <h3><span>{{ option.name }}</span></h3>
                           <ul>
                             <li v-for="item in option.benefit_members">{{ item.name }}</li>
                           </ul>
-                          <button type="button">Choose Plan</button>
                       </label>
-                      <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
+                      <div class="bottom-option-mbs">
+                        <div class="choseop">
+                          <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
+                          <span>Choose Plan</span>
+                        </div>
+                      </div>
                     </div>
                 </div>
               </div>
