@@ -40,7 +40,7 @@
             {{-- <a href="#" class="bookingaction radius_4" href="javascript:;"  data-toggle="modal" data-target="#spa-popup">Booking Event</a> --}}
               <button-show-modal 
                 :classname="'bookingaction radius_4'" 
-                :text="'Booking Event'"
+                :text="'Booking Now'"
                 :type="'2'"
                 :booking_id="{{$val->id}}"
               ></button-show-modal>
@@ -52,7 +52,7 @@
         </div>
       </div> 
       @endforeach
-      <booking-form :text="'Booking Event'"></booking-form>
+      <booking-form :text="'Booking Now'"></booking-form>
     </section>
   </div>
 @endsection
