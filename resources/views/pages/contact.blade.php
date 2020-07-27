@@ -29,7 +29,7 @@
                       </div>
                       <div class="formct ctfw">
                         <h3 class="title-section underline-custom left-underline">Gửi Tin Nhắn Cho Chúng Tôi</h3>
-                        <form class="form-ct" method="post" action="">
+                        <form class="form-ct" method="post" action="{{ route('add_contact') }}">
                           @csrf 
                               <div class="form-group">
                                  <input type="text" class="form-control" id="name" name="name" placeholder="Tên Của Bạn" value="">

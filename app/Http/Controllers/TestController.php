@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Events\AfterConfirmMembership;
+use App\Events\AfterBookingParty;
 
 class TestController extends Controller
 {
@@ -15,8 +15,8 @@ class TestController extends Controller
 
 	public function testMail()
 	{
-		$user = \App\User::find(16);
-		event(new AfterConfirmMembership($user));
+		$bookingParty = \App\Models\BookingParty::find(1);
+		event(new AfterBookingParty($bookingParty));
 		return "xong";
 	}
 }

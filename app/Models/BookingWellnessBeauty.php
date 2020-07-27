@@ -24,4 +24,11 @@ class BookingWellnessBeauty extends Model
         return static::create($param);
     }
     /*END QUERY DATABASE*/
+
+    /*ATTRIBUTE*/
+    public function getNameWellnessBeautyAttribute()
+    {
+        return optional($this->wellnessBeauty)->name;
+    }
+    /*END ATTRIBUTE*/
 }
