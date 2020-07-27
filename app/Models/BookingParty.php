@@ -24,4 +24,11 @@ class BookingParty extends Model
         return static::create($param);
     }
     /*END QUERY DATABASE*/
+
+    /*ATTRIBUTE*/
+    public function getTitleAreaPartyAttribute()
+    {
+        return optional($this->areaParty)->title;
+    }
+    /*END ATTRIBUTE*/
 }

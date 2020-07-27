@@ -35,6 +35,8 @@ use App\Models\BookingParty;
 use App\Models\BookingWellnessBeauty;
 use Illuminate\Support\Facades\View;
 
+use App\Models\Contact;
+
 class HomeController extends Controller
 {
     public function __construct()
@@ -49,7 +51,11 @@ class HomeController extends Controller
 
         $list_room = $this->room->listRoom();
         View::share('list_room', $list_room);
+
+        $this->contact = new Contact;
+
     }
+    
     public function welcome(Request $request)
     {
         
@@ -231,6 +237,54 @@ class HomeController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'Booking error'
+            ]);
+        }
+    }
+
+    private function validateAddContact($request)
+    {
+        $validator = Validator::make($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+        if ($validator->fails()) {
+            if ($validator->errors()->first('name') != null) {
+                return $validator->errors()->first('name');
+            } else if($validator->errors()->first('email') != null) {
+                return $validator->errors()->first('email');
+            } else if($validator->errors()->first('phone') != null) {
+                return $validator->errors()->first('phone');
+            } else if($validator->errors()->first('title') != null) {
+                return $validator->errors()->first('title');
+            } else if($validator->errors()->first('content') != null) {
+                return $validator->errors()->first('content');
+            }
+        }
+    }
+
+    public function addContact(Request $request)
+    {
+        $resultValidate = $this->validateAddContact($request->all());
+        if ($resultValidate != "") {
+            return response()->json([
+                "status" => false,
+                "message" => $resultValidate
+            ]);
+        }
+        $params = $request->only('name', 'phone', 'email', 'title', 'content');
+        $resultAddContact = $this->contact->addNewContact($params);
+        if ($resultAddContact) {
+            return response()->json([
+                "status" => true,
+                "message" => 'Add contact successfully'
+            ]);
+        } else {
+            return response()->json([
+                "status" => false,
+                "message" => 'Add contact error'
             ]);
         }
     }

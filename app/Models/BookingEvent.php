@@ -24,4 +24,11 @@ class BookingEvent extends Model
         return static::create($param);
     }
     /*END QUERY DATABASE*/
+
+    /*ATTRIBUTE*/
+    public function getTitleAreaEventAttribute()
+    {
+        return optional($this->areaEvent)->title;
+    }
+    /*END ATTRIBUTE*/
 }
