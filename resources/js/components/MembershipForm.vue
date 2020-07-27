@@ -129,6 +129,10 @@ export default {
             type: 'select',
             label: 'Gender',
             model: 'gender',
+            selectOptions: {
+              noneSelectedText: "Select Gender",
+              // hideNoneSelectedText: true,
+            },
             values: ['Male', 'Female'],
             required: true,
             validator: VueFormGenerator.validators.required
@@ -172,8 +176,7 @@ export default {
             inputType: 'text',
             label: 'Stress Address line two',
             model: 'address_two',
-            required: true,
-            validator: VueFormGenerator.validators.string
+            required: false
           },
           {
             type: 'input',
@@ -283,7 +286,7 @@ export default {
         if(
           !this.model.first_name || !this.model.last_name || !this.model.email
            || !this.model.gender || !this.model.dob || !this.model.occupation 
-           || !this.model.country || !this.model.address_one || !this.model.address_two 
+           || !this.model.country || !this.model.address_one
            || !this.model.city || !this.model.post_code
           ){
           toastr.error("Please fill all fields")

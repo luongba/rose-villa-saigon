@@ -2204,8 +2204,9 @@ div.permissions li i{
 .detailroom{
 	width:100%;
 	float:left;
-	text-align: left;
+	text-align: center;
 	font-size:24px;
+	
 }
 .bed-number{
 	margin-bottom:10px;
@@ -2216,6 +2217,19 @@ div.permissions li i{
 .utility-room{
 	margin-top:15px;
 	color:#E6AF51;
+}
+.icondr img{
+	margin:0 auto !important;
+	padding:0 !important;
+	max-height:45px;
+	width:auto;
+}
+.icr{
+	width:50%;
+	float:left;
+}
+.first-icr{
+	border-right:1px solid #acacac;
 }
 /* Editor Style */
 .editor-style ul li:before {
@@ -2766,10 +2780,7 @@ body.welcome {
 	position:absolute;
 	z-index:-1;
 }
-.contact-page .leftpageimg,
-.about-page .leftpageimg{
-	background-image:url(images/about-left-img.png);
-}
+
 .leftpageimg::after{
 	background:rgba(0,0,0,0.6);
 	content:"";
@@ -2790,10 +2801,7 @@ body.welcome {
 	bottom:0;
 	display:block;
 }
-.contact-page .leftpageimg::after,
-.about-page .leftpageimg::after{
-	background:rgba(0,0,0,0.6);
-}
+
 .rightpageimg{
 	width:50%;
 	right:0;
@@ -2805,10 +2813,7 @@ body.welcome {
 	position:absolute;
 	z-index:-1;
 }
-.contact-page .rightpageimg,
-.about-page .rightpageimg{
-	background-image:url(images/about-right-img.png);
-}
+
 .rightpageimg::after{
 	background:rgba(0,0,0,0.6);
 	content:"";
@@ -3547,4 +3552,20 @@ ul.step-membership{
 	.banner-content h1{
 		font-size: 20px;
 	}
+}
+@media only screen and (min-width: 1368px){
+	.leftpageimg{
+		background: url(images/bg/bg-innner.png)
+	}
+	.rightpageimg{
+		background: url(images/bg/bg-innner.png)
+	}
+	body.fooddrink .rightpageimg,
+	body.fooddrink .leftpageimg,
+	body.spa .rightpageimg,
+	body.spa .leftpageimg,	
+	body.events .rightpageimg,
+	body.events .leftpageimg{
+		background-size:cover;
+	} 
 }

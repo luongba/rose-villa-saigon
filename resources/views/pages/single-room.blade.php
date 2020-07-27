@@ -32,7 +32,15 @@
 				    	<div class="layout__item desk-one-whole room-details__amenities">
 				          <div class="room-details__icons">
 				            <div class="detailroom bed-number"><strong>{{$singleroom->area}}</strong> m2 | <strong>{{$singleroom->bed}}</strong> p</div>
-				            <div class="detailroom person-number">{{$singleroom->person}} người </div>
+				            {{-- <div class="detailroom person-number">{{$singleroom->person}} người </div> --}}
+				            <div class="detailroom icondr">
+				            	<div class="icr first-icr">	
+				            		<img src="{{asset('public/images/images/logo-vien-den.png')}}">
+				            	</div>
+				            	<div class="icr">
+				            		<img src="{{asset('public/images/images/giuong.png')}}">
+				            	</div>
+				            </div>
 				          </div>
 				        </div>
 				        <div class="utility-room editor-style">
