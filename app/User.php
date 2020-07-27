@@ -58,6 +58,11 @@ class User extends \TCG\Voyager\Models\User
     {
         return static::where('id', $id)->update($param);
     }
+
+    public function getListAdmin()
+    {
+        return static::where('role_id', 1)->get();
+    }
     /*END QUERY DATABASE*/
 
     /*ATTRIBUTE*/

@@ -40,6 +40,9 @@ Route::get('/contact', [
 	'as' => 'contact',
 	'uses' => 'HomeController@contact'
 ]);
+
+Route::post('contact', 'HomeController@addContact')->name('add_contact');
+
 Route::get('/single-room', [
 	'as' => 'singleroom',
 	'uses' => 'HomeController@singleroom'
