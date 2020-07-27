@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h2>Rose Villa Saigon</h2>
-	<p>Trân trọng thông báo: Khách hàng đã đặt party với thông tin chi tiết như sau</p>
+	<p>Trân trọng thông báo: Khách hàng đã đặt food & drink với thông tin chi tiết như sau</p>
 	<p>Tên: {{ $bookingParty->name }}</p>
 	<p>Email: {{ $bookingParty->email }}</p>
 	<p>Số điện thoại: {{ $bookingParty->phone }}</p>
