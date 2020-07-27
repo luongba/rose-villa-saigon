@@ -18,32 +18,46 @@
       </div>
     </div>
     <div class="poster visual-pull-left-lap-and-up">
-      <h1 class="poster__title poster__title--ghost"></h1>
-      <h1 class="poster__title visual-pull-left-lap-and-up"></h1>
-      <div class="[ layout layout--medium ] room-details">
-        <div class="layout__item desk-one-whole room-details__amenities">
-          <div class="room-details__icons">
-            <div class="detailroom bed-number"><i class="fas fa-bed"></i>2 giường</div>
-            <div class="detailroom person-number"><i class="fas fa-user-friends"></i>4 người </div>
-            <div class="detailroom area-number"><i class="fas fa-hotel"></i>60 m2</div>
-            <div class="detailroom totalroom-number"><i class="fas fa-hotel"></i>99 Phòng</div>
-          </div>
-        </div>
-        <div class="layout__item desk-one-whole room-details__description">
-          <div class="utility-room editor-style">
-            <strong>Tiện Ích:</strong>
-            <ul>
-                <li>Bể bơi mini</li>
-                <li>Bữa trưa tại phòng</li>
-                <li>Thẻ Vip Massage</li>
-                <li>Có đội rót bia kèn sáo riêng</li>
-            </ul> 
-          </div>
-          <div class="content-editer-room editor-style">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
-          </div>
-        </div>
-      </div>
+    	<div class="about-ct ctbox1">	
+		    {{-- <h1 class="poster__title poster__title--ghost"></h1>
+		    <h1 class="poster__title visual-pull-left-lap-and-up"></h1> --}}
+			<h1 class="title-innerpage2">
+		        <span><span>Single Room</span></span>
+		    </h1>
+		    <div class="abct-elm">
+			    <div class="[ layout layout--medium ] room-details">
+			    	<div class="leftroom">
+				    	<div class="layout__item desk-one-whole room-details__amenities">
+				          <div class="room-details__icons">
+				            <div class="detailroom bed-number">50 / 58m2 | 2p</div>
+				            <div class="detailroom person-number">4 người </div>
+				          </div>
+				        </div>
+				        <div class="utility-room editor-style">
+				            <strong>Tiện Ích:</strong>
+				            <ul>
+				                <li>Bể bơi mini</li>
+				                <li>Bữa trưa tại phòng</li>
+				                <li>Thẻ Vip Massage</li>
+				                <li>Bể bơi mini</li>
+				                <li>Bữa trưa tại phòng</li>
+				                <li>Thẻ Vip Massage</li>
+				                <li>Bể bơi mini</li>
+				                <li>Bữa trưa tại phòng</li>
+				                <li>Thẻ Vip Massage</li>
+				            </ul> 
+				          </div>
+			    	</div>
+			    	<div class="rightroom">
+			    		<div class="layout__item desk-one-whole room-details__description">
+				          	<div class="content-editer-room editor-style">
+				            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
+				            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			        	</div>
+			    	</div>
+			    </div>
+			</div>
+		</div>
     </div>
   </main>
 

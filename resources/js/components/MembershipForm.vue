@@ -1,8 +1,8 @@
 <template>
-		<section v-if="step==0">
+		<section v-if="step==0"class="step0-ct">
       <div class="container">
 				<input id="ef" type="radio" v-model="model.type_user" @change="next" value="0">
-				<label for="ef">Early Founder</label>
+				<label for="ef" class="fisst">Early Founder</label>
 				<input id="re" type="radio" v-model="model.type_user" @change="next" value="1">
 				<label for="re">Regular Member</label>
 			</div>
@@ -34,7 +34,7 @@
                   </div> 
                 </div>
               </div>
-              <button class="btn btn-primary" v-if="step<3" type="button" @click="next">Next</button>
+              <button class="btn btn-primary buttonmbs" v-if="step<3" type="button" @click="next">Next</button>
             </div>
           </div>
           <div class="stepmbs step2nd" v-if="step == 2">
@@ -47,20 +47,22 @@
             <div class="container">
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" v-for="option in options">
-                    <label :for="option.id" class="content-tp-mbs">
-                        <h3>{{ option.name }}</h3>
-                        <ul>
-                          <li v-for="item in option.benefit_members">{{ item.name }}</li>
-                        </ul>
-                        <button type="button">Choose Plan</button>
-                    </label>
-                    <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
+                    <div class="options-mbs radius_4">
+                      <label :for="option.id" class="content-tp-mbs">
+                          <h3><span>{{ option.name }}</span></h3>
+                          <ul>
+                            <li v-for="item in option.benefit_members">{{ item.name }}</li>
+                          </ul>
+                          <button type="button">Choose Plan</button>
+                      </label>
+                      <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
+                    </div>
                 </div>
               </div>
             </div> 
           </div>
             <div class="container">
-              <button class="btn btn-primary" v-if="step==3" type="submit">Submit</button>
+              <button class="btn btn-primary buttonmbs" v-if="step==3" type="submit">Submit</button>
             </div>
         </form>
       </div>
