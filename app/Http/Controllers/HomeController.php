@@ -26,6 +26,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use App\Rules\CheckGiftRule;
 
+use App\Events\AfterBookingEvent;
+use App\Events\AfterBookingParty;
+use App\Events\AfterBookingWellnessBeauty;
+
 use App\Models\BookingEvent;
 use App\Models\BookingParty;
 use App\Models\BookingWellnessBeauty;
@@ -189,7 +193,7 @@ class HomeController extends Controller
         }
         $params = $request->only('name', 'email', 'phone', 'number_guest', 'start_at', 'description');
         if ($request->type_booking == 0) {
-            //book event
+            //booking event
             $params['area_event_id'] = $request->booking_id;
             $result = $this->bookingEvent->addNewBookingEvent($params);
         } elseif ($request->type_booking == 1) {
@@ -202,6 +206,16 @@ class HomeController extends Controller
             $result = $this->bookingWellnessBeauty->addNewWellnessBeauty($params);
         }
         if ($result) {
+            if ($request->type_booking == 0) {
+                //booking event
+                event(new AfterBookingEvent($result));
+            } elseif ($request->type_booking == 1) {
+                //booking food & drink
+                event(new AfterBookingParty($result));
+            } elseif ($request->type_booking == 2) {
+                //booking wellness & beauty
+                event(new AfterBookingWellnessBeauty($result));
+            }
             return response()->json([
                 'status' => true,
                 'message' => 'Booking successfully'
