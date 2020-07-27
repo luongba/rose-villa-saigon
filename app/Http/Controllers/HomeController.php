@@ -172,7 +172,7 @@ class HomeController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'number_guest' => 'required|integer|min:1',
+            'number_guest' => 'required|integer|min:1|max:255',
             'start_at' => 'required|date|after:now',
             'description' => 'required',
             'type_booking' => 'required|min:0|max:2',

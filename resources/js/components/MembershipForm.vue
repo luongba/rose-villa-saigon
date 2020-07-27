@@ -10,7 +10,8 @@
     <section v-else class="content-membership">
       <div class="header-mbs">
         <div class="container">
-          <h3>Regular Member</h3>
+          <h3 v-if="model.type_user == 0">Early Founder</h3>
+          <h3 v-if="model.type_user != 0">Regular Member</h3>
           <ul class="step-membership">
             <li v-for="(item,key) in steps" :class="step==key+1 ? 'currentstep' : ''">
               <span class="numberstep radius_50">{{ key+1 }}</span><span class="textli">{{ item }}</span>
@@ -46,7 +47,7 @@
           <div class="stepmbs step3rd" v-if="step == 3">
             <div class="container">
               <div class="row flexrow">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" v-for="option in options">
+                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
                     <div class="options-mbs radius_4 styleshadow">
                       <label :for="option.id" class="content-tp-mbs">
                           <h3><span>{{ option.name }}</span></h3>

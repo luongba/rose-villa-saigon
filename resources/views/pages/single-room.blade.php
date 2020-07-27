@@ -11,6 +11,7 @@
 	        @endforeach
 	    @else
 	    	<div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room1.jpg')}});"></div>
+	    	<div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room2.jpg')}});"></div>
         @endif
         
       </div>  
@@ -30,7 +31,7 @@
 			    	<div class="leftroom">
 				    	<div class="layout__item desk-one-whole room-details__amenities">
 				          <div class="room-details__icons">
-				            <div class="detailroom bed-number">{{$singleroom->area}}m2 | {{$singleroom->bed}}p</div>
+				            <div class="detailroom bed-number"><strong>{{$singleroom->area}}</strong> m2 | <strong>{{$singleroom->bed}}</strong> p</div>
 				            <div class="detailroom person-number">{{$singleroom->person}} người </div>
 				          </div>
 				        </div>

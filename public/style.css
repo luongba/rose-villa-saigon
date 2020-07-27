@@ -1656,6 +1656,13 @@ a.username-bar{
 }
 .popup-input-style2 input.submitform{
 	border-bottom:none;
+	-webkit-border-radius: 0 0 4px 4px; 
+	-moz-border-radius: 0 0 4px 4px; 
+	-o-border-radius: 0 0 4px 4px;  
+	border-radius: 0 0 4px 4px; 
+}
+.popup-input-style2 input.submitform:hover{
+	background:#252525;
 }
 .popup-input-style2 textarea{
 	resize:none;
@@ -2198,12 +2205,17 @@ div.permissions li i{
 	width:100%;
 	float:left;
 	text-align: left;
+	font-size:24px;
+}
+.bed-number{
+	margin-bottom:10px;
 }
 .detailroom i{
 	margin-right:5px;
 }
 .utility-room{
 	margin-top:15px;
+	color:#E6AF51;
 }
 /* Editor Style */
 .editor-style ul li:before {
@@ -3272,7 +3284,11 @@ ul.step-membership{
 	-o-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
 }
-.choseop:hover span{
+.active .choseop span{
+	background: #252525;
+	color:#fff;
+}
+.options-mbs:hover .choseop span{
 	background:#252525;
 	color:#fff;
 }
@@ -3299,6 +3315,12 @@ ul.step-membership{
 /* membership */
 .step0-ct .container{
 	text-align:center;
+}
+.step0-ct label{
+	font-weight:600;
+}
+.step0-ct label .fisst{
+	margin-right:40px;
 }
 .step0-ct{
 	width:100%;

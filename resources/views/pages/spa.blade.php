@@ -37,13 +37,14 @@
               {!!$val->description!!}
             </div>
             <a href="javascript:;" class="bookingaction radius_4">View menu</a>
-            {{-- <a href="#" class="bookingaction radius_4" href="javascript:;"  data-toggle="modal" data-target="#spa-popup">Booking Event</a> --}}
+            @auth
               <button-show-modal 
                 :classname="'bookingaction radius_4'" 
                 :text="'Booking Now'"
                 :type="'2'"
                 :booking_id="{{$val->id}}"
               ></button-show-modal>
+            @endauth
             <div class="clear"></div>
           </div>
         </div>
