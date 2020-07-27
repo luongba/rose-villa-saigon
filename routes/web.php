@@ -105,5 +105,9 @@ Route::prefix('/admin-ajax')->middleware('auth')->group(function() {
 	Route::post('booking-parties-cancel', 'Admin\BookingPartyController@cancel')->name('booking-party.cancel');
 
 	Route::post('booking-parties-accept', 'Admin\BookingPartyController@accept')->name('booking-party.accept');
+
+	Route::post('user-meta-cancel', 'Admin\MetaUserController@cancel')->name('user-meta.cancel');
+
+	Route::post('user-meta-accept', 'Admin\MetaUserController@accept')->name('user-meta.accept');
 });
 
