@@ -33,6 +33,7 @@ use App\Rules\CheckGiftRule;
 use App\Models\BookingEvent;
 use App\Models\BookingParty;
 use App\Models\BookingWellnessBeauty;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -44,9 +45,14 @@ class HomeController extends Controller
         $this->bookingParty = new BookingParty;
         $this->bookingWellnessBeauty = new BookingWellnessBeauty;
         $this->areaEvent = new AreaEvent;
+        $this->room = new Room;
+
+        $list_room = $this->room->listRoom();
+        View::share('list_room', $list_room);
     }
     public function welcome(Request $request)
     {
+        
         return view('pages.index');
     } 
 
@@ -84,10 +90,11 @@ class HomeController extends Controller
     }
 
     public function singleroom(Request $request)
-
-      {
-          return view('pages.single-room');
-      }
+    {
+        $singleroom = $this -> room ->infoRoomBySlug($request -> slug);
+       
+        return view('pages.single-room',compact('singleroom'));
+    }
 
     public function membership(Request $request)
     {
