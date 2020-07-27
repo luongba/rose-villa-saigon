@@ -19,73 +19,41 @@
       </div>   
     </section>
     <section class="innercontent">
-      <div class="event-elm event-left">
+      @foreach($list_area_event as  $key =>$val)
+      @php
+          $so_du = $key % 2;
+          if ($so_du == 0){
+           $float = 'event-left';
+         }else{
+          $float = 'event-right';
+        }
+        @endphp
+      <div class="event-elm {{$float}}">
         <div class="event-ct">
           <div class="bgevent-ct">
-            <h3 class="title-post-1">Meeting & Event 1</h3>
+            <h3 class="title-post-1">{{$val->title}}</h3>
             <div class="ctevent">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac mollis risus. Vivamus sed ex porttitor, ullamcorper eros vitae, feugiat elit. Sed fermentum et metus vel lobortis. Maecenas sit amet ante laoreet, efficitur eros a, rutrum nulla. Suspendisse at nulla tempor, sollicitudin mi ut, tempus est. Nam vel sapien at velit lobortis suscipit in eu urna. Fusce enim justo, ullamcorper id diam id, consectetur mollis magna. Quisque pellentesque magna a leo eleifend rhoncus. Aliquam eu accumsan diam, vel rhoncus augue.
+              {!!$val->description!!}
             </div>
             <a href="javascript:;" class="bookingaction radius_4" data-toggle="modal" data-target="#events-popup">Booking Event</a>
+              <button-show-modal 
+                :classname="'bookingaction radius_4'" 
+                :text="'Booking Event'"
+                :type="'0'"
+                :booking_id="{{$val->id}}"
+              ></button-show-modal>
             <div class="clear"></div>
           </div>
         </div>
         <div class="eventimg">
-          <img  src="{{asset('public/images/event-img1.png')}}" />
+          <img  src="{{$val->UrlThumb}}" />
         </div>
       </div>
-
-      <div class="event-elm event-right">
-        <div class="event-ct">
-          <div class="bgevent-ct">
-            <h3 class="title-post-1">Meeting & Event 1</h3>
-            <div class="ctevent">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac mollis risus. Vivamus sed ex porttitor, ullamcorper eros vitae, feugiat elit. Sed fermentum et metus vel lobortis. Maecenas sit amet ante laoreet, efficitur eros a, rutrum nulla. Suspendisse at nulla tempor, sollicitudin mi ut, tempus est. Nam vel sapien at velit lobortis suscipit in eu urna. Fusce enim justo, ullamcorper id diam id, consectetur mollis magna. Quisque pellentesque magna a leo eleifend rhoncus. Aliquam eu accumsan diam, vel rhoncus augue.
-            </div>
-            <a href="javascript:;" class="bookingaction radius_4" data-toggle="modal" data-target="#events-popup">Booking Event</a>
-            <div class="clear"></div>
-          </div>
-        </div>
-        <div class="eventimg">
-          <img  src="{{asset('public/images/event-img1.png')}}" />
-        </div>
-      </div>
-
-      <div class="event-elm event-left">
-        <div class="event-ct">
-          <div class="bgevent-ct">
-            <h3 class="title-post-1">Meeting & Event 1</h3>
-            <div class="ctevent">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac mollis risus. Vivamus sed ex porttitor, ullamcorper eros vitae, feugiat elit. Sed fermentum et metus vel lobortis. Maecenas sit amet ante laoreet, efficitur eros a, rutrum nulla. Suspendisse at nulla tempor, sollicitudin mi ut, tempus est. Nam vel sapien at velit lobortis suscipit in eu urna. Fusce enim justo, ullamcorper id diam id, consectetur mollis magna. Quisque pellentesque magna a leo eleifend rhoncus. Aliquam eu accumsan diam, vel rhoncus augue.
-            </div>
-            <a href="javascript:;" class="bookingaction radius_4" data-toggle="modal" data-target="#events-popup">Booking Event</a>
-            <div class="clear"></div>
-          </div>
-        </div>
-        <div class="eventimg">
-          <img  src="{{asset('public/images/event-img1.png')}}" />
-        </div>
-      </div>
-
-      <div class="event-elm event-right">
-        <div class="event-ct">
-          <div class="bgevent-ct">
-            <h3 class="title-post-1">Meeting & Event 1</h3>
-            <div class="ctevent">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac mollis risus. Vivamus sed ex porttitor, ullamcorper eros vitae, feugiat elit. Sed fermentum et metus vel lobortis. Maecenas sit amet ante laoreet, efficitur eros a, rutrum nulla. Suspendisse at nulla tempor, sollicitudin mi ut, tempus est. Nam vel sapien at velit lobortis suscipit in eu urna. Fusce enim justo, ullamcorper id diam id, consectetur mollis magna. Quisque pellentesque magna a leo eleifend rhoncus. Aliquam eu accumsan diam, vel rhoncus augue.
-            </div>
-            <a href="javascript:;" class="bookingaction radius_4" data-toggle="modal" data-target="#events-popup">Booking Event</a>
-            <div class="clear"></div>
-          </div>
-        </div>
-        <div class="eventimg">
-          <img  src="{{asset('public/images/event-img1.png')}}" />
-        </div>
-      </div>
+      @endforeach
     </section>
   </div>
   <div class="vl"></div>
-  @include('popups.events-popup')
+  <booking-form :text="'Booking Event'"></booking-form>
 @endsection
 
 

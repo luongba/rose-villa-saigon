@@ -1127,12 +1127,13 @@ a.username-bar{
 	display: block;
 }
 .custom-dropmenu{
-	top:6px !important;
-	left:-10px !important;
+	right:15px;
+	left:inherit;
+	top:60px;
 	border:1px solid #e0e0e0;
 	width:155px;
 }
-.custom-dropmenu:before {
+/*.custom-dropmenu:before {
 	display:	inline-block;		
   	width:		0; 		
   	height:		0; 	
@@ -1143,8 +1144,8 @@ a.username-bar{
 	content:		'';
 	position: absolute;
 	bottom: 100%;
-	left:10px;
-}
+	right:10px;
+}*/
 .custom-dropmenu li a{
 	padding-left:15px;
 	line-height: 33px;
@@ -1672,9 +1673,7 @@ a.username-bar{
 	padding-bottom:1px;
 	display:none;
 }
-.nav-site .navbar-nav > li:hover ul.sub-menu{
-	display:block;
-}
+
 .nav-site .navbar-nav ul.sub-menu::after{
 	content:"";
 	left:50%;
@@ -2443,7 +2442,7 @@ body.welcome {
 	margin-left:-55px;
 	top:0;
 	display: block;
-	z-index:9999;
+	z-index:999;
 }
 .logo-landing a{
 	width:100%;
@@ -2465,9 +2464,7 @@ body.welcome {
 }
 .landing{
 	width:100%;
-	min-height:800px;
-	background:url(images/landing.png) no-repeat;
-	background-size: cover;
+	min-height:1080px;
 	float:left;
 }
 .landing .container{
@@ -2476,6 +2473,11 @@ body.welcome {
 .landing nav.header-section{
 
 }
+/* menu home */
+.innerpage-style1 .nav-site{
+	display: none;
+}
+
 
 .footer-landing{
 	width:100%;
@@ -2509,7 +2511,9 @@ body.welcome {
 	margin-top:19px;
 	background:none;
 	border:none;
-	
+}
+.welcome   #menu-btn  {
+	display: none !important;
 }
 .content-innerpage{
 	width:100%;
@@ -2668,7 +2672,7 @@ body.welcome {
 	width:100%;
 	position:relative;
 	height:auto;
-	min-height:700px;
+	min-height:1080px;
 	float:left;
 	padding-top:60px;
 }
@@ -3078,6 +3082,27 @@ ul.step-membership{
 	left:-50px;
 	line-height:50px;
 }
+/* fix modal */
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+
 /* Responsive */
 
 @media only screen and (min-width: 360px) and (max-width: 768px){

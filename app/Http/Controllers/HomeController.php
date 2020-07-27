@@ -21,6 +21,10 @@ use App\Models\OrderFood;
 use App\Models\OrderFoodDetail;
 use App\Models\AreaResort;
 use App\Models\Package;
+/*knight*/
+use App\Models\AreaParty;
+use App\Models\WellnessBeauty;
+use App\Models\AreaEvent;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Log;
@@ -39,10 +43,13 @@ class HomeController extends Controller
 {
     public function __construct()
     {
+        $this->areaParty = new AreaParty;
+        $this->wellnessBeauty = new WellnessBeauty;
         $this->bookingEvent = new BookingEvent;
         $this->bookingParty = new BookingParty;
         $this->bookingWellnessBeauty = new BookingWellnessBeauty;
         $this->contact = new Contact;
+        $this->areaEvent = new AreaEvent;
     }
     
     public function welcome(Request $request)
@@ -52,17 +59,20 @@ class HomeController extends Controller
 
     public function events(Request $request)
     {
-        return view('pages.events');
+        $list_area_event = $this->areaEvent->listAreaEvent();
+        return view('pages.events',compact('list_area_event'));
     } 
 
     public function spa(Request $request)
     {
-        return view('pages.spa');
+        $list_wellness_beauty = $this->wellnessBeauty->listWellnessBeauty();
+        return view('pages.spa',compact('list_wellness_beauty'));
     } 
 
     public function fooddrink(Request $request)
     {
-        return view('pages.food-drink');
+        $list_food_drink = $this->areaParty->listAreaParty();
+        return view('pages.food-drink',compact('list_food_drink'));
     } 
 
     public function about(Request $request)
@@ -76,9 +86,11 @@ class HomeController extends Controller
     }
 
     public function singleroom(Request $request)
-    {
-        return view('pages.single-room');
-    }
+
+      {
+          return view('pages.single-room');
+      }
+
     public function membership(Request $request)
     {
         if (Auth::user() && !Auth::user()->userMeta) {
