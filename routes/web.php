@@ -40,7 +40,7 @@ Route::get('/contact', [
 	'as' => 'contact',
 	'uses' => 'HomeController@contact'
 ]);
-Route::get('/single-room', [
+Route::get('/single-room/{slug}', [
 	'as' => 'singleroom',
 	'uses' => 'HomeController@singleroom'
 ]);

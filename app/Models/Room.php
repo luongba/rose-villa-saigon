@@ -15,6 +15,8 @@ class Room extends Model
 	protected $fillable = ['name', 'slug', 'area', 'bed', 'person', 'benefit', 'description', 
 	'url', 'status'];
 
+     
+    
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -29,10 +31,25 @@ class Room extends Model
     	];
     }
 
+    public function infoRoomBySlug($slug)
+    {
+        return static::findBySlugOrFail($slug);
+    }
+
     /*QUERY DATABASE*/
     public function listRoom()
     {
     	return static::all();
     }
     /*END QUERY DATABASE*/
+     public function getListImageGalleryAttribute(){
+        if($this -> gallery != null){
+            $list_img = json_decode($this -> gallery);
+            foreach ($list_img as $value) {
+                $item['url']= asset('').'public/storage/'.$value;
+                $list_id_gallery[] = $item;
+            }
+            return $list_id_gallery;
+        }
+    }
 }
