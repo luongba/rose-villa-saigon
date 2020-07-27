@@ -22,7 +22,7 @@ class UploadImg{
 
         $storage->put($folder . '/' . $fileName, base64_decode($content), 'public');
 
-        return $fileName;
+        return $folder . '/'. $fileName;
     }
 
     /*upload list ảnh*/
