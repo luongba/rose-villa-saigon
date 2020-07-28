@@ -76,6 +76,18 @@ Route::post('/update_password',[
 
 
 Route::group(['prefix' => 'admin'], function () {
+	/*users*/
+	Route::prefix("users")->group(function(){
+		Route::get('/create-member-registration', [
+			'as' => 'users.create_member',
+			'uses' => 'Admin\VoyagerUserController@create_member'
+		]);
+
+		Route::post('/create-member-registration', [
+			'as' => 'users.post_create_member',
+			'uses' => 'Admin\VoyagerUserController@post_create_member'
+		]);
+	});
 	Voyager::routes();
 });
 
