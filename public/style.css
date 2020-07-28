@@ -1700,12 +1700,12 @@ a.username-bar{
 	
 }
 .nav-site .navbar-nav > li:hover > a{
-	border-top: 1px solid rgba(255,255,255,1);
-	border-bottom: 1px solid rgba(255,255,255,1);
+	border-top: 1px solid #a864a8;
+	border-bottom: 1px solid #a864a8;
 }
 .nav-site .navbar-nav > li.showsubmenu > a{
-	border-top: 1px solid rgba(255,255,255,1);
-	border-bottom: 1px solid rgba(255,255,255,1);
+	border-top: 1px solid #a864a8;
+	border-bottom: 1px solid #a864a8;
 }
 .nav-site .navbar-nav ul.sub-menu{
 	position:relative;
@@ -2584,6 +2584,32 @@ body.welcome {
 .rightcp a{
 	color:#a8a8a8;
 	text-transform:uppercase;
+}
+.social-ft{
+	height:32px;
+	width:32px;
+	position:absolute;
+	left:50%;
+	top:0;
+	z-index:99;
+	margin-left:-16px;
+}
+.social-ft a{
+	background:#2d4a87;
+	display:block;
+	height:32px;
+	width:32px;
+}
+.social-ft a i{
+	color:#fff;
+	height:32px;
+	width:32px;
+	line-height:31px;
+	text-align:center;
+	display:block;
+}
+.footer-landing .container-fluid{
+	position:relative;
 }
 /* DESGIN VERSION2 */
 /* HEADER */

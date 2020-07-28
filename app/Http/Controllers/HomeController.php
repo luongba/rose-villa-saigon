@@ -30,6 +30,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use App\Rules\CheckGiftRule;
 
+use App\Events\AfterBookingEvent;
+use App\Events\AfterBookingParty;
+use App\Events\AfterBookingWellnessBeauty;
+
 use App\Models\BookingEvent;
 use App\Models\BookingParty;
 use App\Models\BookingWellnessBeauty;
@@ -51,9 +55,8 @@ class HomeController extends Controller
 
         $list_room = $this->room->listRoom();
         View::share('list_room', $list_room);
-
         $this->contact = new Contact;
-
+        $this->areaEvent = new AreaEvent;
     }
     
     public function welcome(Request $request)
@@ -95,6 +98,19 @@ class HomeController extends Controller
         return view('pages.contact');
     }
 
+    public function founder(Request $request)
+    {
+        return view('pages.founder');
+    }
+
+    public function regularmember(Request $request)
+    {
+        return view('pages.regular-member');
+    }
+    public function findus(Request $request)
+    {
+        return view('pages.findus');
+    }
     public function singleroom(Request $request)
     {
         $singleroom = $this -> room ->infoRoomBySlug($request -> slug);
@@ -216,7 +232,7 @@ class HomeController extends Controller
         }
         $params = $request->only('name', 'email', 'phone', 'number_guest', 'start_at', 'description');
         if ($request->type_booking == 0) {
-            //book event
+            //booking event
             $params['area_event_id'] = $request->booking_id;
             $result = $this->bookingEvent->addNewBookingEvent($params);
         } elseif ($request->type_booking == 1) {
@@ -229,6 +245,16 @@ class HomeController extends Controller
             $result = $this->bookingWellnessBeauty->addNewWellnessBeauty($params);
         }
         if ($result) {
+            if ($request->type_booking == 0) {
+                //booking event
+                event(new AfterBookingEvent($result));
+            } elseif ($request->type_booking == 1) {
+                //booking food & drink
+                event(new AfterBookingParty($result));
+            } elseif ($request->type_booking == 2) {
+                //booking wellness & beauty
+                event(new AfterBookingWellnessBeauty($result));
+            }
             return response()->json([
                 'status' => true,
                 'message' => 'Booking successfully'

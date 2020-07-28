@@ -40,6 +40,18 @@ Route::get('/shop', [
 	'as' => 'shop',
 	'uses' => 'HomeController@shop'
 ]);
+Route::get('/regular-member', [
+	'as' => 'regularmember',
+	'uses' => 'HomeController@regularmember'
+]);
+Route::get('/founder', [
+	'as' => 'founder',
+	'uses' => 'HomeController@founder'
+]);
+Route::get('/how-to-find-us', [
+	'as' => 'findus',
+	'uses' => 'HomeController@findus'
+]);
 Route::get('/contact', [
 	'as' => 'contact',
 	'uses' => 'HomeController@contact'

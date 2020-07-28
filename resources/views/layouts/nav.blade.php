@@ -1,6 +1,14 @@
 <nav class="navbar nav-site">
 	<div class="closemenu"><i class="fas fa-times"></i></div>
     <ul class="navbar-nav">
+        <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('about')}}">About Us</a></li>
+        <li class="nav-item has-child-menu">
+            <a class="nav-link" href="javascript:;">Member</a>
+            <ul class="sub-menu">
+                {{-- <li><a href="{{route('regularmember')}}">Regular Member</a></li> --}}
+                <li><a href="{{route('founder')}}">Founder</a></li>
+            </ul>
+        </li>
         <li class="nav-item has-child-menu">
         	<a class="nav-link" href="javascript:;">Rooms</a>
         	<ul class="sub-menu">
@@ -13,8 +21,8 @@
         <li class="nav-item {{ Route::currentRouteNamed('spa') ? 'active' : '' }}"><a class="nav-link" href="{{route('spa')}}">Wellness & Beauty</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('shop') ? 'active' : '' }}"><a class="nav-link" href="{{route('shop')}}">Shop</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('events') ? 'active' : '' }}"><a class="nav-link" href="{{route('events')}}">Events</a></li>
-        <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('about')}}">About Us</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('contact') ? 'active' : '' }}"><a class="nav-link" href="{{route('contact')}}">Contact Us</a></li>
+         <li class="nav-item {{ Route::currentRouteNamed('findus') ? 'active' : '' }}"><a class="nav-link" href="{{route('findus')}}">How To Find Us</a></li>
     </ul>
 </nav>
     
