@@ -115,25 +115,22 @@ class UserController extends Controller
 		if (Auth::attempt($credentials)) {
 			$user = Auth::user();
 			if ($user->type_user === 0) {
-				Auth::login($user);
-				$data['url'] = route('membership');
+				return response()->json([
+					'status' => false,
+					'message' => 'You are not a Rose Villa Saigon member'
+				]);
+			} else {
+				$data = array();
+				if ($user->type_user === 1) {
+					$data['url'] = route('founder');
+				} else {
+					$data['url'] = route('regularmember');
+				}
 				return response()->json([
 					'status' => true,
 					'message' => 'Login successfully',
 					'data' => $data
 				]);
-			} else {
-				if ($user->statusUserMeta === 0) {
-					return response()->json([
-						'status' => false,
-						'message' => 'Your registration form is watting approve'
-					]);
-				} else {
-					return response()->json([
-						'status' => true,
-						'message' => 'Login successfully'
-					]);
-				}
 			}
 		} else {
 			return response()->json([
@@ -221,11 +218,11 @@ class UserController extends Controller
 		$avatar = null;
 		$folder = 'avatar';
 		if($request->avatar){
-            $avatar = UploadImg::UploadImg($request->avatar, $folder);
-        }else{
-            $avatar = null;
-        }
-        $request->merge([
+			$avatar = UploadImg::UploadImg($request->avatar, $folder);
+		}else{
+			$avatar = null;
+		}
+		$request->merge([
 			'avatar' => $avatar
 		]);
 		DB::beginTransaction();
