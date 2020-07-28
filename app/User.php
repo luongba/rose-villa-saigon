@@ -16,7 +16,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'role_id', 'email', 'email_verified_at', 'avatar', 'type_user', 'password', 'phone', 'phone_verified_at', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'status'
+        'first_name', 'last_name', 'role_id', 'email', 'email_verified_at', 'avatar', 'type_user', 'password', 'phone', 'phone_verified_at', 'status'
     ];
 
     /**
@@ -45,7 +45,7 @@ class User extends \TCG\Voyager\Models\User
 
     public function userMeta()
     {
-        return $this->hasOne('App\Models\UserMeta');
+        return $this->hasMany('App\Models\UserMeta');
     }
 
     /*QUERY DATABASE*/
@@ -66,9 +66,5 @@ class User extends \TCG\Voyager\Models\User
     /*END QUERY DATABASE*/
 
     /*ATTRIBUTE*/
-    public function getStatusUserMetaAttribute()
-    {
-        return optional($this->userMeta)->status;
-    }
     /*END ATTRIBUTE*/
 }

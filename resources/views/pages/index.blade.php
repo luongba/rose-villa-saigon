@@ -7,11 +7,11 @@
       <div id="page-wrap">
          <div id="canvas"></div>
           <div class="curtain first-curtain">
-            <img src="{{asset('public/images/picture_curtain_left.png')}}" class="" data-sampler="simplePlaneTexture" />
+            <img src="{{asset('public/images/picture_curtain_left.jpeg')}}" class="" data-sampler="simplePlaneTexture" />
           
           </div>
           <div class="curtain second-curtain">
-          <img src="{{asset('public/images/picture_curtain_right.png')}}" class="" data-sampler="simplePlaneTexture" />
+          <img src="{{asset('public/images/picture_curtain_right.jpeg')}}" class="" data-sampler="simplePlaneTexture" />
           </div>
       </div>
       <audio id="audio" autoplay>

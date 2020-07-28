@@ -7,7 +7,7 @@
 <script>
 import { BModal, VBModal } from 'bootstrap-vue'
 export default {
-  name: 'button-show-midal',
+  name: 'button-show-modal',
   props:['text', 'classname', 'type', 'booking_id'],
   data() {
    return {

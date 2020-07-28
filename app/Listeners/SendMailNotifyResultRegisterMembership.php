@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Mail;
 use App\Mail\MailNotifyResultRegisterMembership;
+use App\Jobs\SendMailNotify;
 
 class SendMailNotifyResultRegisterMembership
 {
@@ -29,5 +30,6 @@ class SendMailNotifyResultRegisterMembership
     public function handle(AfterConfirmMembership $event)
     {
         Mail::to($event->user)->send(new MailNotifyResultRegisterMembership($event->user));
+        dispatch(new SendMailNotify());
     }
 }

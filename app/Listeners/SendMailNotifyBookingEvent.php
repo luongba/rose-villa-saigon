@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Mail;
 use App\Mail\MailNotifyCustomerBookingEvent;
+use App\Jobs\SendMailNotify;
 
 use App\User;
 
@@ -32,5 +33,6 @@ class SendMailNotifyBookingEvent
     {
         $emails = $this->user->getListAdmin()->pluck('email');
         Mail::to($emails)->send(new MailNotifyCustomerBookingEvent($event->bookingEvent));
+        dispatch(new SendMailNotify());
     }
 }

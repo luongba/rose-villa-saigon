@@ -391,7 +391,7 @@ html {
 .room-details__amenities {
   font-size: 14px;
   margin-bottom: 1em;
-  color: #E6AF51; }
+  color: #636363; }
   .room-details__amenities li {
     display: inline-block;
     margin-right: 1em;
@@ -412,7 +412,7 @@ html {
         display: block;
         margin-left: auto;
         border-right: 0;
-        border-bottom: solid 1px #b5b5b5; }
+}
         .room-details__icons img:last-child {
           border-bottom: 0; } }
 

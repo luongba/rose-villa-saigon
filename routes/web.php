@@ -36,6 +36,10 @@ Route::get('/about', [
 	'as' => 'about',
 	'uses' => 'HomeController@about'
 ]);
+Route::get('/shop', [
+	'as' => 'shop',
+	'uses' => 'HomeController@shop'
+]);
 Route::get('/contact', [
 	'as' => 'contact',
 	'uses' => 'HomeController@contact'
@@ -46,8 +50,6 @@ Route::get('/single-room/{slug}', [
 ]);
 
 Route::post('contact', 'HomeController@addContact')->name('add_contact');
-
-
 
 Route::get('/membership',[
 	'as' => 'membership',
