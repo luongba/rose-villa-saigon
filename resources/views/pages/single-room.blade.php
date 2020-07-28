@@ -3,47 +3,62 @@
   <main>
     <div class="scroller">
       <div class="slideshow scroller__slideshow">
-        <div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room1.jpg')}});"></div>
-        <div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room2.jpg')}});"></div>
-        <div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room3.jpg')}});"></div>
-        <div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room4.jpg')}});"></div>
-        <div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room5.jpg')}});"></div>
-        <div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room6.jpg')}});"></div>
-        <div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room7.jpg')}});"></div>
-        <div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room8.jpg')}});"></div>
-        <div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room9.jpg')}});"></div>
+      	@if($singleroom->ListImageGallery)
+	      	@foreach( $singleroom->ListImageGallery as $val_img)
+	        	<div class="slideshow__item" title="" >
+	        		<img src="{{$val_img['url']}}">
+	        	</div>
+	        @endforeach
+	    @else
+	    	<div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room1.jpg')}});"></div>
+	    	<div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room2.jpg')}});"></div>
+        @endif
+        
       </div>  
       <div class="scroller__launcher">
         <div class="slick-next scroller__launcher__arrow"></div>
       </div>
     </div>
     <div class="poster visual-pull-left-lap-and-up">
-      <h1 class="poster__title poster__title--ghost"></h1>
-      <h1 class="poster__title visual-pull-left-lap-and-up"></h1>
-      <div class="[ layout layout--medium ] room-details">
-        <div class="layout__item desk-one-whole room-details__amenities">
-          <div class="room-details__icons">
-            <div class="detailroom bed-number"><i class="fas fa-bed"></i>2 giường</div>
-            <div class="detailroom person-number"><i class="fas fa-user-friends"></i>4 người </div>
-            <div class="detailroom area-number"><i class="fas fa-hotel"></i>60 m2</div>
-            <div class="detailroom totalroom-number"><i class="fas fa-hotel"></i>99 Phòng</div>
-          </div>
-        </div>
-        <div class="layout__item desk-one-whole room-details__description">
-          <div class="utility-room editor-style">
-            <strong>Tiện Ích:</strong>
-            <ul>
-                <li>Bể bơi mini</li>
-                <li>Bữa trưa tại phòng</li>
-                <li>Thẻ Vip Massage</li>
-                <li>Có đội rót bia kèn sáo riêng</li>
-            </ul> 
-          </div>
-          <div class="content-editer-room editor-style">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
-          </div>
-        </div>
-      </div>
+    	<div class="about-ct ctbox1">	
+		    {{-- <h1 class="poster__title poster__title--ghost"></h1>
+		    <h1 class="poster__title visual-pull-left-lap-and-up"></h1> --}}
+			<h1 class="title-innerpage2">
+		        <span><span>{{$singleroom->name}}</span></span>
+		    </h1>
+		    <div class="abct-elm">
+			    <div class="[ layout layout--medium ] room-details">
+			    	<div class="leftroom">
+				    	<div class="layout__item desk-one-whole room-details__amenities">
+				          <div class="room-details__icons">
+				            <div class="detailroom bed-number"><strong>{{$singleroom->area}}</strong> m2 | <strong>{{$singleroom->bed}}</strong> p</div>
+				            {{-- <div class="detailroom person-number">{{$singleroom->person}} người </div> --}}
+				            <div class="detailroom icondr">
+				            	<div class="icr first-icr">	
+				            		<img src="{{asset('public/images/images/logo-vien-den.png')}}">
+				            	</div>
+				            	<div class="icr">
+				            		<img src="{{asset('public/images/images/giuong.png')}}">
+				            	</div>
+				            </div>
+				          </div>
+				        </div>
+				        <div class="utility-room editor-style">
+				            <strong>Tiện Ích:</strong>
+				            <ul>
+				               {!!$singleroom->benefit!!}
+				            </ul> 
+				          </div>
+			    	</div>
+			    	<div class="rightroom">
+			    		<div class="layout__item desk-one-whole room-details__description">
+				          	<div class="content-editer-room editor-style">
+				            {!!$singleroom->description!!}
+			        	</div>
+			    	</div>
+			    </div>
+			</div>
+		</div>
     </div>
   </main>
 

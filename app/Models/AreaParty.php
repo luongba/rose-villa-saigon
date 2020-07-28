@@ -14,6 +14,7 @@ class AreaParty extends Model
 	public function bookingParties()
 	{
 		return $this->hasMany('App\Models\BookingParty');
+        
 	}
 	
     /*QUERY DATABASE*/

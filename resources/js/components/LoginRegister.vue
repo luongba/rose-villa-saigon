@@ -229,7 +229,7 @@
               // _this.err_text = response.data.message
               toastr.error(response.data.message)
             }else {
-              toastr.success(error.data.message)
+              toastr.success(response.data.message)
               var phoneNumber = _this.phone;
               var appVerifier = window.recaptchaVerifier;
               firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Mail;
 use App\Mail\MailNotifyResultBookingEvent;
+use App\Jobs\SendMailNotify;
 
 use App\User;
 
@@ -31,5 +32,6 @@ class SendMailNotifyResultBookingEvent
     public function handle(AfterConfirmBookingEvent $event)
     {
         Mail::to($event->bookingEvent->email)->send(new MailNotifyResultBookingEvent($event->bookingEvent));
+        dispatch(new SendMailNotify());
     }
 }

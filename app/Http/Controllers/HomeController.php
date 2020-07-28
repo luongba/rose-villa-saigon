@@ -37,6 +37,8 @@ use App\Events\AfterBookingWellnessBeauty;
 use App\Models\BookingEvent;
 use App\Models\BookingParty;
 use App\Models\BookingWellnessBeauty;
+use Illuminate\Support\Facades\View;
+
 use App\Models\Contact;
 
 class HomeController extends Controller
@@ -50,10 +52,17 @@ class HomeController extends Controller
         $this->bookingWellnessBeauty = new BookingWellnessBeauty;
         $this->contact = new Contact;
         $this->areaEvent = new AreaEvent;
+        $this->room = new Room;
+
+        $list_room = $this->room->listRoom();
+        View::share('list_room', $list_room);
+
+        $this->contact = new Contact;
     }
     
     public function welcome(Request $request)
     {
+        
         return view('pages.index');
     } 
 
@@ -80,16 +89,22 @@ class HomeController extends Controller
         return view('pages.about');
     }
 
+     public function shop(Request $request)
+    {
+        return view('pages.shop');
+    }
+
     public function contact(Request $request)
     {
         return view('pages.contact');
     }
 
     public function singleroom(Request $request)
-
-      {
-          return view('pages.single-room');
-      }
+    {
+        $singleroom = $this -> room ->infoRoomBySlug($request -> slug);
+       
+        return view('pages.single-room',compact('singleroom'));
+    }
 
     public function membership(Request $request)
     {

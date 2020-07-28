@@ -1,8 +1,8 @@
 <template>
-		<section v-if="step==0">
+		<section v-if="step==0"class="step0-ct">
       <div class="container">
 				<input id="ef" type="radio" v-model="model.type_user" @change="next" value="0">
-				<label for="ef">Early Founder</label>
+				<label for="ef" class="fisst">Early Founder</label>
 				<input id="re" type="radio" v-model="model.type_user" @change="next" value="1">
 				<label for="re">Regular Member</label>
 			</div>
@@ -10,7 +10,8 @@
     <section v-else class="content-membership">
       <div class="header-mbs">
         <div class="container">
-          <h3>Regular Member</h3>
+          <h3 v-if="model.type_user == 0">Early Founder</h3>
+          <h3 v-if="model.type_user != 0">Regular Member</h3>
           <ul class="step-membership">
             <li v-for="(item,key) in steps" :class="step==key+1 ? 'currentstep' : ''">
               <span class="numberstep radius_50">{{ key+1 }}</span><span class="textli">{{ item }}</span>
@@ -34,33 +35,39 @@
                   </div> 
                 </div>
               </div>
-              <button class="btn btn-primary" v-if="step<3" type="button" @click="next">Next</button>
+              <button class="btn btn-primary buttonmbs" v-if="step<3" type="button" @click="next">Next</button>
             </div>
           </div>
           <div class="stepmbs step2nd" v-if="step == 2">
             <div class="container">
               <vue-form-generator :schema="step2" :model="model" :options="formOptions"></vue-form-generator>
-              <button class="btn btn-primary" v-if="step<3" type="button" @click="next">Next</button>
+              <button class="btn btn-primary buttonmbs" v-if="step<3" type="button" @click="next">Next</button>
             </div>
           </div>
           <div class="stepmbs step3rd" v-if="step == 3">
             <div class="container">
-              <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" v-for="option in options">
-                    <label :for="option.id" class="content-tp-mbs">
-                        <h3>{{ option.name }}</h3>
-                        <ul>
-                          <li v-for="item in option.benefit_members">{{ item.name }}</li>
-                        </ul>
-                        <button type="button">Choose Plan</button>
-                    </label>
-                    <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
+              <div class="row flexrow">
+                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
+                    <div class="options-mbs radius_4 styleshadow">
+                      <label :for="option.id" class="content-tp-mbs">
+                          <h3><span>{{ option.name }}</span></h3>
+                          <ul>
+                            <li v-for="item in option.benefit_members">{{ item.name }}</li>
+                          </ul>
+                      </label>
+                      <div class="bottom-option-mbs">
+                        <div class="choseop">
+                          <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
+                          <span>Choose Plan</span>
+                        </div>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div> 
           </div>
             <div class="container">
-              <button class="btn btn-primary" v-if="step==3" type="submit">Submit</button>
+              <button class="btn btn-primary buttonmbs" v-if="step==3" type="submit">Submit</button>
             </div>
         </form>
       </div>
@@ -122,6 +129,10 @@ export default {
             type: 'select',
             label: 'Gender',
             model: 'gender',
+            selectOptions: {
+              noneSelectedText: "Select Gender",
+              // hideNoneSelectedText: true,
+            },
             values: ['Male', 'Female'],
             required: true,
             validator: VueFormGenerator.validators.required
@@ -165,8 +176,7 @@ export default {
             inputType: 'text',
             label: 'Stress Address line two',
             model: 'address_two',
-            required: true,
-            validator: VueFormGenerator.validators.string
+            required: false
           },
           {
             type: 'input',
@@ -276,7 +286,7 @@ export default {
         if(
           !this.model.first_name || !this.model.last_name || !this.model.email
            || !this.model.gender || !this.model.dob || !this.model.occupation 
-           || !this.model.country || !this.model.address_one || !this.model.address_two 
+           || !this.model.country || !this.model.address_one
            || !this.model.city || !this.model.post_code
           ){
           toastr.error("Please fill all fields")

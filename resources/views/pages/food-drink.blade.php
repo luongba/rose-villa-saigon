@@ -35,13 +35,14 @@
               <div class="ctevent">
                 {!!$val->description!!}
               </div>
-              {{-- <a href="javascript:;" data-toggle="modal" data-target="#res-popup" class="bookingaction radius_4">Booking Table</a> --}}
+              @auth
               <button-show-modal 
                 :classname="'bookingaction radius_4'" 
                 :text="'Booking Table'"
                 :type="'1'"
                 :booking_id="{{$val->id}}"
               ></button-show-modal>
+              @endauth
           </div>
           <div class="fdimg">
             <img  src="{{$val->UrlThumb}}" />
