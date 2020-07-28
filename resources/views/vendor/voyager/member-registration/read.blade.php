@@ -54,28 +54,28 @@
                         <h3 class="panel-title">First Name</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                        <p>{{$dataTypeContent->user->first_name}}</p>
+                        <p>{{$dataTypeContent->first_name}}</p>
                    </div>
 
                    <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">Last Name</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                        <p>{{$dataTypeContent->user->last_name}}</p>
+                        <p>{{$dataTypeContent->last_name}}</p>
                    </div>
                    <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">Email</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                        <p>{{$dataTypeContent->user->email}}</p>
+                        <p>{{$dataTypeContent->email}}</p>
                    </div>
                     <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">Type User</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                        @if($dataTypeContent->user->type_user == 1)
+                        @if($dataTypeContent->type_user == 1)
                             <p>{{'early founder'}}</p>
-                        @elseif($dataTypeContent->user->type_user == 2)
+                        @elseif($dataTypeContent->type_user == 2)
                             <p>{{'regular'}}</p>
                         @endif
                         
@@ -84,15 +84,15 @@
                         <h3 class="panel-title">Phone</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                        <p>{{$dataTypeContent->user->phone}}</p>
+                        <p>{{$dataTypeContent->phone}}</p>
                    </div>
                    <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">Gender</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                         @if($dataTypeContent->user->gender == 0)
+                         @if($dataTypeContent->gender == 0)
                             <p>{{'male'}}</p>
-                        @elseif($dataTypeContent->user->gender == 1)
+                        @elseif($dataTypeContent->gender == 1)
                             <p>{{'female'}}</p>
                         @endif
                    </div>
@@ -100,44 +100,44 @@
                         <h3 class="panel-title">Birthday</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->dob}}</p>
+                         <p>{{$dataTypeContent->dob}}</p>
                    </div>
                    <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">Occupation</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->occupation}}</p>
+                         <p>{{$dataTypeContent->occupation}}</p>
                    </div>
 
                    <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">Address one</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->address_one}}</p>
+                         <p>{{$dataTypeContent->address_one}}</p>
                    </div>
                    <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">Address two</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->address_two}}</p>
+                         <p>{{$dataTypeContent->address_two}}</p>
                    </div>
                    <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">City</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->city}}</p>
+                         <p>{{$dataTypeContent->city}}</p>
                    </div>
                    <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">Post code</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->post_code}}</p>
+                         <p>{{$dataTypeContent->post_code}}</p>
                    </div>
                    <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">Country</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->country}}</p>
+                         <p>{{$dataTypeContent->country}}</p>
                    </div>
 
 

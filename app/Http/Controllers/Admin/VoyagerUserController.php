@@ -32,6 +32,11 @@ class VoyagerUserController extends BaseVoyagerUserController
     	$create_user -> password = Hash::make($request->password);
     	$create_user -> save();
 
-    	return $request;
+    	$redirect = redirect()->back();
+
+        return $redirect->with([
+            'message'    => __('voyager::generic.successfully_created'),
+            'alert-type' => 'success',
+        ]);
     }
 }
