@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="stepmbs step1st">
-        <form class="form-mbs1" method="post" action="" @submit.prevent="submit" style="float: left; width: 100%">
+        <form class="form-mbs1" method="post" action="" @submit.prevent="submit">
           <div class="stepmbs step1st" v-if="step == 1">
             <div class="container">
               <vue-form-generator :schema="step1" :model="model" :options="formOptions"></vue-form-generator>
@@ -175,7 +175,7 @@ export default {
             selectOptions: {
               hideNoneSelectedText: true,
             },
-            styleClasses: 'bithday_select last',
+            styleClasses: 'birthday_select last',
             values: function(model, schema){
               return model.days
             },

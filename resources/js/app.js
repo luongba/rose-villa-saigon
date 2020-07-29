@@ -7,10 +7,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import Vuetify from "vuetify";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
-Vue.use(Vuetify);
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin

@@ -1997,6 +1997,14 @@ a.backshop{
 	margin: 15px auto;
 }
 /* member ship*/
+.birthday_select{
+	width:32% !important;
+	float:left;
+	margin-right:2%;
+}
+.birthday_select.last{
+	margin-right:0;
+}
 .membership-column{
 	width:170px;
 	float:left;
