@@ -115,25 +115,22 @@ class UserController extends Controller
 		if (Auth::attempt($credentials)) {
 			$user = Auth::user();
 			if ($user->type_user === 0) {
-				Auth::login($user);
-				$data['url'] = route('membership');
+				return response()->json([
+					'status' => false,
+					'message' => 'You are not a Rose Villa Saigon member'
+				]);
+			} else {
+				$data = array();
+				if ($user->type_user === 1) {
+					$data['url'] = route('founder');
+				} else {
+					$data['url'] = route('regularmember');
+				}
 				return response()->json([
 					'status' => true,
 					'message' => 'Login successfully',
 					'data' => $data
 				]);
-			} else {
-				if ($user->statusUserMeta === 0) {
-					return response()->json([
-						'status' => false,
-						'message' => 'Your registration form is watting approve'
-					]);
-				} else {
-					return response()->json([
-						'status' => true,
-						'message' => 'Login successfully'
-					]);
-				}
 			}
 		} else {
 			return response()->json([
@@ -148,7 +145,8 @@ class UserController extends Controller
 		$validator = Validator::make($request, [
 			'first_name' => 'required',
 			'last_name' => 'required',
-			'email' => 'required|email',
+			'email' => 'required|email|unique:users,email',
+			'phone' => 'required|unique:users,phone',
 			'gender' => 'required|min:0|max:1',
 			'dob' => 'required',
 			'occupation' => 'required',
@@ -157,13 +155,12 @@ class UserController extends Controller
 			'city' => 'required',
 			'post_code' => 'required',
 			'country' => 'required',
-			'post_code' => 'required',
 			'avatar' => 'required',
-			'type_user' => 'required',
-			'reason' => 'required',
-			'usage_criteria' => 'required',
-			'bring_to' => 'required',
-			'member_other' => 'required',
+			'type_user' => 'required|min:1|max:2',
+			'reason' => 'required_if:type_user,2',
+			'usage_criteria' => 'required_if:type_user,2',
+			'bring_to' => 'required_if:type_user,2',
+			'member_other' => 'required_if:type_user,2',
 			'membership_type' => 'required|min:1|max:9',
 		]);
 		if ($validator->fails()) {
@@ -173,6 +170,8 @@ class UserController extends Controller
 				return $validator->errors()->first('last_name');
 			} else if($validator->errors()->first('email') != null) {
 				return $validator->errors()->first('email');
+			} else if($validator->errors()->first('phone') != null) {
+				return $validator->errors()->first('phone');
 			} else if($validator->errors()->first('gender') != null) {
 				return $validator->errors()->first('gender');
 			} else if($validator->errors()->first('dob') != null) {
@@ -219,26 +218,26 @@ class UserController extends Controller
 		$avatar = null;
 		$folder = 'avatar';
 		if($request->avatar){
-            $avatar = UploadImg::UploadImg($request->avatar, $folder);
-        }else{
-            $avatar = null;
-        }
-        $request->merge([
+			$avatar = UploadImg::UploadImg($request->avatar, $folder);
+		}else{
+			$avatar = null;
+		}
+		$request->merge([
 			'avatar' => $avatar
 		]);
 		DB::beginTransaction();
 		try {
-			$paramUser = $request->only('first_name', 'last_name', 'email', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user');
-	
-			$this->user->editUserById(Auth::id(), $paramUser);
-
 			$request->request->add([
 				'user_id' => Auth::id()
 			]);
-			$paramUserMeta = $request->only('user_id', 'reason', 'usage_criteria', 'bring_to', 'member_other');
+			$paramUserMeta = $request->only('user_id', 'first_name', 'last_name', 'email', 'phone', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user');
+			if ($request->type_user == 2) {
+				$paramUserMeta['reason'] =  $request->reason;
+				$paramUserMeta['usage_criteria'] =  $request->usage_criteria;
+				$paramUserMeta['bring_to'] =  $request->bring_to;
+				$paramUserMeta['member_other'] =  $request->member_other;
+			}
 			$this->userMeta->addNewUserMeta($paramUserMeta);
-
-			Auth::user()->membershipType()->sync($request->membership_type);
 
 			DB::commit();
 		} catch (\Exception $ex) {

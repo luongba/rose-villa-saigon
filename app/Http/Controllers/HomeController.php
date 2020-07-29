@@ -50,13 +50,13 @@ class HomeController extends Controller
         $this->bookingEvent = new BookingEvent;
         $this->bookingParty = new BookingParty;
         $this->bookingWellnessBeauty = new BookingWellnessBeauty;
+        $this->contact = new Contact;
         $this->areaEvent = new AreaEvent;
         $this->room = new Room;
 
         $list_room = $this->room->listRoom();
         View::share('list_room', $list_room);
-        $this->contact = new Contact;
-        $this->areaEvent = new AreaEvent;
+
     }
     
     public function welcome(Request $request)
@@ -120,7 +120,7 @@ class HomeController extends Controller
 
     public function membership(Request $request)
     {
-        if (Auth::user() && !Auth::user()->userMeta) {
+        if (Auth::user()) {
             return view('pages.membership');
         } else {
             return redirect()->route('welcome');
