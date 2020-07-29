@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Mail;
 use App\Mail\MailNotifyResultBookingWellnessBeauty;
+use App\Jobs\SendMailNotify;
 
 use App\User;
 
@@ -31,5 +32,6 @@ class SendMailNotifyResultBookingWellnessBeauty
     public function handle(AfterConfirmBookingWellnessBeauty $event)
     {
         Mail::to($event->bookingWellnessBeauty->email)->send(new MailNotifyResultBookingWellnessBeauty($event->bookingWellnessBeauty));
+        dispatch(new SendMailNotify());
     }
 }

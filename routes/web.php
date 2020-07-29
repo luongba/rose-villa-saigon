@@ -40,6 +40,18 @@ Route::get('/shop', [
 	'as' => 'shop',
 	'uses' => 'HomeController@shop'
 ]);
+Route::get('/regular-member', [
+	'as' => 'regularmember',
+	'uses' => 'HomeController@regularmember'
+]);
+Route::get('/founder', [
+	'as' => 'founder',
+	'uses' => 'HomeController@founder'
+]);
+Route::get('/how-to-find-us', [
+	'as' => 'findus',
+	'uses' => 'HomeController@findus'
+]);
 Route::get('/contact', [
 	'as' => 'contact',
 	'uses' => 'HomeController@contact'
@@ -50,8 +62,6 @@ Route::get('/single-room/{slug}', [
 ]);
 
 Route::post('contact', 'HomeController@addContact')->name('add_contact');
-
-
 
 Route::get('/membership',[
 	'as' => 'membership',
@@ -80,6 +90,18 @@ Route::post('/update_password',[
 
 
 Route::group(['prefix' => 'admin'], function () {
+	/*users*/
+	Route::prefix("users")->group(function(){
+		Route::get('/create-member-registration', [
+			'as' => 'users.create_member',
+			'uses' => 'Admin\VoyagerUserController@create_member'
+		]);
+
+		Route::post('/create-member-registration', [
+			'as' => 'users.post_create_member',
+			'uses' => 'Admin\VoyagerUserController@post_create_member'
+		]);
+	});
 	Voyager::routes();
 });
 
