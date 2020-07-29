@@ -21,6 +21,24 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\AfterConfirmMembership' => [
             'App\Listeners\SendMailNotifyResultRegisterMembership',
         ],
+        'App\Events\AfterBookingEvent' => [
+            'App\Listeners\SendMailNotifyBookingEvent',
+        ],
+        'App\Events\AfterBookingParty' => [
+            'App\Listeners\SendMailNotifyBookingParty',
+        ],
+        'App\Events\AfterBookingWellnessBeauty' => [
+            'App\Listeners\SendMailNotifyBookingWellnessBeauty',
+        ],
+        'App\Events\AfterConfirmBookingEvent' => [
+            'App\Listeners\SendMailNotifyResultBookingEvent',
+        ],
+        'App\Events\AfterConfirmBookingParty' => [
+            'App\Listeners\SendMailNotifyResultBookingParty',
+        ],
+        'App\Events\AfterConfirmBookingWellnessBeauty' => [
+            'App\Listeners\SendMailNotifyResultBookingWellnessBeauty',
+        ],
     ];
 
     /**

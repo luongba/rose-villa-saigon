@@ -7,8 +7,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import Vuetify from "vuetify";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
+Vue.use(Vuetify);
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
@@ -30,6 +32,7 @@ Vue.component('login-register', require('./components/LoginRegister.vue').defaul
 Vue.component('membership-form', require('./components/MembershipForm.vue').default);
 Vue.component('button-show-modal', require('./components/ButtonShowModal.vue').default);
 Vue.component('booking-form', require('./components/BookingForm.vue').default);
+Vue.component('member-form', require('./components/MemberForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

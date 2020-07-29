@@ -35,13 +35,14 @@
             <div class="ctevent">
               {!!$val->description!!}
             </div>
-            <a href="javascript:;" class="bookingaction radius_4" data-toggle="modal" data-target="#events-popup">Booking Event</a>
+            @auth
               <button-show-modal 
                 :classname="'bookingaction radius_4'" 
                 :text="'Booking Event'"
                 :type="'0'"
                 :booking_id="{{$val->id}}"
               ></button-show-modal>
+            @endauth
             <div class="clear"></div>
           </div>
         </div>

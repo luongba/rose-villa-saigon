@@ -36,14 +36,22 @@ Route::get('/about', [
 	'as' => 'about',
 	'uses' => 'HomeController@about'
 ]);
+Route::get('/shop', [
+	'as' => 'shop',
+	'uses' => 'HomeController@shop'
+]);
 Route::get('/contact', [
 	'as' => 'contact',
 	'uses' => 'HomeController@contact'
 ]);
-Route::get('/single-room', [
+Route::get('/single-room/{slug}', [
 	'as' => 'singleroom',
 	'uses' => 'HomeController@singleroom'
 ]);
+
+Route::post('contact', 'HomeController@addContact')->name('add_contact');
+
+
 
 Route::get('/membership',[
 	'as' => 'membership',
@@ -95,3 +103,15 @@ Route::prefix('/')->middleware('auth')->group(function() {
 
 Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
 /*END MANH_TU*/
+/**/
+Route::prefix('/admin-ajax')->middleware('auth')->group(function() {
+
+	Route::post('booking-parties-cancel', 'Admin\BookingPartyController@cancel')->name('booking-party.cancel');
+
+	Route::post('booking-parties-accept', 'Admin\BookingPartyController@accept')->name('booking-party.accept');
+
+	Route::post('user-meta-cancel', 'Admin\MetaUserController@cancel')->name('user-meta.cancel');
+
+	Route::post('user-meta-accept', 'Admin\MetaUserController@accept')->name('user-meta.accept');
+});
+

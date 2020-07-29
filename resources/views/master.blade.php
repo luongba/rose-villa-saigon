@@ -19,10 +19,15 @@
     <script>
         $(document).ready(function() {
             $('#menu-btn').click(function () {
+                $('#menu-btn').hide();
+                $('.closemenu').show();
                 $('.nav-site').slideDown('slow');
             });
             $('.closemenu').click(function () {
+                $('.closemenu').hide();
+                $('#menu-btn').show();
                 $('.nav-site').slideUp('slow');
+
             });
             $('.has-child-menu').click(function () {
                 // $(this).find('ul').slideToggle('slow');

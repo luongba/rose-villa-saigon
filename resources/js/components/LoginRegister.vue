@@ -2,26 +2,26 @@
 	<div class="">
     <div id="recaptcha-container"></div>
 		<div class="content-login content-popup" v-if="view == 'dangnhap'">
-			<h3 class="modal-title">Đăng Nhập</h3>
-	        <form name="loginForm" class="form-control-user" method="post" action="" data-parsley-validate @submit.prevent="dangnhap">
-            
-	          	<!-- <span v-if="err_text" class="text-danger">{{ err_text }}</span> -->
-                <div class="form-group popup-input-style">
-                  <vue-tel-input v-model="phone_number"  @validate="checkPhone" :preferredCountries="['VN', 'US']" ></vue-tel-input>
-                  <p v-if="validphone">{{ validphone }}</p>
-                </div>
-                <div class="form-group popup-input-style">
-                    <input v-model="password" type="password" class="form-control-elm input-password" placeholder="Password" autocomplete="off" data-parsley-required data-parsley-minlength="6">
-                    
-                </div>
-                <div class="form-group popup-input-style">
-                	<input type='submit' class='submitform radius_4' value='Đăng Nhập'>
-                </div>
+			<h3 class="modal-title">Login</h3>
+      <form name="loginForm" class="form-control-user" method="post" action="" data-parsley-validate @submit.prevent="dangnhap">
+        
+        	<!-- <span v-if="err_text" class="text-danger">{{ err_text }}</span> -->
+          <div class="form-group popup-input-style">
+            <vue-tel-input v-model="phone_number"  @validate="checkPhone" :preferredCountries="['VN', 'US']" ></vue-tel-input>
+            <p v-if="validphone">{{ validphone }}</p>
+          </div>
+          <div class="form-group popup-input-style">
+              <input v-model="password" type="password" class="form-control-elm input-password" placeholder="Password" autocomplete="off" data-parsley-required data-parsley-minlength="6">
+              
+          </div>
+          <div class="form-group popup-input-style">
+          	<input type='submit' class='submitform radius_4' value='Login'>
+          </div>
 
-	        </form>
+      </form>
 			<div class="bottom-form">
-				<p class="linkforgots"><a @click="changeView('forgot')">Quên Mật Khẩu</a></p>
-				<p class="sright">Bạn có tài khoản chưa? <a class="clickhere linkregister" @click="changeView('dangky')">Đăng Ký</a></p>
+				<p class="linkforgots"><a @click="changeView('forgot')">Forgot Password</a></p>
+				<!-- <p class="sright">Bạn có tài khoản chưa? <a class="clickhere linkregister" @click="changeView('dangky')">Đăng Ký</a></p> -->
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -55,27 +55,27 @@
 			<div class="clear"></div>
 		</div>
 		<div class="content-login content-popup" v-if="view == 'forgot'">
-			<h3 class="modal-title">Quên Mật Khẩu</h3>
+			<h3 class="modal-title">Forgot Password</h3>
 	        <form data-parsley-validate @submit.prevent="forgotPassword">
               <!-- <span v-if="err_text" class="text-danger">{{ err_text }}</span> -->
-              <p>Vui lòng nhập số điện thoại đăng ký</p>
+              <p>Please input your phone number</p>
               <div class="form-group popup-input-style">
                 <vue-tel-input v-model="phone_number3"  @validate="checkPhone" :preferredCountries="['VN', 'US']" ></vue-tel-input>
                 <p v-if="validphone">{{ validphone }}</p>
               </div>
               <div class="form-group popup-input-style">
-              	<input type='submit' class='submitform radius_4' value='Xác nhận'>
+              	<input type='submit' class='submitform radius_4' value='Submit'>
               </div>
 	        </form>
           <div class="bottom-form">
-            <p class="sright">Quay lại <a class="clickhere linkregister" @click="changeView('dangnhap')">Đăng Nhập</a></p>
+            <p class="sright">Back to <a class="clickhere linkregister" @click="changeView('dangnhap')">Login</a></p>
           </div>
 			<div class="clear"></div>
 		</div>
 		<div class="content-login content-popup" v-if="view == 'checkpin'">
       <div class="titlepopup">
-          <h3 class="modal-title">Nhập Mã Code</h3>
-          <p>Vui lòng nhập mã xác minh được gửi tới số điện thoại của bạn</p>
+          <h3 class="modal-title">Verify Code</h3>
+          <p>Please input verify ide</p>
       </div>
       <form class="form-control-pincode" data-parsley-validate @submit.prevent="checkpin">
           <!-- <span v-if="err_text" class="text-danger">{{ err_text }}</span> -->
@@ -87,9 +87,6 @@
               placeholder=""
             />
         	</div>
-        	<div class="form-group text50" v-if="1==2">
-        		Không nhận đc mã ? Gửi lại
-        	</div>
           <div class="form-group popup-input-style">
           	<input type='submit' class='submitform radius_4' value='Xác Nhận'>
           </div>
@@ -97,20 +94,20 @@
 			<div class="clear"></div>
 		</div>
     <div class="content-login content-popup" v-if="view == 'changepass'">
-        <h3 class="modal-title">Đặt Lại Mật Khẩu</h3>
+        <h3 class="modal-title">Reset Password</h3>
         <form @submit.prevent="resetPassword" data-parsley-validate>
           <input type="hidden" name="phone" value="">
             <span id="error" class="text-danger"></span>
               <div class="form-group popup-input-style">
-                  <input v-model="password" type="password" class="form-control-elm input-password" placeholder="Mật Khẩu" autocomplete="off" data-parsley-required data-parsley-minlength="6">
+                  <input v-model="password" type="password" class="form-control-elm input-password" placeholder="password" autocomplete="off" data-parsley-required data-parsley-minlength="6">
                   
               </div>
               <div class="form-group popup-input-style">
-                  <input v-model="repassword" type="password" class="form-control-elm input-password" placeholder="Nhập Lại Mật Khẩu" autocomplete="off" data-parsley-required data-parsley-minlength="6">
+                  <input v-model="repassword" type="password" class="form-control-elm input-password" placeholder="password confirm" autocomplete="off" data-parsley-required data-parsley-minlength="6">
                   
               </div>
               <div class="form-group popup-input-style">
-                <input type='submit' class='submitform radius_4'  value='Xác Nhận'>
+                <input type='submit' class='submitform radius_4'  value='Confirm'>
               </div>
         </form>
     </div>
@@ -185,7 +182,7 @@
     		this.view = view
     	},
     	checkPhone: function(e){
-          // console.log(e.valid,e.number)
+          console.log(e.valid,e.number)
         if(!e.valid){
           this.validphone = "Phone number not valid"
         }else {
@@ -229,7 +226,7 @@
               // _this.err_text = response.data.message
               toastr.error(response.data.message)
             }else {
-              toastr.success(error.data.message)
+              toastr.success(response.data.message)
               var phoneNumber = _this.phone;
               var appVerifier = window.recaptchaVerifier;
               firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
