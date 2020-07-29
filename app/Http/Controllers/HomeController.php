@@ -56,8 +56,6 @@ class HomeController extends Controller
 
         $list_room = $this->room->listRoom();
         View::share('list_room', $list_room);
-
-        $this->contact = new Contact;
     }
     
     public function welcome(Request $request)
