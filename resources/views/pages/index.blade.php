@@ -5,6 +5,7 @@
 </div>
   {{-- @if(!session()->has('rem')) --}}
       <div id="page-wrap">
+        <div class="bg_rem"></div>
          <div id="canvas"></div>
           <div class="curtain first-curtain">
             <img src="{{asset('public/images/picture_curtain_left.jpeg')}}" class="" data-sampler="simplePlaneTexture" />
@@ -17,16 +18,15 @@
       <audio id="audio" autoplay>
         <source type="audio/mp3" src="{{asset('public/assets/audio/La vie en rose - Louis Armstrong.mp3')}}">
       </audio>
-      <script src="{{asset('public/js/curtains.js')}}" type="text/javascript"></script>
-      <script src="{{asset('public/js/simple.plane.setup.js')}}" type="text/javascript"></script>
+      
       {{-- <?php
         session()->put('rem',true);
       ?> --}}
-
-<style type="text/css">
-  #page-wrap {
+      <style type="text/css">
+          #page-wrap {
     visibility: hidden;
   }
+ 
   .loading {
       background-color: rgba(0,0,0,.5);
       position: absolute;
@@ -53,7 +53,7 @@
   .header, .content-custom-width {
     visibility: hidden;
   }
-</style>
+      </style>
   {{-- @endif  --}}
 
 
@@ -70,6 +70,8 @@
 @endsection
 
 @section('script')
+<script src="{{asset('public/js/curtains.js')}}" type="text/javascript"></script>
+<script src="{{asset('public/js/simple.plane.setup.js')}}" type="text/javascript"></script>
 <script>
       function ready() {
           setTimeout(function(){
@@ -79,7 +81,10 @@
             $('body').find('.content-custom-width').css('visibility','visible');
           }, 3000);
       }
-
+      $("#page-wrap").click(function() {
+        $(".bg_rem").addClass('fade-out');
+      });
+      
       document.addEventListener("DOMContentLoaded", ready);
     </script>
 @endsection

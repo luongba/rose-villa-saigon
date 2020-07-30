@@ -59,7 +59,6 @@ class HomeController extends Controller
 
         $list_room = $this->room->listRoom();
         View::share('list_room', $list_room);
-
     }
     
     public function welcome(Request $request)
@@ -113,6 +112,10 @@ class HomeController extends Controller
     public function findus(Request $request)
     {
         return view('pages.findus');
+    }
+    public function thankyou(Request $request)
+    {
+        return view('pages.thankyou');
     }
     public function singleroom(Request $request)
     {

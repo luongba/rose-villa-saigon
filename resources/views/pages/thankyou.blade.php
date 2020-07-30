@@ -6,7 +6,7 @@
     <section class="innercontent simpe-content-page">
     	<div class="container">
     		<h1 class="title-innerpage3">
-            	<span><span>Shop <br/>Coming soon</span></span>
+            	<span><span>Thank You</span></span>
          	</h1>
     	</div>
     </section>
