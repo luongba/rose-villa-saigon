@@ -14,7 +14,7 @@ export default {
    }
   },
   mounted() {
-      console.log(this.text)
+      // console.log(this.text)
   },
   methods: {
     click: function(){

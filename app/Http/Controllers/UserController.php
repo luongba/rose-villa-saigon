@@ -151,7 +151,6 @@ class UserController extends Controller
 			'dob' => 'required',
 			'occupation' => 'required',
 			'address_one' => 'required',
-			'address_two' => 'required',
 			'city' => 'required',
 			'post_code' => 'required',
 			'country' => 'required',
