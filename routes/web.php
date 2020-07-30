@@ -56,6 +56,10 @@ Route::get('/contact', [
 	'as' => 'contact',
 	'uses' => 'HomeController@contact'
 ]);
+Route::get('/thankyou', [
+	'as' => 'thankyou',
+	'uses' => 'HomeController@thankyou'
+]);
 Route::get('/single-room/{slug}', [
 	'as' => 'singleroom',
 	'uses' => 'HomeController@singleroom'

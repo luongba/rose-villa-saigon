@@ -204,6 +204,11 @@ select.form-control{
 	font-size: 14px;
 }
 /* fixed bootraps */
+form {
+    max-width: 100% !important;
+    margin: 0 auto;
+    text-align: left;
+}
 .row{
 	clear:both;
 }
@@ -2621,6 +2626,9 @@ body.welcome {
 	color:#a8a8a8;
 	text-transform:uppercase;
 }
+.rightcp a:hover{
+	color:#fff;
+}
 .social-ft{
 	height:32px;
 	width:32px;
@@ -2815,7 +2823,7 @@ body.welcome {
 	width:100%;
 	position:relative;
 	height:auto;
-	min-height:1080px;
+	min-height:980px;
 	float:left;
 	padding-top:60px;
 }
@@ -2837,7 +2845,7 @@ body.welcome {
 	top:0;
 	bottom:0;
 	display:block;
-	background:url(images/left-event.png) no-repeat;
+	background: url(images/bg/bg-innner.png) no-repeat;
 	background-size:cover;
 	position:absolute;
 	z-index:-1;
@@ -2870,7 +2878,7 @@ body.welcome {
 	top:0;
 	bottom:0;
 	display:block;
-	background:url(images/right-event.png) no-repeat;
+	background: url(images/bg/bg-innner.png) no-repeat;
 	background-size:cover;
 	position:absolute;
 	z-index:-1;
@@ -2962,6 +2970,45 @@ body.welcome {
 	display:block;
 	margin-right:5px;
 }
+/* simpe-content-page */
+.simpe-content-page{
+	padding-top:150px;
+}
+.title-innerpage3{
+    width: 300px;
+    height: 190px;
+    background: url(images/images/bg-title3.png) no-repeat;
+	background-size:cover;
+	padding:54px;
+	margin:0 auto;
+	line-height:1.1;
+}
+
+
+.title-innerpage3 > span{
+	width:100%;
+	height:100%;
+	display:table;
+}
+.title-innerpage3 > span > span{
+	text-align:center;
+	vertical-align:middle;
+	display:table-cell;
+}
+@media only screen and (max-width: 560px){
+	.title-innerpage3{
+		width: 235px;
+		height: 149px;
+		background: url(images/images/bg-title3.png) no-repeat;
+		background-size:cover;
+		padding:40px;
+		font-size:24px;
+		line-height:1.2;
+	}
+	.innerpage-style1{
+		min-height:700px;
+	}
+}
 
 /* STYLE  : banner innerpage */
 .banner-innerpage{
@@ -2969,6 +3016,7 @@ body.welcome {
 	width:100%;
 	float:left;
 }
+
 .banner-innerpage h1{
 	display:table;
 	width:auto;
@@ -3438,7 +3486,15 @@ ul.step-membership{
 
 /* Responsive */
 
+@media only screen and (max-width: 1400px){
+	.innerpage-style1{
+		min-height:700px;
+	}
+}
 @media only screen and (min-width: 360px) and (max-width: 768px){
+
+
+
 
 }
 @media only screen and (max-width: 1199px){
@@ -3617,10 +3673,10 @@ ul.step-membership{
 }
 @media only screen and (min-width: 1368px){
 	.leftpageimg{
-		background: url(images/bg/bg-innner.png)
+		background: url(images/bg/bg-innner.png) no-repeat;
 	}
 	.rightpageimg{
-		background: url(images/bg/bg-innner.png)
+		background: url(images/bg/bg-innner.png) no-repeat;
 	}
 	body.fooddrink .rightpageimg,
 	body.fooddrink .leftpageimg,
@@ -3630,4 +3686,81 @@ ul.step-membership{
 	body.events .leftpageimg{
 		background-size:cover;
 	} 
+}
+
+
+
+
+/* custom rem */
+@media only screen and (min-width: 1369px){
+	.bg_rem{
+		background:url(images/rem_1920x1080.png) no-repeat center center; 
+	}
+	 .fade-out {
+		  animation: fadeOut ease 8s;
+		  -webkit-animation: fadeOut ease 8s;
+		  -moz-animation: fadeOut ease 8s;
+		  -o-animation: fadeOut ease 8s;
+		  -ms-animation: fadeOut ease 8s;
+		}
+}
+ .bg_rem{
+  width:100%;
+  height:100%;
+  background:url(images/rem_1333x768.png) no-repeat center center;
+  background-size:cover;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:-1;
+  }
+ .fade-out {
+  animation: fadeOut ease 6s;
+  -webkit-animation: fadeOut ease 6s;
+  -moz-animation: fadeOut ease 6s;
+  -o-animation: fadeOut ease 6s;
+  -ms-animation: fadeOut ease 6s;
+}
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@-ms-keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  100% {
+    opacity:0;
 }
