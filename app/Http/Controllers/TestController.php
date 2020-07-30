@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Events\AfterConfirmBookingWellnessBeauty;
+use App\Events\AfterConfirmBookingRoom;
 
 class TestController extends Controller
 {
@@ -15,8 +15,8 @@ class TestController extends Controller
 
 	public function testMail()
 	{
-		$bookingWellnessBeauty = \App\Models\BookingWellnessBeauty::find(1);
-		event(new AfterConfirmBookingWellnessBeauty($bookingWellnessBeauty));
+		$bookingRoom = \App\Models\BookingRoom::find(3);
+		event(new AfterConfirmBookingRoom($bookingRoom));
 		return "xong";
 	}
 }

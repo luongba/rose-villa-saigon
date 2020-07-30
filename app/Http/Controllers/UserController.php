@@ -179,8 +179,6 @@ class UserController extends Controller
 				return $validator->errors()->first('occupation');
 			} else if($validator->errors()->first('address_one') != null) {
 				return $validator->errors()->first('address_one');
-			} else if($validator->errors()->first('address_two') != null) {
-				return $validator->errors()->first('address_two');
 			} else if($validator->errors()->first('city') != null) {
 				return $validator->errors()->first('city');
 			} else if($validator->errors()->first('post_code') != null) {

@@ -33,10 +33,12 @@ use App\Rules\CheckGiftRule;
 use App\Events\AfterBookingEvent;
 use App\Events\AfterBookingParty;
 use App\Events\AfterBookingWellnessBeauty;
+use App\Events\AfterBookingRoom;
 
 use App\Models\BookingEvent;
 use App\Models\BookingParty;
 use App\Models\BookingWellnessBeauty;
+use App\Models\BookingRoom;
 use Illuminate\Support\Facades\View;
 
 use App\Models\Contact;
@@ -53,6 +55,7 @@ class HomeController extends Controller
         $this->contact = new Contact;
         $this->areaEvent = new AreaEvent;
         $this->room = new Room;
+        $this->bookingRoom = new BookingRoom;
 
         $list_room = $this->room->listRoom();
         View::share('list_room', $list_room);
@@ -61,7 +64,7 @@ class HomeController extends Controller
     
     public function welcome(Request $request)
     {
-        
+
         return view('pages.index');
     } 
 
@@ -88,7 +91,7 @@ class HomeController extends Controller
         return view('pages.about');
     }
 
-     public function shop(Request $request)
+    public function shop(Request $request)
     {
         return view('pages.shop');
     }
@@ -114,7 +117,7 @@ class HomeController extends Controller
     public function singleroom(Request $request)
     {
         $singleroom = $this -> room ->infoRoomBySlug($request -> slug);
-       
+
         return view('pages.single-room',compact('singleroom'));
     }
 
@@ -196,6 +199,7 @@ class HomeController extends Controller
             'phone' => 'required',
             'number_guest' => 'required|integer|min:1|max:255',
             'start_at' => 'required|date|after:now',
+            'end_at' => 'required_if:type_booking,3',
             'description' => 'required',
             'type_booking' => 'required|min:0|max:2',
             'booking_id' => 'required|integer',
@@ -211,6 +215,8 @@ class HomeController extends Controller
                 return $validator->errors()->first('number_guest');
             } else if($validator->errors()->first('start_at') != null) {
                 return $validator->errors()->first('start_at');
+            } else if($validator->errors()->first('end_at') != null) {
+                return $validator->errors()->first('end_at');
             } else if($validator->errors()->first('description') != null) {
                 return $validator->errors()->first('description');
             } else if($validator->errors()->first('type_booking') != null) {
@@ -243,6 +249,11 @@ class HomeController extends Controller
             //booking wellness & beauty
             $params['wellness_beauty_id'] = $request->booking_id;
             $result = $this->bookingWellnessBeauty->addNewWellnessBeauty($params);
+        } elseif ($request->type_booking == 3) {
+            //booking room
+            $params['room_id'] = $request->booking_id;
+            $params['end_at'] = $request->end_at;
+            $result = $this->bookingRoom->addNewBookingRoom($params);
         }
         if ($result) {
             if ($request->type_booking == 0) {
@@ -254,6 +265,9 @@ class HomeController extends Controller
             } elseif ($request->type_booking == 2) {
                 //booking wellness & beauty
                 event(new AfterBookingWellnessBeauty($result));
+            } elseif ($request->type_booking == 3) {
+                //booking room
+                event(new AfterBookingRoom($result));
             }
             return response()->json([
                 'status' => true,
