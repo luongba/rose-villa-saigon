@@ -30,6 +30,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\AfterBookingWellnessBeauty' => [
             'App\Listeners\SendMailNotifyBookingWellnessBeauty',
         ],
+        'App\Events\AfterBookingRoom' => [
+            'App\Listeners\SendMailNotifyBookingRoom',
+        ],
         'App\Events\AfterConfirmBookingEvent' => [
             'App\Listeners\SendMailNotifyResultBookingEvent',
         ],
@@ -38,6 +41,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\AfterConfirmBookingWellnessBeauty' => [
             'App\Listeners\SendMailNotifyResultBookingWellnessBeauty',
+        ],
+        'App\Events\AfterConfirmBookingRoom' => [
+            'App\Listeners\SendMailNotifyResultBookingRoom',
         ],
     ];
 
