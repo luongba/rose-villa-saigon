@@ -5,7 +5,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <h3>{{text}}</h3>
-            </div>
+            <button type="button" class="close hidden" data-dismiss="modal" aria-label="Close" ref="closeModal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
             <div class="modal-body">
                 <div class="inforose-popup">
                     <h4>Contact Us</h4>
@@ -27,8 +30,8 @@
                     </div>
                 </div>
                 <div class="form-booking-popup">
-                      <h4>Fill in the infomation</h4>
-                  <form name="forgotForm" class="form-control-user" @submit.prevent="submit" data-parsley-validate>
+                  <h4>Fill in the infomation</h4>
+                  <form class="form-control-user" @submit.prevent="submit" data-parsley-validate>
                           <div class="row" v-if="model.type_booking==3">
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <label>Start Date</label>
@@ -107,6 +110,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import { BModal, VBModal } from 'bootstrap-vue'
 export default {
   name: 'booking-form',
@@ -137,7 +141,7 @@ export default {
           if(response.data.status == false){
             toastr.error(response.data.message)
           }else {
-            $('#modal-booking').modal('hide')
+            this.$refs.closeModal.click();
             _this.model = {}
             toastr.success(response.data.message)
           }

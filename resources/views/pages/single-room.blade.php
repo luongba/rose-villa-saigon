@@ -54,12 +54,14 @@
 			    		<div class="layout__item desk-one-whole room-details__description">
 				          	<div class="content-editer-room editor-style">
 				            {!!$singleroom->description!!}
-				              <button-show-modal 
-				                :classname="'bookingaction radius_4'" 
-				                :text="'Booking Now'"
-				                :type="'3'"
-				                :booking_id="{{$singleroom->id}}"
-				              ></button-show-modal>
+				            @auth
+				              	<button-show-modal 
+					                :classname="'bookingaction radius_4'" 
+					                :text="'Booking Now'"
+					                :type="'3'"
+					                :booking_id="{{$singleroom->id}}"
+				              	></button-show-modal>
+				            @endauth
 			        	</div>
 			    	</div>
 			    </div>
