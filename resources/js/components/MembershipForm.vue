@@ -10,8 +10,8 @@
     <section v-else class="content-membership">
       <div class="header-mbs">
         <div class="container">
-          <h3 v-if="model.type_user == 0">Early Founder</h3>
-          <h3 v-if="model.type_user != 0">Regular Member</h3>
+          <h3 v-if="type == 'founder'">Early Founder</h3>
+          <h3 v-if="type == 'regular'">Regular Member</h3>
           <ul class="step-membership">
             <li v-for="(item,key) in steps" :class="step==key+1 ? 'currentstep' : ''">
               <span class="numberstep radius_50">{{ key+1 }}</span><span class="textli">{{ item }}</span>
@@ -35,16 +35,16 @@
                   </div> 
                 </div>
               </div>
-              <button class="btn btn-primary buttonmbs" v-if="step<3" type="button" @click="next">Next</button>
+              <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
             </div>
           </div>
-          <div class="stepmbs step2nd" v-if="step == 2">
+          <div class="stepmbs step2nd" v-if="step == 2 && type != 'founder'">
             <div class="container">
               <vue-form-generator :schema="step2" :model="model" :options="formOptions"></vue-form-generator>
-              <button class="btn btn-primary buttonmbs" v-if="step<3" type="button" @click="next">Next</button>
+              <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
             </div>
           </div>
-          <div class="stepmbs step3rd" v-if="step == 3">
+          <div :class="classStep" class="stepmbs" v-if="step == 2 && type == 'founder'">
             <div class="container">
               <div class="row flexrow">
                 <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
@@ -64,34 +64,63 @@
                     </div>
                 </div>
               </div>
+              <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
+            </div>
+          </div>
+          <div :class="classStep" class="stepmbs" v-if="step == 3 && type != 'founder'">
+            <div class="container">
+              <div class="row flexrow">
+                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
+                    <div class="options-mbs radius_4 styleshadow">
+                      <label :for="option.id" class="content-tp-mbs">
+                          <h3><span>{{ option.name }}</span></h3>
+                          <ul>
+                            <li v-for="item in option.benefit_members">{{ item.name }}</li>
+                          </ul>
+                      </label>
+                      <div class="bottom-option-mbs">
+                        <div class="choseop">
+                          <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
+                          <span>Choose Plan</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
+              </div>
             </div> 
           </div>
-            <div class="container">
-              <button class="btn btn-primary buttonmbs" v-if="step==3" type="submit">Submit</button>
-            </div>
+          <div :class="classStep" class="stepmbs" v-if="(step == 3 && type == 'founder') || step == 4">
+            
+            <input id="checkbox1" type="checkbox" v-model="model.agree">
+            <label for="checkbox1">I understand that</label><br>
+            <input id="checkbox2" type="checkbox" v-model="model.agree2">
+            <label for="checkbox2">By applying I agree to abide the Rose Villa club</label>
+
+          </div>
+          <div class="container">
+            <button class="btn btn-primary buttonmbs" v-if="step==steps.length" type="submit">Submit</button>
+          </div>
         </form>
       </div>
     </section>
 </template>
 <script>
 import moment from 'moment'
-import pikaday from 'pikaday'
 import VueFormGenerator from 'vue-form-generator'
 import 'vue-form-generator/dist/vfg.css'
  
 Vue.use(VueFormGenerator)
 
 export default {
+  props: ['type'],
   data() {
     return {
       options: {},
       countries: [],
-      steps: [
-        'About You', 'Why You?', 'Membership Type'
-      ],
+      steps: [],
       step: 1,
       user_data: [],
-      type: null,
       image_preview: null,
       model: {
         countries: [],
@@ -124,6 +153,14 @@ export default {
           },
           {
             type: 'input',
+            inputType: 'number',
+            label: 'Phone Number',
+            model: 'phone',
+            required: true,
+            validator: VueFormGenerator.validators.number
+          },
+          {
+            type: 'input',
             inputType: 'email',
             label: 'Email',
             model: 'email',
@@ -147,7 +184,7 @@ export default {
             label: 'Year',
             model: 'year',
             selectOptions: {
-              hideNoneSelectedText: true,
+              noneSelectedText: "Select Year",
             },
             styleClasses: 'birthday_select',
             values: function(model, schema){
@@ -160,11 +197,29 @@ export default {
             label: 'Month',
             model: 'month',
             selectOptions: {
-              hideNoneSelectedText: true,
+              noneSelectedText: "Select Month",
             },
             styleClasses: 'birthday_select',
             values: function(model, schema){
               return model.months
+            },
+            onChanged: function(model, newVal, oldVal, field) {
+              model.days = []
+              if(newVal==2){
+                for (var i = 1; i < 29; i++) {
+                  model.days.push(i)
+                }
+                return
+              }
+              if(newVal==4 || newVal==6 || newVal==9 || newVal==11 ){
+                for (var i = 1; i < 31; i++) {
+                  model.days.push(i)
+                }
+                return
+              }
+              for (var i = 1; i < 32; i++) {
+                model.days.push(i)
+              }
             },
             required: true
           },
@@ -173,7 +228,7 @@ export default {
             label: 'Day',
             model: 'day',
             selectOptions: {
-              hideNoneSelectedText: true,
+              noneSelectedText: "Select Day",
             },
             styleClasses: 'birthday_select last',
             values: function(model, schema){
@@ -290,15 +345,32 @@ export default {
           },*/
         ]
       },
+      stepPayment: {
+        fields: [
+          {
+              type: "checkbox",
+              label: "Status",
+              model: "status",
+              default: true
+          }
+        ]
+      },
       formOptions: {
         validateAfterLoad: false,
-        validateAfterChanged: false,
+        validateAfterChanged: true,
         validateAsync: true
       },
       err_text: ''
     };
   },
   mounted() {
+    if(this.type == "founder"){
+      this.model.type_user = 1
+      this.steps = ['About You', 'Membership Type', 'Payment']
+    }else {
+      this.model.type_user = 2
+      this.steps = ['About You', 'Why You?', 'Membership Type', 'Payment']
+    }
     let _this = this
     axios.get(
       './membership-type'
@@ -322,6 +394,17 @@ export default {
       _this.model.days.push(i)
     }
   },
+  computed: {
+    classStep() {
+      if(this.step == 2){
+        return this.type == 'founder' ? "step3rd" : "step2nd"
+      }else if(this.step == 3){
+        return this.type == 'founder' ? "step4th" : "step3rd"
+      }else {
+        return "stepLast"
+      }
+    }
+  },
   methods: {
     onFileChange(e) {
       const image = e.target.files[0];
@@ -334,12 +417,6 @@ export default {
     },
     next: function(){
       let _this = this
-      let vkl = moment(_this.model.year + " " + _this.model.month + " " + _this.model.day).format('YYYY-MM-DD')
-      console.log(vkl)
-      if(this.step == 0){
-          this.step++
-          return
-      }
       if(this.step == 1){
         if(
           !this.model.first_name || !this.model.last_name || !this.model.email
@@ -357,7 +434,7 @@ export default {
         }
       }
 
-      if(this.step == 2){
+      if(this.step == 2 && this.type != 'founder'){
         if(
           !this.model.reason || !this.model.bring_to || !this.model.usage_criteria|| !this.model.member_other
           ){
@@ -368,6 +445,26 @@ export default {
           return
         }
       }
+
+      if((this.step == 3 && this.type != 'founder') || (this.step == 2 && this.type == 'founder')){
+        if(!this.model.membership_type){
+          toastr.error("Please choose membership type")
+        }else {
+          this.step++
+          return
+        }
+      }
+
+      if((this.step == 4 && this.type != 'founder') || (this.step == 3 && this.type == 'founder')){
+        if(!this.model.checkbox1 || !this.model.checkbox2 ){
+          toastr.error("Please agree")
+        }else {
+          this.step++
+          return
+        }
+      }
+
+
     },
     submit: function(){
       console.log(this.step)
@@ -376,8 +473,12 @@ export default {
         params.gender = (_this.model.gender == "Male") ? 0 : 1
         params.dob = moment(_this.model.year + " " + _this.model.month + " " + _this.model.day).format('YYYY-MM-DD')
         params.avatar = _this.image_preview
+        delete params['days']
+        delete params['months']
+        delete params['years']
+        delete params['countries']
         console.log(params)
-        return
+        return params
         axios.post(
           './register-membership', params
         ).then(function(response){
@@ -385,7 +486,7 @@ export default {
             toastr.error(response.data.message)
           }else {
             toastr.success(response.data.message)
-            setTimeout(() => window.location.href = './', 1500)
+            setTimeout(() => window.location.href = './thankyou', 1500)
           }
         });
     }
