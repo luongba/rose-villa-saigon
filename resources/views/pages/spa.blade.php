@@ -1,19 +1,22 @@
 @extends('master')
 @section('content')
-  <div class="innerpage-style1">
+  <div class="innerpage-style1 spa-page">
     <span class="leftpageimg"></span>
     <span class="rightpageimg"></span>
     <section class="banner-innerpage">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h1>
+            {{-- <h1>
               <span class="title-icon-left"></span>
               <span class="title-icon-right"></span>
               <span class="title-icon-top"></span>
               <span class="title-icon-bottom"></span>
                Wellness & Beauty
-            </h1>
+            </h1> --}}
+            <h1 class="title-innerpage2">
+            <span><span style="display: none;">About Us <br/>Giới Thiệu</span></span>
+          </h1>
           </div>
         </div>
       </div>   

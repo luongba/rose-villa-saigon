@@ -1,17 +1,17 @@
 <template>
 	<div class="">
-    <div id="recaptcha-container"></div>
+    <div id="recaptcha-container" style="visibility: hidden;"></div>
 		<div class="content-login content-popup" v-if="view == 'dangnhap'">
 			<h3 class="modal-title">Login</h3>
       <form name="loginForm" class="form-control-user" method="post" action="" data-parsley-validate @submit.prevent="dangnhap">
         
         	<!-- <span v-if="err_text" class="text-danger">{{ err_text }}</span> -->
           <div class="form-group popup-input-style">
-            <vue-tel-input v-model="phone_number"  @validate="checkPhone" :preferredCountries="['VN', 'US']" ></vue-tel-input>
+            <vue-tel-input v-model="phone_number"  @validate="checkPhone" :preferredCountries="['VN', 'US']" placeholder="09xx-xxx-xxx"></vue-tel-input>
             <p v-if="validphone">{{ validphone }}</p>
           </div>
           <div class="form-group popup-input-style">
-              <input v-model="password" type="password" class="form-control-elm input-password" placeholder="Password" autocomplete="off" data-parsley-required data-parsley-minlength="6">
+              <input v-model="password" type="password" class="form-control-elm input-password" placeholder="123-456" autocomplete="off" data-parsley-required data-parsley-minlength="6">
               
           </div>
           <div class="form-group popup-input-style">

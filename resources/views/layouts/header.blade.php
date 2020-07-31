@@ -1,4 +1,4 @@
-  <a class="logo-landing" href="{{route('welcome')}}"><img src="{{asset('public/images/logo.png')}}" /></a>
+  <a class="logo-landing" href="{{route('welcome')}}"><img src="{{asset('public/images/images/logo-vien-den.png')}}" /></a>
   <section class="header-landing landingstyle">
     <div class="container-fluid">
       @if(Auth::user())
