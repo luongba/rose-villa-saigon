@@ -148,19 +148,22 @@ class UserController extends Controller
 			'email' => 'required|email|unique:users,email',
 			'phone' => 'required|unique:users,phone',
 			'gender' => 'required|min:0|max:1',
-			'dob' => 'required',
+			'dob' => 'required|date|before:-18years',
 			'occupation' => 'required',
 			'address_one' => 'required',
 			'city' => 'required',
 			'post_code' => 'required',
 			'country' => 'required',
 			'avatar' => 'required',
-			'type_user' => 'required|min:1|max:2',
+			'type_user' => 'required|integer|in:'.config('constants.MEMBERSHIP_TYPE_FOUNDER').','.config('constants.MEMBERSHIP_TYPE_REGULAR'),
 			'reason' => 'required_if:type_user,2',
 			'usage_criteria' => 'required_if:type_user,2',
 			'bring_to' => 'required_if:type_user,2',
 			'member_other' => 'required_if:type_user,2',
 			'membership_type' => 'required|min:1|max:9',
+		],
+		[
+			'dob.before' => 'Thành viên phải trên 18 tuổi'
 		]);
 		if ($validator->fails()) {
 			if ($validator->errors()->first('first_name') != null) {
