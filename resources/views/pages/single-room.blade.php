@@ -53,18 +53,23 @@
 			    	<div class="rightroom">
 			    		<div class="layout__item desk-one-whole room-details__description">
 				          	<div class="content-editer-room editor-style">
-				            {!!$singleroom->description!!}
-				            @auth
-				              	<button-show-modal 
-					                :classname="'bookingaction radius_4'" 
-					                :text="'Booking Now'"
-					                :type="'3'"
-					                :booking_id="{{$singleroom->id}}"
-				              	></button-show-modal>
-				            @endauth
+				            	{!!$singleroom->description!!}
+			        		</div>
 			        	</div>
 			    	</div>
 			    </div>
+			</div>
+			<div class="bottomroom">
+				@auth
+			      	<button-show-modal 
+			            :classname="'bookingaction radius_4'" 
+			            :text="'Booking Now'"
+			            :type="'3'"
+			            :booking_id="{{$singleroom->id}}"
+			      	></button-show-modal>
+			    @else
+					<button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Table</button>
+			    @endauth
 			</div>
 		</div>
     </div>

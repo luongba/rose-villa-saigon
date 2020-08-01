@@ -115,29 +115,35 @@ img.aligncenter{
 		font-size: 30px;
 		line-height: 1.5; 
 		font-weight:normal;
+		font-family: 'spectralitalic';
 	}
 	h2, .h2 {
 		font-size: 22px;
 		font-weight:normal;
 		line-height: 1.5; 
+		font-family: 'spectralitalic';
 	}
 	h3, .h3 {
 		font-size: 18px;
 		font-weight:normal;
 		line-height: 1.5; 
 		color:#333;
+		font-family: 'spectralitalic';
 	}
 	h4, .h4 {
 		font-size: 16px; 
 		line-height: 1.5; 
+		font-family: 'spectralitalic';
 	}
 	h5, .h5 {
 		font-size: 15px; 
 		line-height: 1.5; 
+		font-family: 'spectralitalic';
 	}
 	h6, .h6 { 
 		font-size: 13px;
 		line-height: 1.4; 
+		font-family: 'spectralitalic';
 	}
 	em { font-style: italic; }
 	strong, b { font-weight: bold;}
@@ -1034,6 +1040,14 @@ body.singleroom .toggled-header{
 	float:left;
 	padding-left:15px;
 }
+.bottomroom{
+	width:100%;
+	float:left;
+}
+.bottomroom button{
+	margin:15px auto;
+	float:none;
+}
 
 .showmenumobile{
 	display: none;
@@ -1383,6 +1397,10 @@ a.username-bar{
 }
 .bookingpopup .modal-content{
 	background:#fff;
+	background:rgba(255,255,255,0)
+}
+.bookingpopup .modal-body{
+	background:#fff;
 }
 .content-popup{
 	color:#fff;
@@ -1671,7 +1689,10 @@ a.username-bar{
 	background:#252525;
 }
 .popup-input-style2 textarea{
-	resize:none;
+	resize: none;
+	line-height: 22px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 .textarea-label{
 	display:block;
@@ -2818,6 +2839,7 @@ body.welcome {
 	display:block;
 	background:url(images/bg_border_content4.png) repeat-y;
 }
+
 /* STYLE VERSION3 - 20-07 */
 .innerpage-style1{
 	width:100%;
@@ -2826,11 +2848,16 @@ body.welcome {
 	min-height:980px;
 	float:left;
 	padding-top:60px;
+}
+	/*
 	background:url(images/bg/bgct.png) no-repeat center top;
 	background-size:cover;
-}
+	*/
+
+/*
 .innerpage-style1.about-page{
 	background-image:url(images/bg/abbg.png);
+	background-size:cover;
 }
 .innerpage-style1.fd-page{
 	background-image:url(images/bg/bgevent.png);
@@ -2841,14 +2868,18 @@ body.welcome {
 .innerpage-style1.spa-page{
 	background-image:url(images/bg/bgevent.png);
 }
-
+*/
+.thankyou-page{
+	background-image:url(images/bg/bg_thankyou.png);
+	background-size:cover;
+}
 .bgimg{
 	width:100%;
 	left:0;
 	top:0;
 	bottom:0;
 	display:block;
-	background:url(images/indexbg.png)no-repeat;
+	background:url(images/bg/indexbg.png)no-repeat;
 	background-size:cover;
 	position:absolute;
 	z-index:-1;
@@ -2861,7 +2892,7 @@ body.welcome {
 	display:block;
 	position:absolute;
 	z-index:0;
-	background:rgba(0,0,0,0.6);
+	background:rgba(0,0,0,0.3);
 }
 
 
@@ -2882,7 +2913,7 @@ body.welcome {
 	top:0;
 	bottom:0;
 	display:block;
-	background:rgba(0,0,0,0.6);
+	background:rgba(0,0,0,0.3);
 	position:absolute;
 	z-index:0;
 }
@@ -2965,17 +2996,53 @@ body.welcome {
 	position:relative;
 	z-index:1;
 }
-.title-innerpage3{
-    width: 300px;
-    height: 190px;
-    background: url(images/images/bg-title3.png) no-repeat;
-	background-size:cover;
-	padding:54px;
+.content-thankyou-page{
+    width: 432px;
+    height: 320px;
+	padding:75px 66px;
+    background: url(images/bg_content_thankyou.png) no-repeat;
 	margin:0 auto;
 	line-height:1.1;
 }
-
-
+.content-thankyou-page h3{
+	font-size:18px;
+	text-align:center;
+	font-weight:600;
+	text-transform:uppercase;
+	position:relative;
+	margin-bottom:20px;
+	padding-bottom:20px;
+}
+.content-thankyou-page h3::after{
+	width:10px;
+	height:10px;
+	bottom:0;
+	left:50%;
+	margin-left:-5px;
+	content:'';
+	display:block;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-o-border-radius: 50%;
+	border-radius: 50%;
+	background:#252525;
+	position:absolute;
+}
+.content-thankyou-page p{
+	text-transform:uppercase;
+	line-height:24px;
+	text-align:center;
+	margin-bottom:12px;
+}
+.logo-thankyou{
+	margin:0px auto 100px auto;
+}
+.logo-thankyou img{
+	margin:0 auto;
+}
+.thankyou-page >section.simpe-content-page{
+	padding-top:100px;
+}
 .title-innerpage3 > span{
 	width:100%;
 	height:100%;
@@ -3485,6 +3552,19 @@ ul.step-membership{
 	border-color:#fff;
 }
 
+.bgfix{
+    width: 100%;
+	height:100%;
+	position:fixed;
+    left: 0;
+    top: 0;
+    display: block;
+    background: url(images/bg/abbg.png)no-repeat;
+        background-size: auto;
+    background-size: cover;
+    z-index: -1;
+}
+
 
 /* Responsive */
 
@@ -3754,3 +3834,6 @@ ul.step-membership{
 #recaptcha-container{
 	display:none !important;
 }
+
+
+

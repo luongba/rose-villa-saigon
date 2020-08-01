@@ -7,6 +7,7 @@
     @if(!Auth::user())
       @include('popups.login-popup')
     @endif
+         <div class="bgfix"></div>
       @yield('content')
       @include('layouts.footer')
     </div>

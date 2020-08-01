@@ -39,12 +39,14 @@
                 {!!$val->description!!}
               </div>
               @auth
-              <button-show-modal 
-                :classname="'bookingaction radius_4'" 
-                :text="'Booking Table'"
-                :type="'1'"
-                :booking_id="{{$val->id}}"
-              ></button-show-modal>
+                <button-show-modal 
+                  :classname="'bookingaction radius_4'" 
+                  :text="'Booking Table'"
+                  :type="'1'"
+                  :booking_id="{{$val->id}}"
+                ></button-show-modal>
+              @else
+                <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Table</button>
               @endauth
           </div>
           <div class="fdimg">
