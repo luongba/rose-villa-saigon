@@ -227,10 +227,7 @@ class UserController extends Controller
 		]);
 		DB::beginTransaction();
 		try {
-			$request->request->add([
-				'user_id' => Auth::id()
-			]);
-			$paramUserMeta = $request->only('user_id', 'first_name', 'last_name', 'email', 'phone', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user');
+			$paramUserMeta = $request->only('first_name', 'last_name', 'email', 'phone', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user');
 			if ($request->type_user == 2) {
 				$paramUserMeta['reason'] =  $request->reason;
 				$paramUserMeta['usage_criteria'] =  $request->usage_criteria;
