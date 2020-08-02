@@ -405,7 +405,7 @@
                 arr.push($(this).data('id'));
                 var selected_values = arr.join(",");
 
-                var link = "{{route('booking-party.accept')}}";
+                var link = "{{route('booking-room.accept')}}";
                 $.ajax({
                     headers:{
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -417,7 +417,7 @@
                         console.log(data);
                         if(data.success){
                             alert(data.message);
-                            window.location.reload();                            
+                            window.location.reload();
                         }else{
                             alert(data.message);
                         }
@@ -434,7 +434,7 @@
                 var arr = [];
                 arr.push($(this).data('id'));
                 var selected_values = arr.join(",");
-                var link = "{{route('booking-party.cancel')}}";
+                var link = "{{route('booking-room.cancel')}}";
                 $.ajax({
                     headers:{
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

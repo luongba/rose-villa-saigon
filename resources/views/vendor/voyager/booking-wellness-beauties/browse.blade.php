@@ -405,7 +405,7 @@
                 arr.push($(this).data('id'));
                 var selected_values = arr.join(",");
 
-                var link = "{{route('booking-party.accept')}}";
+                var link = "{{route('booking-spa.accept')}}";
                 $.ajax({
                     headers:{
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -434,7 +434,7 @@
                 var arr = [];
                 arr.push($(this).data('id'));
                 var selected_values = arr.join(",");
-                var link = "{{route('booking-party.cancel')}}";
+                var link = "{{route('booking-spa.cancel')}}";
                 $.ajax({
                     headers:{
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
