@@ -10,8 +10,8 @@
     <section v-else class="content-membership">
       <div class="header-mbs">
         <div class="container">
-          <h3 v-if="type == 'founder'">Early Founder</h3>
-          <h3 v-if="type == 'regular'">Regular Member</h3>
+          <h3 v-if="type == 'founder'">Founder Application</h3>
+          <h3 v-if="type == 'regular'">Regular Application</h3>
           <ul class="step-membership">
             <li v-for="(item,key) in steps" :class="step==key+1 ? 'currentstep' : ''">
               <span class="numberstep radius_50">{{ key+1 }}</span><span class="textli">{{ item }}</span>
@@ -123,7 +123,8 @@ export default {
       user_data: [],
       image_preview: null,
       model: {
-        countries: [],
+        countries: ['Việt Nam'],
+        cities: ['Thành phố Hồ Chí Minh', 'Hà Nội', 'Đà Nẵng', 'Hải Phòng', 'Cần Thơ'],
         years: [],
         months: [],
         days: [],
@@ -273,10 +274,16 @@ export default {
             required: false
           },
           {
-            type: 'input',
+            type: 'select',
             inputType: 'text',
             label: 'City',
             model: 'city',
+            selectOptions: {
+              noneSelectedText: "Select City",
+            },
+            values: function(model, schema){
+              return model.cities
+            },
             required: true,
             validator: VueFormGenerator.validators.string
           },
@@ -372,18 +379,16 @@ export default {
       this.steps = ['About You', 'Why You?', 'Membership Type', 'Payment']
     }
     let _this = this
-    axios.get(
-      './membership-type'
-    ).then(function(response){
-      _this.options = response.data
-    });
-    axios.get(
-      'https://restcountries.eu/rest/v2/all'
-    ).then(function(response){
-      response.data.forEach(function(item){
-        _this.model.countries.push(item.name)
-      })
-    });
+    // get countries
+    if(this.type != "founder"){
+      axios.get(
+        'https://restcountries.eu/rest/v2/all'
+      ).then(function(response){
+        response.data.forEach(function(item){
+          _this.model.countries.push(item.name)
+        })
+      });
+    }
     for (var i = 1960; i < 2005; i++) {
       _this.model.years.push(i)
     }
@@ -417,7 +422,12 @@ export default {
     },
     next: function(){
       let _this = this
+      _this.model.dob = moment(_this.model.year + " " + _this.model.month + " " + _this.model.day).format('YYYY-MM-DD')
+
       if(this.step == 1){
+        var years_old = moment().diff(_this.model.dob, 'years');
+        console.log(years_old)
+
         if(
           !this.model.first_name || !this.model.last_name || !this.model.email
            || !this.model.gender || !this.model.year  || !this.model.month  || !this.model.day 
@@ -425,10 +435,26 @@ export default {
            || !this.model.city || !this.model.post_code
           ){
           toastr.error("Please fill all fields")
+        }else if(years_old < 18) {
+          toastr.error("You can not submit because year old < 18")
+          return
         }else if(!this.image_preview) {
           toastr.error("Please select Avatar")
           return
         }else {
+          // get member package
+          axios.get(
+            './membership-type',{
+              params:{
+                dob: _this.model.dob,
+                city: _this.model.city,
+                type: _this.type == 'founder' ? 1 : 2
+              }
+            }
+          ).then(function(response){
+            _this.options = response.data
+          })
+
           this.step++
           return
         }
@@ -477,8 +503,8 @@ export default {
         delete params['months']
         delete params['years']
         delete params['countries']
+        delete params['cities']
         console.log(params)
-        return params
         axios.post(
           './register-membership', params
         ).then(function(response){
