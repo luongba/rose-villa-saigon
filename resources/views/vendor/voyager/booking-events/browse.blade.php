@@ -416,8 +416,8 @@
                     success:function(data){
                         console.log(data);
                         if(data.success){
-                            window.location.reload();
                             alert(data.message);
+                            window.location.reload();
                         }else{
                             alert(data.message);
                         }
@@ -445,8 +445,8 @@
                     success:function(data){
                         console.log(data);
                         if(data.success){
-                            window.location.reload();
                             alert(data.message);
+                            window.location.reload();
                         }else{
                             alert(data.message);
                         }

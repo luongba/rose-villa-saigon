@@ -1,0 +1,6 @@
+<?php
+
+return [
+	"MEMBERSHIP_TYPE_FOUNDER" => 0,
+	"MEMBERSHIP_TYPE_REGULAR" => 1,
+];

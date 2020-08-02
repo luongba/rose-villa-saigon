@@ -119,11 +119,11 @@ Route::post('confirm-registration', 'UserController@confirmRegister')->name('use
 
 Route::post('login', 'UserController@login')->name('user.login');
 
+Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
+
+Route::post('register-membership', 'UserController@registerMembership')->name('user.register_membership');
+
 Route::prefix('/')->middleware('auth')->group(function() {
-	Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
-
-	Route::post('register-membership', 'UserController@registerMembership')->name('user.register_membership');
-
 	Route::post('booking', 'HomeController@booking')->name('user.booking');
 });
 
