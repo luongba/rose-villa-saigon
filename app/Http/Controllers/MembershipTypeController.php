@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+use Carbon\Carbon;
 
 use App\Models\MembershipType;
 
@@ -13,9 +15,56 @@ class MembershipTypeController extends Controller
 		$this->membershipType = new MembershipType;
 	}
 
-	public function list()
+	private function validateListMembershipType($request)
 	{
-		return $this->membershipType->with('benefitMembers:name')
-		->get(['id', 'name']);
+		$validator = Validator::make($request, [
+			'dob' => 'required|date|before:-18years',
+			'city' => 'required',
+			'type' => 'required|integer|in:'.config('constants.MEMBERSHIP_TYPE_FOUNDER').','.config('constants.MEMBERSHIP_TYPE_REGULAR')
+		],
+		[
+			'dob.before' => 'Thành viên phải trên 18 tuổi'
+		]);
+		if ($validator->fails()) {
+			if ($validator->errors()->first('dob') != null) {
+				return $validator->errors()->first('dob');
+			} elseif ($validator->errors()->first('city') != null) {
+				return $validator->errors()->first('city');
+			} elseif ($validator->errors()->first('type') != null) {
+				return $validator->errors()->first('type');
+			}
+		}
+	}
+
+	public function list(Request $request)
+	{
+		$resultValidate = $this->validateListMembershipType($request->all());
+		if ($resultValidate != "") {
+			return response()->json([
+				"status" => false,
+				"message" => $resultValidate
+			]);
+		}
+		$year = Carbon::now()->diffInYears(Carbon::parse($request->dob));
+		if ($request->city == "Thành phố Hồ Chí Minh") {
+			// in HCM city
+			if ($year >= 18 && $year <= 30) {
+				return $this->membershipType->with('benefitMembers:name')
+				->whereIn('id', [])
+				->where('type', $request->type)
+				->get(['id', 'name']);
+			} else {
+				return $this->membershipType->with('benefitMembers:name')
+				->whereIn('id', [])
+				->where('type', $request->type)
+				->get(['id', 'name']);
+			}
+		} else {
+			//traveller
+			return $this->membershipType->with('benefitMembers:name')
+			->whereIn('id', [])
+			->where('type', $request->type)
+			->get(['id', 'name']);
+		}
 	}
 }
