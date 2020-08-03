@@ -121,11 +121,12 @@ class UserController extends Controller
 				]);
 			} else {
 				$data = array();
-				if ($user->type_user === 1) {
+				/*if ($user->type_user === 1) {
 					$data['url'] = route('founder');
 				} else {
 					$data['url'] = route('regularmember');
-				}
+				}*/
+				$data['url'] = route('welcome');
 				return response()->json([
 					'status' => true,
 					'message' => 'Login successfully',
@@ -227,7 +228,7 @@ class UserController extends Controller
 		]);
 		DB::beginTransaction();
 		try {
-			$paramUserMeta = $request->only('first_name', 'last_name', 'email', 'phone', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user');
+			$paramUserMeta = $request->only('first_name', 'last_name', 'email', 'phone', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user', 'membership_type_id');
 			if ($request->type_user == 2) {
 				$paramUserMeta['reason'] =  $request->reason;
 				$paramUserMeta['usage_criteria'] =  $request->usage_criteria;

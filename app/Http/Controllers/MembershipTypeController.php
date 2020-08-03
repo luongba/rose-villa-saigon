@@ -46,25 +46,26 @@ class MembershipTypeController extends Controller
 			]);
 		}
 		$year = Carbon::now()->diffInYears(Carbon::parse($request->dob));
-		if ($request->city == "Thành phố Hồ Chí Minh") {
-			// in HCM city
-			if ($year >= 18 && $year <= 30) {
-				return $this->membershipType->with('benefitMembers:name')
-				->whereIn('id', [])
-				->where('type', $request->type)
-				->get(['id', 'name']);
-			} else {
-				return $this->membershipType->with('benefitMembers:name')
-				->whereIn('id', [])
-				->where('type', $request->type)
-				->get(['id', 'name']);
-			}
-		} else {
-			//traveller
-			return $this->membershipType->with('benefitMembers:name')
+		$data = array();
+		if ($year >= 18 && $year <= 30) {
+			$data = $this->membershipType->with('benefitMembers:name')
 			->whereIn('id', [])
 			->where('type', $request->type)
-			->get(['id', 'name']);
+			->get(['id', 'name', 'price'])->toArray();
+		} else {
+			$data = $this->membershipType->with('benefitMembers:name')
+			->whereIn('id', [])
+			->where('type', $request->type)
+			->get(['id', 'name', 'price'])->toArray();
 		}
+		if ($request->city != "Thành phố Hồ Chí Minh") {
+			//traveller
+			$traveller = $this->membershipType->with('benefitMembers:name')
+			->whereIn('id', [])
+			->where('type', $request->type)
+			->get(['id', 'name', 'price'])->toArray();
+			$data = array_merge($data, $traveller);
+		}
+		return $data;
 	}
 }
