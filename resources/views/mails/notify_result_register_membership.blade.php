@@ -7,7 +7,7 @@
 <body>
 	<h2>Rose Villa Saigon</h2>
 	<p>Thông báo kết quả đăng ký thành viên Rose Villa Saigon</p>
-	<p>Trân trọng thông báo: Đơn đăng ký thành viên Rose Villa Saigon của bạn đã {{ ($user->statusUserMeta === 1) ? "được duyệt" : "bị hủy" }}</p>
+	<p>Trân trọng thông báo: Đơn đăng ký thành viên Rose Villa Saigon của bạn đã {{ ($userMeta->status === 1) ? "được duyệt" : "bị hủy" }}</p>
 	<p>Thân!!!</p>
 </body>
 </html>

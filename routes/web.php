@@ -123,6 +123,8 @@ Route::get('membership-type', 'MembershipTypeController@list')->name('membership
 
 Route::post('register-membership', 'UserController@registerMembership')->name('user.register_membership');
 
+Route::post('check-phone-email', 'UserController@checkPhoneEmail')->name('check_phone_email');
+
 Route::prefix('/')->middleware('auth')->group(function() {
 	Route::post('booking', 'HomeController@booking')->name('user.booking');
 });

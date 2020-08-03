@@ -251,4 +251,34 @@ class UserController extends Controller
 			'message' => 'Member registration successfully',
 		]);
 	}
+
+	private function validateEmailPhone($request)
+	{
+		$validator = Validator::make($request, [
+			'email' => 'required|email|unique:users,email|unique:user_metas,email',
+			'phone' => 'required|unique:users,phone|unique:user_metas,phone',
+		]);
+		if ($validator->fails()) {
+			if ($validator->errors()->first('email') != null) {
+				return $validator->errors()->first('email');
+			} else if($validator->errors()->first('phone') != null) {
+				return $validator->errors()->first('phone');
+			}
+		}
+	}
+
+	public function checkPhoneEmail(Request $request)
+	{
+		$resultValidate = $this->validateEmailPhone($request->all());
+		if ($resultValidate != "") {
+			return response()->json([
+				"status" => false,
+				"message" => $resultValidate
+			]);
+		}
+		return response()->json([
+			'status' => true,
+			'message' => 'You can use this email & phone',
+		]);
+	}
 }
