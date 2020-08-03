@@ -49,6 +49,7 @@
             <div class="col-md-12">
 
                 <div class="panel panel-bordered" style="padding-bottom:5px;">
+                    {{--
                     <!-- form start -->
                     <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">First Name</h3>
@@ -138,7 +139,7 @@
                     </div>
                     <div class="panel-body" style="padding-top:0;">
                          <p>{{$dataTypeContent->country}}</p>
-                   </div>
+                   </div>--}}
 
 
                     @foreach($dataType->readRows as $row)

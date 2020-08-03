@@ -35,13 +35,11 @@
                   </div> 
                 </div>
               </div>
-              <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
             </div>
           </div>
           <div class="stepmbs step2nd" v-if="step == 2 && type != 'founder'">
             <div class="container">
               <vue-form-generator :schema="step2" :model="model" :options="formOptions"></vue-form-generator>
-              <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
             </div>
           </div>
           <div :class="classStep" class="stepmbs" v-if="step == 2 && type == 'founder'">
@@ -64,7 +62,6 @@
                     </div>
                 </div>
               </div>
-              <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
             </div>
           </div>
           <div :class="classStep" class="stepmbs" v-if="step == 3 && type != 'founder'">
@@ -86,14 +83,13 @@
                       </div>
                     </div>
                 </div>
-                <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
               </div>
             </div> 
           </div>
           <div :class="classStep" class="stepmbs" v-if="(step == 3 && type == 'founder') || step == 4">
           	<div class="container">
           		<div class="row">
-          			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          			<div class="parentradio col-lg-6 col-md-6 col-sm-6 col-xs-12">
           				<div class="opst4 styleshadow radius_8">
                     <label for="op1" class="content-tp-mbs">
             					<h3>Price Frequency Option A</h3>
@@ -101,11 +97,11 @@
             						Anual<br>
             						$50
             					</div>
-            					<div class="choseop"><input name="op1" id="op1" type="radio" value="1"> <span>Choose</span></div>
+            					<div class="choseop ctj"><input name="op1" id="op1" type="radio" value="1"> <span>Choose</span></div>
                     </label>
           				</div>
           			</div>
-          			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          			<div class="parentradio col-lg-6 col-md-6 col-sm-6 col-xs-12">
           				<div class="opst4 styleshadow radius_8">
                     <label for="op1" class="content-tp-mbs">
             					<h3>Price Frequency Option B</h3>
@@ -113,20 +109,27 @@
             						Quarterly<br>
             						$30
             					</div>
-            					<div class="choseop"><input name="op1" id="op2" type="radio" value="2"> <span>Choose</span></div>
+            					<div class="choseop ctj"><input name="op1" id="op2" type="radio" value="0"> <span>Choose</span></div>
                     </label>
           				</div>
           			</div>
           		</div>
-	            <input id="checkbox1" type="checkbox" v-model="model.agree">
-	            <label for="checkbox1">I understand that</label><br>
-	            <input id="checkbox2" type="checkbox" v-model="model.agree2">
-	            <label for="checkbox2">By applying I agree to abide the Rose Villa club</label>
+              <div class="agreestep4">
+	              <input id="checkbox1" type="checkbox" v-model="model.agree">
+	              <label for="checkbox1">I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis.</label>
+              </div>
+              <div class="agreestep4">
+	              <input id="checkbox2" type="checkbox" v-model="model.agree2">
+	              <label for="checkbox2">By applying I agree to abide the Rose Villa club sules and term & conditions of membership</label>
+              </div>
            	</div>
 
           </div>
-          <div class="container">
-            <button class="btn btn-primary buttonmbs" v-if="step==steps.length" type="submit">Submit</button>
+          <div class="container button2center">
+            <button class="btn btn-primary buttonmbs btback" v-if="step >1 && step<=steps.length" type="button" @click="back
+            ">Back</button>
+            <button class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">Next</button>
+            <button class="btn btn-primary buttonmbs btnext" v-if="step==steps.length" type="submit">Submit</button>
           </div>
         </form>
       </div>
@@ -542,7 +545,18 @@ export default {
             setTimeout(() => window.location.href = './thankyou', 1500)
           }
         });
+    },
+    back: function(){
+      this.step--
     }
   }
 }
+$(document).ready(function(){
+  var rBtnVal = $('.ctj input').val();
+    if(rBtnVal == "1"){
+        $(this).closest('.parentradio').addClass('active');
+    }else{ 
+        $(this).closest('.parentradio').removeClass('active');
+    }
+});
 </script>

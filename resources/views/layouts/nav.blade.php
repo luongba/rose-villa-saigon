@@ -5,7 +5,7 @@
         <li class="nav-item has-child-menu">
             <a class="nav-link" href="javascript:;">Membership</a>
             <ul class="sub-menu">
-                {{-- <li><a href="{{route('regularmember')}}">Regular Member</a></li> --}}
+                <li><a href="{{route('regularmember')}}">Regular Member</a></li>
                 <li><a href="{{route('founder')}}">Founder Application</a></li>
             </ul>
         </li>
