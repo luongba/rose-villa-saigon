@@ -7,21 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-use App\User;
+use App\Models\UserMeta;
 
 class MailNotifyResultRegisterMembership extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $userMeta;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(UserMeta $userMeta)
     {
-        $this->user = $user;
+        $this->userMeta = $userMeta;
     }
 
     /**

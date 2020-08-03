@@ -29,7 +29,7 @@ class SendMailNotifyResultRegisterMembership
      */
     public function handle(AfterConfirmMembership $event)
     {
-        Mail::to($event->user)->send(new MailNotifyResultRegisterMembership($event->user));
+        Mail::to($event->userMeta->email)->send(new MailNotifyResultRegisterMembership($event->userMeta));
         dispatch(new SendMailNotify());
     }
 }
