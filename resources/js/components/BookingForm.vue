@@ -141,9 +141,9 @@ export default {
           if(response.data.status == false){
             toastr.error(response.data.message)
           }else {
-            this.$refs.closeModal.click();
             _this.model = {}
             toastr.success(response.data.message)
+            this.$refs.closeModal.click();
           }
         });
     }

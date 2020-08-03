@@ -49,12 +49,12 @@ class MembershipTypeController extends Controller
 		$data = array();
 		if ($year >= 18 && $year <= 30) {
 			$data = $this->membershipType->with('benefitMembers:name')
-			->whereIn('id', [])
+			->whereIn('id', [9, 10])
 			->where('type', $request->type)
 			->get(['id', 'name', 'price'])->toArray();
 		} else {
 			$data = $this->membershipType->with('benefitMembers:name')
-			->whereIn('id', [])
+			->whereIn('id', [8])
 			->where('type', $request->type)
 			->get(['id', 'name', 'price'])->toArray();
 		}

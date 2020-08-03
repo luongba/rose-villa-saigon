@@ -94,14 +94,13 @@
                             @if($edit)
                                 @php
                                     if($dataTypeContent->price){
-                                        $price=json_decode($dataTypeContent->price);
-                                        $price_month_12 = $price->month_12->price;
-                                        $price_month_3 = $price->month_3->price;
+                                        $price=$dataTypeContent->price;
+                                        $price_month_12 = $price['month_12']['price'];
+                                        $price_month_3 = $price['month_3']['price'];
                                     }else{
                                         $price_month_12 = '';
                                         $price_month_3 = '';
                                     }
-                                    
                                 @endphp
                             @else
                                  @php

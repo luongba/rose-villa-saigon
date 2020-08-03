@@ -121,11 +121,12 @@ class UserController extends Controller
 				]);
 			} else {
 				$data = array();
-				if ($user->type_user === 1) {
+				/*if ($user->type_user === 1) {
 					$data['url'] = route('founder');
 				} else {
 					$data['url'] = route('regularmember');
-				}
+				}*/
+				$data['url'] = route('welcome');
 				return response()->json([
 					'status' => true,
 					'message' => 'Login successfully',

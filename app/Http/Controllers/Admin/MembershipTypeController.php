@@ -78,7 +78,7 @@ class MembershipTypeController extends VoyagerBaseController
 
         event(new BreadDataAdded($dataType, $data));
         /*update price*/
-        $data->price = json_encode($price);
+        $data->price = $price;
         $data -> save();
         /*end update*/
 
@@ -146,7 +146,7 @@ class MembershipTypeController extends VoyagerBaseController
 
         event(new BreadDataUpdated($dataType, $data));
         /*update price*/
-        $data->price = json_encode($price);
+        $data->price = $price;
         $data->save();
         /*end update*/
 
