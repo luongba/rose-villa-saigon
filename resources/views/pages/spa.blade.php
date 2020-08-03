@@ -48,7 +48,7 @@
                 :booking_id="{{$val->id}}"
               ></button-show-modal>
             @else
-                <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Table</button>
+                <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Spa</button>
             @endauth
             <div class="clear"></div>
           </div>

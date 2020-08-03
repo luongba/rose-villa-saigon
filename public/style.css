@@ -1021,7 +1021,7 @@ body.singleroom .header{
 	left:-320px;
 }
 body.singleroom  .footer-landing {
-    z-index: 99999;
+    z-index: 99;
     position: fixed;
 	left:0;
 	bottom:0;
@@ -2929,8 +2929,37 @@ body.welcome {
 	position:absolute;
 	z-index:0;
 }
+.rightmaps{
+	position:absolute;
+	left:50%;
+	width:50%;
+	top:0;
+	bottom:0;
+	background:rgba(32,29,29,0.9);
+	padding-top:60px;
+}
+.contentmaps{
+	position:relative;
+	width:100%;
+	float:left;
+	height:auto;
+}
+.dlmap{
+	height:50px;
+	display:table;
+	line-height:48px;
+	border:1px solid #fff;
+	text-transform:uppercase;
+	padding:0px 15px;
+	margin:0 auto;
+	font-size:18px;
+	color:#fff;
+}
 
 
+.contentmaps >img{
+	margin: 140px auto 80px auto;
+}
 .ctbox1{
 	color:#636363;
 	position:relative;
@@ -3576,7 +3605,47 @@ ul.step-membership{
     background-size: cover;
     z-index: -1;
 }
-
+/* FOURDER */
+.opst4{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	margin-bottom:30px;
+}
+.opst4 h3{
+	width:100%;
+	color:#fff;
+	text-transform:uppercase;
+	float:left;
+	background:#1e1e1e;
+	line-height:40px;
+	padding:0px 20px;
+	font-size:16px;
+	font-weight:600;
+	display:block;
+	margin-bottom:0;
+}
+.opst4 .ct-opst4{
+	height:auto;
+	padding:15px 20px;
+	line-height:30px;
+	width:100%;
+	float:left;
+	background: linear-gradient(#f7f7f7, #dfdfdf);
+}
+.opst4 .choseop{
+	color:#333;
+	float:left;
+}
+.opst4 .choseop span{
+	background:#fff;
+	color:#333;
+	text-transform:uppercase;
+}
+.opst4 .choseop:hover span{
+	background:#1e1e1e;
+	color:#fff;
+}
 
 /* Responsive */
 

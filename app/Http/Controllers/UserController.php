@@ -224,11 +224,12 @@ class UserController extends Controller
 			$avatar = null;
 		}
 		$request->merge([
-			'avatar' => $avatar
+			'avatar' => $avatar,
+			'membership_type_id' => $request->membership_type
 		]);
 		DB::beginTransaction();
 		try {
-			$paramUserMeta = $request->only('first_name', 'last_name', 'email', 'phone', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user');
+			$paramUserMeta = $request->only('first_name', 'last_name', 'email', 'phone', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user', 'membership_type_id');
 			if ($request->type_user == 2) {
 				$paramUserMeta['reason'] =  $request->reason;
 				$paramUserMeta['usage_criteria'] =  $request->usage_criteria;

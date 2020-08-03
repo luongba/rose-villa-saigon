@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-  <div class="innerpage-style1 about-page">
+  <div class="innerpage-style1 findus-page">
     <span class="leftpageimg"></span>
     <span class="rightpageimg"></span>
     <section class="innercontent content-inner50">
@@ -17,7 +17,10 @@
         </div>
     </section>
     <section class="rightmaps">
-      
+      <div class="contentmaps">
+        <img class="img-rightmap" src="{{asset('public/images/bg-right-map.png')}}" />
+        <a href="javascript:;" class="dlmap">DOWNLOAD MAP IN ROSE VILLA SAIGON</a>
+      </div>
     </section>
   </div>
 @endsection

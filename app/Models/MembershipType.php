@@ -29,7 +29,7 @@ class MembershipType extends Model
 
 	protected $casts = [
         'price' => 'array'
-    ]; 
+    ];
 	
     public function benefitMembers()
     {
