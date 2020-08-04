@@ -208,7 +208,7 @@ class MetaUserController extends VoyagerBaseController
                 $update_stt -> save();
                 $user = $update_stt->user;
                 /*sent email*/
-               event(new AfterConfirmMembership($user));
+               event(new AfterConfirmMembership($update_stt));
 
             }else{
                 return response()->json([
@@ -232,7 +232,7 @@ class MetaUserController extends VoyagerBaseController
                 $update_stt -> save();
                $user = $update_stt->user;
                 /*sent email*/
-               event(new AfterConfirmMembership($user));
+               event(new AfterConfirmMembership($update_stt));
             }else{
                 return response()->json([
                     'success' => false,

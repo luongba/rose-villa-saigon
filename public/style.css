@@ -2672,7 +2672,6 @@ body.welcome {
 	margin-left:-16px;
 }
 .social-ft a{
-	background:#2d4a87;
 	display:block;
 	height:32px;
 	width:32px;
@@ -2681,7 +2680,8 @@ body.welcome {
 	color:#fff;
 	height:32px;
 	width:32px;
-	line-height:31px;
+	line-height:32px;
+	font-size:32px;
 	text-align:center;
 	display:block;
 }
@@ -2716,6 +2716,7 @@ body.welcome {
 .container-page{
 	width:80%;
 	margin:0 auto;
+	
 }
 .pagetitle{
 	width:250px;
@@ -3044,6 +3045,7 @@ body.welcome {
     background: url(images/bg_content_thankyou.png) no-repeat;
 	margin:0 auto;
 	line-height:1.1;
+	margin-top:50px;
 }
 .content-thankyou-page h3{
 	font-size:18px;
@@ -3484,6 +3486,7 @@ ul.step-membership{
 	height:40px;
 	color:#474546;
 	background:#e1e1e1;
+	background:#1e1e1e;
 	line-height:40px;
 	border:none;
 	cursor:pointer;
@@ -3500,7 +3503,9 @@ ul.step-membership{
     width: 100%;
     height: 40px;
     color: #474546;
+	color: #fff;
     background: #e1e1e1;
+	background: #1e1e1e;
     line-height: 40px;
     display: block;
     text-align: center;
@@ -3510,11 +3515,11 @@ ul.step-membership{
 	border-radius: 0 0 4px 4px;
 }
 .active .choseop span{
-	background: #252525;
+	background: #a864a8;
 	color:#fff;
 }
 .options-mbs:hover .choseop span{
-	background:#252525;
+	background:#a864a8;
 	color:#fff;
 }
 
@@ -3646,9 +3651,26 @@ ul.step-membership{
 	background:#1e1e1e;
 	color:#fff;
 }
+.parentradio.active .opst4 .choseop span{
+	background:#1e1e1e;
+	color:#fff;
+}
+.opst4 label{
+	margin-bottom:0;
+	display:block;
+}
+.centerflex{
+	justify-content:center;
+}
+.button2center{
+	float:left;
+	width:100%;
+	
+}
 .button2center{
 	text-align:center;
 }
+.button2center a,
 .button2center button{
 	margin-left:15px;
 	margin-right:15px;
@@ -3674,7 +3696,12 @@ ul.step-membership{
 	left:0;
 	top:5px;
 }
-
+.subtitle-step2{
+	font-size:16px;
+	text-align:center;
+	font-weight:600;
+	padding-bottom:50px;
+}
 /* Responsive */
 
 @media only screen and (max-width: 1400px){

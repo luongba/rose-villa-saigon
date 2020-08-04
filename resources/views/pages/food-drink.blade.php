@@ -38,6 +38,7 @@
               <div class="ctevent">
                 {!!$val->description!!}
               </div>
+              <a href="javascript:;" class="bookingaction radius_4">View menu</a>
               @auth
                 <button-show-modal 
                   :classname="'bookingaction radius_4'" 
