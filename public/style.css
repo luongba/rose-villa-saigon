@@ -3056,6 +3056,15 @@ body.welcome {
 	margin-bottom:20px;
 	padding-bottom:20px;
 }
+.title-innerpage3{
+	width: 432px;
+    height: 320px;
+	padding:75px 66px;
+    background: url(images/bg_content_thankyou.png) no-repeat;
+	margin:0 auto;
+	line-height:1.1;
+	margin-top:50px;
+}
 .content-thankyou-page h3::after{
 	width:10px;
 	height:10px;
