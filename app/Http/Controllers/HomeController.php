@@ -316,4 +316,55 @@ class HomeController extends Controller
             ]);
         }
     }
+
+    /*get data country from json file*/
+    private function getDataCityFromJsonFile($linkStorage)
+    {
+        $jsonString = file_get_contents(base_path($linkStorage));
+        $data = json_decode($jsonString, true);
+        return $data['Sheet1'];;
+    }
+
+    public function listCountry()
+    {
+        $arrData = $this->getDataCityFromJsonFile('storage/files/country.json');
+        $result = array();
+        foreach ($arrData as $item) {
+            if (! in_array($item['country'], $result)) {
+                $result[$item['iso2']] = $item['country'];
+            }
+        }
+        return response()->json([
+            "status" => true,
+            "data" => $result
+        ]);
+    }
+
+    public function listProvinceByCountry(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'country' => 'required',
+        ]);
+        if ($validator->fails()) {
+            if ($validator->errors()->first('country') != null) {
+                return response()->json([
+                    "status" => false,
+                    "message" => $validator->errors()->first('country')
+                ]);
+            }
+        }
+        $arrData = $arrData = $this->getDataCityFromJsonFile('storage/files/country.json');
+        $result = array();
+        foreach ($arrData as $item) {
+            if ($item['iso2'] === $request->country) {
+                if (! in_array($item['admin_name'], $result)) {
+                    $result[] = $item['admin_name'];
+                }
+            }
+        }
+        return response()->json([
+            "status" => true,
+            "data" => $result
+        ]);
+    }
 }

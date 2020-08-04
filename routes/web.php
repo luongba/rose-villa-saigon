@@ -102,6 +102,10 @@ Route::prefix('/')->middleware('auth')->group(function() {
 });
 
 Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
+
+Route::get('country', 'HomeController@listCountry')->name('list_country');
+
+Route::get('province-by-country', 'HomeController@listProvinceByCountry')->name('list_province_by_country');
 /*END MANH_TU*/
 /**/
 Route::prefix('/admin-ajax')->middleware('auth')->group(function() {
