@@ -8,11 +8,19 @@
         <i class="{{ $dataType->icon }}"></i> {{ __('voyager::generic.viewing') }} {{ ucfirst($dataType->getTranslatedAttribute('display_name_singular')) }} &nbsp;
         @if($dataTypeContent->status == 0)
         <a class="btn btn-info accept_order"  data-id="{{$dataTypeContent->id }}"  onclick="acceptFunction()">
-                <span class="glyphicon glyphicon-pencil">Accept</span>
+                <span class="glyphicon glyphicon-pencil">Approve</span>
         </a>
         <a class="btn btn-danger cancel_order" data-id="{{$dataTypeContent->id }}"  onclick="cancelFunction()">
             <i class="voyager-pencil"></i><span class="hidden-xs hidden-sm">Cancel</span>
         </a>
+        @elseif($dataTypeContent->status == 1)
+            <a class="btn btn-success" style="margin-right: 20px;">
+                <span class="glyphicon glyphicon-check">Approved</span>
+            </a>
+        @elseif($dataTypeContent->status == 2)
+            <a class="btn btn-danger">
+                <i class="glyphicon glyphicon-check"></i><span class="hidden-xs hidden-sm"> Canceled</span>
+            </a>
         @endif
 
 
@@ -292,7 +300,7 @@
     </script>
      <script type="text/javascript">
         function acceptFunction() {
-        var r = confirm("You want to Receive this Member Registration?");
+        var r = confirm("Are you sure Approved this member?");
         if (r == true) {
             $(document).on('click', '.accept_order',function(e){
                 var arr = [];
@@ -323,7 +331,7 @@
     }
 
     function cancelFunction() {
-        var r = confirm("You want to Cancel this Member Registration?");
+        var r = confirm("Are you sure Cancel this member?");
         if (r == true) {
             $(document).on('click', '.cancel_order',function(e){
                 var arr = [];
