@@ -6,7 +6,7 @@
     <section class="innercontent content-inner50">
         <div class="about-ct ctbox1">
           <h1 class="title-innerpage2">
-            <span><span>How To <br/>Find Us</span></span>
+            <span><span>How To Find Us</span></span>
           </h1>
           <div class="abct-elm">
             <div class="gmaps">

@@ -6,7 +6,7 @@
     <section class="innercontent content-inner50">
         <div class="contact-ct ctbox1">
           <h1 class="title-innerpage2">
-            <span><span>Contact <br/>Liên Hệ</span></span>
+            <span><span>Contact Us</span></span>
           </h1>
 
                   <div class="ct-elm">

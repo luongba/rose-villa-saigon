@@ -2291,6 +2291,7 @@ div.permissions li i{
 .utility-room{
 	margin-top:15px;
 	color:#E6AF51;
+	padding-left:15px;
 }
 .icondr img{
 	margin:0 auto !important;
@@ -2979,26 +2980,25 @@ body.welcome {
 	background:url(images/Contact-us.png) no-repeat;
 }
 .title-innerpage2{
-	width:247px;
-	height:157px;
+	height:78px;
+	width:240px;
 	position:absolute;
-	top:-50px;
+	top:50px;
 	left:50%;
-	margin-left:-123px;
-	background:url(images/bg-title.png) no-repeat;
+	margin-left:-120px;
 }
 .title-innerpage2 span{
 	height:78px;
-	width:146px;
+	width:240px;
 	display:table;
-	margin:41px auto;
+	margin:0 auto;
 }
 .title-innerpage2 span span{
 	vertical-align:middle;
 	display:table-cell;
 	text-align:center;
-	font-size:16px;
-	color:#fff;
+	font-size:24px;
+	color:#252525;
 	text-transform:uppercase;
 }
 
@@ -3008,6 +3008,12 @@ body.welcome {
 	overflow-y:auto;
 	margin:0px auto;
 	text-align:justify
+}
+.singleroom-ct{
+	width:400px;
+}
+.room-details__description{
+	text-align:justify;
 }
 .ct-elm{
 	width:460px;
@@ -3056,15 +3062,7 @@ body.welcome {
 	margin-bottom:20px;
 	padding-bottom:20px;
 }
-.title-innerpage3{
-	width: 432px;
-    height: 320px;
-	padding:75px 66px;
-    background: url(images/bg_content_thankyou.png) no-repeat;
-	margin:0 auto;
-	line-height:1.1;
-	margin-top:50px;
-}
+
 .content-thankyou-page h3::after{
 	width:10px;
 	height:10px;
@@ -3105,7 +3103,6 @@ body.welcome {
 	vertical-align:middle;
 	display:table-cell;
 }
-@media only screen and (max-width: 560px){
 	.title-innerpage3{
 		width: 235px;
 		height: 149px;
@@ -3114,7 +3111,10 @@ body.welcome {
 		padding:40px;
 		font-size:24px;
 		line-height:1.2;
+		margin:50px auto;
 	}
+@media only screen and (max-width: 560px){
+
 	.innerpage-style1{
 		min-height:700px;
 	}

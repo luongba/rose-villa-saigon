@@ -55,7 +55,7 @@
                       </label>
                       <div class="bottom-option-mbs">
                         <div class="choseop">
-                          <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
+                          <input @change="changeType(option)" :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
                           <span>Choose Plan</span>
                         </div>
                       </div>
@@ -89,38 +89,25 @@
           <div :class="classStep" class="stepmbs" v-if="(step == 3 && type == 'founder') || step == 4">
           	<div class="container">
           		<div class="row">
-          			<div :class="model.vkl == 1 ? 'active' : ''" class="parentradio col-lg-6 col-md-6 col-sm-6 col-xs-12">
-          				<div class="opst4 styleshadow radius_8">
-                    <label for="op1" class="content-tp-mbs">
-            					<h3>Price Frequency Option A</h3>
-            					<div class="ct-opst4">
-            						Anual<br>
-            						$50
-            					</div>
-            					<div class="choseop ctj"><input v-model="model.vkl" name="op1" id="op1" type="radio" value="1"> <span>Choose</span></div>
+          			<div :class="model.frequency == key ? 'active' : ''" class="parentradio col-lg-6 col-md-6 col-sm-6 col-xs-12" v-for="(item, key) in model.price">
+                  <div class="opst4 styleshadow radius_8">
+                    <label :for="key" class="content-tp-mbs">
+                      <h3>Price Frequency Option {{item.name}}</h3>
+                      <div class="ct-opst4">
+                        {{item.name}}<br>
+                        ${{item.price}}
+                      </div>
+                      <div class="choseop ctj"><input v-model="model.frequency" :id="key" type="radio" :value="key"><span>Choose</span></div>
                     </label>
-          				</div>
-          			</div>
-          			<div :class="model.vkl == 0 ? 'active' : ''" class="parentradio col-lg-6 col-md-6 col-sm-6 col-xs-12">
-          				<div class="opst4 styleshadow radius_8">
-                    <label for="op2" class="content-tp-mbs">
-            					<h3>Price Frequency Option B</h3>
-            					<div class="ct-opst4">
-            						Quarterly<br>
-            						$30
-            					</div>
-            					<div class="choseop ctj"><input v-model="model.vkl" name="op1" id="op2" type="radio" value="0"> <span>Choose</span></div>
-                    </label>
-          				</div>
-          			</div>
+                  </div>
+                </div>
           		</div>
               <div class="agreestep4">
-	              <input id="checkbox1" type="checkbox" v-model="model.agree">
-	              <label for="checkbox1">I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis.</label>
+	              <p>I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis</p>
               </div>
               <div class="agreestep4">
-	              <input id="checkbox2" type="checkbox" v-model="model.agree2">
-	              <label for="checkbox2">By applying I agree to abide the Rose Villa club sules and term & conditions of membership</label>
+	              <input id="checkbox" type="checkbox" v-model="model.agree">
+	              <label for="checkbox">By applying I agree to abide the Rose Villa club sules and term & conditions of membership</label>
               </div>
            	</div>
 
@@ -431,6 +418,19 @@ export default {
     for (var i = 1; i < 32; i++) {
       _this.model.days.push(i)
     }
+
+          // get member package
+          axios.get(
+            './membership-type',{
+              params:{
+                dob: "1990-12-12",
+                city: "fgds",
+                type: _this.type == 'founder' ? 1 : 2
+              }
+            }
+          ).then(function(response){
+            _this.options = response.data
+          })
   },
   computed: {
     classStep() {
@@ -444,6 +444,9 @@ export default {
     }
   },
   methods: {
+    changeType(option){
+      this.model.price = option.price
+    },
     onFileChange(e) {
       const image = e.target.files[0];
       const reader = new FileReader();
@@ -527,11 +530,11 @@ export default {
     },
     submit: function(){
       console.log(this.step)
-        if(!this.model.vkl ){
+        if(!this.model.frequency ){
           toastr.error("Please select plan")
           return
         }
-        if(!this.model.agree || !this.model.agree2 ){
+        if(!this.model.agree ){
           toastr.error("Please agree")
           return
         }
