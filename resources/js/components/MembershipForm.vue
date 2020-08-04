@@ -35,18 +35,16 @@
                   </div> 
                 </div>
               </div>
-              <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
             </div>
           </div>
           <div class="stepmbs step2nd" v-if="step == 2 && type != 'founder'">
             <div class="container">
               <vue-form-generator :schema="step2" :model="model" :options="formOptions"></vue-form-generator>
-              <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
             </div>
           </div>
           <div :class="classStep" class="stepmbs" v-if="step == 2 && type == 'founder'">
             <div class="container">
-              <div class="row flexrow">
+              <div class="row flexrow centerflex">
                 <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
                     <div class="options-mbs radius_4 styleshadow">
                       <label :for="option.id" class="content-tp-mbs">
@@ -64,12 +62,11 @@
                     </div>
                 </div>
               </div>
-              <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
             </div>
           </div>
           <div :class="classStep" class="stepmbs" v-if="step == 3 && type != 'founder'">
             <div class="container">
-              <div class="row flexrow">
+              <div class="row flexrow centerflex">
                 <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
                     <div class="options-mbs radius_4 styleshadow">
                       <label :for="option.id" class="content-tp-mbs">
@@ -86,14 +83,13 @@
                       </div>
                     </div>
                 </div>
-                <button class="btn btn-primary buttonmbs" v-if="step<steps.length" type="button" @click="next">Next</button>
               </div>
             </div> 
           </div>
           <div :class="classStep" class="stepmbs" v-if="(step == 3 && type == 'founder') || step == 4">
           	<div class="container">
           		<div class="row">
-          			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          			<div :class="model.vkl == 1 ? 'active' : ''" class="parentradio col-lg-6 col-md-6 col-sm-6 col-xs-12">
           				<div class="opst4 styleshadow radius_8">
                     <label for="op1" class="content-tp-mbs">
             					<h3>Price Frequency Option A</h3>
@@ -101,32 +97,42 @@
             						Anual<br>
             						$50
             					</div>
-            					<div class="choseop"><input name="op1" id="op1" type="radio" value="1"> <span>Choose</span></div>
+            					<div class="choseop ctj"><input v-model="model.vkl" name="op1" id="op1" type="radio" value="1"> <span>Choose</span></div>
                     </label>
           				</div>
           			</div>
-          			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          			<div :class="model.vkl == 0 ? 'active' : ''" class="parentradio col-lg-6 col-md-6 col-sm-6 col-xs-12">
           				<div class="opst4 styleshadow radius_8">
-                    <label for="op1" class="content-tp-mbs">
+                    <label for="op2" class="content-tp-mbs">
             					<h3>Price Frequency Option B</h3>
             					<div class="ct-opst4">
             						Quarterly<br>
             						$30
             					</div>
-            					<div class="choseop"><input name="op1" id="op2" type="radio" value="2"> <span>Choose</span></div>
+            					<div class="choseop ctj"><input v-model="model.vkl" name="op1" id="op2" type="radio" value="0"> <span>Choose</span></div>
                     </label>
           				</div>
           			</div>
           		</div>
-	            <input id="checkbox1" type="checkbox" v-model="model.agree">
-	            <label for="checkbox1">I understand that</label><br>
-	            <input id="checkbox2" type="checkbox" v-model="model.agree2">
-	            <label for="checkbox2">By applying I agree to abide the Rose Villa club</label>
+              <div class="agreestep4">
+	              <input id="checkbox1" type="checkbox" v-model="model.agree">
+	              <label for="checkbox1">I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis.</label>
+              </div>
+              <div class="agreestep4">
+	              <input id="checkbox2" type="checkbox" v-model="model.agree2">
+	              <label for="checkbox2">By applying I agree to abide the Rose Villa club sules and term & conditions of membership</label>
+              </div>
            	</div>
 
           </div>
           <div class="container">
-            <button class="btn btn-primary buttonmbs" v-if="step==steps.length" type="submit">Submit</button>
+            <div class="button2center">
+            <button class="btn btn-primary buttonmbs btback" v-if="step >1 && step<=steps.length" type="button" @click="back
+            ">Back</button>
+            <a href="Javascript:;" class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">Next</a>
+            <!-- <button class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">Next</button> -->
+            <button class="btn btn-primary buttonmbs btnext" v-if="step==steps.length" type="submit">Submit</button>
+            </div>
           </div>
         </form>
       </div>
@@ -286,6 +292,20 @@ export default {
             required: true
           },
           {
+            type: 'select',
+            inputType: 'text',
+            label: 'City',
+            model: 'city',
+            selectOptions: {
+              noneSelectedText: "Select City",
+            },
+            values: function(model, schema){
+              return model.cities
+            },
+            required: true,
+            validator: VueFormGenerator.validators.string
+          },
+          {
             type: 'input',
             inputType: 'text',
             label: 'Stress Address line one',
@@ -299,20 +319,6 @@ export default {
             label: 'Stress Address line two',
             model: 'address_two',
             required: false
-          },
-          {
-            type: 'select',
-            inputType: 'text',
-            label: 'City',
-            model: 'city',
-            selectOptions: {
-              noneSelectedText: "Select City",
-            },
-            values: function(model, schema){
-              return model.cities
-            },
-            required: true,
-            validator: VueFormGenerator.validators.string
           },
           {
             type: 'input',
@@ -508,19 +514,27 @@ export default {
         }
       }
 
-      if((this.step == 4 && this.type != 'founder') || (this.step == 3 && this.type == 'founder')){
+      /*if((this.step == 4 && this.type != 'founder') || (this.step == 3 && this.type == 'founder')){
         if(!this.model.checkbox1 || !this.model.checkbox2 ){
           toastr.error("Please agree")
         }else {
           this.step++
           return
         }
-      }
+      }*/
 
 
     },
     submit: function(){
       console.log(this.step)
+        if(!this.model.vkl ){
+          toastr.error("Please select plan")
+          return
+        }
+        if(!this.model.agree || !this.model.agree2 ){
+          toastr.error("Please agree")
+          return
+        }
         let _this = this
         let params = _this.model
         params.gender = (_this.model.gender == "Male") ? 0 : 1
@@ -539,10 +553,21 @@ export default {
             toastr.error(response.data.message)
           }else {
             toastr.success(response.data.message)
-            setTimeout(() => window.location.href = './thankyou', 1500)
+            setTimeout(() => window.location.href = './thank-you', 1500)
           }
         });
+    },
+    back: function(){
+      this.step--
     }
   }
 }
+$(document).ready(function(){
+  var rBtnVal = $('.ctj input').val();
+    if(rBtnVal == "1"){
+        $(this).closest('.parentradio').addClass('active');
+    }else{ 
+        $(this).closest('.parentradio').removeClass('active');
+    }
+});
 </script>

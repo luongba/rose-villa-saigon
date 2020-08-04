@@ -146,8 +146,8 @@ class UserController extends Controller
 		$validator = Validator::make($request, [
 			'first_name' => 'required',
 			'last_name' => 'required',
-			'email' => 'required|email|unique:users,email',
-			'phone' => 'required|unique:users,phone',
+			'email' => 'required|email|unique:users,email|unique:user_metas,email',
+			'phone' => 'required|unique:users,phone|unique:user_metas,phone',
 			'gender' => 'required|min:0|max:1',
 			'dob' => 'required|date|before:-18years',
 			'occupation' => 'required',
@@ -249,6 +249,36 @@ class UserController extends Controller
 		return response()->json([
 			'status' => true,
 			'message' => 'Member registration successfully',
+		]);
+	}
+
+	private function validateEmailPhone($request)
+	{
+		$validator = Validator::make($request, [
+			'email' => 'required|email|unique:users,email|unique:user_metas,email',
+			'phone' => 'required|unique:users,phone|unique:user_metas,phone',
+		]);
+		if ($validator->fails()) {
+			if ($validator->errors()->first('email') != null) {
+				return $validator->errors()->first('email');
+			} else if($validator->errors()->first('phone') != null) {
+				return $validator->errors()->first('phone');
+			}
+		}
+	}
+
+	public function checkPhoneEmail(Request $request)
+	{
+		$resultValidate = $this->validateEmailPhone($request->all());
+		if ($resultValidate != "") {
+			return response()->json([
+				"status" => false,
+				"message" => $resultValidate
+			]);
+		}
+		return response()->json([
+			'status' => true,
+			'message' => 'You can use this email & phone',
 		]);
 	}
 }

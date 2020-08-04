@@ -22,7 +22,7 @@
                     </div>
                      <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <p><i class="far fa-envelope"></i> resortrestaurant@rosevillsaigon.com</p>
+                            <p><i class="far fa-envelope"></i> booking@rosevillsaigon.com</p>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <p><i class="fas fa-map-marker-alt"></i> No2 , District 9, Hồ Chí Minh city</p>
