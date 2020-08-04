@@ -58,8 +58,8 @@
                                 <label for="locale">Member Registration</label>
                                 <select class="form-control select2" id="locale" name="type_user">
                                     <option value="" selected="selected">Select Member Registration</option>
-                                   <option value="1" {{(old('type_user') == 1)?'selected':''}}>early founder</option>
-                                   <option value="2" {{(old('type_user') == 2)?'selected':''}}>regular</option>
+                                   <option value="1" {{(old('type_user') == 1)?'selected':''}}>Founder Member</option>
+                                   <option value="2" {{(old('type_user') == 2)?'selected':''}}>Regular Member</option>
                                 </select>
                             </div>
                         </div>
