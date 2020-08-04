@@ -146,8 +146,8 @@ class UserController extends Controller
 		$validator = Validator::make($request, [
 			'first_name' => 'required',
 			'last_name' => 'required',
-			'email' => 'required|email|unique:users,email',
-			'phone' => 'required|unique:users,phone',
+			'email' => 'required|email|unique:users,email|unique:user_metas,email',
+			'phone' => 'required|unique:users,phone|unique:user_metas,phone',
 			'gender' => 'required|min:0|max:1',
 			'dob' => 'required|date|before:-18years',
 			'occupation' => 'required',
@@ -162,6 +162,7 @@ class UserController extends Controller
 			'bring_to' => 'required_if:type_user,2',
 			'member_other' => 'required_if:type_user,2',
 			'membership_type' => 'required|min:1|max:9',
+			'frequency' => 'required|in:month_3,month_12'
 		],
 		[
 			'dob.before' => 'Thành viên phải trên 18 tuổi'
@@ -203,6 +204,8 @@ class UserController extends Controller
 				return $validator->errors()->first('member_other');
 			} else if($validator->errors()->first('membership_type') != null) {
 				return $validator->errors()->first('membership_type');
+			} else if($validator->errors()->first('frequency') != null) {
+				return $validator->errors()->first('frequency');
 			}
 		}
 	}
@@ -229,7 +232,7 @@ class UserController extends Controller
 		]);
 		DB::beginTransaction();
 		try {
-			$paramUserMeta = $request->only('first_name', 'last_name', 'email', 'phone', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user', 'membership_type_id');
+			$paramUserMeta = $request->only('first_name', 'last_name', 'email', 'phone', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user', 'membership_type_id', 'frequency');
 			if ($request->type_user == 2) {
 				$paramUserMeta['reason'] =  $request->reason;
 				$paramUserMeta['usage_criteria'] =  $request->usage_criteria;
