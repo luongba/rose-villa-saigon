@@ -26,7 +26,7 @@
 			<h1 class="title-innerpage2">
 		        <span><span>{{$singleroom->name}}</span></span>
 		    </h1>
-		    <div class="abct-elm singleroom-ct">
+		    <div class="abct-elm singleroom-ct scrollcustom">
 			    <div class="[ layout layout--medium ] room-details">
 			    	<div class="leftroom">
 				    	<div class="layout__item desk-one-whole room-details__amenities">

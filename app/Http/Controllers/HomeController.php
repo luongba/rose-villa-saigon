@@ -372,9 +372,14 @@ class HomeController extends Controller
         $result = array();
         foreach ($arrData as $item) {
             if ($item['iso2'] === $request->country) {
-                if (! in_array($item['admin_name'], $result)) {
-                    $result[] = $item['admin_name'];
-                }
+				if(isset($item['admin_name'])){
+					$name = $item['admin_name'];
+                } else {
+					$name = $item['city_ascii'];
+				}
+				if (! in_array($name, $result)) {
+					$result[] = $name;
+				}
             }
         }
         return response()->json([

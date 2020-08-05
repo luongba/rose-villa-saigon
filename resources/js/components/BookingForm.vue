@@ -14,7 +14,7 @@
                     <h4>Contact Us</h4>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <p><i class="fas fa-phone-alt"></i> 0123456789</p>
+                            <p><i class="fas fa-phone-alt"></i>+84915877479</p>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <p><i class="far fa-clock"></i> 06:00 - 22:00</p>
@@ -25,7 +25,7 @@
                             <p><i class="far fa-envelope"></i> booking@rosevillsaigon.com</p>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <p><i class="fas fa-map-marker-alt"></i> No2 , District 9, Hồ Chí Minh city</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Số 10 Đường số 58, Thảo Điền, Quận 2, Tp Hồ Chí Minh, Vietnam</p>
                         </div>
                     </div>
                 </div>

@@ -23,12 +23,23 @@
         <form class="form-mbs1" method="post" action="" @submit.prevent="submit">
           <div class="stepmbs step1st" v-if="step == 1">
             <div class="container">
+              <vue-form-generator :schema="step1top" :model="model" :options="formOptions"></vue-form-generator>
+              <div :class="validphone ? 'error' : ''" class="form-group required field-input">
+                <label for="last-name"><span>Phone Number</span></label>
+                <div class="field-wrap">
+                  <vue-tel-input v-model="model.phone_number"  @validate="checkPhone" :preferredCountries="['VN', 'US']" placeholder="09xx-xxx-xxx"></vue-tel-input>
+                </div>
+                <div class="errors help-block" v-if="validphone"><span>{{validphone}}</span></div>
+              </div>
               <vue-form-generator :schema="step1" :model="model" :options="formOptions"></vue-form-generator>
               <div class="form-group valid required field-input">
                 <label for="ava"><span>Avatar</span></label>
                 <div class="field-wrap">
                   <div class="wrapper">
-                    <input id="ava" type="file" accept="image/*" @change="onFileChange">
+                    <div class="ct-upload">
+                      <input id="ava" type="file" accept="image/*" @change="onFileChange">
+                      <span class="testupload">UPLOAD PHOTO (JPEG,PNG)</span>
+                    </div>
                     <div id="preview" style="display:flex;">
                       <img width="100" v-if="image_preview" :src="image_preview" />
                     </div>
@@ -46,10 +57,19 @@
             <div class="container">
               <div class="row flexrow centerflex">
                 <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
-                    <div class="options-mbs radius_4 styleshadow">
+                    <div class="options-mbs radius_4">
+                      <div class="ctbd1"></div>
+                      <div class="ctbd2"></div>
+                      <div class="ctbd3"></div>
+                      <div class="ctbd4"></div>
+                      <div class="ctbd5"></div>
+                      <div class="ctbd6"></div>
+                      <div class="ctbd7"></div>
+                      <div class="ctbd8"></div>
                       <label :for="option.id" class="content-tp-mbs">
                           <h3><span>{{ option.name }}</span></h3>
                           <ul>
+                            <li>Access to:</li>
                             <li v-for="item in option.benefit_members">{{ item.name }}</li>
                           </ul>
                       </label>
@@ -68,7 +88,15 @@
             <div class="container">
               <div class="row flexrow centerflex">
                 <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
-                    <div class="options-mbs radius_4 styleshadow">
+                    <div class="options-mbs radius_4">
+                      <div class="ctbd1"></div>
+                      <div class="ctbd2"></div>
+                      <div class="ctbd3"></div>
+                      <div class="ctbd4"></div>
+                      <div class="ctbd5"></div>
+                      <div class="ctbd6"></div>
+                      <div class="ctbd7"></div>
+                      <div class="ctbd8"></div>
                       <label :for="option.id" class="content-tp-mbs">
                           <h3><span>{{ option.name }}</span></h3>
                           <ul>
@@ -90,19 +118,29 @@
           	<div class="container">
           		<div class="row">
           			<div :class="model.frequency == key ? 'active' : ''" class="parentradio col-lg-6 col-md-6 col-sm-6 col-xs-12" v-for="(item, key) in model.price">
-                  <div class="opst4 styleshadow radius_8">
+                  <div class="opst4 options-mbs">
+                      <div class="ctbd1"></div>
+                      <div class="ctbd2"></div>
+                      <div class="ctbd3"></div>
+                      <div class="ctbd4"></div>
+                      <div class="ctbd5"></div>
+                      <div class="ctbd6"></div>
+                      <div class="ctbd7"></div>
+                      <div class="ctbd8"></div>
                     <label :for="key" class="content-tp-mbs">
-                      <h3>Price Frequency Option {{item.name}}</h3>
+                      <h3><span>Price Frequency Option {{item.name}}</span></h3>
                       <div class="ct-opst4">
                         {{item.name}}<br>
                         ${{item.price}}
                       </div>
-                      <div class="choseop ctj"><input v-model="model.frequency" :id="key" type="radio" :value="key"><span>Choose</span></div>
                     </label>
+                    <div class="bottom-option-mbs">
+                      <div class="choseop ctj"><input v-model="model.frequency" :id="key" type="radio" :value="key"><span>Choose</span></div>
+                    </div>
                   </div>
                 </div>
           		</div>
-              <div class="agreestep4">
+              <div class="agreestep4" style="margin-top:60px;">
 	              <p>I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis</p>
               </div>
               <div class="agreestep4">
@@ -127,15 +165,17 @@
 </template>
 <script>
 import moment from 'moment'
+import {VueTelInput} from 'vue-tel-input'
 import VueFormGenerator from 'vue-form-generator'
 import 'vue-form-generator/dist/vfg.css'
- 
+
 Vue.use(VueFormGenerator)
 
 export default {
   props: ['type'],
   data() {
     return {
+      validphone: '',
       options: {},
       countries: [],
       steps: [],
@@ -143,8 +183,8 @@ export default {
       user_data: [],
       image_preview: null,
       model: {
-        countries: ['Việt Nam'],
-        cities: ['Thành phố Hồ Chí Minh', 'Hà Nội', 'Đà Nẵng', 'Hải Phòng', 'Cần Thơ'],
+        countries: {"VN": "Vietnam"},
+        cities: {},
         years: [],
         months: [],
         days: [],
@@ -154,7 +194,7 @@ export default {
         email: 'john.doe@gmail.com',
         status: true*/
       },
-      step1: {
+      step1top: {
         fields: [
           {
             type: 'input',
@@ -172,14 +212,10 @@ export default {
             required: true,
             validator: VueFormGenerator.validators.string
           },
-          {
-            type: 'input',
-            inputType: 'number',
-            label: 'Phone Number',
-            model: 'phone',
-            required: true,
-            validator: VueFormGenerator.validators.number
-          },
+        ]
+      },
+      step1: {
+        fields: [
           {
             type: 'input',
             inputType: 'email',
@@ -196,26 +232,26 @@ export default {
               noneSelectedText: "Select Gender",
               // hideNoneSelectedText: true,
             },
-            values: ['Male', 'Female'],
+            values: ['Male', 'Female', 'Other'],
             required: true,
             validator: VueFormGenerator.validators.required
           },
           {
             type: 'select',
-            label: 'Year',
-            model: 'year',
+            label: '',
+            model: 'day',
             selectOptions: {
-              noneSelectedText: "Select Year",
+              noneSelectedText: "Select Day",
             },
-            styleClasses: 'birthday_select',
+            styleClasses: 'birthday_select hiderequied',
             values: function(model, schema){
-              return model.years
+              return model.days
             },
             required: true
           },
           {
             type: 'select',
-            label: 'Month',
+            label: 'DATE OF BIRTH',
             model: 'month',
             selectOptions: {
               noneSelectedText: "Select Month",
@@ -246,14 +282,14 @@ export default {
           },
           {
             type: 'select',
-            label: 'Day',
-            model: 'day',
+            label: '',
+            model: 'year',
             selectOptions: {
-              noneSelectedText: "Select Day",
+              noneSelectedText: "Select Year",
             },
-            styleClasses: 'birthday_select last',
+            styleClasses: 'birthday_select hiderequied last',
             values: function(model, schema){
-              return model.days
+              return model.years
             },
             required: true
           },
@@ -274,7 +310,23 @@ export default {
               noneSelectedText: "Select Country",
             },
             values: function(model, schema){
-              return model.countries
+              return Object.values(model.countries)
+            },
+            onChanged: function(model, newVal, oldVal, field) {
+              function getKeyByValue(object, value) {
+                return Object.keys(object).find(key => object[key] === value);
+              }
+              var country_code = getKeyByValue(model.countries, newVal)
+              axios.get(
+                './province-by-country', {
+                  params:{
+                    country: country_code
+                  }
+                }
+              ).then(function(response){
+                // console.log(response.data)
+                model.cities = response.data.data
+              });
             },
             required: true
           },
@@ -287,7 +339,7 @@ export default {
               noneSelectedText: "Select City",
             },
             values: function(model, schema){
-              return model.cities
+              return Object.values(model.cities)
             },
             required: true,
             validator: VueFormGenerator.validators.string
@@ -402,11 +454,10 @@ export default {
     // get countries
     if(this.type != "founder"){
       axios.get(
-        'https://restcountries.eu/rest/v2/all'
+        './country'
       ).then(function(response){
-        response.data.forEach(function(item){
-          _this.model.countries.push(item.name)
-        })
+        // console.log(response.data)
+        _this.model.countries = response.data.data
       });
     }
     for (var i = 1960; i < 2005; i++) {
@@ -418,19 +469,6 @@ export default {
     for (var i = 1; i < 32; i++) {
       _this.model.days.push(i)
     }
-
-          // get member package
-          axios.get(
-            './membership-type',{
-              params:{
-                dob: "1990-12-12",
-                city: "fgds",
-                type: _this.type == 'founder' ? 1 : 2
-              }
-            }
-          ).then(function(response){
-            _this.options = response.data
-          })
   },
   computed: {
     classStep() {
@@ -444,6 +482,15 @@ export default {
     }
   },
   methods: {
+    checkPhone: function(e){
+        console.log(e.valid,e.number)
+      if(!e.valid){
+        this.validphone = "Phone number not valid"
+      }else {
+        this.validphone = ''
+        this.model.phone = e.number.e164
+      }
+    },
     changeType(option){
       this.model.price = option.price
     },
@@ -478,18 +525,31 @@ export default {
           toastr.error("Please select Avatar")
           return
         }else {
-          // get member package
-          axios.get(
-            './membership-type',{
-              params:{
-                dob: _this.model.dob,
-                city: _this.model.city,
-                type: _this.type == 'founder' ? 1 : 2
-              }
-            }
-          ).then(function(response){
+        	// validate
+		    axios.post(
+		      './check-phone-email', {
+		          phone: '+849123456789',
+		          email: '1gautrangcb91@gmail.com'
+		      }
+		    ).then(function(response){
+		      console.log(response.data)
+		      if(response.data.status == false){
+		        toastr.error(response.data.message)
+		        return
+		      }
+		    });
+          	// get member package
+          	axios.get(
+            	'./membership-type',{
+              	params:{
+	                dob: _this.model.dob,
+	                city: _this.model.city,
+	                type: _this.type == 'founder' ? 1 : 2
+	              }
+            	}
+          	).then(function(response){
             _this.options = response.data
-          })
+          	})
 
           this.step++
           return

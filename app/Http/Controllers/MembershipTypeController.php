@@ -58,7 +58,7 @@ class MembershipTypeController extends Controller
 			->where('type', $request->type)
 			->get(['id', 'name', 'price'])->toArray();
 		}
-		if ($request->city != "Thành phố Hồ Chí Minh") {
+		if ($request->city != "Hồ Chí Minh") {
 			//traveller
 			$traveller = $this->membershipType->with('benefitMembers:name')
 			->whereIn('id', [6, 7])

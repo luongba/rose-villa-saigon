@@ -8,11 +8,11 @@
         <div class="bg_rem"></div>
          <div id="canvas"></div>
           <div class="curtain first-curtain">
-            <img src="{{asset('public/images/picture_curtain_left.jpeg')}}" class="" data-sampler="simplePlaneTexture" />
+            <img src="{{asset('public/images/rem/r1.jpg')}}" class="" data-sampler="simplePlaneTexture" />
           
           </div>
           <div class="curtain second-curtain">
-          <img src="{{asset('public/images/picture_curtain_right.jpeg')}}" class="" data-sampler="simplePlaneTexture" />
+          <img src="{{asset('public/images/rem/r2.jpg')}}" class="" data-sampler="simplePlaneTexture" />
           </div>
       </div>
       <audio id="audio" autoplay>
