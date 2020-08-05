@@ -53,7 +53,7 @@ class UserController extends Controller
 		} else {
 			return response()->json([
 				"status" => true,
-				"message" => "Nhập mã xác minh nhận được từ hệ thống",
+				"message" => trans('messages.Enter the verification code received from the system'),
 			]);
 		}
 	}
@@ -73,13 +73,13 @@ class UserController extends Controller
 			$data['url'] = route('membership');
 			return response()->json([
 				'status' => true,
-				'message' => 'Register successfully',
+				'message' => trans('messages.Register successfully'),
 				'data' => $data
 			]);
 		} else {
 			return response()->json([
 				'status' => false,
-				'message' => 'Register error'
+				'message' => trans('messages.Register error')
 			]);
 		}
 	}
@@ -117,26 +117,21 @@ class UserController extends Controller
 			if ($user->type_user === 0) {
 				return response()->json([
 					'status' => false,
-					'message' => 'You are not a Rose Villa Saigon member'
+					'message' => trans('messages.You are not a Rose Villa Saigon member')
 				]);
 			} else {
 				$data = array();
-				/*if ($user->type_user === 1) {
-					$data['url'] = route('founder');
-				} else {
-					$data['url'] = route('regularmember');
-				}*/
 				$data['url'] = route('welcome');
 				return response()->json([
 					'status' => true,
-					'message' => 'Login successfully',
+					'message' => trans('messages.Login successfully'),
 					'data' => $data
 				]);
 			}
 		} else {
 			return response()->json([
 				'status' => false,
-				'message' => 'Phone or password is not correct'
+				'message' => trans('messages.Phone or password is not correct')
 			]);
 		}
 	}
@@ -165,7 +160,7 @@ class UserController extends Controller
 			'frequency' => 'required|in:month_3,month_12'
 		],
 		[
-			'dob.before' => 'Thành viên phải trên 18 tuổi'
+			'dob.before' => trans('messages.Members must be over 18 years old')
 		]);
 		if ($validator->fails()) {
 			if ($validator->errors()->first('first_name') != null) {
@@ -246,12 +241,12 @@ class UserController extends Controller
 			DB::rollBack();
 			return response()->json([
 				'status' => false,
-				'message' => 'Member registration error',
+				'message' => trans('messages.Member registration error'),
 			]);
 		}
 		return response()->json([
 			'status' => true,
-			'message' => 'Member registration successfully',
+			'message' => trans('messages.Member registration successfully'),
 		]);
 	}
 
@@ -281,7 +276,7 @@ class UserController extends Controller
 		}
 		return response()->json([
 			'status' => true,
-			'message' => 'You can use this email & phone',
+			'message' => trans('messages.You can use this email & phone'),
 		]);
 	}
 }

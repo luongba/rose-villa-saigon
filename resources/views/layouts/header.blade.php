@@ -10,12 +10,12 @@
             <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
               <li class="singout">
                   <a href="{{ route('logout_web') }}">
-                  <span>Đăng Xuất</span></a>
+                  <span>{{ trans('pages.Logout') }}</span></a>
               </li>
             </ul>
       @else
         <div class="account-section">
-            <a class="loginlink-landing" href="javascript:;"  data-toggle="modal" data-target="#popup-login">Login</a>
+            <a class="loginlink-landing" href="javascript:;"  data-toggle="modal" data-target="#popup-login">{{ trans('pages.Login') }}</a>
         </div>
       @endif
       <button type="button" id="menu-btn" class="menuhome navbar-toggle collapsed">
