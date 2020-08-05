@@ -16,75 +16,87 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 	return view('welcome');
 });
+
+
 Route::group(['middleware' => 'locale'], function() {
 	Route::get('/', [
-		'as' => 'welcome',
-		'uses' => 'HomeController@welcome'
-	]);
+	'as' => 'welcome',
+	'uses' => 'HomeController@welcome'
+]);
+Route::get('/events', [
+	'as' => 'events',
+	'uses' => 'HomeController@events'
+]);
+Route::get('/spa', [
+	'as' => 'spa',
+	'uses' => 'HomeController@spa'
+]);
+Route::get('/food-drink', [
+	'as' => 'fooddrink',
+	'uses' => 'HomeController@fooddrink'
+]);
+Route::get('/about', [
+	'as' => 'about',
+	'uses' => 'HomeController@about'
+]);
+Route::get('/shop', [
+	'as' => 'shop',
+	'uses' => 'HomeController@shop'
+]);
+Route::get('/regular-member', [
+	'as' => 'regularmember',
+	'uses' => 'HomeController@regularmember'
+]);
+Route::get('/founder', [
+	'as' => 'founder',
+	'uses' => 'HomeController@founder'
+]);
+Route::get('/how-to-find-us', [
+	'as' => 'findus',
+	'uses' => 'HomeController@findus'
+]);
+Route::get('/contact', [
+	'as' => 'contact',
+	'uses' => 'HomeController@contact'
+]);
+Route::get('/thank-you', [
+	'as' => 'thankyou',
+	'uses' => 'HomeController@thankyou'
+]);
+Route::get('/single-room/{slug}', [
+	'as' => 'singleroom',
+	'uses' => 'HomeController@singleroom'
+]);
 
-	Route::get('/events', [
-		'as' => 'events',
-		'uses' => 'HomeController@events'
-	]);
+Route::post('contact', 'HomeController@addContact')->name('add_contact');
 
-	Route::get('/spa', [
-		'as' => 'spa',
-		'uses' => 'HomeController@spa'
-	]);
+Route::get('/membership',[
+	'as' => 'membership',
+	'uses' => 'HomeController@membership'
+]);
 
-	Route::get('/food-drink', [
-		'as' => 'fooddrink',
-		'uses' => 'HomeController@fooddrink'
-	]);
+Route::get('/logout-web',[
+	'as' => 'logout_web',
+	'uses' => 'HomeController@logout_web'
+]);
 
-	Route::get('/about', [
-		'as' => 'about',
-		'uses' => 'HomeController@about'
-	]);
+Route::get('/dang-ky',[
+	'as' => 'registeruser',
+	'uses' => 'HomeController@register_page'
+]);
 
-	Route::get('/shop', [
-		'as' => 'shop',
-		'uses' => 'HomeController@shop'
-	]);
+Route::post('/forgot_password',[
+	'as' => 'forgot_web',
+	'uses' => 'HomeController@forgot_web'
+]);
 
-	Route::get('/contact', [
-		'as' => 'contact',
-		'uses' => 'HomeController@contact'
-	]);
-	
-	Route::get('/single-room/{slug}', [
-		'as' => 'singleroom',
-		'uses' => 'HomeController@singleroom'
-	]);
-
-	Route::post('contact', 'HomeController@addContact')->name('add_contact');
-
-	Route::get('/membership',[
-		'as' => 'membership',
-		'uses' => 'HomeController@membership'
-	]);
-
-	Route::get('/logout-web',[
-		'as' => 'logout_web',
-		'uses' => 'HomeController@logout_web'
-	]);
-
-	Route::get('/dang-ky',[
-		'as' => 'registeruser',
-		'uses' => 'HomeController@register_page'
-	]);
-
-	Route::post('/forgot_password',[
-		'as' => 'forgot_web',
-		'uses' => 'HomeController@forgot_web'
-	]);
-
-	Route::post('/update_password',[
-		'as' => 'update_password',
-		'uses' => 'HomeController@update_password'
-	]);
+Route::post('/update_password',[
+	'as' => 'update_password',
+	'uses' => 'HomeController@update_password'
+]);
 });
-Route::group(['prefix' => 'admin','middleware' => 'locale'], function () {
+
+Route::group(['prefix' => 'admin'], function () {
 	/*users*/
 	Route::prefix("users")->group(function(){
 		Route::get('/create-member-registration', [
