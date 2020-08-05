@@ -2291,6 +2291,7 @@ div.permissions li i{
 .utility-room{
 	margin-top:15px;
 	color:#E6AF51;
+	padding-left:15px;
 }
 .icondr img{
 	margin:0 auto !important;
@@ -2425,18 +2426,21 @@ div.permissions li i{
 	float: right;
 }
 /* scroll bar */
+.scrollcustom,
 .header{
   overflow-y: scroll;
-  scrollbar-color: #c18e30 #000;
+  scrollbar-color: #c18e30 #252525;
   scrollbar-width: thin;
 }
 
 /* Let's get this party started */
+.scrollcustom::-webkit-scrollbar ,
 .header::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
 }
  
 /* Track */
+.scrollcustom::-webkit-scrollbar-track, 
 .header::-webkit-scrollbar-track {
 /*    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
     -webkit-border-radius: 3px;
@@ -2444,14 +2448,16 @@ div.permissions li i{
 }
  
 /* Handle */
+.scrollcustom::-webkit-scrollbar-thumb,
 .header::-webkit-scrollbar-thumb {
     /*-webkit-border-radius: 3px;
     border-radius: 3px;*/
     background: #c18e30; 
    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); */
 }
+.scrollcustom::-webkit-scrollbar-thumb:window-inactive ,
 .header::-webkit-scrollbar-thumb:window-inactive {
-	background: #000; 
+	background: #252525; 
 }
 
 
@@ -2768,6 +2774,26 @@ body.welcome {
 	position:absolute;
 	display:block;
 }
+.options-mbs::before{
+	content:"";
+	top:6px;
+	left:60px;
+	bottom:6px;
+	right:60px;
+	background:#fff;
+	position:absolute;
+	display:block;
+}
+.options-mbs::after{
+	content:"";
+	top:60px;
+	left:6px;
+	bottom:70px;
+	right:6px;
+	background:#fff;
+	position:absolute;
+	display:block;
+}
 .ctbd1{
 	position:absolute;
 	width:60px;
@@ -2776,7 +2802,7 @@ body.welcome {
 	top:0;
 	z-index:1;
 	display:block;
-	background:url(images/borderst1.png) no-repeat;
+	background:url(images/bgoption/borderst1.png) no-repeat;
 }
 .ctbd2{
 	position:absolute;
@@ -2786,7 +2812,7 @@ body.welcome {
 	top:0;
 	z-index:1;
 	display:block;
-	background:url(images/borderst2.png) no-repeat;
+	background:url(images/bgoption/borderst2.png) no-repeat;
 }
 .ctbd3{
 	position:absolute;
@@ -2796,7 +2822,7 @@ body.welcome {
 	bottom:0;
 	z-index:1;
 	display:block;
-	background:url(images/borderst3.png) no-repeat;
+	background:url(images/bgoption/borderst3.png) no-repeat;
 }
 .ctbd4{
 	position:absolute;
@@ -2806,7 +2832,7 @@ body.welcome {
 	bottom:0;
 	z-index:1;
 	display:block;
-	background:url(images/borderst4.png) no-repeat;
+	background:url(images/bgoption/borderst4.png) no-repeat;
 }
 .ctbd5{
 	position:absolute;
@@ -2817,7 +2843,7 @@ body.welcome {
 	top:0;
 	z-index:1;
 	display:block;
-	background:url(images/bg_border_content.png) repeat-x;
+	background:url(images/bgoption/bg_border_content.png) repeat-x;
 }
 .ctbd6{
 	position:absolute;
@@ -2828,7 +2854,7 @@ body.welcome {
 	bottom:70px;
 	z-index:1;
 	display:block;
-	background:url(images/bg_border_content2.png) repeat-y;
+	background:url(images/bgoption/bg_border_content2.png) repeat-y;
 }
 .ctbd7{
 	position:absolute;
@@ -2839,7 +2865,7 @@ body.welcome {
 	bottom:0;
 	z-index:1;
 	display:block;
-	background:url(images/bg_border_content3.png) repeat-x;
+	background:url(images/bgoption/bg_border_content3.png) repeat-x;
 }
 .ctbd8{
 	position:absolute;
@@ -2850,7 +2876,7 @@ body.welcome {
 	bottom:70px;
 	z-index:1;
 	display:block;
-	background:url(images/bg_border_content4.png) repeat-y;
+	background:url(images/bgoption/bg_border_content4.png) repeat-y;
 }
 
 /* STYLE VERSION3 - 20-07 */
@@ -2979,26 +3005,25 @@ body.welcome {
 	background:url(images/Contact-us.png) no-repeat;
 }
 .title-innerpage2{
-	width:247px;
-	height:157px;
+	height:78px;
+	width:240px;
 	position:absolute;
-	top:-50px;
+	top:50px;
 	left:50%;
-	margin-left:-123px;
-	background:url(images/bg-title.png) no-repeat;
+	margin-left:-120px;
 }
 .title-innerpage2 span{
 	height:78px;
-	width:146px;
+	width:240px;
 	display:table;
-	margin:41px auto;
+	margin:0 auto;
 }
 .title-innerpage2 span span{
 	vertical-align:middle;
 	display:table-cell;
 	text-align:center;
-	font-size:16px;
-	color:#fff;
+	font-size:24px;
+	color:#252525;
 	text-transform:uppercase;
 }
 
@@ -3008,6 +3033,15 @@ body.welcome {
 	overflow-y:auto;
 	margin:0px auto;
 	text-align:justify
+}
+.singleroom-ct{
+	width:420px;
+}
+.mapct{
+	width:420px;
+}
+body .room-details__description{
+	text-align:justify;
 }
 .ct-elm{
 	width:460px;
@@ -3056,6 +3090,7 @@ body.welcome {
 	margin-bottom:20px;
 	padding-bottom:20px;
 }
+
 .content-thankyou-page h3::after{
 	width:10px;
 	height:10px;
@@ -3096,7 +3131,6 @@ body.welcome {
 	vertical-align:middle;
 	display:table-cell;
 }
-@media only screen and (max-width: 560px){
 	.title-innerpage3{
 		width: 235px;
 		height: 149px;
@@ -3105,7 +3139,10 @@ body.welcome {
 		padding:40px;
 		font-size:24px;
 		line-height:1.2;
+		margin:50px auto;
 	}
+@media only screen and (max-width: 560px){
+
 	.innerpage-style1{
 		min-height:700px;
 	}
@@ -3429,6 +3466,7 @@ ul.step-membership{
 .options-mbs{
 	width:100%;
 	background:#fff;
+	background:rgba(255,255,255,0);
 	height:100%;
 	padding-bottom:40px;
 	position:relative;
@@ -3438,7 +3476,9 @@ ul.step-membership{
 	height:90px;
 	width:100%;
 	color:#fff;
+	color:#333;
 	background:#252525;
+	background:rgba(255,255,255,0);
 	-webkit-border-radius: 4px 4px 0 0;
 	-moz-border-radius: 4px 4px 0 0;
 	-o-border-radius: 4px 4px 0 0;
@@ -3446,8 +3486,8 @@ ul.step-membership{
 	text-transform:uppercase;
 	font-size:16px;
 	margin-bottom: 0;
-	padding-left:15px;
-	padding-right:15px;
+	padding-left:25px;
+	padding-right:25px;
 }
 .options-mbs .content-tp-mbs h3 span {
     height: 100%;
@@ -3472,48 +3512,61 @@ ul.step-membership{
 .content-tp-mbs{
 	width:100%;
 	padding:0;
+	position:relative;
+	z-index:9;
+	padding:6px;
 }
 .bottom-option-mbs{
 	position:absolute;
 	width:100%;
-	height:40px;
-	bottom:0;
+	height:30px;
+	bottom:10px;
 	left:0;
 }
 .choseop{
 	position:relative;
 	width:100%;
-	height:40px;
+	height:36px;
 	color:#474546;
 	background:#e1e1e1;
 	background:#1e1e1e;
-	line-height:40px;
+	background:rgba(255,255,255,0);
+	line-height:30px;
 	border:none;
 	cursor:pointer;
+	text-align: center;
 }
 .choseop input{
+	/*
 	height:100%;
 	width:100%;
 	position:absolute;
 	left:0;
 	top:0;
 	opacity:0;
+	*/
+	display:line-block;
+	margin-right:3px;
 }
 .choseop span{
+	/*
     width: 100%;
+	*/
     height: 40px;
     color: #474546;
-	color: #fff;
     background: #e1e1e1;
 	background: #1e1e1e;
+	background:rgba(255,255,255,0);
     line-height: 40px;
     display: block;
+	display: inline-block;
     text-align: center;
 	-webkit-border-radius: 0 0 4px 4px;
 	-moz-border-radius: 0 0 4px 4px;
 	-o-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
 }
+/*
 .active .choseop span{
 	background: #a864a8;
 	color:#fff;
@@ -3522,6 +3575,7 @@ ul.step-membership{
 	background:#a864a8;
 	color:#fff;
 }
+*/
 
 /* fix modal */
 .modal {
@@ -3564,6 +3618,25 @@ ul.step-membership{
 	float:left;
 	width:100%;
 }
+.ct-upload {
+    width: 210px;
+    border: 3px solid #fff;
+    text-align: center;
+    position: relative;
+    margin: 20px auto;
+}
+.ct-upload input {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    top: 0;
+    opacity: 0;
+}
+#preview img{
+	margin:0 auto;
+}
+
 .step3rd{
 	margin-bottom:0px;
 }
@@ -3591,11 +3664,27 @@ ul.step-membership{
 .step1st .form-group label{
 	text-align:center;
 	display: block;
-	font-weight:600;
+	font-weight:400;
 	text-transform:uppercase;
 }
 .step1st .form-group  input{
 	border-color:#fff;
+}
+.step1st .vue-tel-input{
+	position:relative;
+}
+.step1st .vue-tel-input .vti__dropdown{
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:9;
+}
+.step1st .vue-tel-input .vti__input{
+	padding:6px 12px 6px 60px !important;
+	width:100%;
+}
+.form-group.error .errors span{
+	background-position:left center;
 }
 
 .bgfix{
@@ -3610,7 +3699,12 @@ ul.step-membership{
     background-size: cover;
     z-index: -1;
 }
+.form-group.required.hiderequied > label::after{
+	display:none !important;
+}
+
 /* FOURDER */
+/*
 .opst4{
 	width:100%;
 	height:auto;
@@ -3630,14 +3724,7 @@ ul.step-membership{
 	display:block;
 	margin-bottom:0;
 }
-.opst4 .ct-opst4{
-	height:auto;
-	padding:15px 20px;
-	line-height:30px;
-	width:100%;
-	float:left;
-	background: linear-gradient(#f7f7f7, #dfdfdf);
-}
+
 .opst4 .choseop{
 	color:#333;
 	float:left;
@@ -3658,6 +3745,18 @@ ul.step-membership{
 .opst4 label{
 	margin-bottom:0;
 	display:block;
+}
+*/
+.opst4 .ct-opst4{
+	height:auto;
+	padding:15px 20px;
+	line-height:30px;
+	width:100%;
+	float:left;
+	text-align: center;
+	/*
+	background: linear-gradient(#f7f7f7, #dfdfdf);
+	*/
 }
 .centerflex{
 	justify-content:center;
@@ -3690,6 +3789,9 @@ ul.step-membership{
 	padding-left:25px;
 	line-height:24px;
 	float: left;
+}
+.agreestep4 p{
+	text-align:center;
 }
 .agreestep4 input{
 	position:absolute;
@@ -3900,11 +4002,11 @@ ul.step-membership{
 		background:url(images/rem_1920x1080.png) no-repeat center center; 
 	}
 	 .fade-out {
-		  animation: fadeOut ease 8s;
-		  -webkit-animation: fadeOut ease 8s;
-		  -moz-animation: fadeOut ease 8s;
-		  -o-animation: fadeOut ease 8s;
-		  -ms-animation: fadeOut ease 8s;
+		  animation: fadeOut ease 12s;
+		  -webkit-animation: fadeOut ease 12s;
+		  -moz-animation: fadeOut ease 12s;
+		  -o-animation: fadeOut ease 12s;
+		  -ms-animation: fadeOut ease 12s;
 		}
 }
  .bg_rem{
@@ -3918,11 +4020,11 @@ ul.step-membership{
   z-index:-1;
   }
  .fade-out {
-  animation: fadeOut ease 6s;
-  -webkit-animation: fadeOut ease 6s;
-  -moz-animation: fadeOut ease 6s;
-  -o-animation: fadeOut ease 6s;
-  -ms-animation: fadeOut ease 6s;
+  animation: fadeOut ease 9s;
+  -webkit-animation: fadeOut ease 9s;
+  -moz-animation: fadeOut ease 9s;
+  -o-animation: fadeOut ease 9s;
+  -ms-animation: fadeOut ease 9s;
 }
 @keyframes fadeOut {
   0% {

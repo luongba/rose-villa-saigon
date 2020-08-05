@@ -148,7 +148,7 @@ class UserController extends Controller
 			'last_name' => 'required',
 			'email' => 'required|email|unique:users,email|unique:user_metas,email',
 			'phone' => 'required|unique:users,phone|unique:user_metas,phone',
-			'gender' => 'required|min:0|max:1',
+			'gender' => 'required|min:0|max:3',
 			'dob' => 'required|date|before:-18years',
 			'occupation' => 'required',
 			'address_one' => 'required',

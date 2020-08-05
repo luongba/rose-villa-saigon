@@ -49,19 +49,19 @@ class MembershipTypeController extends Controller
 		$data = array();
 		if ($year >= 18 && $year <= 30) {
 			$data = $this->membershipType->with('benefitMembers:name')
-			->whereIn('id', [9, 11])
+			->whereIn('id', [4, 5, 9, 11])
 			->where('type', $request->type)
 			->get(['id', 'name', 'price'])->toArray();
 		} else {
 			$data = $this->membershipType->with('benefitMembers:name')
-			->whereIn('id', [8, 10])
+			->whereIn('id', [2, 3, 8, 10])
 			->where('type', $request->type)
 			->get(['id', 'name', 'price'])->toArray();
 		}
-		if ($request->city != "Thành phố Hồ Chí Minh") {
+		if ($request->city != "Hồ Chí Minh") {
 			//traveller
 			$traveller = $this->membershipType->with('benefitMembers:name')
-			->whereIn('id', [])
+			->whereIn('id', [6, 7])
 			->where('type', $request->type)
 			->get(['id', 'name', 'price'])->toArray();
 			$data = array_merge($data, $traveller);

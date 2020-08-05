@@ -109,7 +109,7 @@
                                 @endphp
                             @endif
                                 <label class="control-label" for="name" style="float: left;width: 100%">Price Frequency Option A</label>
-                                <input required="" type="hidden" class="form-control" name="month_12" value="annual">
+                                <input required="" type="hidden" class="form-control" name="month_12" value="Annual">
                                 <div class="col-md-6" style="padding-left: 0px;">
                                      <input required="" type="text" class="form-control" placeholder="Annual" value="Annual" readonly="readonly">
                                 </div>
