@@ -22,37 +22,46 @@ Route::group(['middleware' => 'locale'], function() {
 		'as' => 'welcome',
 		'uses' => 'HomeController@welcome'
 	]);
-
 	Route::get('/events', [
 		'as' => 'events',
 		'uses' => 'HomeController@events'
 	]);
-
 	Route::get('/spa', [
 		'as' => 'spa',
 		'uses' => 'HomeController@spa'
 	]);
-
 	Route::get('/food-drink', [
 		'as' => 'fooddrink',
 		'uses' => 'HomeController@fooddrink'
 	]);
-
 	Route::get('/about', [
 		'as' => 'about',
 		'uses' => 'HomeController@about'
 	]);
-
 	Route::get('/shop', [
 		'as' => 'shop',
 		'uses' => 'HomeController@shop'
 	]);
-
+	Route::get('/regular-member', [
+		'as' => 'regularmember',
+		'uses' => 'HomeController@regularmember'
+	]);
+	Route::get('/founder', [
+		'as' => 'founder',
+		'uses' => 'HomeController@founder'
+	]);
+	Route::get('/how-to-find-us', [
+		'as' => 'findus',
+		'uses' => 'HomeController@findus'
+	]);
 	Route::get('/contact', [
 		'as' => 'contact',
 		'uses' => 'HomeController@contact'
 	]);
-	
+	Route::get('/thank-you', [
+		'as' => 'thankyou',
+		'uses' => 'HomeController@thankyou'
+	]);
 	Route::get('/single-room/{slug}', [
 		'as' => 'singleroom',
 		'uses' => 'HomeController@singleroom'
@@ -85,6 +94,8 @@ Route::group(['middleware' => 'locale'], function() {
 		'uses' => 'HomeController@update_password'
 	]);
 
+	
+
 	/*MANH_TU*/
 	Route::get('test', 'TestController@test');
 
@@ -115,7 +126,8 @@ Route::group(['middleware' => 'locale'], function() {
 	Route::get('province-by-country', 'HomeController@listProvinceByCountry')->name('list_province_by_country');
 	/*END MANH_TU*/
 });
-Route::group(['prefix' => 'admin','middleware' => 'locale'], function () {
+
+Route::group(['prefix' => 'admin'], function () {
 	/*users*/
 	Route::prefix("users")->group(function(){
 		Route::get('/create-member-registration', [
