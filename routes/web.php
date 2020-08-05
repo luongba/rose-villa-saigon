@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 	return view('welcome');
 });
+
 Route::group(['middleware' => 'locale'], function() {
 	Route::get('/', [
 		'as' => 'welcome',
@@ -83,6 +84,36 @@ Route::group(['middleware' => 'locale'], function() {
 		'as' => 'update_password',
 		'uses' => 'HomeController@update_password'
 	]);
+
+	/*MANH_TU*/
+	Route::get('test', 'TestController@test');
+
+	Route::get('test-mail', 'TestController@testMail');
+
+	Route::get('change-language/{language}', 'HomeController@changeLanguage')->name('change_language');
+
+	Route::post('register', 'UserController@register')->name('user.register');
+
+	Route::post('confirm-registration', 'UserController@confirmRegister')->name('user.confirm_register');
+
+	Route::post('login', 'UserController@login')->name('user.login');
+
+	Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
+
+	Route::post('register-membership', 'UserController@registerMembership')->name('user.register_membership');
+
+	Route::post('check-phone-email', 'UserController@checkPhoneEmail')->name('check_phone_email');
+
+	Route::prefix('/')->middleware('auth')->group(function() {
+		Route::post('booking', 'HomeController@booking')->name('user.booking');
+	});
+
+	Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
+
+	Route::get('country', 'HomeController@listCountry')->name('list_country');
+
+	Route::get('province-by-country', 'HomeController@listProvinceByCountry')->name('list_province_by_country');
+	/*END MANH_TU*/
 });
 Route::group(['prefix' => 'admin','middleware' => 'locale'], function () {
 	/*users*/
@@ -99,36 +130,6 @@ Route::group(['prefix' => 'admin','middleware' => 'locale'], function () {
 	});
 	Voyager::routes();
 });
-
-/*MANH_TU*/
-Route::get('test', 'TestController@test');
-
-Route::get('test-mail', 'TestController@testMail');
-
-Route::get('change-language/{language}', 'HomeController@changeLanguage')->name('change_language');
-
-Route::post('register', 'UserController@register')->name('user.register');
-
-Route::post('confirm-registration', 'UserController@confirmRegister')->name('user.confirm_register');
-
-Route::post('login', 'UserController@login')->name('user.login');
-
-Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
-
-Route::post('register-membership', 'UserController@registerMembership')->name('user.register_membership');
-
-Route::post('check-phone-email', 'UserController@checkPhoneEmail')->name('check_phone_email');
-
-Route::prefix('/')->middleware('auth')->group(function() {
-	Route::post('booking', 'HomeController@booking')->name('user.booking');
-});
-
-Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');
-
-Route::get('country', 'HomeController@listCountry')->name('list_country');
-
-Route::get('province-by-country', 'HomeController@listProvinceByCountry')->name('list_province_by_country');
-/*END MANH_TU*/
 /**/
 Route::prefix('/admin-ajax')->middleware('auth')->group(function() {
 
