@@ -57,7 +57,6 @@
             <div class="col-md-12">
 
                 <div class="panel panel-bordered" style="padding-bottom:5px;">
-                    {{--
                     <!-- form start -->
                     <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">First Name</h3>
@@ -79,78 +78,27 @@
                         <p>{{$dataTypeContent->email}}</p>
                    </div>
                     <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Type User</h3>
+                        <h3 class="panel-title">Membership Type</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                        @if($dataTypeContent->type_user == 1)
-                            <p>{{'early founder'}}</p>
-                        @elseif($dataTypeContent->type_user == 2)
-                            <p>{{'regular'}}</p>
-                        @endif
-                        
+                        <p>{{$dataTypeContent->membershipType->name}}</p>
                    </div>
-                    <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Phone</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                        <p>{{$dataTypeContent->phone}}</p>
-                   </div>
+                   @if($dataTypeContent->frequency)
                    <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Gender</h3>
+                        <h3 class="panel-title">Price Frequency</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                         @if($dataTypeContent->gender == 0)
-                            <p>{{'male'}}</p>
-                        @elseif($dataTypeContent->gender == 1)
-                            <p>{{'female'}}</p>
-                        @endif
+                        @php
+                            $data_package = $dataTypeContent->membershipType->price;
+                            $price = $data_package[$dataTypeContent->frequency]['price'];
+                            $name = $data_package[$dataTypeContent->frequency]['name'];
+                        @endphp
+                        <p>{{$name}} - {{$price}}$</p>
                    </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Birthday</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->dob}}</p>
-                   </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Occupation</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->occupation}}</p>
-                   </div>
-
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Address one</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->address_one}}</p>
-                   </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Address two</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->address_two}}</p>
-                   </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">City</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->city}}</p>
-                   </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Post code</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->post_code}}</p>
-                   </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Country</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->country}}</p>
-                   </div>--}}
+                    @endif
 
 
-                    @foreach($dataType->readRows as $row)
+                   @foreach($dataType->readRows as $row)
                         @php
                         if ($dataTypeContent->{$row->field.'_read'}) {
                             $dataTypeContent->{$row->field} = $dataTypeContent->{$row->field.'_read'};

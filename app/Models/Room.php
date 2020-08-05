@@ -7,13 +7,16 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use TCG\Voyager\Traits\Translatable;
 
 class Room extends Model
 {
-	use Sluggable, SoftDeletes,SluggableScopeHelpers;
+	use Sluggable, SoftDeletes,SluggableScopeHelpers,Translatable;
 
 	protected $fillable = ['name', 'slug', 'area', 'bed', 'person', 'benefit', 'description', 
 	'url', 'status'];
+    /*translate*/
+    protected $translatable = ['description', 'benefit'];
 
      
     
