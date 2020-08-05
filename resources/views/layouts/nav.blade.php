@@ -1,6 +1,14 @@
 <nav class="navbar nav-site">
 	<div class="closemenu"><i class="fas fa-times"></i></div>
     <ul class="navbar-nav">
+        <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('about')}}">About Us</a></li>
+        <li class="nav-item has-child-menu">
+            <a class="nav-link" href="javascript:;">Membership</a>
+            <ul class="sub-menu">
+                <li><a href="{{route('regularmember')}}">Regular Application</a></li>
+                <li><a href="{{route('founder')}}">Founder Application</a></li>
+            </ul>
+        </li>
         <li class="nav-item has-child-menu">
         	<a class="nav-link" href="javascript:;">{{ trans('pages.Rooms') }}</a>
         	<ul class="sub-menu">
@@ -9,6 +17,7 @@
                 @endforeach
         	</ul>
         </li>
+
         <li class="nav-item {{ Route::currentRouteNamed('fooddrink') ? 'active' : '' }}"><a class="nav-link" href="{{route('fooddrink')}}">{{ trans('pages.Food & Drinks') }}</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('spa') ? 'active' : '' }}"><a class="nav-link" href="{{route('spa')}}">{{ trans('pages.Wellness & Beauty') }}</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('shop') ? 'active' : '' }}"><a class="nav-link" href="{{route('shop')}}">{{ trans('pages.Shop') }}</a></li>

@@ -1,12 +1,19 @@
-  <a class="logo-landing" href="{{route('welcome')}}"><img src="{{asset('public/images/logo.png')}}" /></a>
+  <a class="logo-landing" href="{{route('welcome')}}"><img src="{{asset('public/images/images/logo-vien-den.png')}}" /></a>
   <section class="header-landing landingstyle">
     <div class="container-fluid">
       @if(Auth::user())
-            <div class="dropdown user-menu">
-              <a class="dropdown-toggle username-bar" href="javascript:;" id="profile-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{Auth::user()->first_name}} {{Auth::user()->last_name}}
-              </a>
+            <div class="dropdown user-menu custom-header-user">
+	            <a class="dropdown-toggle username-bar" href="javascript:;" id="profile-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                  {{Auth::user()->first_name}} {{Auth::user()->last_name}}
+	             </a>
+	            <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
+	              <li class="singout">
+	                  <a href="{{ route('logout_web') }}">
+	                  <span>Đăng Xuất</span></a>
+	              </li>
+	            </ul>
             </div>
+
             <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
               <li class="singout">
                   <a href="{{ route('logout_web') }}">

@@ -8,11 +8,19 @@
         <i class="{{ $dataType->icon }}"></i> {{ __('voyager::generic.viewing') }} {{ ucfirst($dataType->getTranslatedAttribute('display_name_singular')) }} &nbsp;
         @if($dataTypeContent->status == 0)
         <a class="btn btn-info accept_order"  data-id="{{$dataTypeContent->id }}"  onclick="acceptFunction()">
-                <span class="glyphicon glyphicon-pencil">Accept</span>
+                <span class="glyphicon glyphicon-pencil">Approve</span>
         </a>
         <a class="btn btn-danger cancel_order" data-id="{{$dataTypeContent->id }}"  onclick="cancelFunction()">
             <i class="voyager-pencil"></i><span class="hidden-xs hidden-sm">Cancel</span>
         </a>
+        @elseif($dataTypeContent->status == 1)
+            <a class="btn btn-success" style="margin-right: 20px;">
+                <span class="glyphicon glyphicon-check">Approved</span>
+            </a>
+        @elseif($dataTypeContent->status == 2)
+            <a class="btn btn-danger">
+                <i class="glyphicon glyphicon-check"></i><span class="hidden-xs hidden-sm"> Canceled</span>
+            </a>
         @endif
 
 
@@ -54,94 +62,43 @@
                         <h3 class="panel-title">First Name</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                        <p>{{$dataTypeContent->user->first_name}}</p>
+                        <p>{{$dataTypeContent->first_name}}</p>
                    </div>
 
                    <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">Last Name</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                        <p>{{$dataTypeContent->user->last_name}}</p>
+                        <p>{{$dataTypeContent->last_name}}</p>
                    </div>
                    <div class="panel-heading" style="border-bottom:0;">
                         <h3 class="panel-title">Email</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                        <p>{{$dataTypeContent->user->email}}</p>
+                        <p>{{$dataTypeContent->email}}</p>
                    </div>
                     <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Type User</h3>
+                        <h3 class="panel-title">Membership Type</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                        @if($dataTypeContent->user->type_user == 1)
-                            <p>{{'early founder'}}</p>
-                        @elseif($dataTypeContent->user->type_user == 2)
-                            <p>{{'regular'}}</p>
-                        @endif
-                        
+                        <p>{{$dataTypeContent->membershipType->name}}</p>
                    </div>
-                    <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Phone</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                        <p>{{$dataTypeContent->user->phone}}</p>
-                   </div>
+                   @if($dataTypeContent->frequency)
                    <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Gender</h3>
+                        <h3 class="panel-title">Price Frequency</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                         @if($dataTypeContent->user->gender == 0)
-                            <p>{{'male'}}</p>
-                        @elseif($dataTypeContent->user->gender == 1)
-                            <p>{{'female'}}</p>
-                        @endif
+                        @php
+                            $data_package = $dataTypeContent->membershipType->price;
+                            $price = $data_package[$dataTypeContent->frequency]['price'];
+                            $name = $data_package[$dataTypeContent->frequency]['name'];
+                        @endphp
+                        <p>{{$name}} - {{$price}}$</p>
                    </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Birthday</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->dob}}</p>
-                   </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Occupation</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->occupation}}</p>
-                   </div>
-
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Address one</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->address_one}}</p>
-                   </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Address two</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->address_two}}</p>
-                   </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">City</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->city}}</p>
-                   </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Post code</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->post_code}}</p>
-                   </div>
-                   <div class="panel-heading" style="border-bottom:0;">
-                        <h3 class="panel-title">Country</h3>
-                    </div>
-                    <div class="panel-body" style="padding-top:0;">
-                         <p>{{$dataTypeContent->user->country}}</p>
-                   </div>
+                    @endif
 
 
-                    @foreach($dataType->readRows as $row)
+                   @foreach($dataType->readRows as $row)
                         @php
                         if ($dataTypeContent->{$row->field.'_read'}) {
                             $dataTypeContent->{$row->field} = $dataTypeContent->{$row->field.'_read'};
@@ -292,7 +249,7 @@
     </script>
      <script type="text/javascript">
         function acceptFunction() {
-        var r = confirm("You want to Receive this Member Registration?");
+        var r = confirm("Are you sure Approved this member?");
         if (r == true) {
             $(document).on('click', '.accept_order',function(e){
                 var arr = [];
@@ -323,7 +280,7 @@
     }
 
     function cancelFunction() {
-        var r = confirm("You want to Cancel this Member Registration?");
+        var r = confirm("Are you sure Cancel this member?");
         if (r == true) {
             $(document).on('click', '.cancel_order',function(e){
                 var arr = [];

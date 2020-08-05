@@ -89,6 +89,44 @@
                                     @endif
                                 </div>
                             @endforeach
+                            
+                            <div class="form-group  col-md-12 ">
+                            @if($edit)
+                                @php
+                                    if($dataTypeContent->price){
+                                        $price=$dataTypeContent->price;
+                                        $price_month_12 = $price['month_12']['price'];
+                                        $price_month_3 = $price['month_3']['price'];
+                                    }else{
+                                        $price_month_12 = '';
+                                        $price_month_3 = '';
+                                    }
+                                @endphp
+                            @else
+                                 @php
+                                    $price_month_12 = '';
+                                    $price_month_3 = '';
+                                @endphp
+                            @endif
+                                <label class="control-label" for="name" style="float: left;width: 100%">Price Frequency Option A</label>
+                                <input required="" type="hidden" class="form-control" name="month_12" value="Annual">
+                                <div class="col-md-6" style="padding-left: 0px;">
+                                     <input required="" type="text" class="form-control" placeholder="Annual" value="Annual" readonly="readonly">
+                                </div>
+                                <div class=" col-md-6 ">
+                                    <input required="" type="number" class="form-control" name="price_month_12" placeholder="Price package" value="{{($price_month_12 != null)?$price_month_12:old('price_month_12')}}" step="1" min="1">
+                                </div>
+                            </div>
+                            <div class="form-group  col-md-12 ">
+                                <label class="control-label" for="name" style="float: left;width: 100%">Price Frequency Option B</label>
+                                <input required="" type="hidden" class="form-control" name="month_3" value="Quarterly">
+                                <div class="col-md-6" style="padding-left: 0px;">
+                                     <input required="" type="text" class="form-control" placeholder="Quarterly" value="Quarterly" readonly="readonly">
+                                </div>
+                                <div class=" col-md-6 ">
+                                    <input required="" type="number" class="form-control" name="price_month_3" placeholder="Price package" value="{{($price_month_3 != null)?$price_month_3:old('price_month_3')}}" step="1" min="1">
+                                </div>
+                            </div>
 
                         </div><!-- panel-body -->
 

@@ -27,10 +27,10 @@ class MembershipType extends Model
     }
     protected $fillable = ['name', 'slug', 'logo', 'day', 'description', 'status'];
 
-    protected $casts = [
+	protected $casts = [
         'price' => 'array'
-    ]; 
-
+    ];
+	
     public function benefitMembers()
     {
         return $this->belongsToMany('App\Models\BenefitMember', 'membership_type_benefit_members', 'membership_type_id', 'benefit_member_id');

@@ -1,18 +1,14 @@
 @extends('master')
 @section('content')
-  <div class="innerpage-style1">
+  <div class="innerpage-style1 fd-page">
     <span class="leftpageimg"></span>
     <span class="rightpageimg"></span>
     <section class="banner-innerpage">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h1>
-              <span class="title-icon-left"></span>
-              <span class="title-icon-right"></span>
-              <span class="title-icon-top"></span>
-              <span class="title-icon-bottom"></span>
-               {{ trans('pages.Food & Drinks') }}
+            <h1 class="title-innerpage2">
+              <span><span style="display: none;">{{ trans('pages.Food & Drinks') }}</span></span>
             </h1>
           </div>
         </div>
@@ -35,13 +31,16 @@
               <div class="ctevent">
                 {!!$val->description!!}
               </div>
+              <a href="javascript:;" class="bookingaction radius_4">View menu</a>
               @auth
-              <button-show-modal 
-                :classname="'bookingaction radius_4'" 
-                :text="'Booking Table'"
-                :type="'1'"
-                :booking_id="{{$val->id}}"
-              ></button-show-modal>
+                <button-show-modal 
+                  :classname="'bookingaction radius_4'" 
+                  :text="'Booking Table'"
+                  :type="'1'"
+                  :booking_id="{{$val->id}}"
+                ></button-show-modal>
+              @else
+                <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Table</button>
               @endauth
           </div>
           <div class="fdimg">

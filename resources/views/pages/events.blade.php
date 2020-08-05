@@ -1,18 +1,14 @@
 @extends('master')
 @section('content')
-  <div class="innerpage-style1">
+  <div class="innerpage-style1 ev-page">
     <span class="leftpageimg"></span>
     <span class="rightpageimg"></span>
     <section class="banner-innerpage">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h1>
-              <span class="title-icon-left"></span>
-              <span class="title-icon-right"></span>
-              <span class="title-icon-top"></span>
-              <span class="title-icon-bottom"></span>
-               {{ trans('pages.Events') }}
+            <h1 class="title-innerpage2">
+              <span><span style="display: none;">{{ trans('pages.Events') }}</span></span>
             </h1>
           </div>
         </div>
@@ -42,6 +38,8 @@
                 :type="'0'"
                 :booking_id="{{$val->id}}"
               ></button-show-modal>
+            @else
+                <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Event</button>
             @endauth
             <div class="clear"></div>
           </div>
@@ -53,7 +51,6 @@
       @endforeach
     </section>
   </div>
-  <div class="vl"></div>
   <booking-form :text="'Booking Event'"></booking-form>
 @endsection
 

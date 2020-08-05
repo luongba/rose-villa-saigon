@@ -12,11 +12,16 @@ class UserMeta extends Model
 	{
 		return $this->belongsTo('App\User');
 	}
+    public function membershipType()
+    {
+        return $this->belongsTo('App\Models\MembershipType');
+    }
 
     /*QUERY DATABASE*/
     public function addNewUserMeta($param)
     {
         return static::create($param);
     }
+    
     /*END QUERY DATABASE*/
 }

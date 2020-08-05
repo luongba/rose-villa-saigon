@@ -26,7 +26,7 @@
 			<h1 class="title-innerpage2">
 		        <span><span>{{$singleroom->name}}</span></span>
 		    </h1>
-		    <div class="abct-elm">
+		    <div class="abct-elm singleroom-ct scrollcustom">
 			    <div class="[ layout layout--medium ] room-details">
 			    	<div class="leftroom">
 				    	<div class="layout__item desk-one-whole room-details__amenities">
@@ -53,13 +53,27 @@
 			    	<div class="rightroom">
 			    		<div class="layout__item desk-one-whole room-details__description">
 				          	<div class="content-editer-room editor-style">
-				            {!!$singleroom->description!!}
+				            	{!!$singleroom->description!!}
+			        		</div>
 			        	</div>
 			    	</div>
 			    </div>
 			</div>
+			<div class="bottomroom">
+				@auth
+			      	<button-show-modal 
+			            :classname="'bookingaction radius_4'" 
+			            :text="'Booking Room'"
+			            :type="'3'"
+			            :booking_id="{{$singleroom->id}}"
+			      	></button-show-modal>
+			    @else
+					<button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Room</button>
+			    @endauth
+			</div>
 		</div>
     </div>
+      <booking-form :text="'Booking Now'"></booking-form>
   </main>
 
 <link rel="stylesheet" href="{{asset('public/rosevilla/style.css')}}" type="text/css" media="screen" />

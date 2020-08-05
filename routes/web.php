@@ -84,8 +84,19 @@ Route::group(['middleware' => 'locale'], function() {
 		'uses' => 'HomeController@update_password'
 	]);
 });
+Route::group(['prefix' => 'admin','middleware' => 'locale'], function () {
+	/*users*/
+	Route::prefix("users")->group(function(){
+		Route::get('/create-member-registration', [
+			'as' => 'users.create_member',
+			'uses' => 'Admin\VoyagerUserController@create_member'
+		]);
 
-Route::group(['prefix' => 'admin'], function () {
+		Route::post('/create-member-registration', [
+			'as' => 'users.post_create_member',
+			'uses' => 'Admin\VoyagerUserController@post_create_member'
+		]);
+	});
 	Voyager::routes();
 });
 
@@ -128,5 +139,19 @@ Route::prefix('/admin-ajax')->middleware('auth')->group(function() {
 	Route::post('user-meta-cancel', 'Admin\MetaUserController@cancel')->name('user-meta.cancel');
 
 	Route::post('user-meta-accept', 'Admin\MetaUserController@accept')->name('user-meta.accept');
+
+	/*booking room*/
+
+	Route::post('booking-rooms-cancel', 'Admin\BookingRoomController@cancel')->name('booking-room.cancel');
+
+	Route::post('booking-rooms-accept', 'Admin\BookingRoomController@accept')->name('booking-room.accept');
+	/*BookingWellnessBeauty*/
+	Route::post('booking-spas-cancel', 'Admin\BookingWellnessBeautyController@cancel')->name('booking-spa.cancel');
+
+	Route::post('booking-spas-accept', 'Admin\BookingWellnessBeautyController@accept')->name('booking-spa.accept');
+	/*BookingEventController*/
+	Route::post('booking-events-cancel', 'Admin\BookingEventController@cancel')->name('booking-event.cancel');
+
+	Route::post('booking-events-accept', 'Admin\BookingEventController@accept')->name('booking-event.accept');
 });
 

@@ -59,8 +59,6 @@ class HomeController extends Controller
 
         $list_room = $this->room->listRoom();
         View::share('list_room', $list_room);
-
-        $this->contact = new Contact;
     }
     
     public function welcome(Request $request)
@@ -102,6 +100,23 @@ class HomeController extends Controller
         return view('pages.contact');
     }
 
+    public function founder(Request $request)
+    {
+        return view('pages.founder');
+    }
+
+    public function regularmember(Request $request)
+    {
+        return view('pages.regular-member');
+    }
+    public function findus(Request $request)
+    {
+        return view('pages.findus');
+    }
+    public function thankyou(Request $request)
+    {
+        return view('pages.thankyou');
+    }
     public function singleroom(Request $request)
     {
         $singleroom = $this -> room ->infoRoomBySlug($request -> slug);
@@ -357,6 +372,7 @@ class HomeController extends Controller
         $result = array();
         foreach ($arrData as $item) {
             if ($item['iso2'] === $request->country) {
+
                 if(isset($item['admin_name'])){
                     $name = $item['admin_name'];
                 } else {

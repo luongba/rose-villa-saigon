@@ -30,6 +30,7 @@ Vue.component('login-register', require('./components/LoginRegister.vue').defaul
 Vue.component('membership-form', require('./components/MembershipForm.vue').default);
 Vue.component('button-show-modal', require('./components/ButtonShowModal.vue').default);
 Vue.component('booking-form', require('./components/BookingForm.vue').default);
+Vue.component('member-form', require('./components/MemberForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

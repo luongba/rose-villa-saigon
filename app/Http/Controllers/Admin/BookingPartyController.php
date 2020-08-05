@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
 use App\Models\BookingParty;
 //use TCG\Voyager\Http\Controllers\VoyagerBaseController as BaseVoyagerBaseController;
-use App\Events\AfterBookingParty;
+use App\Events\AfterConfirmBookingParty;
 
 class BookingPartyController extends VoyagerBaseController
 {
@@ -18,7 +18,7 @@ class BookingPartyController extends VoyagerBaseController
                 $update_stt -> status = 1;
                 $update_stt -> save();
                 /*sent email*/
-               // event(new AfterBookingParty($update_stt));
+                event(new AfterConfirmBookingParty($update_stt));
 
             }else{
                 return response()->json([
@@ -41,7 +41,7 @@ class BookingPartyController extends VoyagerBaseController
                 $update_stt -> status = 2;
                 $update_stt -> save();
                 /*sent email*/
-               // event(new AfterBookingParty($update_stt));
+                event(new AfterConfirmBookingParty($update_stt));
             }else{
                 return response()->json([
                     'success' => false,

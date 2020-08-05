@@ -5,13 +5,16 @@
         <div class="modal-content">
           <div class="modal-header">
             <h3>{{text}}</h3>
-            </div>
+            <button type="button" class="close hidden" data-dismiss="modal" aria-label="Close" ref="closeModal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
             <div class="modal-body">
                 <div class="inforose-popup">
                     <h4>Contact Us</h4>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <p><i class="fas fa-phone-alt"></i> 0123456789</p>
+                            <p><i class="fas fa-phone-alt"></i>+84915877479</p>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <p><i class="far fa-clock"></i> 06:00 - 22:00</p>
@@ -19,49 +22,63 @@
                     </div>
                      <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <p><i class="far fa-envelope"></i> resortrestaurant@rosevillsaigon.com</p>
+                            <p><i class="far fa-envelope"></i> booking@rosevillsaigon.com</p>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <p><i class="fas fa-map-marker-alt"></i> No2 , District 9, Hồ Chí Minh city</p>
+                            <p><i class="fas fa-map-marker-alt"></i> Số 10 Đường số 58, Thảo Điền, Quận 2, Tp Hồ Chí Minh, Vietnam</p>
                         </div>
                     </div>
                 </div>
                 <div class="form-booking-popup">
-                      <h4>Fill in the infomation</h4>
-                  <form name="forgotForm" class="form-control-user" @submit.prevent="submit" data-parsley-validate>
-                          <div class="row">
+                  <h4>Fill in the infomation</h4>
+                  <form class="form-control-user" @submit.prevent="submit" data-parsley-validate>
+                          <div class="row" v-if="model.type_booking==3">
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <label>Start Date</label>
                                   <div class="form-group popup-input-style2">
-                                       <input type="text" v-model="model.name" class="form-control-elm" value="" id="" placeholder="Name *" autocomplete="off" data-parsley-required>
+                                       <input type="date" v-model="model.start_at" class="form-control-elm" value="" placeholder="Start Date" autocomplete="off" data-parsley-required>
                                   </div>
                               </div>
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <label>End Date</label>
                                   <div class="form-group popup-input-style2">
-                                       <input type="email" v-model="model.email" class="form-control-elm" value="" id="" placeholder="Email *" autocomplete="off" data-parsley-required>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                  <div class="form-group popup-input-style2">
-                                       <input type="tel" v-model="model.phone" class="form-control-elm" value="" id="" placeholder="Mobile Phone *" autocomplete="off" data-parsley-required>
-                                  </div>
-                              </div>
-                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                  <div class="form-group popup-input-style2">
-                                       <input type="number" v-model="model.number_guest" class="form-control-elm" value="" id="" placeholder="No. of Guest *" autocomplete="off" data-parsley-required>
+                                       <input type="date" v-model="model.end_at" class="form-control-elm" value="" placeholder="End Date *" autocomplete="off" data-parsley-required>
                                   </div>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                   <div class="form-group popup-input-style2">
-                                       <input type="date" v-model="model.date" class="form-control-elm" value="" id="" placeholder="Event Time *" autocomplete="off" data-parsley-required>
+                                       <input type="text" v-model="model.name" class="form-control-elm" value="" placeholder="Name *" autocomplete="off" data-parsley-required>
                                   </div>
                               </div>
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                   <div class="form-group popup-input-style2">
-                                       <input type="time" v-model="model.time" class="form-control-elm" value="" id="" placeholder="Event Date *" autocomplete="off" data-parsley-required>
+                                       <input type="email" v-model="model.email" class="form-control-elm" value="" placeholder="Email *" autocomplete="off" data-parsley-required>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                  <div class="form-group popup-input-style2">
+                                       <input type="tel" v-model="model.phone" class="form-control-elm" value="" placeholder="Mobile Phone *" autocomplete="off" data-parsley-required>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                  <div class="form-group popup-input-style2">
+                                       <input type="number" v-model="model.number_guest" class="form-control-elm" value="" placeholder="No. of Guest *" autocomplete="off" data-parsley-required>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row" v-if="model.type_booking!=3">
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                  <div class="form-group popup-input-style2">
+                                       <input type="date" v-model="model.date" class="form-control-elm" value="" placeholder="Event Time *" autocomplete="off" data-parsley-required>
+                                  </div>
+                              </div>
+                              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                  <div class="form-group popup-input-style2">
+                                       <input type="time" v-model="model.time" class="form-control-elm" value="" placeholder="Event Date *" autocomplete="off" data-parsley-required>
                                   </div>
                               </div>
                           </div>
@@ -93,13 +110,16 @@
 </template>
 
 <script>
+import $ from 'jquery'
 import { BModal, VBModal } from 'bootstrap-vue'
 export default {
   name: 'booking-form',
   props:['text'],
   data() {
    return {
-    model: {}
+    model: {
+      type_booking: 3
+    }
    }
   },
   created() {
@@ -112,16 +132,18 @@ export default {
     submit: function(){
       let _this = this
       let params = _this.model
-      params.start_at = this.model.date +" "+ this.model.time
+      if(this.model.type_booking != 3){
+        params.start_at = this.model.date +" "+ this.model.time
+      }
       axios.post(
           './booking', params
         ).then(function(response){
           if(response.data.status == false){
             toastr.error(response.data.message)
           }else {
-            $('#modal-booking').modal('hide')
             _this.model = {}
             toastr.success(response.data.message)
+            this.$refs.closeModal.click();
           }
         });
     }

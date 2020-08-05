@@ -6,6 +6,7 @@
     <section class="innercontent content-inner50">
         <div class="contact-ct ctbox1">
           <h1 class="title-innerpage2">
+
             <span><span>{{ trans('pages.Contact Us') }}</span></span>
           </h1>
 
