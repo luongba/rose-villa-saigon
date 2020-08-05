@@ -6,7 +6,7 @@
     <section class="innercontent content-inner50">
         <div class="about-ct ctbox1">
           <h1 class="title-innerpage2">
-            <span><span>How To Find Us</span></span>
+            <span><span>{{ trans('pages.How To Find Us') }}</span></span>
           </h1>
           <div class="abct-elm mapct">
             <div class="gmaps">
@@ -19,7 +19,7 @@
     <section class="rightmaps">
       <div class="contentmaps">
         <img class="img-rightmap" src="{{asset('public/images/bg-right-map.png')}}" />
-        <a href="javascript:;" class="dlmap">DOWNLOAD MAP IN ROSE VILLA SAIGON</a>
+        <a href="javascript:;" class="dlmap">{{ trans('pages.DOWNLOAD MAP IN ROSE VILLA SAIGON') }}</a>
       </div>
     </section>
   </div>

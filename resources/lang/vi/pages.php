@@ -19,6 +19,7 @@ return [
 	'Events' => 'Sự kiện',
 	'About Us' => 'Giới thiệu',
 	'Contact Us' => 'Liên hệ',
+	'How To Find Us' => 'Chỉ đường',
 
 	//contact
 	'Send message for us' => 'Gửi tin nhắn cho chúng tôi',
@@ -32,5 +33,8 @@ return [
 	'Booking Event' => 'Booking Event',
 
 	//single room
-	'Utilities' => 'Utilities'
+	'Utilities' => 'Utilities',
+
+	//findus
+	'DOWNLOAD MAP IN ROSE VILLA SAIGON' => 'TẢI XUỐNG BẢN ĐỒ ROSE VILLA SAIGON'
 ];
