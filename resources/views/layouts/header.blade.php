@@ -13,7 +13,6 @@
 	              </li>
 	            </ul>
             </div>
-           
       @else
         <div class="account-section">
             <a class="loginlink-landing" href="javascript:;"  data-toggle="modal" data-target="#popup-login">Login</a>

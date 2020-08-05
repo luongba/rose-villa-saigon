@@ -22,7 +22,7 @@
         <li class="nav-item {{ Route::currentRouteNamed('shop') ? 'active' : '' }}"><a class="nav-link" href="{{route('shop')}}">Shop</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('events') ? 'active' : '' }}"><a class="nav-link" href="{{route('events')}}">Events</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('contact') ? 'active' : '' }}"><a class="nav-link" href="{{route('contact')}}">Contact Us</a></li>
-         <li class="nav-item {{ Route::currentRouteNamed('findus') ? 'active' : '' }}"><a class="nav-link" href="{{route('findus')}}">How To Find Us</a></li>
+        <li class="nav-item {{ Route::currentRouteNamed('findus') ? 'active' : '' }}"><a class="nav-link" href="{{route('findus')}}">How To Find Us</a></li>
     </ul>
 </nav>
     
