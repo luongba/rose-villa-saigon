@@ -27,10 +27,11 @@ return [
 	'Title' => 'Tiêu đề',
 	'Content' => 'Nội dung',
 	'Submit' => 'Gửi',
-	'' => '',
-	'' => '',
-	'' => '',
-	'' => '',
-	'' => '',
-	'' => '',
+
+
+	//booking event
+	'Booking Event' => 'Booking Event',
+
+	//single room
+	'Utilities' => 'Utilities'
 ];
