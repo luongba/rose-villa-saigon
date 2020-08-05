@@ -153,7 +153,7 @@ class HomeController extends Controller
         ]);
         if($validator->fails()){
             if($validator->errors()->first('phone') != null){
-                return "phone đã tồn tại!";
+                return trans('messages.Phone number already exists');
             }else if($validator->errors()->first('password') != null){
                 return $validator->errors()->first('password');
             }
@@ -170,7 +170,7 @@ class HomeController extends Controller
         }else{
             return response()->json([
                 "status" => false,
-                'message' => 'Số điện thoại không chính xác!!!'
+                'message' => trans('messages.Incorrect telephone number')
             ]);
         }
     }
@@ -190,7 +190,7 @@ class HomeController extends Controller
         $user->save();
         return response()->json([
             "status" => true,
-            "message" => "Cập nhật mật khẩu thành công!!!"
+            "message" => trans('messages.Update password successfully')
         ]);
     }
 
@@ -274,12 +274,12 @@ class HomeController extends Controller
             }
             return response()->json([
                 'status' => true,
-                'message' => 'Booking successfully'
+                'message' => trans('messages.Booking successfully')
             ]);
         } else {
             return response()->json([
                 'status' => false,
-                'message' => 'Booking error'
+                'message' => trans('messages.Booking error')
             ]);
         }
     }
@@ -322,12 +322,12 @@ class HomeController extends Controller
         if ($resultAddContact) {
             return response()->json([
                 "status" => true,
-                "message" => 'Add contact successfully'
+                "message" => trans('messages.Add contact successfully')
             ]);
         } else {
             return response()->json([
                 "status" => false,
-                "message" => 'Add contact error'
+                "message" => trans('messages.Add contact error')
             ]);
         }
     }
@@ -372,19 +372,26 @@ class HomeController extends Controller
         $result = array();
         foreach ($arrData as $item) {
             if ($item['iso2'] === $request->country) {
-				if(isset($item['admin_name'])){
-					$name = $item['admin_name'];
+
+                if(isset($item['admin_name'])){
+                    $name = $item['admin_name'];
                 } else {
-					$name = $item['city_ascii'];
-				}
-				if (! in_array($name, $result)) {
-					$result[] = $name;
-				}
+                    $name = $item['city_ascii'];
+                }
+                if (! in_array($name, $result)) {
+                    $result[] = $name;
+                }
             }
         }
         return response()->json([
             "status" => true,
             "data" => $result
         ]);
+    }
+
+    public function changeLanguage($language)
+    {
+        \Session::put('website_language', $language);
+        return redirect()->back();
     }
 }

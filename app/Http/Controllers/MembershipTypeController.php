@@ -23,7 +23,7 @@ class MembershipTypeController extends Controller
 			'type' => 'required|integer|in:'.config('constants.MEMBERSHIP_TYPE_FOUNDER').','.config('constants.MEMBERSHIP_TYPE_REGULAR')
 		],
 		[
-			'dob.before' => 'Thành viên phải trên 18 tuổi'
+			'dob.before' => trans('messages.Members must be over 18 years old')
 		]);
 		if ($validator->fails()) {
 			if ($validator->errors()->first('dob') != null) {
