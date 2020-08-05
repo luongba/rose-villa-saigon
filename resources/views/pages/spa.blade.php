@@ -12,7 +12,7 @@
               <span class="title-icon-right"></span>
               <span class="title-icon-top"></span>
               <span class="title-icon-bottom"></span>
-               Wellness & Beauty
+               {{ trans('pages.Wellness & Beauty') }}
             </h1>
           </div>
         </div>

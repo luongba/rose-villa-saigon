@@ -44,7 +44,7 @@
 				          </div>
 				        </div>
 				        <div class="utility-room editor-style">
-				            <strong>Tiện Ích:</strong>
+				            <strong>{{ trans('pages.Utilities') }}:</strong>
 				            <ul>
 				               {!!$singleroom->benefit!!}
 				            </ul> 
