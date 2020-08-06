@@ -24,6 +24,7 @@
         <li class="nav-item {{ Route::currentRouteNamed('events') ? 'active' : '' }}"><a class="nav-link" href="{{route('events')}}">{{ trans('pages.Events') }}</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('about')}}">{{ trans('pages.About Us') }}</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('contact') ? 'active' : '' }}"><a class="nav-link" href="{{route('contact')}}">{{ trans('pages.Contact Us') }}</a></li>
+
     </ul>
 </nav>
     

@@ -13,7 +13,6 @@
 	              </li>
 	            </ul>
             </div>
-
             <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
               <li class="singout">
                   <a href="{{ route('logout_web') }}">
