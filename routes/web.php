@@ -58,6 +58,10 @@ Route::group(['middleware' => 'locale'], function() {
 		'as' => 'contact',
 		'uses' => 'HomeController@contact'
 	]);
+	Route::get('/mailblade', [
+		'as' => 'mailblade',
+		'uses' => 'HomeController@mailblade'
+	]);
 	Route::get('/thank-you', [
 		'as' => 'thankyou',
 		'uses' => 'HomeController@thankyou'
@@ -125,9 +129,8 @@ Route::group(['middleware' => 'locale'], function() {
 
 	Route::get('province-by-country', 'HomeController@listProvinceByCountry')->name('list_province_by_country');
 	/*END MANH_TU*/
-});
-
-Route::group(['prefix' => 'admin'], function () {
+	
+	Route::group(['prefix' => 'admin'], function () {
 	/*users*/
 	Route::prefix("users")->group(function(){
 		Route::get('/create-member-registration', [
@@ -142,6 +145,9 @@ Route::group(['prefix' => 'admin'], function () {
 	});
 	Voyager::routes();
 });
+});
+
+
 /**/
 Route::prefix('/admin-ajax')->middleware('auth')->group(function() {
 

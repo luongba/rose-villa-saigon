@@ -113,6 +113,10 @@ class HomeController extends Controller
     {
         return view('pages.findus');
     }
+    public function mailblade(Request $request)
+    {
+        return view('pages.mail');
+    }
     public function thankyou(Request $request)
     {
         return view('pages.thankyou');

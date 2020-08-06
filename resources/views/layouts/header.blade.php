@@ -24,6 +24,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button> <!-- Responsive nav button end -->
+      <div class="optionlang">
+      	<select name="lang">
+	      	<option value="en">EN</option>
+	      	<option value="vi">VI</option>
+	      </select>
+      </div>
     </div>
   </section>
 
