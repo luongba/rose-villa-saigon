@@ -3007,7 +3007,7 @@ body.welcome {
 }
 .contact-ct{
 	width:539px;
-	height:834px;
+	height:854px;
 	background:url(images/Contact-us.png) no-repeat;
 }
 .title-innerpage2{
@@ -3018,11 +3018,25 @@ body.welcome {
 	left:50%;
 	margin-left:-120px;
 }
+.singleroom .title-innerpage2{
+	background:url(images/bg-title.png) no-repeat;
+	height:157px;
+	width:247px;
+	top:-50px;
+	margin-left:-125px;
+	padding:40px;
+} 
 .title-innerpage2 span{
 	height:78px;
 	width:240px;
 	display:table;
 	margin:0 auto;
+	
+}
+.singleroom .title-innerpage2 span{
+	height:77px;
+	width:167px;
+	
 }
 .title-innerpage2 span span{
 	vertical-align:middle;
@@ -3032,7 +3046,10 @@ body.welcome {
 	color:#252525;
 	text-transform:uppercase;
 }
-
+.singleroom .title-innerpage2 span span{
+	color:#fff;
+	font-size:20px;
+}
 .abct-elm{
 	width:350px;
 	height:350px;
@@ -3993,6 +4010,36 @@ ul.step-membership{
 }
 /* RESPONSIVE FIX */
 
+@media only screen and (max-width: 1199px){
+	.content-inner50{
+		width:100%;
+	}
+}
+@media only screen and (max-width: 768px){
+	.eventimg{
+		left:0;
+	}
+	.event-ct {
+		width: 90%;
+		float: none;
+		margin: 0 auto;
+	}
+	.event-right .event-ct {
+		float: none;
+	}
+	.fd-elm .fdimg{
+		width:100%;
+		left:0;
+		right:0;
+	}
+	.fd-elm .fdct{
+		position: relative;
+		z-index: 9;
+		width: 90%;
+		margin: 30px auto;
+		float: none;
+	}
+}
 @media only screen and (max-width: 639px){
 	.leftcp{
 		width:100%;
@@ -4009,7 +4056,22 @@ ul.step-membership{
 		padding-top: 40px;
 	}
 }
+@media only screen and (max-width: 599px){
+	.ctbox1{
+		background:#fff;
+		max-width:95%;
+	}
+	.content-inner50{
+		padding-top:50px;
+	}
+	.abct-elm,
+	.ct-elm{
+		max-width:100%;
+		padding-left:15px;
+		padding-right:15px;
+	}
 
+}
 
 
 
@@ -4019,11 +4081,11 @@ ul.step-membership{
 		background:url(images/rem_1920x1080.png) no-repeat center center; 
 	}
 	 .fade-out {
-		  animation: fadeOut ease 12s;
-		  -webkit-animation: fadeOut ease 12s;
-		  -moz-animation: fadeOut ease 12s;
-		  -o-animation: fadeOut ease 12s;
-		  -ms-animation: fadeOut ease 12s;
+		  animation: fadeOut ease 14s;
+		  -webkit-animation: fadeOut ease 14s;
+		  -moz-animation: fadeOut ease 14s;
+		  -o-animation: fadeOut ease 14s;
+		  -ms-animation: fadeOut ease 14s;
 		}
 }
  .bg_rem{
@@ -4037,11 +4099,11 @@ ul.step-membership{
   z-index:-1;
   }
  .fade-out {
-  animation: fadeOut ease 9s;
-  -webkit-animation: fadeOut ease 9s;
-  -moz-animation: fadeOut ease 9s;
-  -o-animation: fadeOut ease 9s;
-  -ms-animation: fadeOut ease 9s;
+  animation: fadeOut ease 10s;
+  -webkit-animation: fadeOut ease 10s;
+  -moz-animation: fadeOut ease 10s;
+  -o-animation: fadeOut ease 10s;
+  -ms-animation: fadeOut ease 10s;
 }
 @keyframes fadeOut {
   0% {

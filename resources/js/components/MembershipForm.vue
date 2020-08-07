@@ -71,7 +71,7 @@
                 type="select"
                 v-model="model.gender"
                 name="gender"
-                :options="{Male: $t('form_membership.gender_male'), Female: $t('form_membership.gender_female'), Other: $t('form_membership.gender_other')}"
+                :options="{Male: $t('form_membership.gender_male'), Female: $t('form_membership.gender_female'), Other: $t('form_membership.gender_other'), PreferNotToSay: $t('form_membership.gender_secret')}"
                 validation="^required"
                 placeholder="Select gender"
                 :validation-messages="{
