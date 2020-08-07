@@ -44,6 +44,11 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\AfterConfirmBookingRoom' => [
             'App\Listeners\SendMailNotifyResultBookingRoom',
+        ],
+
+        //
+        'App\Events\AfterRegisterMember' => [
+            'App\Listeners\SendMailNofityReceivedApplication'
         ]
     ];
 

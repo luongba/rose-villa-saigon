@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Events\AfterRegister;
+use App\Events\AfterRegisterMember;
 
 use Mail;
 use App\Mail\MailNotifyThanksRegister;
@@ -26,7 +27,7 @@ class TestController extends Controller
 	public function testMail()
 	{
 		$user = \App\User::find(3);
-		event(new AfterRegister($user));
+		event(new AfterRegisterMember($user));
 		return "xong";
 	}
 
