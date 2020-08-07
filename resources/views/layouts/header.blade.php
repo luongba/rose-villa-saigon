@@ -25,10 +25,8 @@
         <span class="icon-bar"></span>
       </button> <!-- Responsive nav button end -->
       <div class="optionlang">
-      	<select name="lang">
-	      	<option value="en">EN</option>
-	      	<option value="vi">VI</option>
-	      </select>
+        <a class="{{ config('app.locale') == "en" ? 'active' : '' }}" href="./change-language/en">EN</a>
+        <a class="{{ config('app.locale') == "vi" ? 'active' : '' }}" href="./change-language/vi">VI</a>
       </div>
     </div>
   </section>

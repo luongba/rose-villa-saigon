@@ -5,6 +5,7 @@
     <title>Rose Villa Sài Gòn</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="locale" content="{{ App::getLocale() }}"/>
     <meta name="language" content="english">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
