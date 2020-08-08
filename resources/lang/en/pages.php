@@ -29,7 +29,6 @@ return [
 	'Title' => 'Title',
 	'Content' => 'Content',
 	'Submit' => 'Submit',
-
 	//booking event
 	'Booking Event' => 'Booking Event',
 

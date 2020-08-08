@@ -30,7 +30,7 @@
           <div class="bgevent-ct">
             <h3 class="title-post-1">{{$val->name}}</h3>
             <div class="ctevent">
-              {!!$val->description!!}
+               {!!$val->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
             </div>
             <a href="javascript:;" class="bookingaction radius_4">View menu</a>
             @auth

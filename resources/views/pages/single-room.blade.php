@@ -46,14 +46,14 @@
 				        <div class="utility-room editor-style">
 				            <strong>{{ trans('pages.Utilities') }}:</strong>
 				            <ul>
-				               {!!$singleroom->benefit!!}
+				               {!!$singleroom->getTranslatedAttribute('benefit', config('app.locale'), 'fallbackLocale')!!}
 				            </ul> 
 				          </div>
 			    	</div>
 			    	<div class="rightroom">
 			    		<div class="layout__item desk-one-whole room-details__description">
 				          	<div class="content-editer-room editor-style">
-				            	{!!$singleroom->description!!}
+				            	{!!$singleroom->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
 			        		</div>
 			        	</div>
 			    	</div>

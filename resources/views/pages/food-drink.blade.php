@@ -27,9 +27,9 @@
 
         <div class="fd-elm {{$float}}">
           <div class="fdct">
-              <h3 class="title-post-1">{{$val->title}}</h3>
+              <h3 class="title-post-1">{!!$val->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')!!}</h3>
               <div class="ctevent">
-                {!!$val->description!!}
+                 {!!$val->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
               </div>
               <a href="javascript:;" class="bookingaction radius_4">View menu</a>
               @auth
