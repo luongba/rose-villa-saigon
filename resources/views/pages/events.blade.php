@@ -7,15 +7,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            {{-- <h1>
-              <span class="title-icon-left"></span>
-              <span class="title-icon-right"></span>
-              <span class="title-icon-top"></span>
-              <span class="title-icon-bottom"></span>
-               Events
-            </h1> --}}
             <h1 class="title-innerpage2">
-              <span><span style="display: none;">Events</span></span>
+              <span><span style="display: none;">{{ trans('pages.Events') }}</span></span>
             </h1>
           </div>
         </div>
@@ -34,9 +27,9 @@
       <div class="event-elm {{$float}}">
         <div class="event-ct">
           <div class="bgevent-ct">
-            <h3 class="title-post-1">{{$val->title}}</h3>
+            <h3 class="title-post-1">{!!$val->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')!!}</h3>
             <div class="ctevent">
-              {!!$val->description!!}
+              {!!$val->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
             </div>
             @auth
               <button-show-modal 

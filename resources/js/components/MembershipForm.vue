@@ -483,7 +483,6 @@ export default {
   },
   methods: {
     checkPhone: function(e){
-        console.log(e.valid,e.number)
       if(!e.valid){
         this.validphone = "Phone number not valid"
       }else {
@@ -503,16 +502,17 @@ export default {
           // console.log(this.image_preview);
       };
     },
-    next: function(){
+    next: function(e){
+      e.preventDefault()
       let _this = this
-      _this.model.dob = moment(_this.model.year + " " + _this.model.month + " " + _this.model.day).format('YYYY-MM-DD')
-
+      let dob = [_this.model.year, _this.model.month, _this.model.day]
+      _this.model.dob = moment(_this.model.year + "-" + ('0' + _this.model.month).slice(-2) + "-" + ('0' + _this.model.day).slice(-2)).format('YYYY-MM-DD')
       if(this.step == 1){
         var years_old = moment().diff(_this.model.dob, 'years');
-        console.log(years_old)
+        // console.log(years_old, _this.model.dob)
 
         if(
-          !this.model.first_name || !this.model.last_name || !this.model.email
+          !this.model.first_name || !this.model.last_name || !this.model.email || !this.model.phone
            || !this.model.gender || !this.model.year  || !this.model.month  || !this.model.day 
            || !this.model.occupation  || !this.model.country || !this.model.address_one
            || !this.model.city || !this.model.post_code
@@ -526,33 +526,33 @@ export default {
           return
         }else {
         	// validate
-		    axios.post(
-		      './check-phone-email', {
-		          phone: '+849123456789',
-		          email: '1gautrangcb91@gmail.com'
-		      }
-		    ).then(function(response){
-		      console.log(response.data)
-		      if(response.data.status == false){
-		        toastr.error(response.data.message)
-		        return
-		      }
-		    });
-          	// get member package
-          	axios.get(
-            	'./membership-type',{
-              	params:{
-	                dob: _this.model.dob,
-	                city: _this.model.city,
-	                type: _this.type == 'founder' ? 1 : 2
-	              }
-            	}
-          	).then(function(response){
-            _this.options = response.data
-          	})
+  		    axios.post(
+  		      './check-phone-email', {
+  		          phone: _this.model.phone,
+  		          email: _this.model.email
+  		      }
+  		    ).then(function(response){
+  		      if(response.data.status == false){
+  		        toastr.error(response.data.message)
+              _this.step = 1
+  		        return false
+  		      }else {
+              // get member package
+              axios.get(
+                './membership-type',{
+                  params:{
+                    dob: _this.model.dob,
+                    city: _this.model.city,
+                    type: _this.type == 'founder' ? 1 : 2
+                  }
+                }
+              ).then(function(response){
+                _this.options = response.data
+              })
+              _this.step++
+            }
+  		    })
 
-          this.step++
-          return
         }
       }
 

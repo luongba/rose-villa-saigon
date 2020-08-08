@@ -9,16 +9,10 @@
 	            <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
 	              <li class="singout">
 	                  <a href="{{ route('logout_web') }}">
-	                  <span>Đăng Xuất</span></a>
+	                  <span>{{ trans('pages.Logout') }}</span></a>
 	              </li>
 	            </ul>
             </div>
-            <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
-              <li class="singout">
-                  <a href="{{ route('logout_web') }}">
-                  <span>{{ trans('pages.Logout') }}</span></a>
-              </li>
-            </ul>
       @else
         <div class="account-section">
             <a class="loginlink-landing" href="javascript:;"  data-toggle="modal" data-target="#popup-login">{{ trans('pages.Login') }}</a>
@@ -30,6 +24,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button> <!-- Responsive nav button end -->
+      <div class="optionlang">
+      	<select name="lang">
+	      	<option value="en">EN</option>
+	      	<option value="vi">VI</option>
+	      </select>
+      </div>
     </div>
   </section>
 

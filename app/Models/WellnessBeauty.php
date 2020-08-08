@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use TCG\Voyager\Traits\Translatable;
 class WellnessBeauty extends Model
 {
-	use SoftDeletes;
+	use SoftDeletes,Translatable;
 
 	protected $fillable = ['name', 'description', 'thumbnail', 'gallery', 'gallery'];
+	 /*translate*/
+    protected $translatable = ['description', 'name'];
 
     public function bookingWellnessBeauties()
 	{

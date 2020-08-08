@@ -2593,8 +2593,14 @@ body.welcome {
 .account-section{
 	float:right;
 	max-width:50%;
-	height:100%;
+	height:auto;
 	margin-top: 18px;
+	padding-right:65px;
+}
+.optionlang{
+    position: absolute;
+    right: 15px;
+    top: 18px;
 }
 .loginlink-landing{
 	display: block;
@@ -3635,6 +3641,9 @@ ul.step-membership{
 }
 #preview img{
 	margin:0 auto;
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
 }
 
 .step3rd{
@@ -3943,6 +3952,7 @@ ul.step-membership{
 		width:100%;
 		padding: 0;
 	}
+	
 }
 @media only screen and (max-width: 480px){
 	.banner-content h1{
@@ -3966,17 +3976,7 @@ ul.step-membership{
 	}
 }
 @media only screen and (max-width: 479px){
-	.leftcp{
-		width:100%;
-		text-align:center;
-	}
-	.rightcp{
-		width:100%;
-		text-align:center;
-	}
-	.footer-landing{
-		height: auto;
-	}
+
 }
 @media only screen and (max-width: 414px){
 	.banner-content{
@@ -3991,7 +3991,24 @@ ul.step-membership{
 		font-size: 20px;
 	}
 }
+/* RESPONSIVE FIX */
 
+@media only screen and (max-width: 639px){
+	.leftcp{
+		width:100%;
+		text-align:center;
+	}
+	.rightcp{
+		width:100%;
+		text-align:center;
+	}
+	.footer-landing{
+		height: auto;
+	}
+	.footer-landing .container-fluid {
+		padding-top: 40px;
+	}
+}
 
 
 
@@ -4072,6 +4089,5 @@ ul.step-membership{
 #recaptcha-container{
 	display:none !important;
 }
-
 
 

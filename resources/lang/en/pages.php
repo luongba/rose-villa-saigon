@@ -19,6 +19,7 @@ return [
 	'Events' => 'Events',
 	'About Us' => 'About Us',
 	'Contact Us' => 'Contact Us',
+	'How To Find Us' => 'How To Find Us',
 
 	//contact
 	'Send message for us' => 'Send message for us',
@@ -27,11 +28,12 @@ return [
 	'Title' => 'Title',
 	'Content' => 'Content',
 	'Submit' => 'Submit',
-
-
 	//booking event
 	'Booking Event' => 'Booking Event',
 
 	//single room
-	'Utilities' => 'Utilities'
+	'Utilities' => 'Utilities',
+
+	//findus
+	'DOWNLOAD MAP IN ROSE VILLA SAIGON' => 'DOWNLOAD MAP IN ROSE VILLA SAIGON'
 ];
