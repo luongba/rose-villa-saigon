@@ -25,8 +25,19 @@
         <span class="icon-bar"></span>
       </button> <!-- Responsive nav button end -->
       <div class="optionlang">
-        <a class="{{ config('app.locale') == "en" ? 'active' : '' }}" href="./change-language/en">EN</a>
-        <a class="{{ config('app.locale') == "vi" ? 'active' : '' }}" href="./change-language/vi">VI</a>
+      	<div class="chooselang">
+      		<span class="{{ config('app.locale') == "en" ? 'active' : '' }}"  id="en">EN</span>
+      		<span class="{{ config('app.locale') == "vi" ? 'active' : '' }}"  id="vi">VI</span>
+  			 <i class="fas fa-caret-down"></i>
+  		  </div>
+  	  	<ul class="select-lang">
+  	   		<li>
+  	    		<a class="{{ config('app.locale') == "en" ? 'active' : '' }}" href="./change-language/en">EN</a>
+  	    	<li>
+  	    		<a class="{{ config('app.locale') == "vi" ? 'active' : '' }}"  href="./change-language/vi">VI</a>
+  	    	</li>
+  	    </ul>
+
       </div>
     </div>
   </section>

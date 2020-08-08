@@ -2601,6 +2601,8 @@ body.welcome {
     position: absolute;
     right: 15px;
     top: 18px;
+	width:45px;
+	height:25px;
 }
 .loginlink-landing{
 	display: block;
@@ -3475,11 +3477,12 @@ ul.step-membership{
 }
 .step-membership li span.textli{
 	position:absolute;
-	width:160px;
+	width:180px;
 	text-align:center;
 	display:block;
 	bottom:0;
-	left:-50px;
+	left:50%;
+	margin-left:-90px;
 	line-height:50px;
 }
 /* step 3*/
@@ -3642,7 +3645,7 @@ ul.step-membership{
 	width:100%;
 }
 .ct-upload {
-    width: 210px;
+    width: 250px;
     border: 3px solid #fff;
     text-align: center;
     position: relative;
@@ -3694,7 +3697,18 @@ ul.step-membership{
 	text-transform:uppercase;
 }
 .step1st .form-group  input{
-	border-color:#fff;
+	border: 1px solid #fff;
+	width:100%;
+	height:40px;
+	padding:0 15px;
+	line-height:38px;
+}
+.step1st .form-group  select{
+	border: 1px solid #fff;
+	width:100%;
+	height:40px;
+	padding:0 15px;
+	line-height:38px;
 }
 .step1st .vue-tel-input{
 	position:relative;
@@ -3706,13 +3720,21 @@ ul.step-membership{
 	z-index:9;
 }
 .step1st .vue-tel-input .vti__input{
-	padding:6px 12px 6px 60px !important;
+	padding:0 12px 0 60px ;
 	width:100%;
 }
 .form-group.error .errors span{
 	background-position:left center;
 }
-
+.lb-time{
+	margin-top:32px;
+}
+.step2nd textarea{
+	width:100%;
+	height:100px;
+	resize:none;
+	padding:8px 15px;
+}
 .bgfix{
     width: 100%;
 	height:100%;
@@ -3727,6 +3749,59 @@ ul.step-membership{
 }
 .form-group.required.hiderequied > label::after{
 	display:none !important;
+}
+.select-lang{
+	display:none;
+	position:absolute;
+	right:0;
+	top:100%;
+	z-index:9999;
+}
+.chooselang{
+	color:#fff;
+	border:1px solid rgba(255,255,255,0);
+	height:100%;
+	padding-left:5px;
+	padding-right:5px;
+	cursor:pointer;
+}
+.chooselang:hover{
+	border:1px solid rgba(255,255,255,1);
+}
+.chooselang span{
+	display:none;
+	color:#fff;
+}
+.chooselang span.active{
+	display:block;
+	float:left;
+	line-height:23px;
+}
+.chooselang i{
+	color:#fff;
+	float:right;
+	line-height:23px;
+}
+.select-lang{
+	width:45px;
+	height:auto;
+}
+.select-lang li{
+	width:100%;
+	height:25px;
+}
+.select-lang li a{
+	color:#333;
+	background:#fff;
+	width:100%;
+	height:25px;
+	text-align:left;
+	padding-left:6px;
+	display:block;
+}
+.select-lang li a.active{
+	color:#fff;
+	background:#333;
 }
 
 /* FOURDER */
@@ -4014,6 +4089,14 @@ ul.step-membership{
 	.content-inner50{
 		width:100%;
 	}
+	.rightmaps{
+		width:100%;
+		left:inherit;
+		top:inherit;
+		position:relative;
+		padding-bottom:70px;
+		float:left;
+	}
 }
 @media only screen and (max-width: 768px){
 	.eventimg{
@@ -4038,6 +4121,11 @@ ul.step-membership{
 		width: 90%;
 		margin: 30px auto;
 		float: none;
+	}
+}
+@media only screen and (max-width: 640px){
+	.account-section{
+		display:none;
 	}
 }
 @media only screen and (max-width: 639px){

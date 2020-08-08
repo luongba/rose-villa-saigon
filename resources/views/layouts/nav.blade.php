@@ -3,7 +3,7 @@
     <ul class="navbar-nav">
         <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('about')}}">{{ trans('pages.About Us') }}</a></li>
         <li class="nav-item has-child-menu">
-            <a class="nav-link" href="javascript:;">Membership</a>
+            <a class="nav-link" href="javascript:;">{{ trans('pages.Membership') }}</a>
             <ul class="sub-menu">
                 <li><a href="{{route('regularmember')}}">Regular Application</a></li>
                 <li><a href="{{route('founder')}}">Founder Application</a></li>

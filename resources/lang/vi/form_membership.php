@@ -21,6 +21,7 @@ return [
 	'gender_other' => 'Khác',
 	'gender_secret' => 'Không Tiết Lộ',
 	'dob' => 'Ngày Sinh',
+	'emrty' => '',
 	'day' => 'Ngày',
 	'year' => 'Năm',
 	'month' => 'Tháng',
@@ -43,7 +44,7 @@ return [
 
 
 	//validate
-	'required' => ': Thông tin trường là bắt buộc',
+	'required' => 'Thông tin trường là bắt buộc',
 	'general_error_message' => 'Vui lòng điền tất cả các trường',
 	'error_phone' => 'Số điện thoại không đúng',
 	'error_age' => 'Bạn chưa đủ 18 tuổi',

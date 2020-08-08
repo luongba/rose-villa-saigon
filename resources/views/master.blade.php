@@ -41,11 +41,28 @@
                         aa.slideDown('slow');
                     }
                 });
+            $('.chooselang').click(function () {
+                // $(this).find('ul').slideToggle('slow');
+                var lang = $('.select-lang');
+                if(lang.is(":visible")){
+                        lang.slideUp('slow');
+                    }else {
+                        lang.slideDown('slow');
+                    }
+                });
+            $(window).click(function() {
+                $('.select-lang').slideUp('slow');
+            });
+
+            $('.optionlang').click(function(event){
+                    event.stopPropagation();
+            });
+
+
             $('.username-bar').click(function () {
                 $('.custom-dropmenu').slideToggle('slow');
             });
         });
     </script>
-
 </body>
 </html>

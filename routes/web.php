@@ -128,6 +128,19 @@ Route::group(['middleware' => 'locale'], function() {
 	Route::get('country', 'HomeController@listCountry')->name('list_country');
 
 	Route::get('province-by-country', 'HomeController@listProvinceByCountry')->name('list_province_by_country');
+
+	//test mail
+	Route::group(['prefix' => 'mail'], function() {
+	    Route::get('thanks-register/{id}', 'TestController@mailThanksRegister');
+
+	    Route::get('invite-register-early-founder-member/{id}', 'TestController@mailInviteRegisterEarlyFounderMember');
+
+	    Route::get('notify-register-early-founder-member-success', 'TestController@mailNotifyRegisterEarlyFounderMemberSuccess');
+
+	    Route::get('invite-register-founder-member/{id}', 'TestController@mailInviteRegisterFounderMember');
+
+	    Route::get('notify-confirm-application-founder-member-success/{id}', 'TestController@mailNotifyComfirmApplicationFounderMemberSuccess');
+	});
 	/*END MANH_TU*/
 	
 	Route::group(['prefix' => 'admin'], function () {
