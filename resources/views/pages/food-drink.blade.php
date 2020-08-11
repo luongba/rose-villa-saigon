@@ -42,6 +42,7 @@
               @else
                 <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Table</button>
               @endauth
+            <div class="clear"></div>
           </div>
           <div class="fdimg">
             <img  src="{{$val->UrlThumb}}" />

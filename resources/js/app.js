@@ -7,8 +7,20 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import VueInternationalization from 'vue-i18n';
+import Locale from './vue-i18n-locales.generated.js';
 
+Vue.use(VueInternationalization);
+const i18n = new VueInternationalization({
+    locale: document.head.querySelector('meta[name="locale"]').content,
+    messages: Locale
+});
+
+import VueFormulate from '@braid/vue-formulate'
+
+Vue.use(VueFormulate)
+
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
@@ -30,7 +42,7 @@ Vue.component('login-register', require('./components/LoginRegister.vue').defaul
 Vue.component('membership-form', require('./components/MembershipForm.vue').default);
 Vue.component('button-show-modal', require('./components/ButtonShowModal.vue').default);
 Vue.component('booking-form', require('./components/BookingForm.vue').default);
-Vue.component('member-form', require('./components/MemberForm.vue').default);
+Vue.component('change-language', require('./components/ChangeLanguage.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -41,4 +53,5 @@ Vue.prototype.$eventBus = new Vue(); // Global event bus
 
 const app = new Vue({
     el: '#app',
+    i18n,
 });
