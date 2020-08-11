@@ -5,7 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" style="padding:30px 20px 30px 20px;background-image:url('http://rosevilla.easyfoodd.com/public/images/mail/bg.png');background-repeat:no-repeat;background-position:top center;background-size:cover;background-color:rgb(45,46,42);
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+    body {
+ font-family: "Roboto", Verdana;
+ font-weight: 400;
+ }
+  </style>
+  </style>
+    <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" style="padding:30px 20px 30px 20px;background-image:url('http://rosevilla.easyfoodd.com/public/images/mail/bg.png');background-repeat:no-repeat;background-position:top center;background-size:cover;background-color:rgb(45,46,42);font-size:11px;line-height:18px;
     ">
           <tr>
             <td align="center">

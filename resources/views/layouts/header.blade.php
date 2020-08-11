@@ -33,6 +33,7 @@
   	  	<ul class="select-lang">
   	   		<li>
   	    		<a class="{{ config('app.locale') == "en" ? 'active' : '' }}" href="./change-language/en">EN</a>
+  	    	</li>
   	    	<li>
   	    		<a class="{{ config('app.locale') == "vi" ? 'active' : '' }}"  href="./change-language/vi">VI</a>
   	    	</li>

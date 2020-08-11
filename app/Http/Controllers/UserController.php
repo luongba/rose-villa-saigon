@@ -152,7 +152,7 @@ class UserController extends Controller
 			'city' => 'required',
 			'post_code' => 'required',
 			'country' => 'required',
-			//'avatar' => 'required',
+			'avatar' => 'required',
 			'type_user' => 'required|integer|in:'.config('constants.MEMBERSHIP_TYPE_FOUNDER').','.config('constants.MEMBERSHIP_TYPE_REGULAR'),
 			'reason' => 'required_if:type_user,2',
 			'usage_criteria' => 'required_if:type_user,2',

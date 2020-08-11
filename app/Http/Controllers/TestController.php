@@ -16,6 +16,7 @@ use App\Mail\MailNotifyComfirmApplicationFounderMemberSuccess;
 use App\Jobs\SendMailNotify;
 
 use App\User;
+use App\Models\UserMeta;
 
 class TestController extends Controller
 {
@@ -67,8 +68,8 @@ class TestController extends Controller
 
 	public function mailNotifyComfirmApplicationFounderMemberSuccess($id)
 	{
-		$user = \App\User::findOrFail($id);
-		Mail::to($user)->send(new MailNotifyComfirmApplicationFounderMemberSuccess($user));
+		$userMeta = \App\Models\UserMeta::findOrFail($id);
+		Mail::to($userMeta)->send(new MailNotifyComfirmApplicationFounderMemberSuccess($userMeta));
         dispatch(new SendMailNotify());
 		return "xong";
 	}

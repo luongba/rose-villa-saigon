@@ -203,7 +203,7 @@ textarea , input,select{
    appearance: none;       /* Remove default arrow */
    background-image: url(images/bg_select1.png);   /* Add custom arrow */
    background-repeat: no-repeat;
-   background-position: right 10px top 16px;
+   background-position: right 3px top 8px;
    font-size: 14px;
 }
 select.form-control{
@@ -256,7 +256,7 @@ body{
 	font-weight:400;
 	line-height:24px;
 	color:#333;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'spectralitalic';
 }
 .layout-headerleft{
 	padding-left:320px;
@@ -2063,12 +2063,12 @@ a.backshop{
 	margin: 15px auto;
 }
 /* member ship*/
-.birthday_select{
-	width:32% !important;
+.step1st .birthday_select{
+	width:31% !important;
 	float:left;
-	margin-right:2%;
+	margin-right:3.5%;
 }
-.birthday_select.last{
+.step1st .birthday_select.last{
 	margin-right:0;
 }
 .membership-column{
@@ -2896,6 +2896,9 @@ body.welcome {
 	float:left;
 	padding-top:60px;
 }
+.ctlay-right .content-inner50 {
+	float:right;
+}
 	/*
 	background:url(images/bg/bgct.png) no-repeat center top;
 	background-size:cover;
@@ -3427,6 +3430,9 @@ h3.title-post-1::after{
 .innerpage-membership .container{
 	max-width:660px;
 }
+.innerpage-membership .step1st .container{
+	max-width:350px;
+}
 .content-membership{
 	width:100%;
 	float:left;
@@ -3643,6 +3649,7 @@ ul.step-membership{
 	margin-bottom:50px;
 	float:left;
 	width:100%;
+	font-size:13px;
 }
 .ct-upload {
     width: 250px;
@@ -3699,16 +3706,24 @@ ul.step-membership{
 .step1st .form-group  input{
 	border: 1px solid #fff;
 	width:100%;
-	height:40px;
-	padding:0 15px;
-	line-height:38px;
+    line-height: 25px;
+    letter-spacing: 0.2em;
+    background-color: white;
+    display: block;
+    height: 25px;
+    padding: 0 5px;
+    font-size: 14px;
 }
 .step1st .form-group  select{
 	border: 1px solid #fff;
 	width:100%;
-	height:40px;
-	padding:0 15px;
-	line-height:38px;
+	line-height: 25px;
+    letter-spacing: 0.2em;
+    background-color: white;
+    display: block;
+    height: 25px;
+    padding: 0 5px;
+    font-size: 14px;
 }
 .step1st .vue-tel-input{
 	position:relative;
@@ -3718,6 +3733,7 @@ ul.step-membership{
 	left:0;
 	top:0;
 	z-index:9;
+	padding:0;
 }
 .step1st .vue-tel-input .vti__input{
 	padding:0 12px 0 60px ;
@@ -3726,8 +3742,30 @@ ul.step-membership{
 .form-group.error .errors span{
 	background-position:left center;
 }
-.lb-time{
+.step1st .lb-time{
 	margin-top:32px;
+}
+.label-birthday{
+	position:relative;
+}
+.label-birthday .formulate-input-label{
+	position:absolute;
+	left:-20px;
+	right:-20px;
+	width:auto;
+	display:block;
+	top:-32px;
+	line-height:24px;
+	text-align:center;
+	
+}
+
+.formulate-input-wrapper{
+	margin-bottom:0 !important;
+}
+.formulate-input-errors{
+	margin-top:5px;
+	margin-bottom:0;
 }
 .step2nd textarea{
 	width:100%;
@@ -3803,6 +3841,34 @@ ul.step-membership{
 	color:#fff;
 	background:#333;
 }
+/* HOME LOAD */
+    .loading {
+        background-image: url('images/logo_loading.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+		background-color:rgba(0,0,0,1);
+        position: fixed;
+        background-size: 20%;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 99999;
+    }
+    .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -20px;
+        margin-left: -25px;
+        width: 50px;
+        height: 40px;
+        text-align: center;
+        font-size: 10px;
+        color: #fff;
+    }
 
 /* FOURDER */
 /*
@@ -3904,6 +3970,11 @@ ul.step-membership{
 	text-align:center;
 	font-weight:600;
 	padding-bottom:50px;
+}
+.formulate-input{
+	max-width:350px;
+	margin:0 auto;
+	margin-bottom:1rem;
 }
 .mobileuser{
 	display:none;

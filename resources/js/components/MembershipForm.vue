@@ -19,7 +19,7 @@
           </ul>
         </div>
       </div>
-      <div class="stepmbs step1st bbb">
+      <div class="stepmbs">
         <form class="form-mbs1 vvvv" method="post" action="" @submit.prevent="submit">
           <div class="stepmbs step1st" v-if="step == 1">
             <div class="container">
@@ -87,13 +87,13 @@
                 name="day"
                 :options="model.days"
                 validation="^required"
-                placeholder="Select day"
+                placeholder="Day"
                 :validation-messages="{
                   required: $t('form_membership.required', {attribute: $t('form_membership.day')})
                 }"
               />
               <FormulateInput
-                class="birthday_select"
+                class="birthday_select lb-time label-birthday"
                 :wrapper-class="['form-group required']"
                 :label="$t('form_membership.dob')"
                 type="select"
@@ -101,7 +101,7 @@
                 name="month"
                 :options="model.months"
                 validation="^required"
-                placeholder="Select month"
+                placeholder="Month"
                 :validation-messages="{
                   required: $t('form_membership.required', {attribute: $t('form_membership.month')})
                 }"
@@ -116,7 +116,7 @@
                 name="year"
                 :options="model.years"
                 validation="^required"
-                placeholder="Select year"
+                placeholder="Year"
                 :validation-messages="{
                   required: $t('form_membership.required', {attribute: $t('form_membership.year')})
                 }"
@@ -261,7 +261,7 @@
           <div :class="classStep" class="stepmbs" v-if="step == 2 && type == 'founder'">
             <div class="container">
               <div class="row flexrow centerflex">
-                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
+                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
                     <div class="options-mbs radius_4">
                       <div class="ctbd1"></div>
                       <div class="ctbd2"></div>
@@ -292,7 +292,7 @@
           <div :class="classStep" class="stepmbs" v-if="step == 3 && type != 'founder'">
             <div class="container">
               <div class="row flexrow centerflex">
-                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
+                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
                     <div class="options-mbs radius_4">
                       <div class="ctbd1"></div>
                       <div class="ctbd2"></div>
