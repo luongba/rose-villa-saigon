@@ -21,6 +21,7 @@ return [
 	'gender_other' => 'Other',
 	'gender_secret' => 'Prefer Not To Say',
 	'dob' => 'Date of Birth',
+	'emrty' => '',
 	'day' => 'Day',
 	'month' => 'Month',
 	'year' => 'Year',
@@ -56,6 +57,20 @@ return [
 	'next' => 'Next',
 
 	//Confirmation page
+	// LOGIN POPUP
+	'login' => 'Login',
+	'lostpass' =>'Forgot Password',
+	'desforgot' => 'Please input your phone number',
+	'backto' => 'Back To ',
+	'veryfycoe' =>  'Verify Code',
+	'veryfycoedes' =>  'Please input verify ide',
+	'resetpassword' => 'Reset Password',
+	'password' => 'Password',
+	'confirmpassword' => 'Password Confirm',
 
-
+	//booking-form
+	'contactus' => 'Contact Us',
+	'addressrovilla' => 'No. 10, Street 58, Thao Dien, District 2, Ho Chi Minh city, Vietnam ',
+	'fillinfo' => 'Fill in the infomation',
+	'startdate' => "Start Date",
 ];

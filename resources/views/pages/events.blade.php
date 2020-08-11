@@ -27,9 +27,9 @@
       <div class="event-elm {{$float}}">
         <div class="event-ct">
           <div class="bgevent-ct">
-            <h3 class="title-post-1">{{$val->title}}</h3>
+            <h3 class="title-post-1">{!!$val->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')!!}</h3>
             <div class="ctevent">
-              {!!$val->description!!}
+              {!!$val->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
             </div>
             @auth
               <button-show-modal 

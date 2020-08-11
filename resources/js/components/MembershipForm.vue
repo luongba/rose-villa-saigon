@@ -19,8 +19,8 @@
           </ul>
         </div>
       </div>
-      <div class="stepmbs step1st">
-        <form class="form-mbs1" method="post" action="" @submit.prevent="submit">
+      <div class="stepmbs step1st bbb">
+        <form class="form-mbs1 vvvv" method="post" action="" @submit.prevent="submit">
           <div class="stepmbs step1st" v-if="step == 1">
             <div class="container">
               <FormulateInput
@@ -79,8 +79,9 @@
                 }"
               />
               <FormulateInput
-                class="birthday_select"
+                class="birthday_select lb-time"
                 :wrapper-class="['form-group required']"
+                :label="$t('form_membership.emrty')"
                 type="select"
                 v-model="model.day"
                 name="day"
@@ -107,8 +108,9 @@
                 @change="changeMonth"
               />
               <FormulateInput
-                class="birthday_select last"
+                class="birthday_select last lb-time"
                 :wrapper-class="['form-group required']"
+                :label="$t('form_membership.emrty')"
                 type="select"
                 v-model="model.year"
                 name="year"
@@ -132,6 +134,7 @@
               />
               <FormulateInput
                 :wrapper-class="['form-group required']"
+                :label="$t('form_membership.country')"
                 type="select"
                 v-model="model.country"
                 name="country"
@@ -145,6 +148,7 @@
               />
               <FormulateInput
                 :wrapper-class="['form-group required']"
+                :label="$t('form_membership.city')"
                 type="select"
                 v-model="model.city"
                 name="city"
@@ -197,7 +201,7 @@
                       <input id="ava" type="file" accept="image/*" @change="onFileChange">
                       <span class="testupload">{{ $t('form_membership.upload_photo') }}</span>
                     </div>
-                    <p>{{ $t('form_membership.upload_photo_desc') }}</p>
+                    <p class="textcenter">{{ $t('form_membership.upload_photo_desc') }}</p>
                     <div id="preview" style="display:flex;">
                       <img width="100" v-if="image_preview" :src="image_preview" />
                     </div>

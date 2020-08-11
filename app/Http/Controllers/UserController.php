@@ -12,6 +12,8 @@ use App\Models\UserMeta;
 
 use App\Helpers\UploadImg;
 
+use App\Events\AfterRegisterMember;
+
 class UserController extends Controller
 {
 	public function __construct()
@@ -150,7 +152,7 @@ class UserController extends Controller
 			'city' => 'required',
 			'post_code' => 'required',
 			'country' => 'required',
-			'avatar' => 'required',
+			//'avatar' => 'required',
 			'type_user' => 'required|integer|in:'.config('constants.MEMBERSHIP_TYPE_FOUNDER').','.config('constants.MEMBERSHIP_TYPE_REGULAR'),
 			'reason' => 'required_if:type_user,2',
 			'usage_criteria' => 'required_if:type_user,2',
@@ -225,6 +227,7 @@ class UserController extends Controller
 			'avatar' => $avatar,
 			'membership_type_id' => $request->membership_type
 		]);
+		$userMeta;
 		DB::beginTransaction();
 		try {
 			$paramUserMeta = $request->only('first_name', 'last_name', 'email', 'phone', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'avatar', 'type_user', 'membership_type_id', 'frequency');
@@ -234,7 +237,7 @@ class UserController extends Controller
 				$paramUserMeta['bring_to'] =  $request->bring_to;
 				$paramUserMeta['member_other'] =  $request->member_other;
 			}
-			$this->userMeta->addNewUserMeta($paramUserMeta);
+			$userMeta = $this->userMeta->addNewUserMeta($paramUserMeta);
 
 			DB::commit();
 		} catch (\Exception $ex) {
@@ -244,6 +247,7 @@ class UserController extends Controller
 				'message' => trans('messages.Member registration error'),
 			]);
 		}
+		event(new AfterRegisterMember($userMeta));
 		return response()->json([
 			'status' => true,
 			'message' => trans('messages.Member registration successfully'),

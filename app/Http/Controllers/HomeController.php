@@ -70,19 +70,23 @@ class HomeController extends Controller
 
     public function events(Request $request)
     {
-        $list_area_event = $this->areaEvent->listAreaEvent();
+        $list_area_event = $this->areaEvent->withTranslations()->get();
+       /* foreach ($list_area_event as $key => $value) {
+             $arr[] = $value->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale');
+        }
+        return $arr;*/
         return view('pages.events',compact('list_area_event'));
     } 
 
     public function spa(Request $request)
     {
-        $list_wellness_beauty = $this->wellnessBeauty->listWellnessBeauty();
+        $list_wellness_beauty = $this->wellnessBeauty->withTranslations()->get();
         return view('pages.spa',compact('list_wellness_beauty'));
     } 
 
     public function fooddrink(Request $request)
     {
-        $list_food_drink = $this->areaParty->listAreaParty();
+        $list_food_drink = $this->areaParty->withTranslations()->get();
         return view('pages.food-drink',compact('list_food_drink'));
     } 
 
@@ -124,7 +128,8 @@ class HomeController extends Controller
     }
     public function singleroom(Request $request)
     {
-        $singleroom = $this -> room ->infoRoomBySlug($request -> slug);
+        $singleroom = $this -> room ->withTranslations()->whereTranslation('slug', '=', $request -> slug)->first();
+       // return  $singleroom;
 
         return view('pages.single-room',compact('singleroom'));
     }

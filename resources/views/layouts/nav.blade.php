@@ -1,5 +1,24 @@
 <nav class="navbar nav-site">
 	<div class="closemenu"><i class="fas fa-times"></i></div>
+    <div class="mobileuser">
+        @if(Auth::user())
+                <div class="dropdown user-menu custom-header-user">
+                    <a class="dropdown-toggle username-bar" href="javascript:;" id="profile-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          {{Auth::user()->first_name}} {{Auth::user()->last_name}}
+                     </a>
+                    <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
+                      <li class="singout">
+                          <a href="{{ route('logout_web') }}">
+                          <span>{{ trans('pages.Logout') }}</span></a>
+                      </li>
+                    </ul>
+                </div>
+        @else
+            <div class="account-section show640">
+                <a class="loginlink-landing" href="javascript:;"  data-toggle="modal" data-target="#popup-login">{{ trans('pages.Login') }}</a>
+            </div>
+         @endif
+    </div>
     <ul class="navbar-nav">
         <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('about')}}">{{ trans('pages.About Us') }}</a></li>
         <li class="nav-item has-child-menu">
@@ -22,6 +41,7 @@
         <li class="nav-item {{ Route::currentRouteNamed('shop') ? 'active' : '' }}"><a class="nav-link" href="{{route('shop')}}">{{ trans('pages.Shop') }}</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('events') ? 'active' : '' }}"><a class="nav-link" href="{{route('events')}}">{{ trans('pages.Events') }}</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('contact') ? 'active' : '' }}"><a class="nav-link" href="{{route('contact')}}">{{ trans('pages.Contact Us') }}</a></li>
+
         <li class="nav-item {{ Route::currentRouteNamed('findus') ? 'active' : '' }}"><a class="nav-link" href="{{route('findus')}}">{{ trans('pages.How To Find Us') }}</a></li>
     </ul>
 </nav>

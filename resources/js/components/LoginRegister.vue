@@ -2,7 +2,7 @@
 	<div class="">
     <div id="recaptcha-container" style="visibility: hidden;"></div>
 		<div class="content-login content-popup" v-if="view == 'dangnhap'">
-			<h3 class="modal-title">Login</h3>
+			<h3 class="modal-title">{{ $t('form_membership.login') }}</h3>
       <form name="loginForm" class="form-control-user" method="post" action="" data-parsley-validate @submit.prevent="dangnhap">
         
         	<!-- <span v-if="err_text" class="text-danger">{{ err_text }}</span> -->
@@ -11,8 +11,7 @@
             <p v-if="validphone">{{ validphone }}</p>
           </div>
           <div class="form-group popup-input-style">
-              <input v-model="password" type="password" class="form-control-elm input-password" placeholder="123-456" autocomplete="off" data-parsley-required data-parsley-minlength="6">
-              
+              <input v-model="password" type="password" class="form-control-elm input-password" placeholder="123-456" autocomplete="off" data-parsley-required data-parsley-minlength="6"> 
           </div>
           <div class="form-group popup-input-style">
           	<input type='submit' class='submitform radius_4' value='Login'>
@@ -20,7 +19,7 @@
 
       </form>
 			<div class="bottom-form">
-				<p class="linkforgots"><a @click="changeView('forgot')">Forgot Password</a></p>
+				<p class="linkforgots"><a @click="changeView('forgot')">{{ $t('form_membership.lostpass') }}</a></p>
 				<!-- <p class="sright">Bạn có tài khoản chưa? <a class="clickhere linkregister" @click="changeView('dangky')">Đăng Ký</a></p> -->
 			</div>
 			<div class="clear"></div>
@@ -55,10 +54,10 @@
 			<div class="clear"></div>
 		</div>
 		<div class="content-login content-popup" v-if="view == 'forgot'">
-			<h3 class="modal-title">Forgot Password</h3>
+			<h3 class="modal-title">{{ $t('form_membership.lostpass') }}</h3>
 	        <form data-parsley-validate @submit.prevent="forgotPassword">
               <!-- <span v-if="err_text" class="text-danger">{{ err_text }}</span> -->
-              <p>Please input your phone number</p>
+              <p>{{ $t('form_membership.desforgot') }}</p>
               <div class="form-group popup-input-style">
                 <vue-tel-input v-model="phone_number3"  @validate="checkPhone" :preferredCountries="['VN', 'US']" ></vue-tel-input>
                 <p v-if="validphone">{{ validphone }}</p>
@@ -68,14 +67,14 @@
               </div>
 	        </form>
           <div class="bottom-form">
-            <p class="sright">Back to <a class="clickhere linkregister" @click="changeView('dangnhap')">Login</a></p>
+            <p class="sright">{{ $t('form_membership.backto') }}<a class="clickhere linkregister" @click="changeView('dangnhap')">{{ $t('form_membership.login') }}</a></p>
           </div>
 			<div class="clear"></div>
 		</div>
 		<div class="content-login content-popup" v-if="view == 'checkpin'">
       <div class="titlepopup">
-          <h3 class="modal-title">Verify Code</h3>
-          <p>Please input verify ide</p>
+          <h3 class="modal-title">{{ $t('form_membership.veryfycoe') }}</h3>
+          <p>{{ $t('form_membership.veryfycoedes') }}</p>
       </div>
       <form class="form-control-pincode" data-parsley-validate @submit.prevent="checkpin">
           <!-- <span v-if="err_text" class="text-danger">{{ err_text }}</span> -->
@@ -94,7 +93,7 @@
 			<div class="clear"></div>
 		</div>
     <div class="content-login content-popup" v-if="view == 'changepass'">
-        <h3 class="modal-title">Reset Password</h3>
+        <h3 class="modal-title">{{ $t('form_membership.resetpassword') }}</h3>
         <form @submit.prevent="resetPassword" data-parsley-validate>
           <input type="hidden" name="phone" value="">
             <span id="error" class="text-danger"></span>
@@ -184,7 +183,7 @@
     	checkPhone: function(e){
           console.log(e.valid,e.number)
         if(!e.valid){
-          this.validphone = "Phone number not valid"
+          this.validphone = this.$t('form_membership.error_phone')
         }else {
           this.validphone = ''
           this.phone = e.number.e164
