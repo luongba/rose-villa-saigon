@@ -37,5 +37,9 @@ return [
 	'Utilities' => 'Utilities',
 
 	//findus
-	'DOWNLOAD MAP IN ROSE VILLA SAIGON' => 'TẢI XUỐNG BẢN ĐỒ ROSE VILLA SAIGON'
+	'DOWNLOAD MAP IN ROSE VILLA SAIGON' => 'TẢI XUỐNG BẢN ĐỒ ROSE VILLA SAIGON',
+
+	//spa
+	'viewmenu' => 'Xem Menu',
+	'bookingspa' => 'Đặt Lịch Spa',
 ];

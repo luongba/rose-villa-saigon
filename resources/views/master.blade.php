@@ -50,13 +50,13 @@
                         lang.slideDown('slow');
                     }
                 });
-            $(window).click(function() {
-                $('.select-lang').slideUp('slow');
-            });
+            // $(window).click(function() {
+            //     $('.select-lang').slideUp('slow');
+            // });
 
-            $('.optionlang').click(function(event){
-                    event.stopPropagation();
-            });
+            // $('.optionlang').click(function(event){
+            //         event.stopPropagation();
+            // });
 
 
             $('.username-bar').click(function () {

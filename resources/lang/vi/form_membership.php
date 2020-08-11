@@ -58,5 +58,19 @@ return [
 
 	//Confirmation page
 
-	//Confirmation page
+	// LOGIN POPUP
+	'login' => 'Đăng Nhập',
+	'lostpass' =>'Quên Mật Khẩu',
+	'desforgot' => 'Vui Lòng Nhập Số Điện Thoại',
+	'backto' => 'Quay Lại ',
+	'veryfycoe' =>  'Mã Xác Minh',
+	'veryfycoedes' =>  'Vui Lòng Nhập Mã Xác Minh Được Gửi Đến Số Điện Thoại',
+	'resetpassword' => 'Đặt Lại Mật Khẩu',
+
+	//booking-form
+	'contactus' => 'Liên Hệ',
+	'addressrovilla' => 'Số 10 Đường số 58, Thảo Điền, Quận 2, Tp Hồ Chí Minh, Vietnam',
+	'fillinfo' => 'Thông Tin',
+	'startdate' => 'Ngày Bắt Đầu',
+	'enddate' => 'Ngày Kết Thúc',
 ];

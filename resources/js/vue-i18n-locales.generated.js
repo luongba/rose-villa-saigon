@@ -189,7 +189,20 @@ export default {
             "submit": "Submit",
             "cancel": "Cancel",
             "back": "Back",
-            "next": "Next"
+            "next": "Next",
+            "login": "Login",
+            "lostpass": "Forgot Password",
+            "desforgot": "Please input your phone number",
+            "backto": "Back To ",
+            "veryfycoe": "Verify Code",
+            "veryfycoedes": "Please input verify ide",
+            "resetpassword": "Reset Password",
+            "password": "Password",
+            "confirmpassword": "Password Confirm",
+            "contactus": "Contact Us",
+            "addressrovilla": "No. 10, Street 58, Thao Dien, District 2, Ho Chi Minh city, Vietnam ",
+            "fillinfo": "Fill in the infomation",
+            "startdate": "Start Date"
         },
         "pages": {
             "Address Rose Villa Saigon": "No. 10, Street 58, Thao Dien, District 2, Ho Chi Minh city, Vietnam",
@@ -214,7 +227,9 @@ export default {
             "Submit": "Submit",
             "Booking Event": "Booking Event",
             "Utilities": "Utilities",
-            "DOWNLOAD MAP IN ROSE VILLA SAIGON": "DOWNLOAD MAP IN ROSE VILLA SAIGON"
+            "DOWNLOAD MAP IN ROSE VILLA SAIGON": "DOWNLOAD MAP IN ROSE VILLA SAIGON",
+            "viewmenu": "View Menu",
+            "bookingspa": "Booking Now"
         }
     },
     "vi": {
@@ -369,7 +384,7 @@ export default {
             "bring_to": "BẠN SẼ MANG LẠI ĐIỀU GÌ CHO CỘNG ĐỒNG ROSEVILLA?",
             "member_other": "BẠN CÓ BIẾT THÀNH VIÊN ROSEVILLA NÀO CHÀO ĐÓN BẠN KHÔNG ?",
             "choose_plan": "CHỌN KẾ HOẠCH",
-            "required": ": Thông tin trường là bắt buộc",
+            "required": "Thông tin trường là bắt buộc",
             "general_error_message": "Vui lòng điền tất cả các trường",
             "error_phone": "Số điện thoại không đúng",
             "error_age": "Bạn chưa đủ 18 tuổi",
@@ -377,7 +392,19 @@ export default {
             "error_select": "Vui lòng chọn một tùy chọn",
             "submit": "Đăng Ký",
             "cancel": "Hủy",
-            "next": "Tiếp"
+            "next": "Tiếp",
+            "login": "Đăng Nhập",
+            "lostpass": "Quên Mật Khẩu",
+            "desforgot": "Vui Lòng Nhập Số Điện Thoại",
+            "backto": "Quay Lại ",
+            "veryfycoe": "Mã Xác Minh",
+            "veryfycoedes": "Vui Lòng Nhập Mã Xác Minh Được Gửi Đến Số Điện Thoại",
+            "resetpassword": "Đặt Lại Mật Khẩu",
+            "contactus": "Liên Hệ",
+            "addressrovilla": "Số 10 Đường số 58, Thảo Điền, Quận 2, Tp Hồ Chí Minh, Vietnam",
+            "fillinfo": "Điền Thông Tin",
+            "startdate": "Ngày Bắt Đầu",
+            "enddate": "Ngày Kết Thúc"
         },
         "pages": {
             "Address Rose Villa Saigon": "Số 10 Đường số 58, Thảo Điền, Quận 2, Tp Hồ Chí Minh, Việt Nam",
@@ -402,7 +429,9 @@ export default {
             "Submit": "Gửi",
             "Booking Event": "Booking Event",
             "Utilities": "Utilities",
-            "DOWNLOAD MAP IN ROSE VILLA SAIGON": "TẢI XUỐNG BẢN ĐỒ ROSE VILLA SAIGON"
+            "DOWNLOAD MAP IN ROSE VILLA SAIGON": "TẢI XUỐNG BẢN ĐỒ ROSE VILLA SAIGON",
+            "viewmenu": "Xem Menu",
+            "bookingspa": "Đặt Lịch Spa"
         }
     }
 }

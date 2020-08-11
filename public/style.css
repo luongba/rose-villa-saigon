@@ -1182,8 +1182,8 @@ a.username-bar{
 	display: block;
 }
 .custom-dropmenu {
-    left: 75px !important;
-    top: 58px !important;
+    left: 75px !important; 
+    top: 58px !important; 
     border: 1px solid #e0e0e0;
     width: 155px;
     transform: inherit !important;
@@ -2637,7 +2637,7 @@ body.welcome {
     position: relative;
     background: none;
     z-index: inherit;
-    padding: 60px;
+    padding: 60px 0px;
 }
 
 
@@ -3905,6 +3905,9 @@ ul.step-membership{
 	font-weight:600;
 	padding-bottom:50px;
 }
+.mobileuser{
+	display:none;
+}
 /* Responsive */
 
 @media only screen and (max-width: 1400px){
@@ -4122,9 +4125,54 @@ ul.step-membership{
 		margin: 30px auto;
 		float: none;
 	}
+	.innerpage-style1 .nav-site{
+		padding: 40px 0px;
+	}
 }
 @media only screen and (max-width: 640px){
 	.account-section{
+		display:none;
+	}
+	.mobileuser{
+		display:block;
+	}
+	
+	.show640{
+		display:block;
+	}
+	.mobileuser >div{
+		width:100%;
+		padding:0;
+		display: block;
+		max-width: 100%;
+	}
+	.mobileuser .account-section a{
+		display: table;
+		float: none;
+		margin: 0 auto;
+	}
+	.mobileuser a.username-bar {
+		display: table;
+		text-align: center;
+		float: none;
+		margin: 0 auto;
+	}
+	.mobileuser .custom-dropmenu {
+		position:relative;
+		left:inherit  !important;
+		top:inherit !important;
+		background:none;
+		padding:0;
+		border:none;
+		width:100%;
+		
+	}
+	.mobileuser .custom-dropmenu li a{
+		padding-left:0;
+		color:#fff;
+		text-align:center;
+	}
+	.hidden640{
 		display:none;
 	}
 }
@@ -4160,6 +4208,39 @@ ul.step-membership{
 	}
 
 }
+#page-wrap {
+    visibility: hidden;
+  }
+ 
+  .loading {
+      background-image: url('images/logo_loading.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      background-size: 20%;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 99999;
+  }
+  .spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -20px;
+      margin-left: -25px;
+      width: 50px;
+      height: 40px;
+      text-align: center;
+      font-size: 10px;
+      color: #fff;
+  }
+  .header, .content-custom-width {
+    visibility: hidden;
+  }
 
 
 

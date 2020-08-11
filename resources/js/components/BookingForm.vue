@@ -11,7 +11,7 @@
           </div>
             <div class="modal-body">
                 <div class="inforose-popup">
-                    <h4>Contact Us</h4>
+                    <h4>{{ $t('form_membership.contactus') }}</h4>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <p><i class="fas fa-phone-alt"></i>+84915877479</p>
@@ -25,22 +25,22 @@
                             <p><i class="far fa-envelope"></i> booking@rosevillsaigon.com</p>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <p><i class="fas fa-map-marker-alt"></i> Số 10 Đường số 58, Thảo Điền, Quận 2, Tp Hồ Chí Minh, Vietnam</p>
+                            <p><i class="fas fa-map-marker-alt"></i> {{ $t('form_membership.addressrovilla') }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="form-booking-popup">
-                  <h4>Fill in the infomation</h4>
+                  <h4>{{ $t('form_membership.fillinfo') }}</h4>
                   <form class="form-control-user" @submit.prevent="submit" data-parsley-validate>
                           <div class="row" v-if="model.type_booking==3">
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <label>Start Date</label>
+                                <label>{{ $t('form_membership.startdate') }} Start Date</label>
                                   <div class="form-group popup-input-style2">
                                        <input type="date" v-model="model.start_at" class="form-control-elm" value="" placeholder="Start Date" autocomplete="off" data-parsley-required>
                                   </div>
                               </div>
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <label>End Date</label>
+                                <label>{{ $t('form_membership.enddate') }}</label>
                                   <div class="form-group popup-input-style2">
                                        <input type="date" v-model="model.end_at" class="form-control-elm" value="" placeholder="End Date *" autocomplete="off" data-parsley-required>
                                   </div>

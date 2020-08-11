@@ -2,7 +2,7 @@
   <section class="header-landing landingstyle">
     <div class="container-fluid">
       @if(Auth::user())
-            <div class="dropdown user-menu custom-header-user">
+            <div class="dropdown user-menu custom-header-user hidden640">
 	            <a class="dropdown-toggle username-bar" href="javascript:;" id="profile-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                  {{Auth::user()->first_name}} {{Auth::user()->last_name}}
 	             </a>
@@ -14,7 +14,7 @@
 	            </ul>
             </div>
       @else
-        <div class="account-section">
+        <div class="account-section hidden640">
             <a class="loginlink-landing" href="javascript:;"  data-toggle="modal" data-target="#popup-login">{{ trans('pages.Login') }}</a>
         </div>
       @endif

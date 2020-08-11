@@ -36,5 +36,9 @@ return [
 	'Utilities' => 'Utilities',
 
 	//findus
-	'DOWNLOAD MAP IN ROSE VILLA SAIGON' => 'DOWNLOAD MAP IN ROSE VILLA SAIGON'
+	'DOWNLOAD MAP IN ROSE VILLA SAIGON' => 'DOWNLOAD MAP IN ROSE VILLA SAIGON',
+
+	//spa
+	'viewmenu' => 'View Menu',
+	'bookingspa' => 'Booking Now',
 ];
