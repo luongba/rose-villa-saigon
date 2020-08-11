@@ -32,7 +32,7 @@
             <div class="ctevent">
                {!!$val->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
             </div>
-            <a href="javascript:;" class="bookingaction radius_4">View menu</a>
+            <a href="javascript:;" class="bookingaction radius_4">{{ trans('pages.viewmenu') }}</a>
             @auth
               <button-show-modal 
                 :classname="'bookingaction radius_4'" 
@@ -41,7 +41,7 @@
                 :booking_id="{{$val->id}}"
               ></button-show-modal>
             @else
-                <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Spa</button>
+                <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">{{ trans('pages.bookingspa') }}</button>
             @endauth
             <div class="clear"></div>
           </div>

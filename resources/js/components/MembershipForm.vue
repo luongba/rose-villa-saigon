@@ -10,8 +10,8 @@
     <section v-else class="content-membership">
       <div class="header-mbs">
         <div class="container">
-          <h3 v-if="type == 'founder'">Founder Application</h3>
-          <h3 v-if="type == 'regular'">Regular Application</h3>
+          <h3 v-if="type == 'founder'">{{ $t('form_membership.title_founder') }}</h3>
+          <h3 v-if="type == 'regular'">{{ $t('form_membership.title_regular') }}</h3>
           <ul class="step-membership">
             <li v-for="(item,key) in steps" :class="step==key+1 ? 'currentstep' : ''">
               <span class="numberstep radius_50">{{ key+1 }}</span><span class="textli">{{ item }}</span>
@@ -19,27 +19,189 @@
           </ul>
         </div>
       </div>
-      <div class="stepmbs step1st">
-        <form class="form-mbs1" method="post" action="" @submit.prevent="submit">
+      <div class="stepmbs">
+        <form class="form-mbs1 vvvv" method="post" action="" @submit.prevent="submit">
           <div class="stepmbs step1st" v-if="step == 1">
             <div class="container">
-              <vue-form-generator :schema="step1top" :model="model" :options="formOptions"></vue-form-generator>
-              <div :class="validphone ? 'error' : ''" class="form-group required field-input">
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.first_name')"
+                type="text"
+                v-model="model.first_name"
+                name="first_name"
+                validation="^required"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.first_name')})
+                }"
+              />
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.last_name')"
+                type="text"
+                v-model="model.last_name"
+                name="last_name"
+                validation="^required"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.last_name')})
+                }"
+              />
+              <div :class="validphone ? 'errors' : ''" class="form-group required field-input">
                 <label for="last-name"><span>Phone Number</span></label>
                 <div class="field-wrap">
                   <vue-tel-input v-model="model.phone_number"  @validate="checkPhone" :preferredCountries="['VN', 'US']" placeholder="09xx-xxx-xxx"></vue-tel-input>
                 </div>
-                <div class="errors help-block" v-if="validphone"><span>{{validphone}}</span></div>
+                <ul class="formulate-input-errors" v-if="validphone">
+                  <li class="formulate-input-error">{{validphone}}</li>
+                </ul>
               </div>
-              <vue-form-generator :schema="step1" :model="model" :options="formOptions"></vue-form-generator>
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.email')"
+                type="email"
+                v-model="model.email"
+                name="email"
+                validation="^required|email"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.email')})
+                }"
+              />
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.gender')"
+                type="select"
+                v-model="model.gender"
+                name="gender"
+                :options="{Male: $t('form_membership.gender_male'), Female: $t('form_membership.gender_female'), Other: $t('form_membership.gender_other'), PreferNotToSay: $t('form_membership.gender_secret')}"
+                validation="^required"
+                placeholder="Select gender"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.gender')})
+                }"
+              />
+              <FormulateInput
+                class="birthday_select lb-time"
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.emrty')"
+                type="select"
+                v-model="model.day"
+                name="day"
+                :options="model.days"
+                validation="^required"
+                placeholder="Day"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.day')})
+                }"
+              />
+              <FormulateInput
+                class="birthday_select lb-time label-birthday"
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.dob')"
+                type="select"
+                v-model="model.month"
+                name="month"
+                :options="model.months"
+                validation="^required"
+                placeholder="Month"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.month')})
+                }"
+                @change="changeMonth"
+              />
+              <FormulateInput
+                class="birthday_select last lb-time"
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.emrty')"
+                type="select"
+                v-model="model.year"
+                name="year"
+                :options="model.years"
+                validation="^required"
+                placeholder="Year"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.year')})
+                }"
+              />
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.occu')"
+                type="text"
+                v-model="model.occupation"
+                name="occupation"
+                validation="^required"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.occu')})
+                }"
+              />
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.country')"
+                type="select"
+                v-model="model.country"
+                name="country"
+                :options="model.countries"
+                validation="^required"
+                placeholder="Select country"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.country')})
+                }"
+                @change="changeCountry"
+              />
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.city')"
+                type="select"
+                v-model="model.city"
+                name="city"
+                :options="model.cities"
+                validation="^required"
+                placeholder="Select city"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.city')})
+                }"
+              />
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.address_one')"
+                type="text"
+                v-model="model.address_one"
+                name="address_one"
+                validation="^required"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.address_one')})
+                }"
+              />
+              <FormulateInput
+                :wrapper-class="['form-group']"
+                :label="$t('form_membership.address_two')"
+                type="text"
+                v-model="model.address_two"
+                name="address_two"
+                validation="^required"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.address_two')})
+                }"
+              />
+              <FormulateInput
+                :wrapper-class="['form-group']"
+                :label="$t('form_membership.post_code')"
+                type="text"
+                v-model="model.post_code"
+                name="post_code"
+                validation="^required"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.post_code')})
+                }"
+              />
+
               <div class="form-group valid required field-input">
                 <label for="ava"><span>Avatar</span></label>
                 <div class="field-wrap">
                   <div class="wrapper">
                     <div class="ct-upload">
                       <input id="ava" type="file" accept="image/*" @change="onFileChange">
-                      <span class="testupload">UPLOAD PHOTO (JPEG,PNG)</span>
+                      <span class="testupload">{{ $t('form_membership.upload_photo') }}</span>
                     </div>
+                    <p class="textcenter">{{ $t('form_membership.upload_photo_desc') }}</p>
                     <div id="preview" style="display:flex;">
                       <img width="100" v-if="image_preview" :src="image_preview" />
                     </div>
@@ -50,13 +212,56 @@
           </div>
           <div class="stepmbs step2nd" v-if="step == 2 && type != 'founder'">
             <div class="container">
-              <vue-form-generator :schema="step2" :model="model" :options="formOptions"></vue-form-generator>
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.reason')"
+                type="textarea"
+                v-model="model.reason"
+                name="reason"
+                validation="^required"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.reason')})
+                }"
+              />
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.usage_criteria')"
+                type="textarea"
+                v-model="model.usage_criteria"
+                name="usage_criteria"
+                validation="^required"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.usage_criteria')})
+                }"
+              />
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.bring_to')"
+                type="textarea"
+                v-model="model.bring_to"
+                name="bring_to"
+                validation="^required"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.bring_to')})
+                }"
+              />
+              <FormulateInput
+                :wrapper-class="['form-group required']"
+                :label="$t('form_membership.member_other')"
+                type="textarea"
+                v-model="model.member_other"
+                name="member_other"
+                validation="^required"
+                :validation-messages="{
+                  required: $t('form_membership.required', {attribute: $t('form_membership.member_other')})
+                }"
+              />
             </div>
           </div>
           <div :class="classStep" class="stepmbs" v-if="step == 2 && type == 'founder'">
             <div class="container">
               <div class="row flexrow centerflex">
-                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
+                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
                     <div class="options-mbs radius_4">
                       <div class="ctbd1"></div>
                       <div class="ctbd2"></div>
@@ -76,7 +281,7 @@
                       <div class="bottom-option-mbs">
                         <div class="choseop">
                           <input @change="changeType(option)" :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
-                          <span>Choose Plan</span>
+                          <span>{{ $t('form_membership.choose_plan') }}</span>
                         </div>
                       </div>
                     </div>
@@ -87,7 +292,7 @@
           <div :class="classStep" class="stepmbs" v-if="step == 3 && type != 'founder'">
             <div class="container">
               <div class="row flexrow centerflex">
-                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-4 col-md-4 col-sm-6 col-xs-12']" v-for="option in options">
+                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
                     <div class="options-mbs radius_4">
                       <div class="ctbd1"></div>
                       <div class="ctbd2"></div>
@@ -106,7 +311,7 @@
                       <div class="bottom-option-mbs">
                         <div class="choseop">
                           <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
-                          <span>Choose Plan</span>
+                          <span>{{ $t('form_membership.choose_plan') }}</span>
                         </div>
                       </div>
                     </div>
@@ -153,10 +358,10 @@
           <div class="container">
             <div class="button2center">
             <button class="btn btn-primary buttonmbs btback" v-if="step >1 && step<=steps.length" type="button" @click="back
-            ">Back</button>
-            <a href="Javascript:;" class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">Next</a>
+            ">{{ $t('form_membership.back') }}</button>
+            <a href="Javascript:;" class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">{{ $t('form_membership.next') }}</a>
             <!-- <button class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">Next</button> -->
-            <button class="btn btn-primary buttonmbs btnext" v-if="step==steps.length" type="submit">Submit</button>
+            <button class="btn btn-primary buttonmbs btnext" v-if="step==steps.length" type="submit">{{ $t('form_membership.submit') }}</button>
             </div>
           </div>
         </form>
@@ -187,257 +392,7 @@ export default {
         cities: {},
         years: [],
         months: [],
-        days: [],
-        /*name: 'John Doe',
-        password: 'J0hnD03!x4',
-        skills: ['Javascript', 'VueJS'],
-        email: 'john.doe@gmail.com',
-        status: true*/
-      },
-      step1top: {
-        fields: [
-          {
-            type: 'input',
-            inputType: 'text',
-            label: 'First Name',
-            model: 'first_name',
-            required: true,
-            validator: VueFormGenerator.validators.string
-          },
-          {
-            type: 'input',
-            inputType: 'text',
-            label: 'Last Name',
-            model: 'last_name',
-            required: true,
-            validator: VueFormGenerator.validators.string
-          },
-        ]
-      },
-      step1: {
-        fields: [
-          {
-            type: 'input',
-            inputType: 'email',
-            label: 'Email',
-            model: 'email',
-            required: true,
-            validator: VueFormGenerator.validators.email
-          },
-          {
-            type: 'select',
-            label: 'Gender',
-            model: 'gender',
-            selectOptions: {
-              noneSelectedText: "Select Gender",
-              // hideNoneSelectedText: true,
-            },
-            values: ['Male', 'Female', 'Other'],
-            required: true,
-            validator: VueFormGenerator.validators.required
-          },
-          {
-            type: 'select',
-            label: '',
-            model: 'day',
-            selectOptions: {
-              noneSelectedText: "Select Day",
-            },
-            styleClasses: 'birthday_select hiderequied',
-            values: function(model, schema){
-              return model.days
-            },
-            required: true
-          },
-          {
-            type: 'select',
-            label: 'DATE OF BIRTH',
-            model: 'month',
-            selectOptions: {
-              noneSelectedText: "Select Month",
-            },
-            styleClasses: 'birthday_select',
-            values: function(model, schema){
-              return model.months
-            },
-            onChanged: function(model, newVal, oldVal, field) {
-              model.days = []
-              if(newVal==2){
-                for (var i = 1; i < 29; i++) {
-                  model.days.push(i)
-                }
-                return
-              }
-              if(newVal==4 || newVal==6 || newVal==9 || newVal==11 ){
-                for (var i = 1; i < 31; i++) {
-                  model.days.push(i)
-                }
-                return
-              }
-              for (var i = 1; i < 32; i++) {
-                model.days.push(i)
-              }
-            },
-            required: true
-          },
-          {
-            type: 'select',
-            label: '',
-            model: 'year',
-            selectOptions: {
-              noneSelectedText: "Select Year",
-            },
-            styleClasses: 'birthday_select hiderequied last',
-            values: function(model, schema){
-              return model.years
-            },
-            required: true
-          },
-          {
-            type: 'input',
-            inputType: 'text',
-            label: 'Occupation',
-            model: 'occupation',
-            required: true,
-            validator: VueFormGenerator.validators.string
-          },
-          {
-            type: 'select',
-            inputType: 'text',
-            label: 'Country',
-            model: 'country',
-            selectOptions: {
-              noneSelectedText: "Select Country",
-            },
-            values: function(model, schema){
-              return Object.values(model.countries)
-            },
-            onChanged: function(model, newVal, oldVal, field) {
-              function getKeyByValue(object, value) {
-                return Object.keys(object).find(key => object[key] === value);
-              }
-              var country_code = getKeyByValue(model.countries, newVal)
-              axios.get(
-                './province-by-country', {
-                  params:{
-                    country: country_code
-                  }
-                }
-              ).then(function(response){
-                // console.log(response.data)
-                model.cities = response.data.data
-              });
-            },
-            required: true
-          },
-          {
-            type: 'select',
-            inputType: 'text',
-            label: 'City',
-            model: 'city',
-            selectOptions: {
-              noneSelectedText: "Select City",
-            },
-            values: function(model, schema){
-              return Object.values(model.cities)
-            },
-            required: true,
-            validator: VueFormGenerator.validators.string
-          },
-          {
-            type: 'input',
-            inputType: 'text',
-            label: 'Stress Address line one',
-            model: 'address_one',
-            required: true,
-            validator: VueFormGenerator.validators.string
-          },
-          {
-            type: 'input',
-            inputType: 'text',
-            label: 'Stress Address line two',
-            model: 'address_two',
-            required: false
-          },
-          {
-            type: 'input',
-            inputType: 'text',
-            label: 'Postal Code',
-            model: 'post_code',
-            required: true,
-            validator: VueFormGenerator.validators.string
-          },
-          /*{
-            type: 'submit',
-            buttonText: 'Next',
-            onSubmit(model, schema) {
-              alert(this.step);
-              this.step++
-            },
-            validateBeforeSubmit: true
-          },*/
-
-        ]
-      },
-      step2: {
-        fields: [
-          {
-            type: 'textArea',
-            label: 'WHY DO YOU WANT TO JOIN ROSE VILLA?',
-            model: 'reason',
-            // max: 500,
-            rows: 4,
-            required: true
-          },
-          {
-            type: 'textArea',
-            label: 'HOW WILL YOU USE THE CLUB?',
-            model: 'usage_criteria',
-            // max: 500,
-            rows: 4,
-            required: true
-          },
-          {
-            type: 'textArea',
-            label: 'WHAT WILL YOU BRING TO THE ROSE VILLA COMMUNITY?',
-            model: 'bring_to',
-            // max: 500,
-            rows: 4,
-            required: true
-          },
-          {
-            type: 'textArea',
-            label: 'DO YOU KNOW ANY OTHER RV MEMBERS WHO ARE PREPARED TO PROPOSE YOU?',
-            model: 'member_other',
-            // max: 500,
-            rows: 4,
-            required: true
-          },
-          /*{
-            type: 'submit',
-            buttonText: 'Next',
-            onSubmit(model, schema) {
-              alert('step 2');
-              this.step++
-            },
-            validateBeforeSubmit: true
-          },*/
-        ]
-      },
-      stepPayment: {
-        fields: [
-          {
-              type: "checkbox",
-              label: "Status",
-              model: "status",
-              default: true
-          }
-        ]
-      },
-      formOptions: {
-        validateAfterLoad: false,
-        validateAfterChanged: true,
-        validateAsync: true
+        days: []
       },
       err_text: ''
     };
@@ -445,10 +400,19 @@ export default {
   mounted() {
     if(this.type == "founder"){
       this.model.type_user = 1
-      this.steps = ['About You', 'Membership Type', 'Payment']
+      this.steps = [
+                this.$t('form_membership.step1_title'), 
+                this.$t('form_membership.step3_title'), 
+                this.$t('form_membership.step4_title')
+                ]
     }else {
       this.model.type_user = 2
-      this.steps = ['About You', 'Why You?', 'Membership Type', 'Payment']
+      this.steps = [
+                this.$t('form_membership.step1_title'), 
+                this.$t('form_membership.step2_title'), 
+                this.$t('form_membership.step3_title'), 
+                this.$t('form_membership.step4_title')
+                ]
     }
     let _this = this
     // get countries
@@ -460,14 +424,20 @@ export default {
         _this.model.countries = response.data.data
       });
     }
+    _this.model.years = {}
     for (var i = 1960; i < 2005; i++) {
-      _this.model.years.push(i)
+      _this.model.years[i] = i
+      // _this.model.years.push(i)
     }
+    _this.model.months = {}
     for (var i = 1; i < 13; i++) {
-      _this.model.months.push(i)
+      _this.model.months[i] = i
+      // _this.model.months.push(i)
     }
+    _this.model.days = {}
     for (var i = 1; i < 32; i++) {
-      _this.model.days.push(i)
+      _this.model.days[i] = i
+      // _this.model.days.push(i)
     }
   },
   computed: {
@@ -482,9 +452,45 @@ export default {
     }
   },
   methods: {
+    getKeyByValue(object, value) {
+      return Object.keys(object).find(key => object[key] === value);
+    },
+    changeMonth: function(e){
+      // console.log(e)
+      this.model.days = {}
+      let newVal = this.model.month
+      if(newVal==2){
+        for (var i = 1; i < 29; i++) {
+        this.model.days[i] = i
+        }
+        return
+      }
+      if(newVal==4 || newVal==6 || newVal==9 || newVal==11 ){
+        for (var i = 1; i < 31; i++) {
+        this.model.days[i] = i
+        }
+        return
+      }
+      for (var i = 1; i < 32; i++) {
+        this.model.days[i] = i
+      }
+    },
+    changeCountry: function(){
+      let _this = this
+      let newVal = this.model.country
+      axios.get(
+        './province-by-country', {
+          params:{
+            country: newVal
+          }
+        }
+      ).then(function(response){
+        _this.model.cities = response.data.data
+      });
+    },
     checkPhone: function(e){
       if(!e.valid){
-        this.validphone = "Phone number not valid"
+        this.validphone = this.$t('form_membership.error_phone')
       }else {
         this.validphone = ''
         this.model.phone = e.number.e164
@@ -517,12 +523,12 @@ export default {
            || !this.model.occupation  || !this.model.country || !this.model.address_one
            || !this.model.city || !this.model.post_code
           ){
-          toastr.error("Please fill all fields")
+          toastr.error(this.$t('form_membership.general_error_message'))
         }else if(years_old < 18) {
-          toastr.error("You can not submit because year old < 18")
+          toastr.error(this.$t('form_membership.error_age'))
           return
         }else if(!this.image_preview) {
-          toastr.error("Please select Avatar")
+          toastr.error(this.$t('form_membership.error_avatar'))
           return
         }else {
         	// validate
@@ -560,7 +566,7 @@ export default {
         if(
           !this.model.reason || !this.model.bring_to || !this.model.usage_criteria|| !this.model.member_other
           ){
-          toastr.error("Please fill all fields")
+          toastr.error(this.$t('form_membership.general_error_message'))
           return
         }else {
           this.step++
@@ -570,28 +576,19 @@ export default {
 
       if((this.step == 3 && this.type != 'founder') || (this.step == 2 && this.type == 'founder')){
         if(!this.model.membership_type){
-          toastr.error("Please choose membership type")
+          toastr.error(this.$t('form_membership.error_select'))
         }else {
           this.step++
           return
         }
       }
 
-      /*if((this.step == 4 && this.type != 'founder') || (this.step == 3 && this.type == 'founder')){
-        if(!this.model.checkbox1 || !this.model.checkbox2 ){
-          toastr.error("Please agree")
-        }else {
-          this.step++
-          return
-        }
-      }*/
-
 
     },
     submit: function(){
       console.log(this.step)
         if(!this.model.frequency ){
-          toastr.error("Please select plan")
+          toastr.error(this.$t('form_membership.error_select'))
           return
         }
         if(!this.model.agree ){
@@ -602,6 +599,9 @@ export default {
         let params = _this.model
         params.gender = (_this.model.gender == "Male") ? 0 : 1
         params.dob = moment(_this.model.year + " " + _this.model.month + " " + _this.model.day).format('YYYY-MM-DD')
+
+        params.country = this.model.countries[this.model.country]
+        params.city = this.model.cities[this.model.city]
         params.avatar = _this.image_preview
         delete params['days']
         delete params['months']
@@ -625,12 +625,4 @@ export default {
     }
   }
 }
-$(document).ready(function(){
-  var rBtnVal = $('.ctj input').val();
-    if(rBtnVal == "1"){
-        $(this).closest('.parentradio').addClass('active');
-    }else{ 
-        $(this).closest('.parentradio').removeClass('active');
-    }
-});
 </script>

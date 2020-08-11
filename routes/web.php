@@ -22,22 +22,27 @@ Route::group(['middleware' => 'locale'], function() {
 		'as' => 'welcome',
 		'uses' => 'HomeController@welcome'
 	]);
+
 	Route::get('/events', [
 		'as' => 'events',
 		'uses' => 'HomeController@events'
 	]);
+
 	Route::get('/spa', [
 		'as' => 'spa',
 		'uses' => 'HomeController@spa'
 	]);
+
 	Route::get('/food-drink', [
 		'as' => 'fooddrink',
 		'uses' => 'HomeController@fooddrink'
 	]);
+
 	Route::get('/about', [
 		'as' => 'about',
 		'uses' => 'HomeController@about'
 	]);
+
 	Route::get('/shop', [
 		'as' => 'shop',
 		'uses' => 'HomeController@shop'
@@ -46,6 +51,7 @@ Route::group(['middleware' => 'locale'], function() {
 		'as' => 'regularmember',
 		'uses' => 'HomeController@regularmember'
 	]);
+
 	Route::get('/founder', [
 		'as' => 'founder',
 		'uses' => 'HomeController@founder'
@@ -54,18 +60,22 @@ Route::group(['middleware' => 'locale'], function() {
 		'as' => 'findus',
 		'uses' => 'HomeController@findus'
 	]);
+
 	Route::get('/contact', [
 		'as' => 'contact',
 		'uses' => 'HomeController@contact'
 	]);
+
 	Route::get('/mailblade', [
 		'as' => 'mailblade',
 		'uses' => 'HomeController@mailblade'
 	]);
+
 	Route::get('/thank-you', [
 		'as' => 'thankyou',
 		'uses' => 'HomeController@thankyou'
 	]);
+
 	Route::get('/single-room/{slug}', [
 		'as' => 'singleroom',
 		'uses' => 'HomeController@singleroom'
@@ -128,23 +138,36 @@ Route::group(['middleware' => 'locale'], function() {
 	Route::get('country', 'HomeController@listCountry')->name('list_country');
 
 	Route::get('province-by-country', 'HomeController@listProvinceByCountry')->name('list_province_by_country');
+
+	//test mail
+	Route::group(['prefix' => 'mail'], function() {
+		Route::get('thanks-register/{id}', 'TestController@mailThanksRegister');
+
+		Route::get('invite-register-early-founder-member/{id}', 'TestController@mailInviteRegisterEarlyFounderMember');
+
+		Route::get('notify-register-early-founder-member-success', 'TestController@mailNotifyRegisterEarlyFounderMemberSuccess');
+
+		Route::get('invite-register-founder-member/{id}', 'TestController@mailInviteRegisterFounderMember');
+
+		Route::get('notify-confirm-application-founder-member-success/{id}', 'TestController@mailNotifyComfirmApplicationFounderMemberSuccess');
+	});
 	/*END MANH_TU*/
 	
 	Route::group(['prefix' => 'admin'], function () {
-	/*users*/
-	Route::prefix("users")->group(function(){
-		Route::get('/create-member-registration', [
-			'as' => 'users.create_member',
-			'uses' => 'Admin\VoyagerUserController@create_member'
-		]);
+		/*users*/
+		Route::prefix("users")->group(function(){
+			Route::get('/create-member-registration', [
+				'as' => 'users.create_member',
+				'uses' => 'Admin\VoyagerUserController@create_member'
+			]);
 
-		Route::post('/create-member-registration', [
-			'as' => 'users.post_create_member',
-			'uses' => 'Admin\VoyagerUserController@post_create_member'
-		]);
+			Route::post('/create-member-registration', [
+				'as' => 'users.post_create_member',
+				'uses' => 'Admin\VoyagerUserController@post_create_member'
+			]);
+		});
+		Voyager::routes();
 	});
-	Voyager::routes();
-});
 });
 
 
@@ -164,10 +187,12 @@ Route::prefix('/admin-ajax')->middleware('auth')->group(function() {
 	Route::post('booking-rooms-cancel', 'Admin\BookingRoomController@cancel')->name('booking-room.cancel');
 
 	Route::post('booking-rooms-accept', 'Admin\BookingRoomController@accept')->name('booking-room.accept');
+
 	/*BookingWellnessBeauty*/
 	Route::post('booking-spas-cancel', 'Admin\BookingWellnessBeautyController@cancel')->name('booking-spa.cancel');
 
 	Route::post('booking-spas-accept', 'Admin\BookingWellnessBeautyController@accept')->name('booking-spa.accept');
+	
 	/*BookingEventController*/
 	Route::post('booking-events-cancel', 'Admin\BookingEventController@cancel')->name('booking-event.cancel');
 

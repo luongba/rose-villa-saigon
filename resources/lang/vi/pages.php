@@ -20,6 +20,7 @@ return [
 	'About Us' => 'Giới thiệu',
 	'Contact Us' => 'Liên hệ',
 	'How To Find Us' => 'Chỉ đường',
+	'Membership' => 'Thành viên',
 
 	//contact
 	'Send message for us' => 'Gửi tin nhắn cho chúng tôi',
@@ -36,5 +37,9 @@ return [
 	'Utilities' => 'Utilities',
 
 	//findus
-	'DOWNLOAD MAP IN ROSE VILLA SAIGON' => 'TẢI XUỐNG BẢN ĐỒ ROSE VILLA SAIGON'
+	'DOWNLOAD MAP IN ROSE VILLA SAIGON' => 'TẢI XUỐNG BẢN ĐỒ ROSE VILLA SAIGON',
+
+	//spa
+	'viewmenu' => 'Xem Menu',
+	'bookingspa' => 'Đặt Lịch Spa',
 ];

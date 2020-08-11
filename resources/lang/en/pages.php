@@ -20,6 +20,7 @@ return [
 	'About Us' => 'About Us',
 	'Contact Us' => 'Contact Us',
 	'How To Find Us' => 'How To Find Us',
+	'Membership' => 'Membership',
 
 	//contact
 	'Send message for us' => 'Send message for us',
@@ -35,5 +36,9 @@ return [
 	'Utilities' => 'Utilities',
 
 	//findus
-	'DOWNLOAD MAP IN ROSE VILLA SAIGON' => 'DOWNLOAD MAP IN ROSE VILLA SAIGON'
+	'DOWNLOAD MAP IN ROSE VILLA SAIGON' => 'DOWNLOAD MAP IN ROSE VILLA SAIGON',
+
+	//spa
+	'viewmenu' => 'View Menu',
+	'bookingspa' => 'Booking Now',
 ];

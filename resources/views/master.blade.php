@@ -1,15 +1,15 @@
 @include('layouts.head')
 <body class="layout-fullwidth {{Route::currentRouteName()}}  @if(Auth::user()){{'adminbar'}} @endif">
-  
+    @yield('preload')
     <div class="content-custom-width" id="app">
-    @include('layouts.nav')
-    @include('layouts.header')
-    @if(!Auth::user())
-      @include('popups.login-popup')
-    @endif
-         <div class="bgfix"></div>
-      @yield('content')
-      @include('layouts.footer')
+        @include('layouts.nav')
+        @include('layouts.header')
+        @if(!Auth::user())
+          @include('popups.login-popup')
+        @endif
+        <div class="bgfix"></div>
+        @yield('content')
+        @include('layouts.footer')
     </div>
     <script src="{{asset('public/js/jquery-2.1.3.min.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.js')}}"></script>
@@ -41,11 +41,28 @@
                         aa.slideDown('slow');
                     }
                 });
+            $('.chooselang').click(function () {
+                // $(this).find('ul').slideToggle('slow');
+                var lang = $('.select-lang');
+                if(lang.is(":visible")){
+                        lang.slideUp('slow');
+                    }else {
+                        lang.slideDown('slow');
+                    }
+                });
+            // $(window).click(function() {
+            //     $('.select-lang').slideUp('slow');
+            // });
+
+            // $('.optionlang').click(function(event){
+            //         event.stopPropagation();
+            // });
+
+
             $('.username-bar').click(function () {
                 $('.custom-dropmenu').slideToggle('slow');
             });
         });
     </script>
-
 </body>
 </html>

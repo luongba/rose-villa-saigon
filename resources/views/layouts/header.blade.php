@@ -2,7 +2,7 @@
   <section class="header-landing landingstyle">
     <div class="container-fluid">
       @if(Auth::user())
-            <div class="dropdown user-menu custom-header-user">
+            <div class="dropdown user-menu custom-header-user hidden640">
 	            <a class="dropdown-toggle username-bar" href="javascript:;" id="profile-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                  {{Auth::user()->first_name}} {{Auth::user()->last_name}}
 	             </a>
@@ -14,7 +14,7 @@
 	            </ul>
             </div>
       @else
-        <div class="account-section">
+        <div class="account-section hidden640">
             <a class="loginlink-landing" href="javascript:;"  data-toggle="modal" data-target="#popup-login">{{ trans('pages.Login') }}</a>
         </div>
       @endif
@@ -25,10 +25,20 @@
         <span class="icon-bar"></span>
       </button> <!-- Responsive nav button end -->
       <div class="optionlang">
-      	<select name="lang">
-	      	<option value="en">EN</option>
-	      	<option value="vi">VI</option>
-	      </select>
+      	<div class="chooselang">
+      		<span class="{{ config('app.locale') == "en" ? 'active' : '' }}"  id="en">EN</span>
+      		<span class="{{ config('app.locale') == "vi" ? 'active' : '' }}"  id="vi">VI</span>
+  			 <i class="fas fa-caret-down"></i>
+  		  </div>
+  	  	<ul class="select-lang">
+  	   		<li>
+  	    		<a class="{{ config('app.locale') == "en" ? 'active' : '' }}" href="./change-language/en">EN</a>
+  	    	</li>
+  	    	<li>
+  	    		<a class="{{ config('app.locale') == "vi" ? 'active' : '' }}"  href="./change-language/vi">VI</a>
+  	    	</li>
+  	    </ul>
+
       </div>
     </div>
   </section>

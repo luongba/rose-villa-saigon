@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Auth;
 use DB;
 use Session;
+use Str;
 use App\User;
 use App\Models\Store;
 use App\Models\Gift;
@@ -388,13 +389,13 @@ class HomeController extends Controller
                     $name = $item['city_ascii'];
                 }
                 if (! in_array($name, $result)) {
-                    $result[] = $name;
+                    $result[Str::slug($name)] = $name;
                 }
             }
         }
         return response()->json([
             "status" => true,
-            "data" => $result
+            "data" => (object)$result
         ]);
     }
 
