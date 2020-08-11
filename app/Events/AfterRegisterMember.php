@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-use App\User;
+use App\Models\UserMeta;
 
 class AfterRegisterMember
 {
@@ -21,9 +21,9 @@ class AfterRegisterMember
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(UserMeta $userMeta)
     {
-        $this->user = $user;
+        $this->userMeta = $userMeta;
     }
 
     /**

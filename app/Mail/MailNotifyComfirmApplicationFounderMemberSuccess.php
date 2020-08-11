@@ -7,21 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-use App\User;
+use App\Models\UserMeta;
 
 class MailNotifyComfirmApplicationFounderMemberSuccess extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $userMeta;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(UserMeta $userMeta)
     {
-        $this->user = $user;
+        $this->userMeta = $userMeta;
     }
 
     /**
@@ -40,7 +40,7 @@ class MailNotifyComfirmApplicationFounderMemberSuccess extends Mailable
         return $this->view('mails.' . $language . '.confirmation_application_founder_received')
         ->subject($subject)
         ->with([
-            'name' => $this->user->first_name . ' ' . $this->user->last_name
+            'name' => $this->userMeta->first_name . ' ' . $this->userMeta->last_name
         ]);
     }
 }

@@ -9,7 +9,7 @@ use Mail;
 use App\Mail\MailNotifyComfirmApplicationFounderMemberSuccess;
 use App\Jobs\SendMailNotify;
 
-use App\User;
+use App\Models\UserMeta;
 
 class SendMailNofityReceivedApplication
 {
@@ -20,7 +20,7 @@ class SendMailNofityReceivedApplication
      */
     public function __construct()
     {
-        $this->user = new User;
+        $this->userMeta = new UserMeta;
     }
 
     /**
@@ -31,7 +31,7 @@ class SendMailNofityReceivedApplication
      */
     public function handle(AfterRegisterMember $event)
     {
-        Mail::to($event->user)->send(new MailNotifyComfirmApplicationFounderMemberSuccess($event->user));
+        Mail::to($event->userMeta)->send(new MailNotifyComfirmApplicationFounderMemberSuccess($event->userMeta));
         dispatch(new SendMailNotify());
     }
 }
