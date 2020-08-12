@@ -181,7 +181,7 @@
     		this.view = view
     	},
     	checkPhone: function(e){
-          console.log(e.valid,e.number)
+          // console.log(e.valid,e.number)
         if(!e.valid){
           this.validphone = this.$t('form_membership.error_phone')
         }else {

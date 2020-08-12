@@ -1,12 +1,4 @@
 <template>
-    <section v-if="step==0"class="step0-ct">
-      <div class="container">
-        <input id="ef" type="radio" v-model="model.type_user" @change="next" value="0">
-        <label for="ef" class="fisst">Early Founder</label>
-        <input id="re" type="radio" v-model="model.type_user" @change="next" value="1">
-        <label for="re">Regular Member</label>
-      </div>
-    </section>
     <section v-else class="content-membership">
       <div class="header-mbs">
         <div class="container">
@@ -258,7 +250,7 @@
               />
             </div>
           </div>
-          <div :class="classStep" class="stepmbs" v-if="step == 2 && type == 'founder'">
+          <!-- <div :class="classStep" class="stepmbs hidden" v-if="1==2">
             <div class="container">
               <div class="row flexrow centerflex">
                 <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
@@ -288,8 +280,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div :class="classStep" class="stepmbs" v-if="step == 3 && type != 'founder'">
+          </div> -->
+          <div :class="classStep" class="stepmbs" v-if="(step == 2 && type == 'founder') || step == 3 && type != 'founder'">
             <div class="container">
               <div class="row flexrow centerflex">
                 <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
@@ -308,10 +300,12 @@
                             <li v-for="item in option.benefit_members">{{ item.name }}</li>
                           </ul>
                       </label>
-                      <div class="bottom-option-mbs">
+                      <div class="bottom-option-mbs1" v-for="(price, key) in option.price">
                         <div class="choseop">
-                          <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
-                          <span>{{ $t('form_membership.choose_plan') }}</span>
+                          <label :for="option.id+'-'+key">
+                            {{ price.name }} - {{ price.price }}
+                          </label>
+                          <input @change="changeType(option)" :id="option.id+'-'+key" type="radio" :value="option.id+'-'+key" v-model="model.frequency_type">
                         </div>
                       </div>
                     </div>
@@ -321,30 +315,6 @@
           </div>
           <div :class="classStep" class="stepmbs" v-if="(step == 3 && type == 'founder') || step == 4">
           	<div class="container">
-          		<div class="row">
-          			<div :class="model.frequency == key ? 'active' : ''" class="parentradio col-lg-6 col-md-6 col-sm-6 col-xs-12" v-for="(item, key) in model.price">
-                  <div class="opst4 options-mbs">
-                      <div class="ctbd1"></div>
-                      <div class="ctbd2"></div>
-                      <div class="ctbd3"></div>
-                      <div class="ctbd4"></div>
-                      <div class="ctbd5"></div>
-                      <div class="ctbd6"></div>
-                      <div class="ctbd7"></div>
-                      <div class="ctbd8"></div>
-                    <label :for="key" class="content-tp-mbs">
-                      <h3><span>Price Frequency Option {{item.name}}</span></h3>
-                      <div class="ct-opst4">
-                        {{item.name}}<br>
-                        ${{item.price}}
-                      </div>
-                    </label>
-                    <div class="bottom-option-mbs">
-                      <div class="choseop ctj"><input v-model="model.frequency" :id="key" type="radio" :value="key"><span>Choose</span></div>
-                    </div>
-                  </div>
-                </div>
-          		</div>
               <div class="agreestep4" style="margin-top:60px;">
 	              <p>I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis</p>
               </div>
@@ -371,10 +341,10 @@
 <script>
 import moment from 'moment'
 import {VueTelInput} from 'vue-tel-input'
-import VueFormGenerator from 'vue-form-generator'
+// import VueFormGenerator from 'vue-form-generator'
 import 'vue-form-generator/dist/vfg.css'
 
-Vue.use(VueFormGenerator)
+// Vue.use(VueFormGenerator)
 
 export default {
   props: ['type'],
@@ -385,7 +355,6 @@ export default {
       countries: [],
       steps: [],
       step: 1,
-      user_data: [],
       image_preview: null,
       model: {
         countries: {"VN": "Vietnam"},
@@ -439,6 +408,18 @@ export default {
       _this.model.days[i] = i
       // _this.model.days.push(i)
     }
+    // get member package
+    axios.get(
+      './membership-type',{
+        params:{
+          dob: "12-08-1920",
+          city: "ha noi",
+          type: _this.type == 'founder' ? 1 : 2
+        }
+      }
+    ).then(function(response){
+      _this.options = response.data
+    })
   },
   computed: {
     classStep() {
@@ -497,7 +478,11 @@ export default {
       }
     },
     changeType(option){
-      this.model.price = option.price
+      let vkl = this.model.frequency_type
+      let arr_fre = vkl.split("-")
+      this.model.frequency = arr_fre[1]
+      this.model.membership_type = option.id
+      // this.model.price = option.price
     },
     onFileChange(e) {
       const image = e.target.files[0];
