@@ -20,19 +20,19 @@
           <div class="abct-elm">
             {!!$val->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
           </div>
+          <div class="buttonbk">
+              @auth
+                <button-show-modal 
+                  :classname="'bookingaction radius_4'" 
+                  :text="'Booking Event'"
+                  :type="'0'"
+                  :booking_id="{{$val->id}}"
+                ></button-show-modal>
+              @else
+                  <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Event</button>
+              @endauth
+          </div>
           <div class="clear"></div>
-        </div>
-        <div class="buttonbk">
-            @auth
-              <button-show-modal 
-                :classname="'bookingaction radius_4'" 
-                :text="'Booking Event'"
-                :type="'0'"
-                :booking_id="{{$val->id}}"
-              ></button-show-modal>
-            @else
-                <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Event</button>
-            @endauth
         </div>
     </section>
     </div>

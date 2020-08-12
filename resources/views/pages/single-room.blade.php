@@ -1,6 +1,13 @@
 @extends('master')
 @section('content')
   <main>
+  	<div class="audio-control">
+  		<span class="turnon" onclick="disableMute()" title="TURN ON SOUND">ON</span>
+  		<span class="turnoff" onclick="enableMute()" title="MUTED">OFF</span>
+  	</div>
+  	<audio id="audio" autoplay>
+   		<source type="audio/mp3" src="{{asset('public/assets/audio/La vie en rose - Louis Armstrong.mp3')}}">
+  	</audio>
     <div class="scroller">
       <div class="slideshow scroller__slideshow">
       	@if($singleroom->ListImageGallery)
@@ -82,5 +89,25 @@
 <script src="{{asset('public/rosevilla/enquire.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('public/rosevilla/slick.min.js')}}"></script>
 <script src="{{asset('public/rosevilla/script.js')}}" type="text/javascript"></script>
+	<script>
+      document.addEventListener("DOMContentLoaded", ready);
+    </script>
+    <script>
+		var vid = document.getElementById("audio");
+
+		function enableMute() { 
+		  vid.muted = true;
+		  $('.audio-control').removeClass('control-on').addClass('control-off');
+		} 
+
+		function disableMute() { 
+		  vid.muted = false;
+		  $('.audio-control').removeClass('control-off').addClass('control-on');
+		} 
+
+		// function checkMute() { 
+		//   alert(vid.muted);
+		// } 
+	</script> 
 @endsection
 

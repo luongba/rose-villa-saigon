@@ -300,12 +300,14 @@
                             <li v-for="item in option.benefit_members">{{ item.name }}</li>
                           </ul>
                       </label>
-                      <div class="bottom-option-mbs1" v-for="(price, key) in option.price">
-                        <div class="choseop">
-                          <label :for="option.id+'-'+key">
-                            {{ price.name }} - {{ price.price }}
-                          </label>
-                          <input @change="changeType(option)" :id="option.id+'-'+key" type="radio" :value="option.id+'-'+key" v-model="model.frequency_type">
+                      <div class="optionchose">
+                        <div class="bottom-option-mbs1" v-for="(price, key) in option.price">
+                          <div class="choseop">
+                            <input @change="changeType(option)" :id="option.id+'-'+key" type="radio" :value="option.id+'-'+key" v-model="model.frequency_type">
+                            <label :for="option.id+'-'+key">
+                              {{ price.name }} - {{ price.price }}
+                            </label>
+                          </div>
                         </div>
                       </div>
                     </div>
