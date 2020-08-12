@@ -20,7 +20,7 @@
          @endif
     </div>
     <ul class="navbar-nav">
-        <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('about')}}">{{ trans('pages.About Us') }}</a></li>
+        <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('getPage',['slug'=>'about'])}}">{{ trans('pages.About Us') }}</a></li>
         <li class="nav-item has-child-menu">
             <a class="nav-link" href="javascript:;">{{ trans('pages.Membership') }}</a>
             <ul class="sub-menu">

@@ -43,6 +43,7 @@ use App\Models\BookingRoom;
 use Illuminate\Support\Facades\View;
 
 use App\Models\Contact;
+use App\Models\Page;
 
 class HomeController extends Controller
 {
@@ -57,6 +58,7 @@ class HomeController extends Controller
         $this->areaEvent = new AreaEvent;
         $this->room = new Room;
         $this->bookingRoom = new BookingRoom;
+        $this->page = new Page;
 
         $list_room = $this->room->listRoom();
         View::share('list_room', $list_room);
@@ -102,7 +104,9 @@ class HomeController extends Controller
 
     public function contact(Request $request)
     {
-        return view('pages.contact');
+        $slug = 'contact-us';
+        $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', $slug)->first();
+        return view('pages.contact',compact('singlepage'));
     }
 
     public function founder(Request $request)
@@ -404,4 +408,11 @@ class HomeController extends Controller
         \Session::put('website_language', $language);
         return redirect()->back();
     }
+    /*knight*/
+    public function getPage($slug){
+        $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', $slug)->first();
+        //return $singlepage;
+        return view('pages.about',compact('singlepage'));
+    }
+    /*endknight*/
 }

@@ -7,12 +7,12 @@
         <div class="contact-ct ctbox1">
           <h1 class="title-innerpage2">
 
-            <span><span>{{ trans('pages.Contact Us') }}</span></span>
+            <span><span>{!! ($singlepage != null)?$singlepage->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale'):trans('pages.Contact Us') !!}</span></span>
           </h1>
 
                   <div class="ct-elm">
                       <div class="ctfw">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. </p>
+                        <p>{!! ($singlepage != null)?$singlepage->getTranslatedAttribute('body', config('app.locale'), 'fallbackLocale'):'No Data' !!}</p>
                       </div>
                       <div class="infoct ctfw">
                         <div class="infoctcolumn">

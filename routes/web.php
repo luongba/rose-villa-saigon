@@ -152,7 +152,13 @@ Route::group(['middleware' => 'locale'], function() {
 		Route::get('notify-confirm-application-founder-member-success/{id}', 'TestController@mailNotifyComfirmApplicationFounderMemberSuccess');
 	});
 	/*END MANH_TU*/
-	
+	/*Knight*/
+	Route::get('/pages/{slug}/', [
+		'as' => 'getPage',
+		'uses' => 'HomeController@getPage'
+	]);
+
+	/*end Knight*/
 	Route::group(['prefix' => 'admin'], function () {
 		/*users*/
 		Route::prefix("users")->group(function(){
