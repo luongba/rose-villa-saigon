@@ -7,5 +7,7 @@
         <div class="social-ft">
         	<a class="radius_50" href="https://www.instagram.com/"><i class="fab fa-instagram"></i>{{-- <img src="{{asset('public/images/icons/instagram.png')}}"> --}}</a>
         </div>
+        {{menu('menu_foodter')}}
+
     </div>
 </section>

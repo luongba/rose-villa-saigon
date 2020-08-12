@@ -5,13 +5,19 @@
     <span class="rightpageimg"></span>
     <section class="innercontent content-inner50">
         <div class="about-ct ctbox1">
+          @if($singlepage)
           <h1 class="title-innerpage2">
-            <span><span>{{ trans('pages.About Us') }}</span></span>
+            <span><span>{!!$singlepage->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')!!}</span></span>
           </h1>
           <div class="abct-elm">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque venenatis id massa ut ornare. Ut commodo arcu nec orci varius, in suscipit sem dictum. In porta justo semper, lacinia orci vel, pellentesque dui. Aenean scelerisque orci sit amet quam gravida vestibulum. In finibus tortor lorem, id ornare mauris lobortis ut. Duis mollis tempus tellus, et rhoncus est eleifend vel. Aenean lacus ex, euismod commodo mattis in, hendrerit sed justo. Sed tempor tempus lorem, ac aliquam urna vestibulum id. Nullam pulvinar orci ac dapibus cursus. Vivamus mollis dui eget eleifend commodo. Praesent nec auctor urna. </p>
+            {!!$singlepage->getTranslatedAttribute('body', config('app.locale'), 'fallbackLocale')!!}
           </div>
           <div class="clear"></div>
+          @else
+            <h1 class="title-innerpage2">
+            <span><span>{!!'No Data'!!}</span></span>
+          </h1>
+          @endif
         </div>
     </section>
   </div>
