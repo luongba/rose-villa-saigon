@@ -43,6 +43,7 @@ Vue.component('membership-form', require('./components/MembershipForm.vue').defa
 Vue.component('button-show-modal', require('./components/ButtonShowModal.vue').default);
 Vue.component('booking-form', require('./components/BookingForm.vue').default);
 Vue.component('change-language', require('./components/ChangeLanguage.vue').default);
+Vue.component('contact-form', require('./components/ContactForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
