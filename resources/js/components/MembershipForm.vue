@@ -13,7 +13,7 @@
       </div>
       <div class="stepmbs">
         <form class="form-mbs1 vvvv" method="post" action="" @submit.prevent="submit">
-          <div class="stepmbs step1st" v-if="step == 1">
+          <div ref="step1" class="stepmbs step1st" v-if="step == 1">
             <div class="container">
               <FormulateInput
                 :wrapper-class="['form-group required']"
@@ -185,22 +185,11 @@
                 }"
               />
 
-              <div class="form-group valid required field-input">
-                <label for="ava"><span>Avatar</span></label>
-                <div class="field-wrap">
-                  <div class="wrapper">
-                    <div class="ct-upload">
-                      <input id="ava" type="file" accept="image/*" @change="onFileChange">
-                      <span class="testupload">{{ $t('form_membership.upload_photo') }}</span>
-                    </div>
-                    <p class="textcenter">{{ $t('form_membership.upload_photo_desc') }}</p>
-                    <div id="preview" style="display:flex;">
-                      <img width="100" v-if="image_preview" :src="image_preview" />
-                    </div>
-                  </div> 
-                </div>
-              </div>
             </div>
+          </div>
+
+          <div class="stepmbs step1st">
+            <croppie ref="childComponent" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
           </div>
           <div class="stepmbs step2nd" v-if="step == 2 && type != 'founder'">
             <div class="container">
@@ -327,7 +316,7 @@
            	</div>
 
           </div>
-          <div class="container">
+          <div ref="stepbutton" class="container" v-if="step != 0">
             <div class="button2center">
             <button class="btn buttonmbs btback btf" v-if="step >1 && step<=steps.length" type="button" @click="back
             ">{{ $t('form_membership.back') }}</button>
@@ -345,10 +334,12 @@ import moment from 'moment'
 import {VueTelInput} from 'vue-tel-input'
 // import VueFormGenerator from 'vue-form-generator'
 import 'vue-form-generator/dist/vfg.css'
+import Croppie from './Croppie.vue'
 
 // Vue.use(VueFormGenerator)
 
 export default {
+  components: {Croppie},
   props: ['type'],
   data() {
     return {
@@ -365,6 +356,7 @@ export default {
         months: [],
         days: []
       },
+      show: 0,
       err_text: ''
     };
   },
@@ -422,6 +414,10 @@ export default {
     ).then(function(response){
       _this.options = response.data
     })
+    // console.log(this.$refs)
+  },
+  created(){
+    
   },
   computed: {
     classStep() {
@@ -435,6 +431,23 @@ export default {
     }
   },
   methods: {
+    showCrop(){
+      this.$refs.step1.classList.add('d-none');
+      this.$refs.stepbutton.classList.add('d-none');
+    },
+    hideCrop(){
+      this.$refs.step1.classList.remove('d-none');
+      this.$refs.stepbutton.classList.remove('d-none');
+    },
+    cropImage(data){
+          this.image_preview = data;
+    },
+    backTo() {
+      this.step = 1
+    },
+    crop() {
+      this.backTo()
+    },
     getKeyByValue(object, value) {
       return Object.keys(object).find(key => object[key] === value);
     },
@@ -487,12 +500,18 @@ export default {
       // this.model.price = option.price
     },
     onFileChange(e) {
+      let _this = this
       const image = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(image);
       reader.onload = e =>{
           this.image_preview = e.target.result;
-          // console.log(this.image_preview);
+          this.show = 1
+          // this.$emit('croppie', e.target.result);
+          // this.$refs.childComponent.croppie(e.target.result);
+          this.$refs.croppieRef.bind({
+            url: e.target.result
+          });
       };
     },
     next: function(e){
