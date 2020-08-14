@@ -174,7 +174,7 @@
                 }"
               />
               <FormulateInput
-                :wrapper-class="['form-group']"
+                :wrapper-class="['form-group required']"
                 :label="$t('form_membership.post_code')"
                 type="text"
                 v-model="model.post_code"
@@ -329,11 +329,11 @@
           </div>
           <div class="container">
             <div class="button2center">
-            <button class="btn btn-primary buttonmbs btback" v-if="step >1 && step<=steps.length" type="button" @click="back
+            <button class="btn buttonmbs btback btf" v-if="step >1 && step<=steps.length" type="button" @click="back
             ">{{ $t('form_membership.back') }}</button>
-            <a href="Javascript:;" class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">{{ $t('form_membership.next') }}</a>
+            <a href="Javascript:;" class="btn  buttonmbs btnext btf" v-if="step<steps.length" type="button" @click="next">{{ $t('form_membership.next') }}</a>
             <!-- <button class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">Next</button> -->
-            <button class="btn btn-primary buttonmbs btnext" v-if="step==steps.length" type="submit">{{ $t('form_membership.submit') }}</button>
+            <button class="btn buttonmbs btnext btf" v-if="step==steps.length" type="submit">{{ $t('form_membership.submit') }}</button>
             </div>
           </div>
         </form>
@@ -535,7 +535,7 @@ export default {
                 './membership-type',{
                   params:{
                     dob: _this.model.dob,
-                    city: _this.model.city,
+                    city: _this.model.cities[_this.model.city],
                     type: _this.type == 'founder' ? 1 : 2
                   }
                 }

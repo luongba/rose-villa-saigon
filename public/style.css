@@ -908,12 +908,14 @@ ul.des-room li::before {
 	left:50%;
 	margin-left:-98px;
 	top:10px;
-	border:1px solid #8560a8;
-	background:none;
 	line-height:38px;
-	color:#8560a8;
 	padding:0;
 	text-transform:uppercase;
+	/*
+	color:#8560a8;
+	border:1px solid #8560a8;
+	background:none;
+	*/
 }
 /* Product */
 .description-single{
@@ -2429,7 +2431,7 @@ div.permissions li i{
 .scrollcustom,
 .header{
   overflow-y: scroll;
-  scrollbar-color: #c18e30 #252525;
+  scrollbar-color: rgba(0,0,0,0.4) rgba(0,0,0,0);
   scrollbar-width: thin;
 }
 
@@ -2452,12 +2454,12 @@ div.permissions li i{
 .header::-webkit-scrollbar-thumb {
     /*-webkit-border-radius: 3px;
     border-radius: 3px;*/
-    background: #c18e30; 
+    background: rgba(0,0,0,0.4); 
    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); */
 }
 .scrollcustom::-webkit-scrollbar-thumb:window-inactive ,
 .header::-webkit-scrollbar-thumb:window-inactive {
-	background: #252525; 
+	background: rgba(0,0,0,0.2); 
 }
 
 
@@ -2668,6 +2670,18 @@ body.welcome {
 	width:50%;
 	float: right;
 	text-align:right;
+}
+.rightcp li{
+	float:right;
+}
+.rightcp li::after{
+	content:"|";
+	display:line-block;
+	margin-left:10px;
+	margin-right:10px;
+}
+.rightcp li:first-child::after{
+	display:none;
 }
 .rightcp a{
 	color:#a8a8a8;
@@ -3070,11 +3084,12 @@ body.welcome {
 	font-size:20px;
 }
 .abct-elm{
-	width:350px;
+	width:390px;
 	height:350px;
 	overflow-y:auto;
 	margin:0px auto;
-	text-align:justify
+	text-align:justify;
+	padding:0 5px;
 }
 .singleroom-ct{
 	width:420px;
@@ -3535,9 +3550,9 @@ ul.step-membership{
 .step-membership li::after{
 	content:"";
 	height:1px;
-	width:205px;
-	left:70px;
-	top:30px;
+	width:215px;
+	left:62px;
+	top:32px;
 	background:url(images/bg_space_mbs.png) repeat-x right center;
 	position:absolute;
 	display:block;
@@ -3547,19 +3562,18 @@ ul.step-membership{
 }
 .step-membership li span.numberstep{
 	display:block;
-	width:60px;
-	height:60px;
-	border:4px solid #000;
-	background:#fff;
+	width:54px;
+	height:65px;
 	font-size:24px;
-	line-height:52px;
+	line-height:65px;
 	text-align:center;
 	color:#333;
+	background:url(images/svg/step.png) no-repeat;
+	background-size:cover;
 }
 .step-membership li.currentstep span.numberstep{
-	border:4px solid #fff;
-	background:#000;
 	color:#fff;
+	background-image:url(images/svg/stepactive.png);
 }
 .step-membership li span.textli{
 	position:absolute;
@@ -3627,8 +3641,8 @@ ul.step-membership{
 }
 .content-tp-mbs ul li{
 	line-height:24px;
-	padding-top:8px;
-	padding-bottom:8px;
+	padding-top:4px;
+	padding-bottom:4px;
 	width:100%;
 	text-align:center;
 }
@@ -3653,12 +3667,12 @@ ul.step-membership{
 .choseop{
 	position:relative;
 	width:100%;
-	height:36px;
+	height:28px;
 	color:#474546;
 	background:#e1e1e1;
 	background:#1e1e1e;
 	background:rgba(255,255,255,0);
-	line-height:30px;
+	line-height:28px;
 	border:none;
 	cursor:pointer;
 	text-align: center;
@@ -3673,7 +3687,7 @@ ul.step-membership{
 	top:0;
 	opacity:0;
 	*/
-	display:line-block;
+	display:inline-block;
 	margin-right:3px;
 }
 .choseop span{
@@ -3764,9 +3778,11 @@ ul.step-membership{
 }
 #preview img{
 	margin:0 auto;
-	width: 150px;
-	height: 150px;
+	width: 180px;
+	height: 180px;
 	object-fit: cover;
+	border-radius:50%;
+	border:3px solid #fff;
 }
 
 .step3rd{
@@ -3775,16 +3791,9 @@ ul.step-membership{
 
 .buttonmbs{
     margin: 0 auto;
-    display: block;
-    background: #fff;
-    border-radius: 0;
-    border: 1px solid #000;
-    line-height: 38px;
+    line-height: 39px;
     text-align: center;
-    width: 100px;
-    height: 40px;
     padding: 0;
-    color: #000;
     text-transform: uppercase;
 }
 .step2nd  .form-group{
@@ -4039,8 +4048,24 @@ ul.step-membership{
 	display:inline-block;
 }
 .btnext{
-	background:#252525;
 	color:#fff;
+	background-image:url(images/svg/bg_black.png);
+}
+.btnext:hover{
+	background-image:url(images/svg/bg_white.png);
+	color:#000;
+}
+.btback{
+	color:#000;
+	background-image:url(images/svg/bg_transparent.png);
+}
+.btback:hover{
+	background-image:url(images/svg/bg_white.png);
+	color:#000;
+}
+.btnext:focus,
+.btback:focus{
+	box-shadow:none;
 }
 .captext{
 	text-transform:uppercase;
@@ -4079,8 +4104,16 @@ ul.step-membership{
 	width:100%;
 	position:absolute;
 	left:0;
-	bottom:0;
-	z-index:1;
+	bottom:10px;
+	z-index:11;
+}
+.btf{
+	height:39px;
+	width:120px;
+	display:inline-block;
+	background-size:cover;
+	border:none;
+	background-repeat:no-repeat;
 }
 /* Responsive */
 

@@ -50,7 +50,7 @@
                                 <textarea class="form-control" name="content" rows="3" placeholder="{{ trans('pages.Content') }}" ></textarea>
                               </div>
                               <div class="submit-formct">
-                                <button type="submit" class="btn btn-primary submitct">{{ trans('pages.Submit') }}</button>
+                                <button type="submit" class="btn btn-primary submitct bookingaction">{{ trans('pages.Submit') }}</button>
                               </div>
                       </form>
                       </div>

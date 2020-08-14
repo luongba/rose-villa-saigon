@@ -46,26 +46,37 @@ class MembershipTypeController extends Controller
 			]);
 		}
 		$year = Carbon::now()->diffInYears(Carbon::parse($request->dob));
-		$data = array();
-		if ($year >= 18 && $year <= 30) {
-			$data = $this->membershipType->with('benefitMembers:name')
-			->whereIn('id', [4, 5, 9, 11])
-			->where('type', $request->type)
-			->get(['id', 'name', 'price'])->toArray();
+		$arrIdPack = array();
+		if ($request->city == "Hồ Chí Minh" || $request->city == 'ho-chi-minh') {
+			if ($year >= 18 && $year <= 30) {
+				$arrIdPack = [9, 11, 15, 16];
+			} else {
+				$arrIdPack = [8, 10, 13, 14];
+			}
 		} else {
-			$data = $this->membershipType->with('benefitMembers:name')
-			->whereIn('id', [2, 3, 8, 10])
-			->where('type', $request->type)
-			->get(['id', 'name', 'price'])->toArray();
-		}
-		if ($request->city != "Hồ Chí Minh") {
 			//traveller
-			$traveller = $this->membershipType->with('benefitMembers:name')
-			->whereIn('id', [6, 7])
-			->where('type', $request->type)
-			->get(['id', 'name', 'price'])->toArray();
-			$data = array_merge($data, $traveller);
+			if ($year >= 18 && $year <= 30) {
+				$arrIdPack = [19, 20];
+			} else {
+				$arrIdPack = [17, 18];
+			}
 		}
-		return $data;
+		$arrPack = $this->membershipType->with('benefitMembers:name')
+		->whereIn('id', $arrIdPack)
+		->where('type', $request->type)
+		->get(['id', 'name', 'price'])->toArray();
+		
+		$result = array();
+		foreach($arrPack as $data){
+			$item['id'] = $data['id'];
+			$item['name'] = $data['name'];
+			$price = array_filter($data['price'], function($value) {
+				return $value['price'] != null; 
+			});
+			$item['price'] = $price;
+			$item['benefit_members'] = $data['benefit_members'];
+			$result[] = $item;
+		}
+		return $result;
 	}
 }
