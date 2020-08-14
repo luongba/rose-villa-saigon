@@ -26,6 +26,12 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
+// crop image
+import VueCroppie from 'vue-croppie'
+import 'croppie/croppie.css' // import the croppie css manually
+ 
+Vue.use(VueCroppie)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
