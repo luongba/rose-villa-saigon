@@ -22,5 +22,6 @@ return [
 	'Phone or password is not correct' => 'Số điện thoại hoặc mật khẩu không chính xác',
 	'Member registration error' => 'Đăng ký thành viên thất bại',
 	'Member registration successfully' => 'Đăng ký thành viên thành công',
-	'You can use this email & phone' => 'Bạn có thể sử dụng email & số điện thoại này'
+	'You can use this email & phone' => 'Bạn có thể sử dụng email & số điện thoại này',
+	'Incorrect telephone number' => 'Số điện thoại không chính xác'
 ];

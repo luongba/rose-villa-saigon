@@ -33,6 +33,7 @@ return [
 	'postal_code' => 'Mã Bưu Chính',
 	'upload_photo' => 'Tải Ảnh Lên(Tối Đa 15mb)',
 	'upload_photo_desc' => 'Vui Lòng Chọn Ảnh Gần Đây Của Qúy Khách',
+	'error_agree'=>'Hãy đồng ý với điều kiện thành viên',
 
 	//step 2 field
 	'reason' => 'TẠI SAO BẠN CHỌN ROSEVILLA ?',

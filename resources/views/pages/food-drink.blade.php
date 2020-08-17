@@ -9,7 +9,7 @@
         $ctshow = 'ctlay-right';
       }
     @endphp
-    <div class="innerpage-style1 {{$ctshow}}" style="background:url('{{$val->UrlThumb}}') no-repeat center center; background-size: cover;">
+    <div class="sfe sfe{{ $key }} innerpage-style1 {{$ctshow}}" style="background:url('{{$val->UrlThumb}}') no-repeat center center; background-size: cover;">
       <span class="leftpageimg"></span>
       <span class="rightpageimg"></span>
       <section class="innercontent content-inner50">

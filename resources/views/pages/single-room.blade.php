@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="poster visual-pull-left-lap-and-up">
-    	<div class="about-ct ctbox1">	
+    	<div class="about-ct ctbox1 singleframe">	
 		    {{-- <h1 class="poster__title poster__title--ghost"></h1>
 		    <h1 class="poster__title visual-pull-left-lap-and-up"></h1> --}}
 			<h1 class="title-innerpage2">

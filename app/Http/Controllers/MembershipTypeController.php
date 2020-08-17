@@ -47,18 +47,25 @@ class MembershipTypeController extends Controller
 		}
 		$year = Carbon::now()->diffInYears(Carbon::parse($request->dob));
 		$arrIdPack = array();
-		if ($request->city == "Hồ Chí Minh" || $request->city == 'ho-chi-minh') {
+		if ($request->type == config('constants.MEMBERSHIP_TYPE_FOUNDER')) {
 			if ($year >= 18 && $year <= 30) {
-				$arrIdPack = [9, 11, 15, 16];
+				$arrIdPack = [9, 11];
 			} else {
-				$arrIdPack = [8, 10, 13, 14];
+				$arrIdPack = [8, 10];
 			}
-		} else {
-			//traveller
-			if ($year >= 18 && $year <= 30) {
-				$arrIdPack = [19, 20];
+		} elseif ($request->type == config('constants.MEMBERSHIP_TYPE_REGULAR')) {
+			if ($request->city == "Hồ Chí Minh" || $request->city == 'ho-chi-minh') {
+				if ($year >= 18 && $year <= 30) {
+					$arrIdPack = [15, 16];
+				} else {
+					$arrIdPack = [13, 14];
+				}
 			} else {
-				$arrIdPack = [17, 18];
+				if ($year >= 18 && $year <= 30) {
+					$arrIdPack = [15, 16, 19, 20];
+				} else {
+					$arrIdPack = [13, 14, 17, 18];
+				}
 			}
 		}
 		$arrPack = $this->membershipType->with('benefitMembers:name')

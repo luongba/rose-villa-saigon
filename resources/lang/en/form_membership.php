@@ -33,6 +33,7 @@ return [
 	'post_code' => 'POSTAL CODE',
 	'upload_photo' => 'UPLOAD PHOTO (15mb max jpeg)',
 	'upload_photo_desc' => 'PLEASE CHOOSE A RECENT PHOTO AND A TRUE LIKENESS',
+	'error_agree'=>'Please agree term & conditions of membership',
 
 	//step 2 field
 	'reason' => 'WHY DO YOU WANT TO JOIN ROSE VILLA? ',

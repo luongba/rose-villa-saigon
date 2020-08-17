@@ -335,7 +335,7 @@ html {
   }
   @media screen and (min-width: 770px) {
     .poster {
-      padding: 9rem 5% 8rem 5%;
+      padding: 9rem 3.5% 8rem 3.5%;
       width: 50%; } }
   .poster p {
     margin-bottom: 0.5rem; }

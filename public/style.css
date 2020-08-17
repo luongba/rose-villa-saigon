@@ -2557,7 +2557,7 @@ body.welcome {
 	background:rgba(0,0,0,0.8);
 	height:60px;
 	color:#fff;
-	position: absolute;
+	position: fixed;
 	top:0;
 	left:0;
 	z-index: 10;
@@ -2582,7 +2582,7 @@ body.welcome {
 .logo-landing{
 	height:110px;
 	width:110px;
-	position:absolute;
+	position:fixed;
 	left:50%;
 	margin-left:-55px;
 	top:0;
@@ -2910,6 +2910,13 @@ body.welcome {
 	float:left;
 	padding-top:60px;
 }
+.sfe{
+	padding-top:0px;
+	min-height:480px;
+}
+.sfe0 {
+	padding-top:85px;
+}
 .ctlay-right .content-inner50 {
 	float:right;
 }
@@ -2921,9 +2928,10 @@ body.welcome {
 .ctlay-right .rightpageimg{
 	background: rgba(0,0,0,0.7);
 }
-.ctlay-left .content-inner50,
-.ctlay-right .content-inner50{
-	padding-top:30px;
+
+.sfe .content-inner50,
+.sfe .content-inner50{
+	padding-top:0px;
 }
 
 
@@ -2950,6 +2958,12 @@ body.welcome {
 .thankyou-page{
 	background-image:url(images/bg/bg_thankyou.png);
 	background-size:cover;
+}
+.events  .bgfix,
+.fooddrink  .bgfix,
+.spa  .bgfix,
+.thankyou  .bgfix{
+	display:none;
 }
 .bgimg{
 	width:100%;
@@ -3030,7 +3044,7 @@ body.welcome {
 	color:#636363;
 	position:relative;
 	max-width:100%;
-	margin:50px auto;
+	margin:65px auto;
 	padding-top:135px;
 }
 .about-ct{
@@ -3043,6 +3057,13 @@ body.welcome {
 	height:854px;
 	background:url(images/Contact-us.png) no-repeat;
 }
+
+.singleframe{
+	height:614px;
+	width:500px;
+	background:url(images/bg/frame.png) no-repeat;
+}
+
 .title-innerpage2{
 	height:78px;
 	width:240px;
@@ -3051,6 +3072,7 @@ body.welcome {
 	left:50%;
 	margin-left:-120px;
 }
+/*
 .singleroom .title-innerpage2{
 	background:url(images/bg-title.png) no-repeat;
 	height:157px;
@@ -3058,7 +3080,8 @@ body.welcome {
 	top:-50px;
 	margin-left:-125px;
 	padding:40px;
-} 
+}
+*/ 
 .title-innerpage2 span{
 	height:78px;
 	width:240px;
@@ -3066,11 +3089,13 @@ body.welcome {
 	margin:0 auto;
 	
 }
+/*
 .singleroom .title-innerpage2 span{
 	height:77px;
 	width:167px;
 	
 }
+*/
 .title-innerpage2 span span{
 	vertical-align:middle;
 	display:table-cell;
@@ -3079,10 +3104,12 @@ body.welcome {
 	color:#252525;
 	text-transform:uppercase;
 }
+/*
 .singleroom .title-innerpage2 span span{
 	color:#fff;
 	font-size:20px;
 }
+*/
 .abct-elm{
 	width:390px;
 	height:350px;
@@ -3092,7 +3119,8 @@ body.welcome {
 	padding:0 5px;
 }
 .singleroom-ct{
-	width:420px;
+	width:450px;
+	height:365px;
 }
 .mapct{
 	width:420px;
@@ -3407,6 +3435,7 @@ h3.title-post-1::after{
 	display:inline-table;
 	float:none;
 	color:#fff;
+	font-size:14px;
 	margin:0 auto;
 	text-transform:uppercase;
 	-webkit-border-radius: 16px;
@@ -3427,6 +3456,10 @@ h3.title-post-1::after{
 	width:100%;
 	text-align:center;
 	float:left;
+}
+.buttonbk button,
+.buttonbk a{
+	width:150px;
 }
 .audio-control{
 	position:fixed;
@@ -3501,6 +3534,7 @@ h3.title-post-1::after{
 .banner-member img{
 	margin:0px auto;
 	display:block;
+	max-width:200px;
 }
 .banner-member h3{
 	font-size:24px;
@@ -3513,14 +3547,15 @@ h3.title-post-1::after{
 	padding:0;
 }
 .header-mbs h3{
-	font-size:24px;
+	font-size:16px;
 	text-transform:uppercase;
 	text-align:center;
 	display:block;
 	line-height:40px;
-	margin-top:50px;
-	margin-bottom:50px;
+	margin-top:32px;
+	margin-bottom:32px;
 	padding:0;
+	font-weight:600;
 }
 .innerpage-membership .container{
 	max-width:660px;
@@ -3534,15 +3569,17 @@ h3.title-post-1::after{
 	height:auto;
 }
 ul.step-membership{
-	width:100%;
-	float:left;
-	display:flex;
-	justify-content: space-between; 
-	margin-bottom:80px;
+	width:auto;
+	float:none;
+	display:block;
+	text-align:center;
+	margin:0px auto 50px auto;
 }
 .step-membership li{
-	display:block;
-	width:60px;
+	display:inline-block;
+	margin-left:60px;
+	margin-right:60px;
+	width:36px;
 	height:auto;
 	position:relative;
 	padding-bottom:50px;
@@ -3550,9 +3587,9 @@ ul.step-membership{
 .step-membership li::after{
 	content:"";
 	height:1px;
-	width:215px;
-	left:62px;
-	top:32px;
+	width:100px;
+	left:45px;
+	top:22px;
 	background:url(images/bg_space_mbs.png) repeat-x right center;
 	position:absolute;
 	display:block;
@@ -3562,10 +3599,10 @@ ul.step-membership{
 }
 .step-membership li span.numberstep{
 	display:block;
-	width:54px;
-	height:65px;
-	font-size:24px;
-	line-height:65px;
+	width:36px;
+	height:44px;
+	font-size:20px;
+	line-height:44px;
 	text-align:center;
 	color:#333;
 	background:url(images/svg/step.png) no-repeat;
@@ -3584,6 +3621,7 @@ ul.step-membership{
 	left:50%;
 	margin-left:-90px;
 	line-height:50px;
+	font-size:13px;
 }
 /* step 3*/
 .step3rd .container{
@@ -3708,6 +3746,11 @@ ul.step-membership{
 	-o-border-radius: 0 0 4px 4px;
 	border-radius: 0 0 4px 4px;
 }
+
+.cr-slider::-moz-range-thumb{
+	background:#000 !important;
+}
+
 /*
 .active .choseop span{
 	background: #a864a8;
@@ -3756,7 +3799,6 @@ ul.step-membership{
 	margin-bottom:50px;
 }
 .stepmbs {
-	margin-bottom:50px;
 	float:left;
 	width:100%;
 	font-size:13px;
@@ -3766,8 +3808,12 @@ ul.step-membership{
     border: 3px solid #fff;
     text-align: center;
     position: relative;
-    margin: 20px auto;
+    margin: 0px auto 20px auto;
 }
+.ct-upload:hover{
+	border: 3px solid #000;
+}
+
 .ct-upload input {
     position: absolute;
     width: 100%;
@@ -3778,6 +3824,7 @@ ul.step-membership{
 }
 #preview img{
 	margin:0 auto;
+	margin-bottom:20px;
 	width: 180px;
 	height: 180px;
 	object-fit: cover;
@@ -4040,6 +4087,7 @@ ul.step-membership{
 }
 .button2center{
 	text-align:center;
+	margin-bottom:50px;
 }
 .button2center a,
 .button2center button{
@@ -4115,11 +4163,17 @@ ul.step-membership{
 	border:none;
 	background-repeat:no-repeat;
 }
+.mg0bt{
+	margin-bottom:0;
+}
 /* Responsive */
 
-@media only screen and (max-width: 1400px){
+@media only screen and (min-width: 1400px){
 	.innerpage-style1{
 		min-height:700px;
+	}
+	.sfe{
+		min-height:400px;
 	}
 }
 @media only screen and (min-width: 360px) and (max-width: 768px){

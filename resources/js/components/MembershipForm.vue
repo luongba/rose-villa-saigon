@@ -40,7 +40,7 @@
               <div :class="validphone ? 'errors' : ''" class="form-group required field-input">
                 <label for="last-name"><span>Phone Number</span></label>
                 <div class="field-wrap">
-                  <vue-tel-input v-model="model.phone_number"  @validate="checkPhone" :preferredCountries="['VN', 'US']" placeholder="09xx-xxx-xxx"></vue-tel-input>
+                  <vue-tel-input v-model="model.phone_number" @input="inputPhone" @validate="checkPhone" :preferredCountries="['VN', 'US']" placeholder="09xx-xxx-xxx"></vue-tel-input>
                 </div>
                 <ul class="formulate-input-errors" v-if="validphone">
                   <li class="formulate-input-error">{{validphone}}</li>
@@ -188,8 +188,8 @@
             </div>
           </div>
 
-          <div class="stepmbs step1st">
-            <croppie ref="childComponent" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
+          <div class="stepmbs step1st" v-if="step == 1">
+            <croppie ref="childComponent" :imageUrl="image_preview" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
           </div>
           <div class="stepmbs step2nd" v-if="step == 2 && type != 'founder'">
             <div class="container">
@@ -239,37 +239,6 @@
               />
             </div>
           </div>
-          <!-- <div :class="classStep" class="stepmbs hidden" v-if="1==2">
-            <div class="container">
-              <div class="row flexrow centerflex">
-                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
-                    <div class="options-mbs radius_4">
-                      <div class="ctbd1"></div>
-                      <div class="ctbd2"></div>
-                      <div class="ctbd3"></div>
-                      <div class="ctbd4"></div>
-                      <div class="ctbd5"></div>
-                      <div class="ctbd6"></div>
-                      <div class="ctbd7"></div>
-                      <div class="ctbd8"></div>
-                      <label :for="option.id" class="content-tp-mbs">
-                          <h3><span>{{ option.name }}</span></h3>
-                          <ul>
-                            <li>Access to:</li>
-                            <li v-for="item in option.benefit_members">{{ item.name }}</li>
-                          </ul>
-                      </label>
-                      <div class="bottom-option-mbs">
-                        <div class="choseop">
-                          <input @change="changeType(option)" :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
-                          <span>{{ $t('form_membership.choose_plan') }}</span>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
           <div :class="classStep" class="stepmbs" v-if="(step == 2 && type == 'founder') || step == 3 && type != 'founder'">
             <div class="container">
               <div class="row flexrow centerflex">
@@ -306,7 +275,7 @@
           </div>
           <div :class="classStep" class="stepmbs" v-if="(step == 3 && type == 'founder') || step == 4">
           	<div class="container">
-              <div class="agreestep4" style="margin-top:60px;">
+              <div class="agreestep4">
 	              <p>I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis</p>
               </div>
               <div class="agreestep4">
@@ -484,8 +453,16 @@ export default {
         _this.model.cities = response.data.data
       });
     },
+    inputPhone: function(string, e){
+      if(string && !e.valid){
+        this.validphone = this.$t('form_membership.error_phone')
+      }else {
+        this.validphone = ''
+        this.model.phone = e.number.e164
+      }
+    },
     checkPhone: function(e){
-      if(!e.valid){
+      if(e.number.input && !e.valid){
         this.validphone = this.$t('form_membership.error_phone')
       }else {
         this.validphone = ''
@@ -598,7 +575,7 @@ export default {
           return
         }
         if(!this.model.agree ){
-          toastr.error("Please agree")
+          toastr.error(this.$t('form_membership.error_agree'))
           return
         }
         let _this = this

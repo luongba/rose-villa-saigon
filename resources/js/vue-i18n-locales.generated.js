@@ -144,7 +144,8 @@ export default {
             "Phone or password is not correct": "Phone or password is not correct",
             "Member registration error": "Member registration error",
             "Member registration successfully": "Member registration successfully",
-            "You can use this email & phone": "You can use this email & phone"
+            "You can use this email & phone": "You can use this email & phone",
+            "Incorrect telephone number": "Incorrect telephone number"
         },
         "form_membership": {
             "title_founder": "FOUNDER APPLICATION",
@@ -175,6 +176,7 @@ export default {
             "post_code": "POSTAL CODE",
             "upload_photo": "UPLOAD PHOTO (15mb max jpeg)",
             "upload_photo_desc": "PLEASE CHOOSE A RECENT PHOTO AND A TRUE LIKENESS",
+            "error_agree": "Please agree term & conditions of membership",
             "reason": "WHY DO YOU WANT TO JOIN ROSE VILLA? ",
             "usage_criteria": "HOW WILL YOU USE THE CLUB?",
             "bring_to": "WHAT WILL YOU BRING TO THE ROSE VILLA COMMUNITY?",
@@ -254,7 +256,8 @@ export default {
             "Phone or password is not correct": "Số điện thoại hoặc mật khẩu không chính xác",
             "Member registration error": "Đăng ký thành viên thất bại",
             "Member registration successfully": "Đăng ký thành viên thành công",
-            "You can use this email & phone": "Bạn có thể sử dụng email & số điện thoại này"
+            "You can use this email & phone": "Bạn có thể sử dụng email & số điện thoại này",
+            "Incorrect telephone number": "Số điện thoại không chính xác"
         },
         "pagination": {
             "previous": "&laquo; Trước",
@@ -379,6 +382,7 @@ export default {
             "postal_code": "Mã Bưu Chính",
             "upload_photo": "Tải Ảnh Lên(Tối Đa 15mb)",
             "upload_photo_desc": "Vui Lòng Chọn Ảnh Gần Đây Của Qúy Khách",
+            "error_agree": "Hãy đồng ý với điều kiện thành viên",
             "reason": "TẠI SAO BẠN CHỌN ROSEVILLA ?",
             "usage_criteria": "BẠN MUỐN THAM GIA CÂU LẠC BỘ NÀO ?",
             "bring_to": "BẠN SẼ MANG LẠI ĐIỀU GÌ CHO CỘNG ĐỒNG ROSEVILLA?",

@@ -23,14 +23,19 @@
         :viewport="{ width:300, height:300, 'type':'circle' }"
         >
       </vue-croppie>
-      <button class="btn btn-primary buttonmbs btback" type="button" @click="backTo">{{ $t('form_membership.back') }}</button>
-      <button class="btn btn-primary buttonmbs btnext" type="button" @click="crop">{{ $t('form_membership.submit') }}</button>
+      <div class="container">
+        <div class="button2center">
+          <button class="btn buttonmbs btback btf" type="button" @click="backTo">{{ $t('form_membership.back') }}</button>
+          <button class="btn buttonmbs btnext btf" type="button" @click="crop">{{ $t('form_membership.submit') }}</button>
+      </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['imageUrl'],
   data() {
     return {
       croppieImage: '',
@@ -38,7 +43,8 @@ export default {
       show: 1
     };
   },
-  created() {
+  mounted() {
+    this.cropped = this.imageUrl
       // console.log(this.$refs.croppieRef)
   },
   methods: {
