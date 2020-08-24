@@ -10,6 +10,7 @@ use App\Events\AfterConfirmBookingEvent;
 class BookingEventController extends VoyagerBaseController
 {
      /*accept order gift*/
+     
     public function accept(Request $request){
         $arr_id = explode(',', $request->list_id);
         foreach($arr_id as $id){
