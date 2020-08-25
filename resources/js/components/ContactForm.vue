@@ -16,7 +16,7 @@
       <textarea class="form-control" v-model="fdata.content" rows="3" :placeholder="$t('pages.Content')" ></textarea>
     </div>
     <div class="submit-formct">
-      <button type="submit" class="btn btn-primary submitct">{{ $t('pages.Submit') }}</button>
+      <button type="submit" class="submitct bookingaction">{{ $t('pages.Submit') }}</button>
     </div>
 </form>
 </template>
