@@ -35,13 +35,13 @@
 @endsection
 @section('content')
   <div class="landing landingstyle">
-    <div class="innerpage-style1">
-      <span class="leftpageimg"></span>
-      <span class="rightpageimg"></span>
-      <span class="bgimg"></span>
-      <div class="container">
-          @include('layouts.nav')
-      </div>
+    <div class="innerpage-style1 fixheightfull">
+    	<span class="leftpageimg"></span>
+   		<span class="rightpageimg"></span>	
+      	<span class="bgimg"></span>
+	    <div class="container">
+	        @include('layouts.nav')
+	    </div>
     </div>
   </div>
 @endsection
