@@ -188,7 +188,7 @@
             </div>
           </div>
 
-          <div class="stepmbs step1st">
+          <div ref="uploadimage" class="stepmbs step1st">
             <croppie ref="childComponent" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
           </div>
           <div class="stepmbs step2nd" v-if="step == 2 && type != 'founder'">
@@ -239,37 +239,6 @@
               />
             </div>
           </div>
-          <!-- <div :class="classStep" class="stepmbs hidden" v-if="1==2">
-            <div class="container">
-              <div class="row flexrow centerflex">
-                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
-                    <div class="options-mbs radius_4">
-                      <div class="ctbd1"></div>
-                      <div class="ctbd2"></div>
-                      <div class="ctbd3"></div>
-                      <div class="ctbd4"></div>
-                      <div class="ctbd5"></div>
-                      <div class="ctbd6"></div>
-                      <div class="ctbd7"></div>
-                      <div class="ctbd8"></div>
-                      <label :for="option.id" class="content-tp-mbs">
-                          <h3><span>{{ option.name }}</span></h3>
-                          <ul>
-                            <li>Access to:</li>
-                            <li v-for="item in option.benefit_members">{{ item.name }}</li>
-                          </ul>
-                      </label>
-                      <div class="bottom-option-mbs">
-                        <div class="choseop">
-                          <input @change="changeType(option)" :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
-                          <span>{{ $t('form_membership.choose_plan') }}</span>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
           <div :class="classStep" class="stepmbs" v-if="(step == 2 && type == 'founder') || step == 3 && type != 'founder'">
             <div class="container">
               <div class="row flexrow centerflex">
@@ -447,6 +416,8 @@ export default {
     hideCrop(){
       this.$refs.step1.classList.remove('d-none');
       this.$refs.stepbutton.classList.remove('d-none');
+      let top = this.$refs.uploadimage.offsetTop
+      window.scrollTo(0, top)
     },
     cropImage(data){
           this.image_preview = data;
@@ -616,8 +587,6 @@ export default {
         let _this = this
         let params = _this.model
         params.gender = (_this.model.gender == "Male") ? 0 : 1
-        params.dob = moment(_this.model.year + " " + _this.model.month + " " + _this.model.day).format('YYYY-MM-DD')
-
         params.country = this.model.countries[this.model.country]
         params.city = this.model.cities[this.model.city]
         params.avatar = _this.image_preview
