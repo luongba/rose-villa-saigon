@@ -242,6 +242,9 @@
           <div :class="classStep" class="stepmbs" v-if="(step == 2 && type == 'founder') || step == 3 && type != 'founder'">
             <div class="container">
               <div class="row flexrow centerflex">
+              	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              		<p class="textcenter des-step2">{{ $t('form_membership.step2_desc') }}</p>
+              	</div>
                 <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
                     <div class="options-mbs radius_4">
                       <div class="ctbd1"></div>
@@ -259,11 +262,11 @@
                           </ul>
                       </label>
                       <div class="optionchose">
-                        <div class="bottom-option-mbs1" v-for="(price, key) in option.price">
+                        <div class="bottom-option-mbs1" v-for="(priceType, key) in option.price">
                           <div class="choseop">
-                            <input @change="changeType(option)" :id="option.id+'-'+key" type="radio" :value="option.id+'-'+key" v-model="model.frequency_type">
+                            <input @change="changeType(option, priceType)" :id="option.id+'-'+key" type="radio" :value="option.id+'-'+key" v-model="model.frequency_type">
                             <label :for="option.id+'-'+key">
-                              {{ price.name }} - {{ price.price }}
+                              {{ priceType.name }} - {{ priceType.price }}
                             </label>
                           </div>
                         </div>
@@ -275,10 +278,16 @@
           </div>
           <div :class="classStep" class="stepmbs" v-if="(step == 3 && type == 'founder') || step == 4">
           	<div class="container">
+              <div class="ctstep4">
+                <h4 class="underline">{{ $t('form_membership.amountdue') }}</h4>
+                <p class="priceop">${{ model.packagePrice }}</p>
+                <h4>{{ $t('form_membership.for') }} {{ model.packageName }} {{ $t('form_membership.membership') }}</h4>
+                <h4 class="underline">{{ $t('form_membership.payment') }}</h4>
+              </div> 
               <div class="agreestep4">
 	              <p>I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis</p>
               </div>
-              <div class="agreestep4">
+              <div class="agreestep4 pl25">
 	              <input id="checkbox" type="checkbox" v-model="model.agree">
 	              <label for="checkbox">By applying I agree to abide the Rose Villa club sules and term & conditions of membership</label>
               </div>
@@ -287,11 +296,11 @@
           </div>
           <div ref="stepbutton" class="container" v-if="step != 0">
             <div class="button2center">
-            <button class="btn buttonmbs btback btf" v-if="step >1 && step<=steps.length" type="button" @click="back
+            <button class="buttonmbs btback btf" v-if="step >1 && step<=steps.length" type="button" @click="back
             ">{{ $t('form_membership.back') }}</button>
-            <a href="Javascript:;" class="btn  buttonmbs btnext btf" v-if="step<steps.length" type="button" @click="next">{{ $t('form_membership.next') }}</a>
+            <a href="Javascript:;" class="buttonmbs btnext btf" v-if="step<steps.length" type="button" @click="next">{{ $t('form_membership.next') }}</a>
             <!-- <button class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">Next</button> -->
-            <button class="btn buttonmbs btnext btf" v-if="step==steps.length" type="submit">{{ $t('form_membership.submit') }}</button>
+            <button class="buttonmbs btnext btf" v-if="step==steps.length" type="submit">{{ $t('form_membership.submit') }}</button>
             </div>
           </div>
         </form>
@@ -469,11 +478,14 @@ export default {
         this.model.phone = e.number.e164
       }
     },
-    changeType(option){
+    changeType(option, priceType){
       let vkl = this.model.frequency_type
       let arr_fre = vkl.split("-")
+    	console.log(priceType)
       this.model.frequency = arr_fre[1]
       this.model.membership_type = option.id
+      this.model.packageName = priceType.name
+      this.model.packagePrice = priceType.price
       // this.model.price = option.price
     },
     onFileChange(e) {

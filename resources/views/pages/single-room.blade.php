@@ -67,16 +67,12 @@
 			    </div>
 			</div>
 			<div class="bottomroom">
-				@auth
-			      	<button-show-modal 
-			            :classname="'bookingaction radius_4'" 
-			            :text="'Booking Room'"
-			            :type="'3'"
-			            :booking_id="{{$singleroom->id}}"
-			      	></button-show-modal>
-			    @else
-					<button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Room</button>
-			    @endauth
+		      	<button-show-modal 
+		            :classname="'bookingaction radius_4'" 
+		            :text="'Booking Room'"
+		            :type="'3'"
+		            :booking_id="{{$singleroom->id}}"
+		      	></button-show-modal>
 			</div>
 		</div>
     </div>

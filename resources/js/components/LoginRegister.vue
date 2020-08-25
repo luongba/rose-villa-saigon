@@ -211,11 +211,12 @@
               toastr.error(response.data.message)
             }else {
               toastr.success(response.data.message)
-              if(response.data.data.url){
+              setTimeout(() => window.location.reload(), 1500)
+              /*if(response.data.data.url){
                 setTimeout(() => window.location.href = response.data.data.url, 1500)
               }else{
                 setTimeout(() => window.location.reload(), 1500)
-              }
+              }*/
             }
           });
         }

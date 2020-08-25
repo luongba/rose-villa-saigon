@@ -6,7 +6,7 @@
     <section class="innercontent simpe-content-page">
     	<div class="container">
     		<h1 class="title-innerpage3">
-            	<span><span>{{ trans('pages.Shop') }} <br/>Coming soon</span></span>
+            	<span><span>{{-- {{ trans('pages.Shop') }} --}}Coming soon</span></span>
          	</h1>
     	</div>
     </section>

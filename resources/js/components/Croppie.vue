@@ -11,7 +11,7 @@
             <input id="ava" type="file" accept="image/*" @change="croppie">
             <span class="testupload">{{ $t('form_membership.upload_photo') }}</span>
           </div>
-          <p class="textcenter">{{ $t('form_membership.upload_photo_desc') }}</p>
+          <p class="textcenter des-uploadavt">{{ $t('form_membership.upload_photo_desc') }}</p>
         </div> 
       </div>
     </div>

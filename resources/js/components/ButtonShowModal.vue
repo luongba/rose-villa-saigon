@@ -1,7 +1,5 @@
 <template>
-  <div>
     <b-button data-toggle="modal" data-target="#modal-booking" :class="classname" @click="click">{{text}}</b-button>
-  </div>
 </template>
 
 <script>
