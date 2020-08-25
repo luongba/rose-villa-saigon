@@ -2906,7 +2906,7 @@ body.welcome {
 	width:100%;
 	position:relative;
 	height:auto;
-	min-height:980px;
+	min-height:768px;
 	float:left;
 	padding-top:60px;
 }
@@ -2956,9 +2956,11 @@ body.welcome {
 }
 */
 .thankyou-page{
-	background-image:url(images/bg/bg_thankyou.png);
+	background-image:url(images/bg/bg_thankyou.jpg);
 	background-size:cover;
 }
+.regularmember  .bgfix, 
+.founder .bgfix, 
 .events  .bgfix,
 .fooddrink  .bgfix,
 .spa  .bgfix,
@@ -3158,13 +3160,15 @@ body .room-details__description{
 	z-index:1;
 }
 .content-thankyou-page{
-    width: 432px;
-    height: 320px;
-	padding:75px 66px;
-    background: url(images/bg_content_thankyou.png) no-repeat;
+    width: 100%;
+	padding-left:10%;
+	padding-right:10%;
+    height: auto;
+	padding:45px 0px;
 	margin:0 auto;
 	line-height:1.1;
 	margin-top:50px;
+	color:#fff;
 }
 .content-thankyou-page h3{
 	font-size:18px;
@@ -3174,8 +3178,11 @@ body .room-details__description{
 	position:relative;
 	margin-bottom:20px;
 	padding-bottom:20px;
+	color:#fff;
 }
-
+.content-thankyou-page > img{
+	margin:50px auto;
+}
 .content-thankyou-page h3::after{
 	width:10px;
 	height:10px;
@@ -3192,7 +3199,6 @@ body .room-details__description{
 	position:absolute;
 }
 .content-thankyou-page p{
-	text-transform:uppercase;
 	line-height:24px;
 	text-align:center;
 	margin-bottom:12px;
@@ -3204,7 +3210,7 @@ body .room-details__description{
 	margin:0 auto;
 }
 .thankyou-page >section.simpe-content-page{
-	padding-top:100px;
+	padding-top:0px;
 }
 .title-innerpage3 > span{
 	width:100%;
@@ -4166,11 +4172,14 @@ ul.step-membership{
 .mg0bt{
 	margin-bottom:0;
 }
+button, [type="button"], [type="reset"], [type="submit"] {
+-webkit-appearance: button-bevel;
+}
 /* Responsive */
 
 @media only screen and (min-width: 1400px){
 	.innerpage-style1{
-		min-height:700px;
+		min-height:1020px;
 	}
 	.sfe{
 		min-height:400px;
@@ -4435,6 +4444,22 @@ ul.step-membership{
 	}
 	.hidden640{
 		display:none;
+	}
+	.step-membership li::after {
+		display:none;
+	}
+	.step-membership li{
+		width:100%;
+		margin-left:auto;
+		margin-right:auto;
+		display:none;
+	}
+	.step-membership li span.numberstep{
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.step-membership li.currentstep{
+		display:block;
 	}
 }
 @media only screen and (max-width: 639px){
