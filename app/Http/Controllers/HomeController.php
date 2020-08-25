@@ -216,7 +216,7 @@ class HomeController extends Controller
             'phone' => 'required',
             'number_guest' => 'required|integer|min:1|max:255',
             'start_at' => 'required|date|after:now',
-            'end_at' => 'required_if:type_booking,3',
+            'end_at' => 'required_if:type_booking,3|after:'.$request['start_at'],
             'description' => 'required',
             'type_booking' => 'required|min:0|max:2',
             'booking_id' => 'required|integer',
