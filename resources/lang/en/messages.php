@@ -22,5 +22,6 @@ return [
 	'Phone or password is not correct' => 'Phone or password is not correct',
 	'Member registration error' => 'Member registration error',
 	'Member registration successfully' => 'Member registration successfully',
-	'You can use this email & phone' => 'You can use this email & phone'
+	'You can use this email & phone' => 'You can use this email & phone',
+	'Incorrect telephone number' => 'Incorrect telephone number'
 ];

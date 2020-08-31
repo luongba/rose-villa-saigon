@@ -114,7 +114,7 @@
                                      <input required="" type="text" class="form-control" placeholder="Annual" value="Annual" readonly="readonly">
                                 </div>
                                 <div class=" col-md-6 ">
-                                    <input required="" type="number" class="form-control" name="price_month_12" placeholder="Price package" value="{{($price_month_12 != null)?$price_month_12:old('price_month_12')}}" step="1" min="1">
+                                    <input  type="number" class="form-control" name="price_month_12" placeholder="Price package" value="{{($price_month_12 != null)?$price_month_12:old('price_month_12')}}" step="1" min="0">
                                 </div>
                             </div>
                             <div class="form-group  col-md-12 ">
@@ -124,7 +124,7 @@
                                      <input required="" type="text" class="form-control" placeholder="Quarterly" value="Quarterly" readonly="readonly">
                                 </div>
                                 <div class=" col-md-6 ">
-                                    <input required="" type="number" class="form-control" name="price_month_3" placeholder="Price package" value="{{($price_month_3 != null)?$price_month_3:old('price_month_3')}}" step="1" min="1">
+                                    <input type="number" class="form-control" name="price_month_3" placeholder="Price package" value="{{($price_month_3 != null)?$price_month_3:old('price_month_3')}}" step="1" min="0">
                                 </div>
                             </div>
 

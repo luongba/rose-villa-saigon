@@ -9,7 +9,7 @@
           <h1 class="title-innerpage2">
             <span><span>{!!$singlepage->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')!!}</span></span>
           </h1>
-          <div class="abct-elm">
+          <div class="abct-elm scrollcustom">
             {!!$singlepage->getTranslatedAttribute('body', config('app.locale'), 'fallbackLocale')!!}
           </div>
           <div class="clear"></div>

@@ -1,12 +1,4 @@
 <template>
-    <section v-if="step==0"class="step0-ct">
-      <div class="container">
-        <input id="ef" type="radio" v-model="model.type_user" @change="next" value="0">
-        <label for="ef" class="fisst">Early Founder</label>
-        <input id="re" type="radio" v-model="model.type_user" @change="next" value="1">
-        <label for="re">Regular Member</label>
-      </div>
-    </section>
     <section v-else class="content-membership">
       <div class="header-mbs">
         <div class="container">
@@ -21,7 +13,7 @@
       </div>
       <div class="stepmbs">
         <form class="form-mbs1 vvvv" method="post" action="" @submit.prevent="submit">
-          <div class="stepmbs step1st" v-if="step == 1">
+          <div ref="step1" class="stepmbs step1st" v-if="step == 1">
             <div class="container">
               <FormulateInput
                 :wrapper-class="['form-group required']"
@@ -48,7 +40,7 @@
               <div :class="validphone ? 'errors' : ''" class="form-group required field-input">
                 <label for="last-name"><span>Phone Number</span></label>
                 <div class="field-wrap">
-                  <vue-tel-input v-model="model.phone_number"  @validate="checkPhone" :preferredCountries="['VN', 'US']" placeholder="09xx-xxx-xxx"></vue-tel-input>
+                  <vue-tel-input v-model="model.phone_number" @input="inputPhone" @validate="checkPhone" :preferredCountries="['VN', 'US']" placeholder="09xx-xxx-xxx"></vue-tel-input>
                 </div>
                 <ul class="formulate-input-errors" v-if="validphone">
                   <li class="formulate-input-error">{{validphone}}</li>
@@ -182,7 +174,7 @@
                 }"
               />
               <FormulateInput
-                :wrapper-class="['form-group']"
+                :wrapper-class="['form-group required']"
                 :label="$t('form_membership.post_code')"
                 type="text"
                 v-model="model.post_code"
@@ -193,22 +185,11 @@
                 }"
               />
 
-              <div class="form-group valid required field-input">
-                <label for="ava"><span>Avatar</span></label>
-                <div class="field-wrap">
-                  <div class="wrapper">
-                    <div class="ct-upload">
-                      <input id="ava" type="file" accept="image/*" @change="onFileChange">
-                      <span class="testupload">{{ $t('form_membership.upload_photo') }}</span>
-                    </div>
-                    <p class="textcenter">{{ $t('form_membership.upload_photo_desc') }}</p>
-                    <div id="preview" style="display:flex;">
-                      <img width="100" v-if="image_preview" :src="image_preview" />
-                    </div>
-                  </div> 
-                </div>
-              </div>
             </div>
+          </div>
+
+          <div class="stepmbs step1st" v-if="step == 1">
+            <croppie ref="childComponent" :imageUrl="image_preview" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
           </div>
           <div class="stepmbs step2nd" v-if="step == 2 && type != 'founder'">
             <div class="container">
@@ -258,40 +239,12 @@
               />
             </div>
           </div>
-          <div :class="classStep" class="stepmbs" v-if="step == 2 && type == 'founder'">
+          <div :class="classStep" class="stepmbs" v-if="(step == 2 && type == 'founder') || step == 3 && type != 'founder'">
             <div class="container">
               <div class="row flexrow centerflex">
-                <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
-                    <div class="options-mbs radius_4">
-                      <div class="ctbd1"></div>
-                      <div class="ctbd2"></div>
-                      <div class="ctbd3"></div>
-                      <div class="ctbd4"></div>
-                      <div class="ctbd5"></div>
-                      <div class="ctbd6"></div>
-                      <div class="ctbd7"></div>
-                      <div class="ctbd8"></div>
-                      <label :for="option.id" class="content-tp-mbs">
-                          <h3><span>{{ option.name }}</span></h3>
-                          <ul>
-                            <li>Access to:</li>
-                            <li v-for="item in option.benefit_members">{{ item.name }}</li>
-                          </ul>
-                      </label>
-                      <div class="bottom-option-mbs">
-                        <div class="choseop">
-                          <input @change="changeType(option)" :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
-                          <span>{{ $t('form_membership.choose_plan') }}</span>
-                        </div>
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div :class="classStep" class="stepmbs" v-if="step == 3 && type != 'founder'">
-            <div class="container">
-              <div class="row flexrow centerflex">
+              	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              		<p class="textcenter des-step2">{{ $t('form_membership.step2_desc') }}</p>
+              	</div>
                 <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
                     <div class="options-mbs radius_4">
                       <div class="ctbd1"></div>
@@ -308,10 +261,14 @@
                             <li v-for="item in option.benefit_members">{{ item.name }}</li>
                           </ul>
                       </label>
-                      <div class="bottom-option-mbs">
-                        <div class="choseop">
-                          <input :id="option.id" type="radio" :value="option.id" v-model="model.membership_type">
-                          <span>{{ $t('form_membership.choose_plan') }}</span>
+                      <div class="optionchose">
+                        <div class="bottom-option-mbs1" v-for="(priceType, key) in option.price">
+                          <div class="choseop">
+                            <input @change="changeType(option, priceType)" :id="option.id+'-'+key" type="radio" :value="option.id+'-'+key" v-model="model.frequency_type">
+                            <label :for="option.id+'-'+key">
+                              {{ priceType.name }} - {{ priceType.price }}
+                            </label>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -321,47 +278,29 @@
           </div>
           <div :class="classStep" class="stepmbs" v-if="(step == 3 && type == 'founder') || step == 4">
           	<div class="container">
-          		<div class="row">
-          			<div :class="model.frequency == key ? 'active' : ''" class="parentradio col-lg-6 col-md-6 col-sm-6 col-xs-12" v-for="(item, key) in model.price">
-                  <div class="opst4 options-mbs">
-                      <div class="ctbd1"></div>
-                      <div class="ctbd2"></div>
-                      <div class="ctbd3"></div>
-                      <div class="ctbd4"></div>
-                      <div class="ctbd5"></div>
-                      <div class="ctbd6"></div>
-                      <div class="ctbd7"></div>
-                      <div class="ctbd8"></div>
-                    <label :for="key" class="content-tp-mbs">
-                      <h3><span>Price Frequency Option {{item.name}}</span></h3>
-                      <div class="ct-opst4">
-                        {{item.name}}<br>
-                        ${{item.price}}
-                      </div>
-                    </label>
-                    <div class="bottom-option-mbs">
-                      <div class="choseop ctj"><input v-model="model.frequency" :id="key" type="radio" :value="key"><span>Choose</span></div>
-                    </div>
-                  </div>
-                </div>
-          		</div>
-              <div class="agreestep4" style="margin-top:60px;">
+              <div class="ctstep4">
+                <h4 class="underline">{{ $t('form_membership.amountdue') }}</h4>
+                <p class="priceop">${{ model.packagePrice }}</p>
+                <h4>{{ $t('form_membership.for') }} {{ model.packageName }} {{ $t('form_membership.membership') }}</h4>
+                <h4 class="underline">{{ $t('form_membership.payment') }}</h4>
+              </div> 
+              <div class="agreestep4">
 	              <p>I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis</p>
               </div>
-              <div class="agreestep4">
+              <div class="agreestep4 pl25">
 	              <input id="checkbox" type="checkbox" v-model="model.agree">
 	              <label for="checkbox">By applying I agree to abide the Rose Villa club sules and term & conditions of membership</label>
               </div>
            	</div>
 
           </div>
-          <div class="container">
+          <div ref="stepbutton" class="container" v-if="step != 0">
             <div class="button2center">
-            <button class="btn btn-primary buttonmbs btback" v-if="step >1 && step<=steps.length" type="button" @click="back
+            <button class="buttonmbs btback btf" v-if="step >1 && step<=steps.length" type="button" @click="back
             ">{{ $t('form_membership.back') }}</button>
-            <a href="Javascript:;" class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">{{ $t('form_membership.next') }}</a>
+            <a href="Javascript:;" class="buttonmbs btnext btf" v-if="step<steps.length" type="button" @click="next">{{ $t('form_membership.next') }}</a>
             <!-- <button class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">Next</button> -->
-            <button class="btn btn-primary buttonmbs btnext" v-if="step==steps.length" type="submit">{{ $t('form_membership.submit') }}</button>
+            <button class="buttonmbs btnext btf" v-if="step==steps.length" type="submit">{{ $t('form_membership.submit') }}</button>
             </div>
           </div>
         </form>
@@ -371,12 +310,14 @@
 <script>
 import moment from 'moment'
 import {VueTelInput} from 'vue-tel-input'
-import VueFormGenerator from 'vue-form-generator'
+// import VueFormGenerator from 'vue-form-generator'
 import 'vue-form-generator/dist/vfg.css'
+import Croppie from './Croppie.vue'
 
-Vue.use(VueFormGenerator)
+// Vue.use(VueFormGenerator)
 
 export default {
+  components: {Croppie},
   props: ['type'],
   data() {
     return {
@@ -385,7 +326,6 @@ export default {
       countries: [],
       steps: [],
       step: 1,
-      user_data: [],
       image_preview: null,
       model: {
         countries: {"VN": "Vietnam"},
@@ -394,6 +334,7 @@ export default {
         months: [],
         days: []
       },
+      show: 0,
       err_text: ''
     };
   },
@@ -439,6 +380,22 @@ export default {
       _this.model.days[i] = i
       // _this.model.days.push(i)
     }
+    // get member package
+    axios.get(
+      './membership-type',{
+        params:{
+          dob: "12-08-1920",
+          city: "ha noi",
+          type: _this.type == 'founder' ? 1 : 2
+        }
+      }
+    ).then(function(response){
+      _this.options = response.data
+    })
+    // console.log(this.$refs)
+  },
+  created(){
+    
   },
   computed: {
     classStep() {
@@ -452,6 +409,23 @@ export default {
     }
   },
   methods: {
+    showCrop(){
+      this.$refs.step1.classList.add('d-none');
+      this.$refs.stepbutton.classList.add('d-none');
+    },
+    hideCrop(){
+      this.$refs.step1.classList.remove('d-none');
+      this.$refs.stepbutton.classList.remove('d-none');
+    },
+    cropImage(data){
+          this.image_preview = data;
+    },
+    backTo() {
+      this.step = 1
+    },
+    crop() {
+      this.backTo()
+    },
     getKeyByValue(object, value) {
       return Object.keys(object).find(key => object[key] === value);
     },
@@ -488,24 +462,45 @@ export default {
         _this.model.cities = response.data.data
       });
     },
-    checkPhone: function(e){
-      if(!e.valid){
+    inputPhone: function(string, e){
+      if(string && !e.valid){
         this.validphone = this.$t('form_membership.error_phone')
       }else {
         this.validphone = ''
         this.model.phone = e.number.e164
       }
     },
-    changeType(option){
-      this.model.price = option.price
+    checkPhone: function(e){
+      if(e.number.input && !e.valid){
+        this.validphone = this.$t('form_membership.error_phone')
+      }else {
+        this.validphone = ''
+        this.model.phone = e.number.e164
+      }
+    },
+    changeType(option, priceType){
+      let vkl = this.model.frequency_type
+      let arr_fre = vkl.split("-")
+    	console.log(priceType)
+      this.model.frequency = arr_fre[1]
+      this.model.membership_type = option.id
+      this.model.packageName = priceType.name
+      this.model.packagePrice = priceType.price
+      // this.model.price = option.price
     },
     onFileChange(e) {
+      let _this = this
       const image = e.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(image);
       reader.onload = e =>{
           this.image_preview = e.target.result;
-          // console.log(this.image_preview);
+          this.show = 1
+          // this.$emit('croppie', e.target.result);
+          // this.$refs.childComponent.croppie(e.target.result);
+          this.$refs.croppieRef.bind({
+            url: e.target.result
+          });
       };
     },
     next: function(e){
@@ -548,7 +543,7 @@ export default {
                 './membership-type',{
                   params:{
                     dob: _this.model.dob,
-                    city: _this.model.city,
+                    city: _this.model.cities[_this.model.city],
                     type: _this.type == 'founder' ? 1 : 2
                   }
                 }
@@ -592,7 +587,7 @@ export default {
           return
         }
         if(!this.model.agree ){
-          toastr.error("Please agree")
+          toastr.error(this.$t('form_membership.error_agree'))
           return
         }
         let _this = this

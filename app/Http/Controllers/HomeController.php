@@ -363,6 +363,7 @@ class HomeController extends Controller
                 $result[$item['iso2']] = $item['country'];
             }
         }
+        asort($result);
         return response()->json([
             "status" => true,
             "data" => $result
@@ -399,7 +400,7 @@ class HomeController extends Controller
         }
         return response()->json([
             "status" => true,
-            "data" => (object)$result
+            "data" => (object) $result
         ]);
     }
 

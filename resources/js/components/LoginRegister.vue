@@ -35,7 +35,7 @@
                 <input v-model="last_name" type="text" class="form-control-elm input-user" placeholder="Last Name" autocomplete="off" data-parsley-required>
               </div> 
                 <div class="form-group popup-input-style">
-                  <vue-tel-input v-model="phone_number2"  @validate="checkPhone" :preferredCountries="['VN', 'US']" ></vue-tel-input>
+                  <vue-tel-input v-model="phone_number2" @input="inputPhone" @validate="checkPhone" :preferredCountries="['VN', 'US']" ></vue-tel-input>
                   <p v-if="validphone">{{ validphone }}</p>
                 </div>
                 <div class="form-group popup-input-style">
@@ -59,7 +59,7 @@
               <!-- <span v-if="err_text" class="text-danger">{{ err_text }}</span> -->
               <p>{{ $t('form_membership.desforgot') }}</p>
               <div class="form-group popup-input-style">
-                <vue-tel-input v-model="phone_number3"  @validate="checkPhone" :preferredCountries="['VN', 'US']" ></vue-tel-input>
+                <vue-tel-input v-model="phone_number3" @input="inputPhone" @validate="checkPhone" :preferredCountries="['VN', 'US']" ></vue-tel-input>
                 <p v-if="validphone">{{ validphone }}</p>
               </div>
               <div class="form-group popup-input-style">
@@ -180,9 +180,17 @@
     	changeView: function(view){
     		this.view = view
     	},
+      inputPhone: function(string, e){
+        if(string && !e.valid){
+          this.validphone = this.$t('form_membership.error_phone')
+        }else {
+          this.validphone = ''
+          this.phone = e.number.e164
+        }
+      },
     	checkPhone: function(e){
-          console.log(e.valid,e.number)
-        if(!e.valid){
+          // console.log(e.valid,e.number)
+        if(e.number.input && !e.valid){
           this.validphone = this.$t('form_membership.error_phone')
         }else {
           this.validphone = ''
@@ -203,11 +211,12 @@
               toastr.error(response.data.message)
             }else {
               toastr.success(response.data.message)
-              if(response.data.data.url){
+              setTimeout(() => window.location.reload(), 1500)
+              /*if(response.data.data.url){
                 setTimeout(() => window.location.href = response.data.data.url, 1500)
               }else{
                 setTimeout(() => window.location.reload(), 1500)
-              }
+              }*/
             }
           });
         }

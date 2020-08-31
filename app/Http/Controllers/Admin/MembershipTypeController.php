@@ -45,7 +45,7 @@ class MembershipTypeController extends VoyagerBaseController
 
    public function store(Request $request)
     {
-         $this-> Validate($request,[
+         /*$this-> Validate($request,[
             'price_month_12' => 'required',
             'price_month_3' => 'required',
         ],
@@ -53,7 +53,7 @@ class MembershipTypeController extends VoyagerBaseController
             'price_month_12.required'=>'The price field is required',
             'price_month_3.required'=>'The price field is required',
             
-        ]);
+        ]);*/
         $price = [
              'month_3' => [
                'name' => $request ->month_3,
@@ -100,7 +100,7 @@ class MembershipTypeController extends VoyagerBaseController
     /*update*/
     public function update(Request $request, $id)
     {
-        $this-> Validate($request,[
+       /* $this-> Validate($request,[
             'price_month_12' => 'required',
             'price_month_3' => 'required',
         ],
@@ -108,7 +108,7 @@ class MembershipTypeController extends VoyagerBaseController
             'price_month_12.required'=>'The price field is required',
             'price_month_3.required'=>'The price field is required',
             
-        ]);
+        ]);*/
         $price = [
              'month_3' => [
                'name' => $request ->month_3,

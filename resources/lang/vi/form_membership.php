@@ -33,6 +33,12 @@ return [
 	'postal_code' => 'Mã Bưu Chính',
 	'upload_photo' => 'Tải Ảnh Lên(Tối Đa 15mb)',
 	'upload_photo_desc' => 'Vui Lòng Chọn Ảnh Gần Đây Của Qúy Khách',
+	'error_agree'=>'Hãy đồng ý với điều kiện thành viên',
+	'step2_desc' => 'VUI LÒNG CHỌN LOẠI THÀNH VIÊN VÀ TẦN SUẤT THANH TOÁN CỦA BẠN TỪ CÁC LỰA CHỌN DƯỚI ĐÂY',
+	'amountdue'=>'Số Tiền Đến Hạn',
+	'payment'=>'Thanh Toán',
+	'membership'=>'Thành Viên',
+	'for'=>'Dành Cho',
 
 	//step 2 field
 	'reason' => 'TẠI SAO BẠN CHỌN ROSEVILLA ?',
