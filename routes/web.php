@@ -37,6 +37,11 @@ Route::group(['middleware' => 'locale'], function() {
 		'as' => 'fooddrink',
 		'uses' => 'HomeController@fooddrink'
 	]);
+	Route::get('/food-drink/{slug}', [
+		'as' => 'singlefooddrink',
+		'uses' => 'HomeController@singlefooddrink'
+	]);
+
 
 	Route::get('/about', [
 		'as' => 'about',

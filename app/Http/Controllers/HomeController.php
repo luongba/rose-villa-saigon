@@ -62,6 +62,9 @@ class HomeController extends Controller
 
         $list_room = $this->room->listRoom();
         View::share('list_room', $list_room);
+		
+		$list_areaParty = $this->areaParty->withTranslations()->get();
+        View::share('list_areaParty', $list_areaParty);
     }
     
     public function welcome(Request $request)
@@ -136,6 +139,13 @@ class HomeController extends Controller
        // return  $singleroom;
 
         return view('pages.single-room',compact('singleroom'));
+    }
+	public function singlefooddrink(Request $request)
+    {
+        $list_food_drink = $this -> areaParty ->withTranslations()->whereTranslation('title', '=', $request -> slug)->get();
+       //return  $list_food_drink;
+
+        return view('pages.single-food-drink',compact('list_food_drink'));
     }
 
     public function membership(Request $request)

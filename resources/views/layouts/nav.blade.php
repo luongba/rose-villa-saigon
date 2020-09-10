@@ -28,7 +28,7 @@
          @endif
     </div>
     <ul class="navbar-nav">
-        <li class="nav-item {{ Route::currentRouteNamed('welcome') ? 'active' : '' }}"><a class="nav-link" href="{{route('getPage',['slug'=>'welcome'])}}">{{ trans('pages.home') }}</a></li>
+        <li class="nav-item {{ Route::currentRouteNamed('welcome') ? 'active' : '' }}"><a class="nav-link" href="{{route('welcome')}}">{{ trans('pages.home') }}</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('getPage',['slug'=>'about'])}}">{{ trans('pages.About Us') }}</a></li>
         <li class="nav-item has-child-menu">
             <a class="nav-link" href="javascript:;">{{ trans('pages.Membership') }}</a>
@@ -45,7 +45,14 @@
                 @endforeach
         	</ul>
         </li>
-        <li class="nav-item {{ Route::currentRouteNamed('fooddrink') ? 'active' : '' }}"><a class="nav-link" href="{{route('fooddrink')}}">{{ trans('pages.Food & Drinks') }}</a></li>
+		<li class="nav-item has-child-menu">
+            <a class="nav-link" href="javascript:;">{{ trans('pages.Food & Drinks') }}</a>
+            <ul class="sub-menu">
+                @foreach($list_areaParty as $val_areaParty)
+                <li><a href="{{route('singlefooddrink',['slug'=>$val_areaParty->title])}}">{{$val_areaParty->title}}</a></li>
+                @endforeach
+            </ul>
+        </li>
         <li class="nav-item {{ Route::currentRouteNamed('spa') ? 'active' : '' }}"><a class="nav-link" href="{{route('spa')}}">{{ trans('pages.Wellness & Beauty') }}</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('shop') ? 'active' : '' }}"><a class="nav-link" href="{{route('shop')}}">{{ trans('pages.Shop') }}</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('events') ? 'active' : '' }}"><a class="nav-link" href="{{route('events')}}">{{ trans('pages.Events') }}</a></li>
