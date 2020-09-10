@@ -17,8 +17,6 @@ class BenefitMember extends Model
 	
     protected $translatable = ['description', 'name'];
 
-    protected $translatable = ['description', 'name'];
-
     /**
      * Return the sluggable configuration array for this model.
      *

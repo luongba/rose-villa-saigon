@@ -49,7 +49,7 @@
             <a class="nav-link" href="javascript:;">{{ trans('pages.Food & Drinks') }}</a>
             <ul class="sub-menu">
                 @foreach($list_areaParty as $val_areaParty)
-                <li><a href="{{route('fooddrink',['#fd'.$val_areaParty->id])}}">{{$val_room->name}}</a></li>
+                <li><a href="{{route('fooddrink',['#fd'.$val_areaParty->id])}}">{{$val_areaParty->title}}</a></li>
                 @endforeach
             </ul>
         </li>

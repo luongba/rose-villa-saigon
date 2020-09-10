@@ -62,6 +62,7 @@ class HomeController extends Controller
 
         $list_room = $this->room->listRoom();
         View::share('list_room', $list_room);
+        
         $list_areaParty = $this->areaParty->listAreaParty();
         View::share('list_areaParty', $list_areaParty);
     }
