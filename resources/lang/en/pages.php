@@ -10,11 +10,14 @@ return [
 	//header
 	'Login' => 'Login',
 	'Logout' => 'Logout',
+	'profile' => 'Profile',
+	'membershippackage' => 'Membership Package',
 
 	//nav
 	'Rooms' => 'Rooms',
 	'Food & Drinks' => 'Food & Drinks',
 	'Wellness & Beauty' => 'Wellness & Beauty',
+	'home' => 'Home',
 	'Shop' => 'Shop',
 	'Events' => 'Events',
 	'About Us' => 'About Us',
@@ -41,4 +44,8 @@ return [
 	//spa
 	'viewmenu' => 'View Menu',
 	'bookingspa' => 'Booking Now',
+
+	// thank you 
+	'thankcontent'=>'Thank you for spending your quality time to complete your application. We have received it and will be in touch shortly',
+	'thankyou'  => 'THANK YOU',
 ];

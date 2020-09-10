@@ -1609,7 +1609,7 @@ Curtains.prototype._readyToDraw = function() {
     // enable depth by default
     this._setDepth(true);
 
-    console.log("curtains.js - v6.1");
+    // console.log("curtains.js - v6.1");
 
     this._animationFrameID = null;
     if(this._autoRender) {

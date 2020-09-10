@@ -7,6 +7,14 @@
                           {{Auth::user()->first_name}} {{Auth::user()->last_name}}
                      </a>
                     <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
+                      <li class="profile-user">
+                          <a href="javascript:;">
+                          <span>{{ trans('pages.profile') }}</span></a>
+                      </li>
+                      <li class="member-user">
+                          <a href="javascript:;">
+                          <span>{{ trans('pages.membershippackage') }}</span></a>
+                      </li>
                       <li class="singout">
                           <a href="{{ route('logout_web') }}">
                           <span>{{ trans('pages.Logout') }}</span></a>
@@ -20,6 +28,7 @@
          @endif
     </div>
     <ul class="navbar-nav">
+        <li class="nav-item {{ Route::currentRouteNamed('welcome') ? 'active' : '' }}"><a class="nav-link" href="{{route('getPage',['slug'=>'welcome'])}}">{{ trans('pages.home') }}</a></li>
         <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('getPage',['slug'=>'about'])}}">{{ trans('pages.About Us') }}</a></li>
         <li class="nav-item has-child-menu">
             <a class="nav-link" href="javascript:;">{{ trans('pages.Membership') }}</a>

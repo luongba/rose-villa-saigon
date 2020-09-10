@@ -4,7 +4,7 @@
     <div class="modal-content">
 
     	<div class="modal-header">
-    		<img src="{{asset('public/images/logo.png')}}" />  
+    		<img src="{{asset('public/images/logo/logo-rosevilla.png')}}" />  
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

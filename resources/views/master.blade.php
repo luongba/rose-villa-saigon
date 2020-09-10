@@ -38,6 +38,7 @@
                         aa.slideUp('slow');
                     }else {
                         $(this).addClass('showsubmenu');
+                        $('.has-child-menu .sub-menu').slideUp('slow');
                         aa.slideDown('slow');
                     }
                 });

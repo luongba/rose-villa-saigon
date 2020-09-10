@@ -14,8 +14,10 @@ return [
 	'first_name' => 'Tên',
 	'last_name' => 'Họ',
 	'phone' => 'Điện Thoại',
+	'phonenumber' => 'Số Điện Thoại',
 	'email' => 'Email',
 	'gender' => 'Giới Tính',
+	'selectgender' => 'Chọn Giới Tính',
 	'gender_male' => 'Nam',
 	'gender_female' => 'Nữ',
 	'gender_other' => 'Khác',
@@ -26,11 +28,14 @@ return [
 	'year' => 'Năm',
 	'month' => 'Tháng',
 	'occu' => 'Nghề Nghiệp',
-	'address1' => 'Địa Chỉ 1',
-	'address2' => 'Địa Chỉ 2',
+	'address_one' => 'Địa Chỉ 1',
+	'address_two' => 'Địa Chỉ 2',
 	'country' => 'Quốc Tịch',
+	'selectcountry' => 'Chọn Quốc Tịch',
 	'city' => 'Thành Phố',
+	'selectcity' => 'Chọn Thành Phố',
 	'postal_code' => 'Mã Bưu Chính',
+	'avatar' => 'Ảnh Đại Diện',
 	'upload_photo' => 'Tải Ảnh Lên(Tối Đa 15mb)',
 	'upload_photo_desc' => 'Vui Lòng Chọn Ảnh Gần Đây Của Qúy Khách',
 	'error_agree'=>'Hãy đồng ý với điều kiện thành viên',
@@ -39,6 +44,12 @@ return [
 	'payment'=>'Thanh Toán',
 	'membership'=>'Thành Viên',
 	'for'=>'Dành Cho',
+	'descriptionlaststep1' => 'Tôi hiểu rằng tôi đang đăng ký để trở thành hội viên của Rose Villa Saigon. Nếu đơn của tôi được chấp nhận, tôi đồng thanh toán cho phí tham gia, phí hội viên và tất cả những khoản phí hội viên trong tương lai. ',
+	'descriptionlaststep15' => 'TÔI HIỂU RẰNG TÔI ĐANG TRONG QUÁ TRÌNH GỬI ĐĂNG KÝ ĐỂ TRỞ THÀNH HỘI VIÊN SÁNG LẬP CỦA ROSE VILLA SAIGON. NẾU ĐƠN CỦA TÔI ĐƯỢC CHẤP NHẬN, ROSE VILLA SAIGON CÓ THỂ LIÊN HỆ TRỰC TIẾP VỚI TÔI ĐỂ THANH TOÁN PHÍ HỘI VIÊN TRƯỚC NGÀY KHAI TRƯƠNG, VÀ CHO NHỮNG LẦN GIA HẠN CHO NHỮNG NĂM TIẾP THEO. TÔI SẼ CỐ GẮNG SẮP XẾP ĐỂ PHÍ HỘI VIÊN CỦA MÌNH ĐƯỢC THANH TOÁN TRƯỚC LẦN ĐẾN CÂU LẠC BỘ.',
+	'descriptionlaststep2' => 'Bằng cách đăng ký, tôi đồng ý tuân theo các điều kiện của câu lạc bộ Rose Villa và thời hạn & điều kiện thành viên',
+
+
+	
 
 	//step 2 field
 	'reason' => 'TẠI SAO BẠN CHỌN ROSEVILLA ?',
@@ -61,6 +72,8 @@ return [
 	'submit' => 'Đăng Ký',
 	'cancel' => 'Hủy',
 	'next' => 'Tiếp',
+	'back' => 'Quay Lại',
+
 
 	//Confirmation page
 
@@ -71,6 +84,7 @@ return [
 	'backto' => 'Quay Lại ',
 	'veryfycoe' =>  'Mã Xác Minh',
 	'veryfycoedes' =>  'Vui Lòng Nhập Mã Xác Minh Được Gửi Đến Số Điện Thoại',
+	'password' => 'Mật Khẩu',
 	'resetpassword' => 'Đặt Lại Mật Khẩu',
 
 	//booking-form
