@@ -7,11 +7,17 @@
         
         	<!-- <span v-if="err_text" class="text-danger">{{ err_text }}</span> -->
           <div class="form-group popup-input-style">
-            <vue-tel-input v-model="phone_number"  @validate="checkPhone" :preferredCountries="['VN', 'US']" placeholder="09xx-xxx-xxx"></vue-tel-input>
+            <vue-tel-input 
+              v-model="phone_number" 
+              mode="international"
+              @validate="checkPhone" 
+              :preferredCountries="['VN', 'US']" 
+              :placeholder="$t('form_membership.phonenumber')"
+            ></vue-tel-input>
             <p v-if="validphone">{{ validphone }}</p>
           </div>
           <div class="form-group popup-input-style">
-              <input v-model="password" type="password" class="form-control-elm input-password" placeholder="123-456" autocomplete="off" data-parsley-required data-parsley-minlength="6"> 
+              <input v-model="password" type="password" class="form-control-elm input-password" :placeholder="$t('form_membership.password')" autocomplete="off" data-parsley-required data-parsley-minlength="6"> 
           </div>
           <div class="form-group popup-input-style">
           	<input type='submit' class='submitform radius_4' value='Login'>

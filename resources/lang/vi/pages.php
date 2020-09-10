@@ -10,11 +10,14 @@ return [
 	//header
 	'Login' => 'Đăng nhập',
 	'Logout' => 'Đăng xuất',
+	'profile' => 'Tài Khoản',
+	'membershippackage' => 'Gói Thành Viên',
 
 	//nav
 	'Rooms' => 'Phòng',
 	'Food & Drinks' => 'Đồ ăn & Nước uống',
 	'Wellness & Beauty' => 'Sức khỏe & Làm đẹp',
+	'home' => 'Trang Chủ',
 	'Shop' => 'Cửa hàng',
 	'Events' => 'Sự kiện',
 	'About Us' => 'Giới thiệu',
@@ -42,4 +45,8 @@ return [
 	//spa
 	'viewmenu' => 'Xem Menu',
 	'bookingspa' => 'Đặt Lịch Spa',
+
+	// thank you 
+	'thankcontent'=>'CẢM ƠN BẠN ĐÃ HOÀN TẤT ĐƠN ĐĂNG KÝ NÀY. CHÚNG TÔI SẼ LIÊN HỆ VỚI BẠN TRONG THỜI GIAN SỚM NHẤT. ',
+	'thankyou'  => 'XÁC NHẬN ĐƠN ĐĂNG KÝ',
 ];

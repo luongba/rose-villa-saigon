@@ -2,8 +2,8 @@
 @section('content')
   <main>
   	<div class="audio-control">
-  		<span class="turnon" onclick="disableMute()" title="TURN ON SOUND">ON</span>
-  		<span class="turnoff" onclick="enableMute()" title="MUTED">OFF</span>
+  		<span class="turnon" onclick="disableMute()" title="TURN ON SOUND"></span>
+  		<span class="turnoff" onclick="enableMute()" title="MUTED"></span>
   	</div>
   	<audio id="audio" autoplay>
    		<source type="audio/mp3" src="{{asset('public/assets/audio/La vie en rose - Louis Armstrong.mp3')}}">

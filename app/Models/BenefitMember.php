@@ -7,11 +7,15 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use TCG\Voyager\Traits\Translatable;
+
+
 class BenefitMember extends Model
 {
-    use Sluggable,SluggableScopeHelpers,Translatable;
+    use Sluggable, SluggableScopeHelpers, Translatable;
 
     protected $fillable = ['name', 'slug', 'description'];
+	
+    protected $translatable = ['description', 'name'];
 
     protected $translatable = ['description', 'name'];
 
