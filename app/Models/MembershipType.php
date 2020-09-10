@@ -7,10 +7,14 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use TCG\Voyager\Traits\Translatable;
 
 class MembershipType extends Model
 {
-    use Sluggable, SoftDeletes,SluggableScopeHelpers;
+    use Sluggable, SoftDeletes, SluggableScopeHelpers, Translatable;
+	
+	
+    protected $translatable = ['description', 'name'];
 
     /**
      * Return the sluggable configuration array for this model.

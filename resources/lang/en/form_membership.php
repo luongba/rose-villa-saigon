@@ -14,8 +14,10 @@ return [
 	'first_name' => 'First Name',
 	'last_name' => 'Last Name',
 	'phone' => 'Phone',
+	'phonenumber' => 'Phone Number',
 	'email' => 'Email',
 	'gender' => 'Gender',
+	'selectgender' => 'Select gender',
 	'gender_male' => 'Male',
 	'gender_female' => 'Female',
 	'gender_other' => 'Other',
@@ -29,8 +31,11 @@ return [
 	'address_one' => 'STREET ADDRESS LINE ONE',
 	'address_two' => 'STREET ADDRESS LINE TWO',
 	'country' => 'Country',
+	'selectcountry' => 'Select country',
 	'city' => 'City',
+	'selectcity' => 'Select city',
 	'post_code' => 'POSTAL CODE',
+	'avatar' => 'Avatar',
 	'upload_photo' => 'UPLOAD PHOTO (15mb max jpeg)',
 	'upload_photo_desc' => 'PLEASE CHOOSE A RECENT PHOTO AND A TRUE LIKENESS',
 	'error_agree'=>'Please agree term & conditions of membership',
@@ -39,6 +44,10 @@ return [
 	'payment'=>'PAYMENT',
 	'membership'=>'membership',
 	'for'=>'for',
+	'descriptionlaststep1' => 'I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis',
+	'descriptionlaststep15' => 'I UNDERSTAND THAT I AM APPLYING TO BECOME A FOUNDER MEMBER OF ROSE VILLA SAIGON. IF ACCEPTED, I AGREE THAT I WILL BE RESPONSIBLE FOR MY MEMBERSHIP FEES PRIOR TO THE CLUB’S OPENING, AND FOR SUBSEQUENT ANNUAL RENEWAL FEES.',
+	'descriptionlaststep2' => 'By applying I agree to abide the Rose Villa club sules and term & conditions of membership',
+
 	
 
 	//step 2 field

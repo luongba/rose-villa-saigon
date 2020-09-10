@@ -199,10 +199,13 @@ window.addEventListener("load", function() {
                 setTimeout(function(){
                     wrapper.style.display = 'none';
                     // document.getElementsByClassName("header");
-                    audio.remove();
+                    // audio.remove();
                 }, 5000);
             }
         });
+        setTimeout(function(){
+            wrapper.click();
+        }, 1000);
     }).onRender(function() {
         // increment our time uniform
         simplePlanesecond.uniforms.time.value++;
@@ -245,6 +248,7 @@ window.addEventListener("load", function() {
 
         
         wrapper.addEventListener("click", function(e) {
+            // audio.play();
              if(!animation){
                 animation = true;
             
@@ -267,11 +271,14 @@ window.addEventListener("load", function() {
                 // handleMovement(e, simplePlane);
                 setTimeout(function(){
                     wrapper.style.display = 'none';
-                    audio.remove();
+                    // audio.remove();
                 }, 5000);
                 
             }
         });
+        setTimeout(function(){
+            wrapper.click();
+        }, 1000);
 
     }).onRender(function() {
         // increment our time uniform
@@ -288,6 +295,7 @@ window.addEventListener("load", function() {
         var planeBoundingRect = simplePlane.getBoundingRect();
         simplePlane.uniforms.resolution.value = [planeBoundingRect.width, planeBoundingRect.height];
     });
+
 
 
     // handle the mouse move event

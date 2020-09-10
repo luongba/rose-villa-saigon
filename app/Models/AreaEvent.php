@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use TCG\Voyager\Traits\Translatable;
+
 class AreaEvent extends Model
 {
-	use SoftDeletes,Translatable;
+	use SoftDeletes, Translatable;
 
 	protected $fillable = ['title', 'description', 'thumbnail', 'gallery', 'status'];
 

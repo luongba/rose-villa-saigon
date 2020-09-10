@@ -38,11 +38,17 @@
                 }"
               />
               <div :class="validphone ? 'errors' : ''" class="form-group required field-input">
-                <label for="last-name"><span>Phone Number</span></label>
+                <label for="last-name"><span>{{ $t('form_membership.phonenumber') }}</span></label>
                 <div class="field-wrap">
-                  <vue-tel-input v-model="model.phone_number" @input="inputPhone" @validate="checkPhone" :preferredCountries="['VN', 'US']" placeholder="09xx-xxx-xxx"></vue-tel-input>
+                  <vue-tel-input 
+                  	mode="international"
+                  	v-model="model.phone_number" 
+                  	@validate="checkPhone" 
+                  	:preferredCountries="['VN', 'US']" 
+                  	:placeholder="$t('form_membership.phonenumber')"
+                  ></vue-tel-input>
                 </div>
-                <ul class="formulate-input-errors" v-if="validphone">
+                <ul class="formulate-input-errors" v-if="model.phone_number && validphone">
                   <li class="formulate-input-error">{{validphone}}</li>
                 </ul>
               </div>
@@ -65,7 +71,7 @@
                 name="gender"
                 :options="{Male: $t('form_membership.gender_male'), Female: $t('form_membership.gender_female'), Other: $t('form_membership.gender_other'), PreferNotToSay: $t('form_membership.gender_secret')}"
                 validation="^required"
-                placeholder="Select gender"
+                :placeholder="$t('form_membership.selectgender')"
                 :validation-messages="{
                   required: $t('form_membership.required', {attribute: $t('form_membership.gender')})
                 }"
@@ -79,7 +85,7 @@
                 name="day"
                 :options="model.days"
                 validation="^required"
-                placeholder="Day"
+                :placeholder="$t('form_membership.day')"
                 :validation-messages="{
                   required: $t('form_membership.required', {attribute: $t('form_membership.day')})
                 }"
@@ -93,7 +99,7 @@
                 name="month"
                 :options="model.months"
                 validation="^required"
-                placeholder="Month"
+                :placeholder="$t('form_membership.month')"
                 :validation-messages="{
                   required: $t('form_membership.required', {attribute: $t('form_membership.month')})
                 }"
@@ -108,7 +114,7 @@
                 name="year"
                 :options="model.years"
                 validation="^required"
-                placeholder="Year"
+                :placeholder="$t('form_membership.year')"
                 :validation-messages="{
                   required: $t('form_membership.required', {attribute: $t('form_membership.year')})
                 }"
@@ -132,7 +138,7 @@
                 name="country"
                 :options="model.countries"
                 validation="^required"
-                placeholder="Select country"
+                :placeholder="$t('form_membership.selectcountry')"
                 :validation-messages="{
                   required: $t('form_membership.required', {attribute: $t('form_membership.country')})
                 }"
@@ -146,7 +152,7 @@
                 name="city"
                 :options="model.cities"
                 validation="^required"
-                placeholder="Select city"
+                :placeholder="$t('form_membership.selectcity')"
                 :validation-messages="{
                   required: $t('form_membership.required', {attribute: $t('form_membership.city')})
                 }"
@@ -168,7 +174,6 @@
                 type="text"
                 v-model="model.address_two"
                 name="address_two"
-                validation="^required"
                 :validation-messages="{
                   required: $t('form_membership.required', {attribute: $t('form_membership.address_two')})
                 }"
@@ -188,54 +193,38 @@
             </div>
           </div>
 
-          <div class="stepmbs step1st" v-if="step == 1">
-            <croppie ref="childComponent" :imageUrl="image_preview" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
+          <div ref="uploadimage" class="stepmbs step1st" v-if="step == 1">
+            <croppie ref="childComponent" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
           </div>
           <div class="stepmbs step2nd" v-if="step == 2 && type != 'founder'">
             <div class="container">
               <FormulateInput
                 :wrapper-class="['form-group required']"
-                :label="$t('form_membership.reason')"
+                :label="'1. '+$t('form_membership.reason')"
                 type="textarea"
                 v-model="model.reason"
                 name="reason"
-                validation="^required"
-                :validation-messages="{
-                  required: $t('form_membership.required', {attribute: $t('form_membership.reason')})
-                }"
               />
               <FormulateInput
                 :wrapper-class="['form-group required']"
-                :label="$t('form_membership.usage_criteria')"
+                :label="'2. '+$t('form_membership.usage_criteria')"
                 type="textarea"
                 v-model="model.usage_criteria"
                 name="usage_criteria"
-                validation="^required"
-                :validation-messages="{
-                  required: $t('form_membership.required', {attribute: $t('form_membership.usage_criteria')})
-                }"
               />
               <FormulateInput
                 :wrapper-class="['form-group required']"
-                :label="$t('form_membership.bring_to')"
+                :label="'3. '+$t('form_membership.bring_to')"
                 type="textarea"
                 v-model="model.bring_to"
                 name="bring_to"
-                validation="^required"
-                :validation-messages="{
-                  required: $t('form_membership.required', {attribute: $t('form_membership.bring_to')})
-                }"
               />
               <FormulateInput
                 :wrapper-class="['form-group required']"
-                :label="$t('form_membership.member_other')"
+                :label="'4. '+$t('form_membership.member_other')"
                 type="textarea"
                 v-model="model.member_other"
                 name="member_other"
-                validation="^required"
-                :validation-messages="{
-                  required: $t('form_membership.required', {attribute: $t('form_membership.member_other')})
-                }"
               />
             </div>
           </div>
@@ -266,7 +255,7 @@
                           <div class="choseop">
                             <input @change="changeType(option, priceType)" :id="option.id+'-'+key" type="radio" :value="option.id+'-'+key" v-model="model.frequency_type">
                             <label :for="option.id+'-'+key">
-                              {{ priceType.name }} - {{ priceType.price }}
+                              {{ priceType.name }} - ${{ priceType.price }}
                             </label>
                           </div>
                         </div>
@@ -285,11 +274,12 @@
                 <h4 class="underline">{{ $t('form_membership.payment') }}</h4>
               </div> 
               <div class="agreestep4">
-	              <p>I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis</p>
+	              <p v-if="model.frequency == 'month_3'">{{ $t('form_membership.descriptionlaststep1') }}</p>
+                <p v-if="model.frequency != 'month_3'">{{ $t('form_membership.descriptionlaststep15') }}</p>
               </div>
               <div class="agreestep4 pl25">
 	              <input id="checkbox" type="checkbox" v-model="model.agree">
-	              <label for="checkbox">By applying I agree to abide the Rose Villa club sules and term & conditions of membership</label>
+	              <label for="checkbox">{{ $t('form_membership.descriptionlaststep2') }}</label>
               </div>
            	</div>
 
@@ -403,6 +393,8 @@ export default {
         return this.type == 'founder' ? "step3rd" : "step2nd"
       }else if(this.step == 3){
         return this.type == 'founder' ? "step4th" : "step3rd"
+      }else if(this.step == 1){
+        return "stepFirst"
       }else {
         return "stepLast"
       }
@@ -416,6 +408,8 @@ export default {
     hideCrop(){
       this.$refs.step1.classList.remove('d-none');
       this.$refs.stepbutton.classList.remove('d-none');
+      let top = this.$refs.uploadimage.offsetTop
+      window.scrollTo(0, top)
     },
     cropImage(data){
           this.image_preview = data;
@@ -462,16 +456,8 @@ export default {
         _this.model.cities = response.data.data
       });
     },
-    inputPhone: function(string, e){
-      if(string && !e.valid){
-        this.validphone = this.$t('form_membership.error_phone')
-      }else {
-        this.validphone = ''
-        this.model.phone = e.number.e164
-      }
-    },
     checkPhone: function(e){
-      if(e.number.input && !e.valid){
+      if(!e.valid){
         this.validphone = this.$t('form_membership.error_phone')
       }else {
         this.validphone = ''
@@ -543,7 +529,7 @@ export default {
                 './membership-type',{
                   params:{
                     dob: _this.model.dob,
-                    city: _this.model.cities[_this.model.city],
+                    city: _this.model.city,
                     type: _this.type == 'founder' ? 1 : 2
                   }
                 }
@@ -551,6 +537,7 @@ export default {
                 _this.options = response.data
               })
               _this.step++
+              return
             }
   		    })
 
@@ -587,14 +574,12 @@ export default {
           return
         }
         if(!this.model.agree ){
-          toastr.error(this.$t('form_membership.error_agree'))
+          toastr.error("Please agree")
           return
         }
         let _this = this
         let params = _this.model
         params.gender = (_this.model.gender == "Male") ? 0 : 1
-        params.dob = moment(_this.model.year + " " + _this.model.month + " " + _this.model.day).format('YYYY-MM-DD')
-
         params.country = this.model.countries[this.model.country]
         params.city = this.model.cities[this.model.city]
         params.avatar = _this.image_preview

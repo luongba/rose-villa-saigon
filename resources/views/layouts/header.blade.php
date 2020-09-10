@@ -1,4 +1,4 @@
-  <a class="logo-landing" href="{{route('welcome')}}"><img src="{{asset('public/images/images/logo-vien-den.png')}}" /></a>
+  <a class="logo-landing" href="{{route('welcome')}}"><img src="{{asset('public/images/logo/logo-rosevilla.png')}}" /></a>
   <section class="header-landing landingstyle">
     <div class="container-fluid">
       @if(Auth::user())
@@ -7,10 +7,18 @@
 	                  {{Auth::user()->first_name}} {{Auth::user()->last_name}}
 	             </a>
 	            <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
-	              <li class="singout">
-	                  <a href="{{ route('logout_web') }}">
-	                  <span>{{ trans('pages.Logout') }}</span></a>
-	              </li>
+                <li class="profile-user">
+                    <a href="javascript:;">
+                    <span>{{ trans('pages.profile') }}</span></a>
+                </li>
+                <li class="member-user">
+                    <a href="javascript:;">
+                    <span>{{ trans('pages.membershippackage') }}</span></a>
+                </li>
+                <li class="singout">
+                    <a href="{{ route('logout_web') }}">
+                    <span>{{ trans('pages.Logout') }}</span></a>
+                </li>
 	            </ul>
             </div>
       @else

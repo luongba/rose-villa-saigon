@@ -1,7 +1,7 @@
 <template>
   <div> 
     <div v-if="show==1" class="form-group valid required field-input">
-      <label for="ava"><span>Avatar</span></label>
+      <label for="ava"><span>{{ $t('form_membership.avatar') }}</span></label>
           <div id="preview" style="display:flex;">
             <img width="100" v-if="cropped" :src="cropped" />
           </div>

@@ -158,27 +158,7 @@
         c.enableSmartMenu(g);
     });
     c.enableSmartMenu = function (b) {
-        b !== k &&
-            (l
-                ? (k = b)
-                    ? (f.addClass("sm sm-blue layout layout--flush"),
-                      r.addClass("layout__item 1/8"),
-                      d && h(!0),
-                      a.css({ height: "" }),
-                      f.smartmenus({
-                          bottomToTopSubMenus: !0,
-                          hideOnClick: !1,
-                          subIndicators: !1,
-                          subMenusMinWidth: "100%",
-                          subMenusMaxWidth: "100%",
-                          showFunction: function (a, b) {
-                              a.fadeIn("fast", b);
-                          },
-                      }),
-                      r.find("ul").show(),
-                      n.off("click", h))
-                    : (f.smartmenus("destroy"), f.removeClass("sm sm-blue layout layout--flush"), r.removeClass("layout__item 1/8"), r.find("ul").hide(), n.on("click", h))
-                : (g = b));
+
     };
 })(jQuery, window, document);
 (function (b, c, x, z) {
