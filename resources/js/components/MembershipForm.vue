@@ -168,13 +168,11 @@
                 type="text"
                 v-model="model.address_two"
                 name="address_two"
-                validation="^required"
                 :validation-messages="{
-                  required: $t('form_membership.required', {attribute: $t('form_membership.address_two')})
                 }"
               />
               <FormulateInput
-                :wrapper-class="['form-group']"
+                :wrapper-class="['form-group required']"
                 :label="$t('form_membership.post_code')"
                 type="text"
                 v-model="model.post_code"
@@ -188,7 +186,7 @@
             </div>
           </div>
 
-          <div ref="uploadimage" class="stepmbs step1st">
+          <div ref="uploadimage" class="stepmbs step1st" v-if="step == 1">
             <croppie ref="childComponent" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
           </div>
           <div class="stepmbs step2nd" v-if="step == 2 && type != 'founder'">
