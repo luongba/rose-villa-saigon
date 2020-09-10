@@ -71,10 +71,6 @@ class HomeController extends Controller
     public function events(Request $request)
     {
         $list_area_event = $this->areaEvent->withTranslations()->get();
-       /* foreach ($list_area_event as $key => $value) {
-             $arr[] = $value->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale');
-        }
-        return $arr;*/
         return view('pages.events',compact('list_area_event'));
     } 
 
@@ -212,7 +208,7 @@ class HomeController extends Controller
             'phone' => 'required',
             'number_guest' => 'required|integer|min:1|max:255',
             'start_at' => 'required|date|after:now',
-            'end_at' => 'required_if:type_booking,3',
+            'end_at' => 'required_if:type_booking,3|after:'.$request['start_at'],
             'description' => 'required',
             'type_booking' => 'required|min:0|max:2',
             'booking_id' => 'required|integer',
@@ -359,6 +355,7 @@ class HomeController extends Controller
                 $result[$item['iso2']] = $item['country'];
             }
         }
+        asort($result);
         return response()->json([
             "status" => true,
             "data" => $result
