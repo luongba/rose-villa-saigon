@@ -40,16 +40,16 @@ class AddColumnForApproveUsersTable extends Migration
                     $table->text('country')->after('post_code');
                 }
                 if (! Schema::hasColumn('users', 'reason')) {
-                    $table->text('reason')->nullable();
+                    $table->text('reason')->nullable()->after('country');
                 }
                 if (! Schema::hasColumn('users', 'usage_criteria')) {
-                    $table->text('usage_criteria')->nullable();
+                    $table->text('usage_criteria')->nullable()->after('reason');
                 }
                 if (! Schema::hasColumn('users', 'bring_to')) {
-                    $table->text('bring_to')->nullable();
+                    $table->text('bring_to')->nullable()->after('usage_criteria');
                 }
                 if (! Schema::hasColumn('users', 'member_other')) {
-                    $table->text('member_other')->nullable();
+                    $table->text('member_other')->nullable()->after('bring_to');
                 }
                 if (! Schema::hasColumn('users', 'membership_type_id')) {
                     if (Schema::hasTable('membership_types')) {

@@ -136,6 +136,8 @@ Route::group(['middleware' => 'locale'], function() {
 
 	Route::prefix('/')->middleware('auth')->group(function() {
 		Route::post('booking', 'HomeController@booking')->name('user.booking');
+
+		Route::post('change-profile', 'UserController@changeProfile')->name('user.change_profile');
 	});
 
 	Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');

@@ -68,7 +68,6 @@ class MembershipTypeController extends Controller
 				}
 			}
 		}
-
 		$arrPack = $this->membershipType
 		->whereIn('id', $arrIdPack)
 		->where('type', $request->type)

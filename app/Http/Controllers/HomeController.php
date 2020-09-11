@@ -77,10 +77,6 @@ class HomeController extends Controller
     {
 
         $list_area_event = $this->areaEvent->withTranslations()->get();
-       /* foreach ($list_area_event as $key => $value) {
-             $arr[] = $value->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale');
-        }
-        return $arr;*/
         return view('pages.events',compact('list_area_event'));
     } 
 
