@@ -1764,8 +1764,9 @@ body .popup-input-style .vue-tel-input:focus-within {
 	height:100%;
 	position:fixed;
 	background:rgba(0,0,0,0.9);
-	z-index:99;
+	z-index:9999;
 	padding-top:160px;
+	padding-bottom:40px;
 	overflow-y:auto;
 }
 .nav-site .navbar-nav{
@@ -2642,9 +2643,9 @@ body.welcome {
 .logo-landing img{
 	transition: all 0.5s;
 }
-.logo-landing:hover img{
+.logo-landing img:hover{
 	transition: all 0.5s;
-	scale: 1.1;
+	transform: scale(1.1);
 }
 .account-section{
 	float:right;
@@ -3566,7 +3567,7 @@ h3.title-post-1::after{
 	border-radius:18px;
 	overflow:hidden;
 	background:rgba(255,255,255,0.2);
-	z-index:1999;
+	z-index:999;
 }
 /*
 .control-off{
@@ -3870,7 +3871,10 @@ ul.step-membership{
 }
 
 .cr-slider::-moz-range-thumb{
-	background:#000 !important;
+	background:#fff !important;
+}
+.cr-slider::-moz-range-track{
+	background:#fff !important;
 }
 .ctstep4 h4{
     font-size: 14px;
@@ -4320,10 +4324,10 @@ ul.step-membership{
 }
 .btback{
 	color:#000;
-	background-image:url(images/svg/bg_transparent.png);
+	background-image:url(images/svg/bg_white.png);
 }
 .btback:hover{
-	background-image:url(images/svg/bg_white.png);
+	background-image:url(images/svg/bg_black.png);
 	color:#000;
 }
 .mg0bt{
@@ -4743,6 +4747,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
 	}
 }
  .bg_rem{
+	 overflow:hidden;
 	  width:100%;
 	  height:100%;
 	  background:url(images/bg/bgdark.jpg) no-repeat center center;
@@ -4764,9 +4769,10 @@ button, [type="button"], [type="reset"], [type="submit"] {
   }
   .textlanding p{
 	  line-height:36px;
-	  margin-bottom:20px;
+	  margin-bottom:15px;
 	  word-spacing:2px;
 	  letter-spacing:5px;
+	  font-size:16px;
   }
   .smalllogo{
 	  margin:0 auto;
@@ -4783,11 +4789,13 @@ button, [type="button"], [type="reset"], [type="submit"] {
 	  display:block;
 	  height:auto;
 	  width:100%;
-	  max-width:420px;
+	  max-width:300px;
   }
   .wctext{
 	transition: all 1s; 
-	font-size:50px;
+	font-size:48px;
+	letter-spacing:8px;
+	line-height:1.2;
   }
 	.zoomout{
 		scale:10;
@@ -4796,6 +4804,37 @@ button, [type="button"], [type="reset"], [type="submit"] {
 .box-hidden {
 	display: none;
 }
+.openbutton{
+	margin-top:25px;
+}
+.clickviewsite{
+	width:auto;
+	text-align:center;
+	line-height:38px;
+	background:#fff;
+	padding-left:40px;
+	padding-right:40px;
+	margin-left:auto;
+	margin-right:auto;
+	display:table;
+	color:#333;
+	text-transform:uppercase;
+	border-radius:20px;
+	margin-bottom:10px;
+	cursor:pointer;
+	border:2px solid rgba(0,0,0,0);
+}
+.clickviewsite:hover{
+	border:2px solid #000;
+}
+.soundon{
+	display:table;
+	padding-right:25px;
+	background: url(images/svg/sound.svg) no-repeat right center;
+	margin-left:auto;
+	margin-right:auto;
+}
+
 
 /* ensure box is displayed block during the transition  */
 .box-transition.box-hidden {
@@ -4809,7 +4848,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
 
 @media only screen and (max-width: 1400px){
 	.biglogo img{
-		max-width:300px;
+		max-width:250px;
 	}
 	.smalllogo img {
 		max-width: 110px;
