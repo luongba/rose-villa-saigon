@@ -208,10 +208,12 @@ class MetaUserController extends VoyagerBaseController
                 /*check phone*/
                 $check_phone = User::where('phone','=',$update_stt -> phone)->count();
                 if($check_phone > 0){
-                    return response()->json([
-                        'success' => false,
-                        'message' => 'Accept Error!Account already exists',
-                    ], 200);
+                    
+                    $redirect = redirect()->back();
+                    return $redirect->with([
+                        'message'    => __('Accept Error!Account already exists'),
+                        'alert-type' => 'error',
+                    ]);
                 }else{
                     /*new user */
                     $new_user = new User;
@@ -240,6 +242,8 @@ class MetaUserController extends VoyagerBaseController
                     $new_user -> membership_type_id  =  $update_stt -> membership_type_id;
                     $new_user -> frequency = $update_stt -> frequency;
                     $new_user -> save();
+                    /*membership type*/
+                    $new_user ->membershipType()->sync($update_stt -> membership_type_id);
                     /*end new user*/
                     $update_stt -> status = 1;
                     $update_stt -> save();
@@ -251,16 +255,18 @@ class MetaUserController extends VoyagerBaseController
                 
 
             }else{
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Accept Error!',
-                ], 200);
+                $redirect = redirect()->back();
+                return $redirect->with([
+                    'message'    => __('Accept Error!Account already exists'),
+                    'alert-type' => 'error',
+                ]);
             }
         }
-        return response()->json([
-            'success' => true,
-            'message' => 'Accept Success',
-        ], 200);
+        $redirect = redirect()->back();
+        return $redirect->with([
+            'message'    => __('voyager::generic.successfully_created'),
+            'alert-type' => 'success',
+        ]);
     }
     /*accept order gift*/
     public function cancel(Request $request){

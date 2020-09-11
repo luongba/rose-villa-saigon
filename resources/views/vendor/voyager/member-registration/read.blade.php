@@ -7,9 +7,36 @@
         
         <i class="{{ $dataType->icon }}"></i> {{ __('voyager::generic.viewing') }} {{ ucfirst($dataType->getTranslatedAttribute('display_name_singular')) }} &nbsp;
         @if($dataTypeContent->status == 0)
-        <a class="btn btn-info accept_order"  data-id="{{$dataTypeContent->id }}"  onclick="acceptFunction()">
+        <a class="btn btn-info "  data-toggle="modal" data-target="#reject-{{$dataTypeContent->id}}" href="javascript:;">
                 <span class="glyphicon glyphicon-pencil">Approve</span>
         </a>
+        <!-- sent-email -->
+        <div id="reject-{{$dataTypeContent->id}}" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true"> 
+              <div class="modal-dialog">
+                <form action="{{route('user-meta.accept')}}" method="post" accept-charset="utf-8">
+                  @csrf
+                  <input type="hidden" name="list_id" value="{{$dataTypeContent->id}}">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" style="position: absolute;right: 0;top: 0;"><i class="fas fa-times-circle"></i></button>
+                      <h2 style="text-align: center;">Are you sure Approved this member?</h2>
+                  </div>
+                  <div class="modal-body">
+                      <div class="form-group">
+                        <input type="text" name="password" required=""  class="form-control" placeholder="New password for user login">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <div class="firstWindow" style="width: 100%">
+                    <button type="submit" class="btn btn-default " data-dismiss="modal" >Cancel</button>
+                    <button type="submit" class="btn btn-primary " >Accept</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+    </div>
+    <!-- end sent-email -->
         <a class="btn btn-danger cancel_order" data-id="{{$dataTypeContent->id }}"  onclick="cancelFunction()">
             <i class="voyager-pencil"></i><span class="hidden-xs hidden-sm">Cancel</span>
         </a>
