@@ -41,7 +41,7 @@
         	<a class="nav-link" href="javascript:;">{{ trans('pages.Rooms') }}</a>
         	<ul class="sub-menu">
                 @foreach($list_room as $val_room)
-        		<li><a href="{{route('singleroom',['slug'=>$val_room->slug])}}">{{$val_room->name}}</a></li>
+        		<li><a href="{{route('singleroom',['slug'=>$val_room->slug])}}">{{$val_room->getTranslatedAttribute('name', config('app.locale'), 'fallbackLocale')}}</a></li>
                 @endforeach
         	</ul>
         </li>
@@ -49,7 +49,7 @@
             <a class="nav-link" href="javascript:;">{{ trans('pages.Food & Drinks') }}</a>
             <ul class="sub-menu">
                 @foreach($list_areaParty as $val_areaParty)
-                <li><a href="{{route('singlefooddrink',['slug'=>$val_areaParty->title])}}">{{$val_areaParty->title}}</a></li>
+                <li><a href="{{route('singlefooddrink',['slug'=>$val_areaParty->title])}}">{{$val_areaParty->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')}}</a></li>
                 @endforeach
             </ul>
         </li>
