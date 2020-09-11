@@ -158,7 +158,7 @@ class UserController extends Controller
 			'usage_criteria' => 'required_if:type_user,2',
 			'bring_to' => 'required_if:type_user,2',
 			'member_other' => 'required_if:type_user,2',
-			'membership_type' => 'required|min:1|max:9',
+			'membership_type' => 'required|min:1',
 			'frequency' => 'required|in:month_3,month_12'
 		],
 		[
@@ -364,6 +364,52 @@ class UserController extends Controller
 			return response()->json([
 				'status' => false,
 				'message' => trans('messages.Change profile error'),
+			]);
+		}
+	}
+
+	private function validateChangePackage($request)
+	{
+		$validator = Validator::make($request, [
+			'membership_type' => 'required|min:1',
+			'frequency' => 'required|in:month_3,month_12'
+		],
+		[
+			'dob.before' => trans('messages.Members must be over 18 years old')
+		]);
+		if ($validator->fails()) {
+			if($validator->errors()->first('membership_type') != null) {
+				return $validator->errors()->first('membership_type');
+			} else if($validator->errors()->first('frequency') != null) {
+				return $validator->errors()->first('frequency');
+			}
+		}
+	}
+
+	public function changePackage(Request $request)
+	{
+		$resultValidate = $this->validateChangePackage($request->all());
+		if ($resultValidate != "") {
+			return response()->json([
+				"status" => false,
+				"message" => $resultValidate
+			]);
+		}
+		$request->merge([
+			'membership_type_id' => $request->membership_type
+		]);
+
+		$params = $request->only('membership_type_id', 'frequency');
+		$resultChange = $this->user->editUserById(Auth::id(), $params);
+		if ($resultChange) {
+			return response()->json([
+				'status' => true,
+				'message' => trans('messages.Change package successfully'),
+			]);
+		} else {
+			return response()->json([
+				'status' => false,
+				'message' => trans('messages.Change package error'),
 			]);
 		}
 	}

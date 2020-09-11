@@ -25,5 +25,7 @@ return [
 	'You can use this email & phone' => 'Bạn có thể sử dụng email & số điện thoại này',
 	'Incorrect telephone number' => 'Số điện thoại không chính xác',
 	'Change profile successfully' => 'Thay đổi thông tin thành công',
-	'Change profile error' => 'Thay đổi thông tin thất bại'
+	'Change profile error' => 'Thay đổi thông tin thất bại',
+	'Change package successfully' => 'Thay đổi gói thành công',
+	'Change package error' => 'Thay đổi gói thất bại'
 ];

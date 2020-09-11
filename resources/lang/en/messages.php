@@ -25,5 +25,7 @@ return [
 	'You can use this email & phone' => 'You can use this email & phone',
 	'Incorrect telephone number' => 'Incorrect telephone number',
 	'Change profile successfully' => 'Change profile successfully',
-	'Change profile error' => 'Change profile error'
+	'Change profile error' => 'Change profile error',
+	'Change package successfully' => 'Change package successfully',
+	'Change package error' => 'Change package error'
 ];
