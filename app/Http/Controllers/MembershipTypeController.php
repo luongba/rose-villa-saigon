@@ -73,6 +73,16 @@ class MembershipTypeController extends Controller
 		->where('type', $request->type)
 		->get(['id', 'name', 'price'])->toArray();
 		
+		//getTranslatedAttribute('name', config('app.locale'), 'fallbackLocale')
+		/*$arrPack = $this->membershipType
+		->whereIn('id', $arrIdPack)
+		->where('type', $request->type)
+		->get();
+		foreach ($arrPack as $value) {
+			return $value->benefitMembers->translate('name',  config('app.locale'),'fallbackLocale');
+		}
+		return $arrPack;*/
+
 		$result = array();
 		foreach($arrPack as $data){
 			$item['id'] = $data['id'];

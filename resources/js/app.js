@@ -26,6 +26,12 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 
+// crop image
+import VueCroppie from 'vue-croppie'
+import 'croppie/croppie.css' // import the croppie css manually
+ 
+Vue.use(VueCroppie)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -43,6 +49,7 @@ Vue.component('membership-form', require('./components/MembershipForm.vue').defa
 Vue.component('button-show-modal', require('./components/ButtonShowModal.vue').default);
 Vue.component('booking-form', require('./components/BookingForm.vue').default);
 Vue.component('change-language', require('./components/ChangeLanguage.vue').default);
+Vue.component('contact-form', require('./components/ContactForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

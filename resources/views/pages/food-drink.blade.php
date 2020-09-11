@@ -1,37 +1,27 @@
 @extends('master')
 @section('content')
-  <div class="innerpage-style1 fd-page">
-    <span class="leftpageimg"></span>
-    <span class="rightpageimg"></span>
-    <section class="banner-innerpage">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h1 class="title-innerpage2">
-              <span><span style="display: none;">{{ trans('pages.Food & Drinks') }}</span></span>
-            </h1>
+  @foreach($list_food_drink as $key =>$val)
+    @php
+      $so_du = $key % 2;
+      if ($so_du == 0){
+        $ctshow = 'ctlay-left';
+       }else{
+        $ctshow = 'ctlay-right';
+      }
+    @endphp
+    <div id="fd{{$key}}" class="sfe sfe{{ $key }} innerpage-style1 {{$ctshow}}" style="background:url('{{$val->UrlThumb}}') no-repeat center center; background-size: cover;">
+      <span class="leftpageimg"></span>
+      <span class="rightpageimg"></span>
+      <section class="innercontent content-inner50">
+        <div class="about-ct ctbox1">
+          <h1 class="title-innerpage2">
+            <span><span>{!!$val->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')!!}</span></span>
+          </h1>
+          <div class="abct-elm">
+            {!!$val->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
           </div>
-        </div>
-      </div>   
-    </section>
-    <section class="innercontent">
-      @foreach($list_food_drink as $key =>$val)
-          @php
-          $so_du = $key % 2;
-          if ($so_du == 0){
-           $float = 'fd-left';
-         }else{
-          $float = 'fd-right';
-        }
-        @endphp
-
-        <div class="fd-elm {{$float}}">
-          <div class="fdct">
-              <h3 class="title-post-1">{!!$val->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')!!}</h3>
-              <div class="ctevent">
-                 {!!$val->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
-              </div>
-              <a href="javascript:;" class="bookingaction radius_4">View menu</a>
+          <div class="buttonbk">
+            <a href="javascript:;" class="bookingaction radius_4">View menu</a>
               @auth
                 <button-show-modal 
                   :classname="'bookingaction radius_4'" 
@@ -42,29 +32,12 @@
               @else
                 <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Table</button>
               @endauth
-            <div class="clear"></div>
           </div>
-          <div class="fdimg">
-            <img  src="{{$val->UrlThumb}}" />
-          </div> 
+          <div class="clear"></div>
         </div>
-       
-      @endforeach
-      <booking-form :text="'Booking Table'"></booking-form>
     </section>
   </div>
+  @endforeach
+  <booking-form :text="'Booking Table'"></booking-form>
 @endsection
-@section('script')
-<script>
-      // function ready() {
-      //     setTimeout(function(){
-      //       $('body').find('.loading').remove();
-      //       $('body').find('.header').css('visibility','visible');
-      //       $('body').find('#page-wrap').css('visibility','visible');
-      //       $('body').find('.content-custom-width').css('visibility','visible');
-      //     }, 3000);
-      // }
 
-      // document.addEventListener("DOMContentLoaded", ready);
-    </script>
-@endsection

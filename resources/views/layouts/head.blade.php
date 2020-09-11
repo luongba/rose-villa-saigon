@@ -6,14 +6,12 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta name="locale" content="{{ App::getLocale() }}"/>
-    <meta name="language" content="english">
+    {{-- <meta name="language" content="english"> --}}
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <base href="{{asset('/public/')}}" >
     <!-- CSS Files -->
     @yield('css')
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="{{asset('public/webfonts/stylesheet.css')}}">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="{{asset('public/css/bootstrap.css')}}">

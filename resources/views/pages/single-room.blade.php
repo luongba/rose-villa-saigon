@@ -1,6 +1,13 @@
 @extends('master')
 @section('content')
   <main>
+  	<div class="audio-control">
+  		<span class="turnon" onclick="disableMute()" title="TURN ON SOUND"></span>
+  		<span class="turnoff" onclick="enableMute()" title="MUTED"></span>
+  	</div>
+  	<audio id="audio" autoplay>
+   		<source type="audio/mp3" src="{{asset('public/assets/audio/La vie en rose - Louis Armstrong.mp3')}}">
+  	</audio>
     <div class="scroller">
       <div class="slideshow scroller__slideshow">
       	@if($singleroom->ListImageGallery)
@@ -20,7 +27,7 @@
       </div>
     </div>
     <div class="poster visual-pull-left-lap-and-up">
-    	<div class="about-ct ctbox1">	
+    	<div class="about-ct ctbox1 singleframe">	
 		    {{-- <h1 class="poster__title poster__title--ghost"></h1>
 		    <h1 class="poster__title visual-pull-left-lap-and-up"></h1> --}}
 			<h1 class="title-innerpage2">
@@ -60,16 +67,12 @@
 			    </div>
 			</div>
 			<div class="bottomroom">
-				@auth
-			      	<button-show-modal 
-			            :classname="'bookingaction radius_4'" 
-			            :text="'Booking Room'"
-			            :type="'3'"
-			            :booking_id="{{$singleroom->id}}"
-			      	></button-show-modal>
-			    @else
-					<button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Room</button>
-			    @endauth
+		      	<button-show-modal 
+		            :classname="'bookingaction radius_4'" 
+		            :text="'Booking Room'"
+		            :type="'3'"
+		            :booking_id="{{$singleroom->id}}"
+		      	></button-show-modal>
 			</div>
 		</div>
     </div>
@@ -82,5 +85,25 @@
 <script src="{{asset('public/rosevilla/enquire.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('public/rosevilla/slick.min.js')}}"></script>
 <script src="{{asset('public/rosevilla/script.js')}}" type="text/javascript"></script>
+	<script>
+      document.addEventListener("DOMContentLoaded", ready);
+    </script>
+    <script>
+		var vid = document.getElementById("audio");
+
+		function enableMute() { 
+		  vid.muted = true;
+		  $('.audio-control').removeClass('control-on').addClass('control-off');
+		} 
+
+		function disableMute() { 
+		  vid.muted = false;
+		  $('.audio-control').removeClass('control-off').addClass('control-on');
+		} 
+
+		// function checkMute() { 
+		//   alert(vid.muted);
+		// } 
+	</script> 
 @endsection
 
