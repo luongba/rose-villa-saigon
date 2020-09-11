@@ -250,7 +250,8 @@ class MetaUserController extends VoyagerBaseController
                     $user = $update_stt->user;
 
                     /*sent email*/
-                    event(new AfterConfirmMembership($update_stt));
+                    $data['password'] = $password;
+                    event(new AfterConfirmMembership($update_stt, $data));
                 }
                 
 
