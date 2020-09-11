@@ -37,6 +37,11 @@ Route::group(['middleware' => 'locale'], function() {
 		'as' => 'fooddrink',
 		'uses' => 'HomeController@fooddrink'
 	]);
+	Route::get('/food-drink/{slug}', [
+		'as' => 'singlefooddrink',
+		'uses' => 'HomeController@singlefooddrink'
+	]);
+
 
 	Route::get('/about', [
 		'as' => 'about',
@@ -131,6 +136,8 @@ Route::group(['middleware' => 'locale'], function() {
 
 	Route::prefix('/')->middleware('auth')->group(function() {
 		Route::post('booking', 'HomeController@booking')->name('user.booking');
+
+		Route::post('change-profile', 'UserController@changeProfile')->name('user.change_profile');
 	});
 
 	Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');

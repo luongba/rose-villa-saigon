@@ -283,4 +283,88 @@ class UserController extends Controller
 			'message' => trans('messages.You can use this email & phone'),
 		]);
 	}
+
+	private function validateChangeProfile($request)
+	{
+		$validator = Validator::make($request, [
+			'first_name' => 'required',
+			'last_name' => 'required',
+			'gender' => 'required|min:0|max:3',
+			'dob' => 'required|date|before:-18years',
+			'occupation' => 'required',
+			'address_one' => 'required',
+			'city' => 'required',
+			'post_code' => 'required',
+			'country' => 'required',
+			//'avatar' => 'required',
+			'reason' => 'required_if:type_user,2',
+			'usage_criteria' => 'required_if:type_user,2',
+			'bring_to' => 'required_if:type_user,2',
+			'member_other' => 'required_if:type_user,2',
+		],
+		[
+			'dob.before' => trans('messages.Members must be over 18 years old')
+		]);
+		if ($validator->fails()) {
+			if ($validator->errors()->first('first_name') != null) {
+				return $validator->errors()->first('first_name');
+			} else if($validator->errors()->first('last_name') != null) {
+				return $validator->errors()->first('last_name');
+			}else if($validator->errors()->first('gender') != null) {
+				return $validator->errors()->first('gender');
+			} else if($validator->errors()->first('dob') != null) {
+				return $validator->errors()->first('dob');
+			} else if($validator->errors()->first('occupation') != null) {
+				return $validator->errors()->first('occupation');
+			} else if($validator->errors()->first('address_one') != null) {
+				return $validator->errors()->first('address_one');
+			} else if($validator->errors()->first('city') != null) {
+				return $validator->errors()->first('city');
+			} else if($validator->errors()->first('post_code') != null) {
+				return $validator->errors()->first('post_code');
+			} else if($validator->errors()->first('country') != null) {
+				return $validator->errors()->first('country');
+			} else if($validator->errors()->first('avatar') != null) {
+				return $validator->errors()->first('avatar');
+			} else if($validator->errors()->first('reason') != null) {
+				return $validator->errors()->first('reason');
+			} else if($validator->errors()->first('usage_criteria') != null) {
+				return $validator->errors()->first('usage_criteria');
+			} else if($validator->errors()->first('bring_to') != null) {
+				return $validator->errors()->first('bring_to');
+			} else if($validator->errors()->first('member_other') != null) {
+				return $validator->errors()->first('member_other');
+			}
+		}
+	}
+
+
+	public function changeProfile(Request $request)
+	{
+		$resultValidate = $this->validateChangeProfile($request->all());
+		if ($resultValidate != "") {
+			return response()->json([
+				"status" => false,
+				"message" => $resultValidate
+			]);
+		}
+		$params = $request->only('first_name', 'last_name', 'gender', 'dob', 'occupation', 'address_one', 'address_two', 'city', 'post_code', 'country', 'reason', 'usage_criteria', 'bring_to', 'member_other');
+		$folder = 'avatar';
+		if($request->avatar){
+			$avatar = UploadImg::UploadImg($request->avatar, $folder);
+			$params['avatar'] = $avatar;
+		}
+		$resultChange = $this->user->editUserById(Auth::id(), $params);
+		if ($resultChange) {
+			return response()->json([
+				'status' => true,
+				'message' => trans('messages.Change profile successfully'),
+			]);
+		} else {
+			return response()->json([
+				'status' => false,
+				'message' => trans('messages.Change profile error'),
+			]);
+		}
+	}
 }

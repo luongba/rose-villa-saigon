@@ -23,5 +23,7 @@ return [
 	'Member registration error' => 'Đăng ký thành viên thất bại',
 	'Member registration successfully' => 'Đăng ký thành viên thành công',
 	'You can use this email & phone' => 'Bạn có thể sử dụng email & số điện thoại này',
-	'Incorrect telephone number' => 'Số điện thoại không chính xác'
+	'Incorrect telephone number' => 'Số điện thoại không chính xác',
+	'Change profile successfully' => 'Thay đổi thông tin thành công',
+	'Change profile error' => 'Thay đổi thông tin thất bại'
 ];

@@ -1,4 +1,4 @@
-  <a class="logo-landing" href="{{route('welcome')}}"><img src="{{asset('public/images/logo/logo-rosevilla.png')}}" /></a>
+  <a class="logo-landing" href="http://rosevilla.tntechs.com.vn/public/storage/pdf/Rose%20Villa%20Saigon%20Privacy%20Policy%2027.6.20%20Edited%20No%20CC%20No%20Social.pdf" target="_blank"><img src="{{asset('public/images/logo/logo-rosevilla.png')}}" /></a>
   <section class="header-landing landingstyle">
     <div class="container-fluid">
       @if(Auth::user())

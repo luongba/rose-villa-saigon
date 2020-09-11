@@ -88,5 +88,6 @@ return [
 	'contactus' => 'Contact Us',
 	'addressrovilla' => 'No. 10, Street 58, Thao Dien, District 2, Ho Chi Minh city, Vietnam ',
 	'fillinfo' => 'Fill in the infomation',
-	'startdate' => "Start Date",
+	'startdate' => 'Start Date',
+	'enddate' => 'End Date',
 ];

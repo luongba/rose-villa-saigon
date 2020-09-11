@@ -1,15 +1,8 @@
 @extends('master')
 @section('content')
   @foreach($list_food_drink as $key =>$val)
-    @php
-      $so_du = $key % 2;
-      if ($so_du == 0){
-        $ctshow = 'ctlay-left';
-       }else{
-        $ctshow = 'ctlay-right';
-      }
-    @endphp
-    <div id="fd{{$key+1}}" class="sfe sfe{{ $key }} innerpage-style1 {{$ctshow}}" style="background:url('{{$val->UrlThumb}}') no-repeat center center; background-size: cover;">
+
+    <div  class="innerpage-style1 ctlay-left" style="background:url('{{$val->UrlThumb}}') no-repeat center center; background-size: cover;">
       <span class="leftpageimg"></span>
       <span class="rightpageimg"></span>
       <section class="innercontent content-inner50">
