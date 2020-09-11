@@ -60,10 +60,10 @@ class HomeController extends Controller
         $this->bookingRoom = new BookingRoom;
         $this->page = new Page;
 
-        $list_room = $this->room->listRoom();
+        $list_room = $this->room->withTranslations(['en', 'vi'])->get();
         View::share('list_room', $list_room);
 		
-		$list_areaParty = $this->areaParty->withTranslations()->get();
+		$list_areaParty = AreaParty::withTranslations(['en', 'vi'])->get();
         View::share('list_areaParty', $list_areaParty);
     }
     
@@ -75,12 +75,16 @@ class HomeController extends Controller
 
     public function events(Request $request)
     {
+
         $list_area_event = $this->areaEvent->withTranslations()->get();
         return view('pages.events',compact('list_area_event'));
     } 
 
     public function spa(Request $request)
     {
+        /*$list_areaParty = $this->areaParty->withTranslations()->get();
+        return( $list_areaParty);*/
+
         $list_wellness_beauty = $this->wellnessBeauty->withTranslations()->get();
         return view('pages.spa',compact('list_wellness_beauty'));
     } 
