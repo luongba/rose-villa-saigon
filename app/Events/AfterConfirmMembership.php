@@ -21,9 +21,10 @@ class AfterConfirmMembership
      *
      * @return void
      */
-    public function __construct(UserMeta $userMeta)
+    public function __construct(UserMeta $userMeta, $data)
     {
         $this->userMeta = $userMeta;
+        $this->data = $data;
     }
 
     /**

@@ -14,14 +14,17 @@ class MailNotifyResultRegisterMembership extends Mailable
     use Queueable, SerializesModels;
 
     public $userMeta;
+    public $data;
+    
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(UserMeta $userMeta)
+    public function __construct(UserMeta $userMeta, $data)
     {
         $this->userMeta = $userMeta;
+        $this->data = $data;
     }
 
     /**

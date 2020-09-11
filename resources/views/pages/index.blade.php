@@ -6,12 +6,13 @@
   		<img src="{{asset('public/images/logo/logo_big_landing.png')}}" class="" data-sampler="Rose Villa Sai Gon" />
   	</div>
   	<div class="textlanding">
-      <h1 class="wctext">Welcome To Rosevilla Sai Gon</h1>
+      <h1 class="wctext">Welcome To <br/>Rosevilla Sai Gon</h1>
       <p>-2020-</p>
-      <p>Private members club <br/> elegant escapism for the eternally curious</p>
-      <span class="openbutton">
-        <span class="">Enter</span>
-      </span>
+      <p>Elegant escapism for the eternally curious</p>
+      <div class="openbutton">
+        <span class="clickviewsite">Enter</span>
+        <span class="soundon">Sound On</span>
+      </div>
     </div>
 
 
@@ -80,11 +81,11 @@
             $('body').find('.content-custom-width').css('visibility','visible');
           }, 1000);
       }
-      $(document).on('click', '.openbutton', function(){
-        $(this).closest('.bg_rem').find('.wctext').addClass('zoomout');
+      $(document).on('click', '.clickviewsite', function(){
         $(this).closest('.bg_rem').addClass("box-transition box-hidden");
         var audio = document.getElementById("audio");
         audio.play();
+        // $('.wctext').addClass('zoomout');
       });
       $(document).on('transitionend webkitTransitionEnd oTransitionEnd', '.bg_rem', function () {
         $(this).hide('slow');

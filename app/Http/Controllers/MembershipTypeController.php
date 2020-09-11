@@ -68,20 +68,20 @@ class MembershipTypeController extends Controller
 				}
 			}
 		}
-		$arrPack = $this->membershipType->with('benefitMembers:name')
+		$arrPack = $this->membershipType
 		->whereIn('id', $arrIdPack)
 		->where('type', $request->type)
-		->get(['id', 'name', 'price'])->toArray();
-		
+		->get();
+
 		$result = array();
 		foreach($arrPack as $data){
-			$item['id'] = $data['id'];
-			$item['name'] = $data['name'];
-			$price = array_filter($data['price'], function($value) {
+			$item['id'] = $data->id;
+			$item['name'] = $data->getTranslatedAttribute('name',  config('app.locale'),'fallbackLocale');
+			$price = array_filter($data->price, function($value) {
 				return $value['price'] != null; 
 			});
 			$item['price'] = $price;
-			$item['benefit_members'] = $data['benefit_members'];
+			$item['benefit_members'] = $data->benefitMembers->translate('name',  config('app.locale'),'fallbackLocale');
 			$result[] = $item;
 		}
 		return $result;

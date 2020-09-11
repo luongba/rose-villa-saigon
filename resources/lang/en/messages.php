@@ -23,5 +23,7 @@ return [
 	'Member registration error' => 'Member registration error',
 	'Member registration successfully' => 'Member registration successfully',
 	'You can use this email & phone' => 'You can use this email & phone',
-	'Incorrect telephone number' => 'Incorrect telephone number'
+	'Incorrect telephone number' => 'Incorrect telephone number',
+	'Change profile successfully' => 'Change profile successfully',
+	'Change profile error' => 'Change profile error'
 ];

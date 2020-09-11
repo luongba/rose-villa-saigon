@@ -8,6 +8,7 @@ use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use TCG\Voyager\Traits\Translatable;
 
+
 class BenefitMember extends Model
 {
     use Sluggable, SluggableScopeHelpers, Translatable;

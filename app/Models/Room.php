@@ -16,7 +16,7 @@ class Room extends Model
 	protected $fillable = ['name', 'slug', 'area', 'bed', 'person', 'benefit', 'description', 
 	'url', 'status'];
     /*translate*/
-    protected $translatable = ['description', 'benefit'];
+    protected $translatable = ['description', 'benefit','name'];
 
      
     

@@ -201,26 +201,73 @@ class MetaUserController extends VoyagerBaseController
 
     public function accept(Request $request){
         $arr_id = explode(',', $request->list_id);
+        $password = $request -> password;
         foreach($arr_id as $id){
             $update_stt = UserMeta::findOrFail($id);
             if($update_stt){
-                $update_stt -> status = 1;
-                $update_stt -> save();
-                $user = $update_stt->user;
-                /*sent email*/
-               event(new AfterConfirmMembership($update_stt));
+                /*check phone*/
+                $check_phone = User::where('phone','=',$update_stt -> phone)->count();
+                if($check_phone > 0){
+                    
+                    $redirect = redirect()->back();
+                    return $redirect->with([
+                        'message'    => __('Accept Error!Account already exists'),
+                        'alert-type' => 'error',
+                    ]);
+                }else{
+                    /*new user */
+                    $new_user = new User;
+                    $new_user -> role_id = 2;
+                    $new_user -> first_name = $update_stt -> first_name;
+                    $new_user -> last_name = $update_stt -> last_name;
+                    $new_user -> email = $update_stt -> email;
+                    $new_user -> password = bcrypt($password);
+
+                    $new_user -> type_user = $update_stt -> type_user;
+                    $new_user -> avatar = $update_stt -> avatar;
+                    $new_user -> phone = $update_stt -> phone;
+                    $new_user -> phone_verified_at = now();
+                    $new_user -> gender =  $update_stt -> gender;
+                    $new_user -> dob =  $update_stt -> dob;
+                    $new_user -> occupation =  $update_stt -> occupation;
+                    $new_user -> address_one =  $update_stt -> address_one;
+                    $new_user -> address_two =  $update_stt -> address_two;
+                    $new_user -> city =  $update_stt -> city;
+                    $new_user -> post_code =  $update_stt -> post_code;
+                    $new_user -> country =  $update_stt -> country;
+                    $new_user -> reason =  $update_stt -> reason;
+                    $new_user -> usage_criteria =  $update_stt -> usage_criteria;
+                    $new_user -> bring_to =  $update_stt -> bring_to;
+                    $new_user -> member_other =  $update_stt -> member_other;
+                    $new_user -> membership_type_id  =  $update_stt -> membership_type_id;
+                    $new_user -> frequency = $update_stt -> frequency;
+                    $new_user -> save();
+                    /*membership type*/
+                    $new_user ->membershipType()->sync($update_stt -> membership_type_id);
+                    /*end new user*/
+                    $update_stt -> status = 1;
+                    $update_stt -> save();
+                    $user = $update_stt->user;
+
+                    /*sent email*/
+                    $data['password'] = $password;
+                    event(new AfterConfirmMembership($update_stt, $data));
+                }
+                
 
             }else{
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Accept Error!',
-                ], 200);
+                $redirect = redirect()->back();
+                return $redirect->with([
+                    'message'    => __('Accept Error!Account already exists'),
+                    'alert-type' => 'error',
+                ]);
             }
         }
-        return response()->json([
-            'success' => true,
-            'message' => 'Accept Success',
-        ], 200);
+        $redirect = redirect()->back();
+        return $redirect->with([
+            'message'    => __('voyager::generic.successfully_created'),
+            'alert-type' => 'success',
+        ]);
     }
     /*accept order gift*/
     public function cancel(Request $request){

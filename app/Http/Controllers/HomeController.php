@@ -60,8 +60,11 @@ class HomeController extends Controller
         $this->bookingRoom = new BookingRoom;
         $this->page = new Page;
 
-        $list_room = $this->room->listRoom();
+        $list_room = $this->room->withTranslations(['en', 'vi'])->get();
         View::share('list_room', $list_room);
+		
+		$list_areaParty = AreaParty::withTranslations(['en', 'vi'])->get();
+        View::share('list_areaParty', $list_areaParty);
     }
     
     public function welcome(Request $request)
@@ -72,16 +75,16 @@ class HomeController extends Controller
 
     public function events(Request $request)
     {
+
         $list_area_event = $this->areaEvent->withTranslations()->get();
-       /* foreach ($list_area_event as $key => $value) {
-             $arr[] = $value->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale');
-        }
-        return $arr;*/
         return view('pages.events',compact('list_area_event'));
     } 
 
     public function spa(Request $request)
     {
+        /*$list_areaParty = $this->areaParty->withTranslations()->get();
+        return( $list_areaParty);*/
+
         $list_wellness_beauty = $this->wellnessBeauty->withTranslations()->get();
         return view('pages.spa',compact('list_wellness_beauty'));
     } 
@@ -136,6 +139,13 @@ class HomeController extends Controller
        // return  $singleroom;
 
         return view('pages.single-room',compact('singleroom'));
+    }
+	public function singlefooddrink(Request $request)
+    {
+        $list_food_drink = $this -> areaParty ->withTranslations()->whereTranslation('title', '=', $request -> slug)->get();
+       //return  $list_food_drink;
+
+        return view('pages.single-food-drink',compact('list_food_drink'));
     }
 
     public function membership(Request $request)

@@ -15,6 +15,8 @@ use App\Mail\MailInviteRegisterFounderMember;
 use App\Mail\MailNotifyComfirmApplicationFounderMemberSuccess;
 use App\Jobs\SendMailNotify;
 
+use App\Events\AfterConfirmMembership;
+
 use App\User;
 use App\Models\UserMeta;
 
@@ -27,8 +29,9 @@ class TestController extends Controller
 
 	public function testMail()
 	{
-		$user = \App\User::find(3);
-		event(new AfterRegisterMember($user));
+		$user = \App\Models\UserMeta::find(4);
+		$data['password'] = 12;
+		event(new AfterConfirmMembership($user, $data));
 		return "xong";
 	}
 

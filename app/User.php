@@ -67,5 +67,9 @@ class User extends \TCG\Voyager\Models\User
     /*END QUERY DATABASE*/
 
     /*ATTRIBUTE*/
+    public function getFullLinkAvatarAttribute()
+    {
+        return asset('') . 'public/storage/' . $this->avatar;
+    }
     /*END ATTRIBUTE*/
 }
