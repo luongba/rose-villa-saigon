@@ -177,7 +177,9 @@
             <div ref="uploadimage" class="stepmbs step1st">
               <croppie ref="childComponent" :imageUrl="avatar" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
             </div>
+          <div class="button2center">
             <button ref="stepbutton" class="buttonmbs btnext btf" type="submit">{{ $t('form_membership.submit') }}</button>
+          </div> 
         </form>
     </div>
 </template>
