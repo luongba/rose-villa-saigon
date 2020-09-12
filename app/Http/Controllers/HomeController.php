@@ -125,6 +125,10 @@ class HomeController extends Controller
     {
         return view('pages.findus');
     }
+    public function findus2(Request $request)
+    {
+        return view('pages.findus2');
+    }
     public function mailblade(Request $request)
     {
         return view('pages.mail');
@@ -142,7 +146,7 @@ class HomeController extends Controller
     }
 	public function singlefooddrink(Request $request)
     {
-        $list_food_drink = $this -> areaParty ->withTranslations()->whereTranslation('title', '=', $request -> slug)->get();
+        $list_food_drink = $this -> areaParty ->withTranslations()->whereTranslation('slug', '=', $request -> slug)->get();
        //return  $list_food_drink;
 
         return view('pages.single-food-drink',compact('list_food_drink'));

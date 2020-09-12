@@ -34,7 +34,7 @@
                   <form class="form-control-user" @submit.prevent="submit" data-parsley-validate>
                           <div class="row" v-if="model.type_booking==3">
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <label>{{ $t('form_membership.startdate') }} Start Date</label>
+                                <label>{{ $t('form_membership.startdate') }}</label>
                                   <div class="form-group popup-input-style2">
                                        <input type="date" v-model="model.start_at" class="form-control-elm" value="" placeholder="Start Date" autocomplete="off" data-parsley-required>
                                   </div>

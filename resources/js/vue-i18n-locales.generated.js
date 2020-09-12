@@ -81,7 +81,8 @@ export default {
             "contactus": "Contact Us",
             "addressrovilla": "No. 10, Street 58, Thao Dien, District 2, Ho Chi Minh city, Vietnam ",
             "fillinfo": "Fill in the infomation",
-            "startdate": "Start Date"
+            "startdate": "Start Date",
+            "enddate": "End Date"
         },
         "validation": {
             "accepted": "The {attribute} must be accepted.",
@@ -210,6 +211,7 @@ export default {
             "Rooms": "Rooms",
             "Food & Drinks": "Food & Drinks",
             "Wellness & Beauty": "Wellness & Beauty",
+            "home": "Home",
             "Shop": "Shop",
             "Events": "Events",
             "About Us": "About Us",
@@ -433,6 +435,7 @@ export default {
             "Rooms": "Phòng",
             "Food & Drinks": "Đồ ăn & Nước uống",
             "Wellness & Beauty": "Sức khỏe & Làm đẹp",
+            "home": "Trang Chủ",
             "Shop": "Cửa hàng",
             "Events": "Sự kiện",
             "About Us": "Giới thiệu",

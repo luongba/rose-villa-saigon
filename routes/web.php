@@ -65,6 +65,10 @@ Route::group(['middleware' => 'locale'], function() {
 		'as' => 'findus',
 		'uses' => 'HomeController@findus'
 	]);
+	Route::get('/how-to-find-us-2', [
+		'as' => 'findus2',
+		'uses' => 'HomeController@findus2'
+	]);
 
 	Route::get('/contact', [
 		'as' => 'contact',

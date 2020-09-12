@@ -31,7 +31,7 @@
 		    {{-- <h1 class="poster__title poster__title--ghost"></h1>
 		    <h1 class="poster__title visual-pull-left-lap-and-up"></h1> --}}
 			<h1 class="title-innerpage2">
-		        <span><span>{{$singleroom->name}}</span></span>
+		        <span><span>{{$singleroom->getTranslatedAttribute('name', config('app.locale'), 'fallbackLocale')}}</span></span>
 		    </h1>
 		    <div class="abct-elm singleroom-ct scrollcustom">
 			    <div class="[ layout layout--medium ] room-details">

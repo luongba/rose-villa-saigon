@@ -9,9 +9,9 @@ class AreaParty extends Model
 {
     use SoftDeletes,Translatable;
 
-    protected $fillable = ['title', 'description', 'thumbnail', 'gallery', 'status'];
+    protected $fillable = ['title', 'description', 'thumbnail', 'gallery', 'status','slug'];
      /*translate*/
-    protected $translatable = ['description', 'title'];
+    protected $translatable = ['description', 'title','slug'];
     
 	public function bookingParties()
 	{

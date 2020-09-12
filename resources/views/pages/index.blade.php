@@ -83,9 +83,10 @@
       }
       $(document).on('click', '.clickviewsite', function(){
         $(this).closest('.bg_rem').addClass("box-transition box-hidden");
+        $('.wctext').addClass('bkv');
         var audio = document.getElementById("audio");
         audio.play();
-        // $('.wctext').addClass('zoomout');
+        
       });
       $(document).on('transitionend webkitTransitionEnd oTransitionEnd', '.bg_rem', function () {
         $(this).hide('slow');
@@ -94,6 +95,8 @@
               // audio.remove();
           }, 1000);
       });
+
+      
       var vid = document.getElementById("audio");
 
 		function enableMute() { 
