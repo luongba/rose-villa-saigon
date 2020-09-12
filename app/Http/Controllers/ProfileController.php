@@ -38,8 +38,13 @@ class ProfileController extends Controller
     public function membership()
     {
         $user = Auth::user();
-        $user->metas = "test";
         return view('pages.profile-membership', compact('user'));
+    }
+
+    public function changePassword()
+    {
+        $user = Auth::user();
+        return view('pages.profile-changepass', compact('user'));
     }
     
     

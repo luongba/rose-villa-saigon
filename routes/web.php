@@ -126,6 +126,10 @@ Route::group(['middleware' => 'locale'], function() {
 			'as' => 'profile.membership',
 			'uses' => 'ProfileController@membership'
 		]);
+		Route::get('/change-password',[
+			'as' => 'profile.changepasss',
+			'uses' => 'ProfileController@changePassword'
+		]);
 	});
 
 	
