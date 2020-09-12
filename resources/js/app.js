@@ -52,6 +52,8 @@ Vue.component('change-language', require('./components/ChangeLanguage.vue').defa
 Vue.component('contact-form', require('./components/ContactForm.vue').default);
 Vue.component('profile', require('./components/Profile.vue').default);
 Vue.component('profile-membership', require('./components/ProfileMembership.vue').default);
+Vue.component('profile', require('./components/Profile.vue').default);
+Vue.component('change-password', require('./components/ChangePass.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

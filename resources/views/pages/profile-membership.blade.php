@@ -7,7 +7,7 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <img src="{{asset('public/images/logo_mbs.png')}}" />
           </div>
-        <profile-membership user="{{$user->toJson()}}"></profile-membership>
+        <profile-membership membership_type="{{$user->membership_type_id}}" frequency="{{$user->frequency}}"></profile-membership>
         </div>
       </div> 
     </section>
