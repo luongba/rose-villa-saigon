@@ -27,5 +27,9 @@ return [
 	'Change profile successfully' => 'Change profile successfully',
 	'Change profile error' => 'Change profile error',
 	'Change package successfully' => 'Change package successfully',
-	'Change package error' => 'Change package error'
+	'Change package error' => 'Change package error',
+	'Old password is incorrect' => 'Old password is incorrect',
+	'Please enter a password which is not similar then current password' => 'Please enter a password which is not similar then current password',
+	'Change password successfully' => 'Change password successfully',
+	'Change password error' => 'Change password error'
 ];

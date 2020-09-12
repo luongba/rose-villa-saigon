@@ -27,5 +27,9 @@ return [
 	'Change profile successfully' => 'Thay đổi thông tin thành công',
 	'Change profile error' => 'Thay đổi thông tin thất bại',
 	'Change package successfully' => 'Thay đổi gói thành công',
-	'Change package error' => 'Thay đổi gói thất bại'
+	'Change package error' => 'Thay đổi gói thất bại',
+	'Old password is incorrect' => 'Mật khẩu cũ không chính xác',
+	'Please enter a password which is not similar then current password' => 'Vui lòng nhập mật khẩu khác với mật khẩu hiện tại',
+	'Change password successfully' => 'Thay đổi mật khẩu thành công',
+	'Change password error' => 'Thay đổi mật khẩu thất bại'
 ];

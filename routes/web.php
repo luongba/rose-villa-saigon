@@ -140,6 +140,8 @@ Route::group(['middleware' => 'locale'], function() {
 		Route::post('change-profile', 'UserController@changeProfile')->name('user.change_profile');
 
 		Route::post('change-package', 'UserController@changePackage')->name('user.change_package');
+
+		Route::post('change-pass', 'UserController@changePass')->name('change_pass');
 	});
 
 	Route::get('membership-type', 'MembershipTypeController@list')->name('membership_type.list');

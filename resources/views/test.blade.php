@@ -31,3 +31,14 @@
 	<input type="text" name="frequency" value="month_3">
 	<input type="submit" value="submit">
 </form>
+
+<fieldset>
+	<legend>Change password</legend>
+	<form action="{{ route('change_pass') }}" method="post">
+		@csrf
+		<label for="">Old pass</label><input type="text" name="old_password">
+		<label for="">New pass</label><input type="text" name="new_password">
+		<label for="">Confirm pass</label><input type="text" name="confirm_password">
+		<input type="submit" value="Change Pass">
+	</form>
+</fieldset>

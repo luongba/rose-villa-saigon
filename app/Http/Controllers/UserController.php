@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use Validator;
+use Hash;
+use Session;
 
 use App\User;
 use App\Models\UserMeta;
@@ -410,6 +412,63 @@ class UserController extends Controller
 			return response()->json([
 				'status' => false,
 				'message' => trans('messages.Change package error'),
+			]);
+		}
+	}
+
+	private function validateChangePass($request)
+	{
+		$validator = Validator::make($request, [
+			'old_password' => 'required',
+			'new_password' => 'required|min:6',
+			'confirm_password' => 'required|same:new_password',
+		]);
+		if ($validator->fails()) {
+			if($validator->errors()->first('old_password') != null) {
+				return $validator->errors()->first('old_password');
+			} else if($validator->errors()->first('new_password') != null) {
+				return $validator->errors()->first('new_password');
+			} else if($validator->errors()->first('confirm_password') != null) {
+				return $validator->errors()->first('confirm_password');
+			}
+		}
+	}
+
+	public function changePass(Request $request)
+	{
+		$resultValidate = $this->validateChangePass($request->all());
+		if ($resultValidate != "") {
+			return response()->json([
+				"status" => false,
+				"message" => $resultValidate
+			]);
+		}
+		if (Hash::check($request->old_password, Auth::user()->password) === false) {
+			return response()->json([
+				"state" => false,
+				"message" => trans('messages.Old password is incorrect')
+			]);
+		}
+		if (Hash::check($request->new_password, Auth::user()->password) === true) {
+			return response()->json([
+				"state" => false,
+				"message" => trans('messages.Please enter a password which is not similar then current password')
+			]);
+		}
+		$resultChangePass = Auth::user()->update([
+			'password' => bcrypt($request->new_password)
+		]);
+		if ($resultChangePass) {
+			Session::flush();
+			Auth::logout();
+			return response()->json([
+				"state" => true,
+				"message" => trans('messages.Change password successfully')
+			]);
+		} else {
+			return response()->json([
+				"state" => false,
+				"message" => trans('messages.Change password error')
 			]);
 		}
 	}
