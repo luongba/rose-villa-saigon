@@ -175,7 +175,6 @@
                 v-model="model.address_two"
                 name="address_two"
                 :validation-messages="{
-                  required: $t('form_membership.required', {attribute: $t('form_membership.address_two')})
                 }"
               />
               <FormulateInput
