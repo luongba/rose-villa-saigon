@@ -296,7 +296,7 @@ class UserController extends Controller
 			'city' => 'required',
 			'post_code' => 'required',
 			'country' => 'required',
-			'avatar' => 'required',
+			// 'avatar' => 'required',
 			'reason' => 'required_if:type_user,2',
 			'usage_criteria' => 'required_if:type_user,2',
 			'bring_to' => 'required_if:type_user,2',

@@ -50,6 +50,8 @@ Vue.component('button-show-modal', require('./components/ButtonShowModal.vue').d
 Vue.component('booking-form', require('./components/BookingForm.vue').default);
 Vue.component('change-language', require('./components/ChangeLanguage.vue').default);
 Vue.component('contact-form', require('./components/ContactForm.vue').default);
+Vue.component('profile', require('./components/Profile.vue').default);
+Vue.component('profile-membership', require('./components/ProfileMembership.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

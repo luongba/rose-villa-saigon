@@ -113,6 +113,17 @@ Route::group(['middleware' => 'locale'], function() {
 		'uses' => 'HomeController@update_password'
 	]);
 
+	Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function() {
+		Route::get('/',[
+			'as' => 'profile.index',
+			'uses' => 'ProfileController@index'
+		]);
+		Route::get('/membership',[
+			'as' => 'profile.membership',
+			'uses' => 'ProfileController@membership'
+		]);
+	});
+
 	
 
 	/*MANH_TU*/

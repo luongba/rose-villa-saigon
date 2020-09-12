@@ -1,15 +1,19 @@
 export default {
     "en": {
-        "pagination": {
-            "previous": "&laquo; Previous",
-            "next": "Next &raquo;"
-        },
         "passwords": {
             "reset": "Your password has been reset!",
             "sent": "We have emailed your password reset link!",
             "throttled": "Please wait before retrying.",
             "token": "This password reset token is invalid.",
             "user": "We can't find a user with that email address."
+        },
+        "auth": {
+            "failed": "These credentials do not match our records.",
+            "throttle": "Too many login attempts. Please try again in {seconds} seconds."
+        },
+        "pagination": {
+            "previous": "&laquo; Previous",
+            "next": "Next &raquo;"
         },
         "form_membership": {
             "title_founder": "FOUNDER APPLICATION",
@@ -195,41 +199,6 @@ export default {
             },
             "attributes": []
         },
-        "auth": {
-            "failed": "These credentials do not match our records.",
-            "throttle": "Too many login attempts. Please try again in {seconds} seconds."
-        },
-        "pages": {
-            "Address Rose Villa Saigon": "No. 10, Street 58, Thao Dien, District 2, Ho Chi Minh city, Vietnam",
-            "Privacy Policy": "Privacy Policy",
-            "Term of use": "Term of use",
-            "Login": "Login",
-            "Logout": "Logout",
-            "profile": "Profile",
-            "membershippackage": "Membership Package",
-            "Rooms": "Rooms",
-            "Food & Drinks": "Food & Drinks",
-            "Wellness & Beauty": "Wellness & Beauty",
-            "Shop": "Shop",
-            "Events": "Events",
-            "About Us": "About Us",
-            "Contact Us": "Contact Us",
-            "How To Find Us": "How To Find Us",
-            "Membership": "Membership",
-            "Send message for us": "Send message for us",
-            "Your name": "Your name",
-            "Phone": "Phone",
-            "Title": "Title",
-            "Content": "Content",
-            "Submit": "Submit",
-            "Booking Event": "Booking Event",
-            "Utilities": "Utilities",
-            "DOWNLOAD MAP IN ROSE VILLA SAIGON": "DOWNLOAD MAP IN ROSE VILLA SAIGON",
-            "viewmenu": "View Menu",
-            "bookingspa": "Booking Now",
-            "thankcontent": "Thank you for spending your quality time to complete your application. We have received it and will be in touch shortly",
-            "thankyou": "THANK YOU"
-        },
         "messages": {
             "Add contact error": "Add contact error",
             "Phone number already exists": "Phone number already exists",
@@ -249,19 +218,55 @@ export default {
             "Member registration successfully": "Member registration successfully",
             "You can use this email & phone": "You can use this email & phone",
             "Incorrect telephone number": "Incorrect telephone number"
+        },
+        "pages": {
+            "Address Rose Villa Saigon": "No. 10, Street 58, Thao Dien, District 2, Ho Chi Minh city, Vietnam",
+            "Privacy Policy": "Privacy Policy",
+            "Term of use": "Term of use",
+            "Login": "Login",
+            "Logout": "Logout",
+            "profile": "Profile",
+            "membershippackage": "Membership Package",
+            "Rooms": "Rooms",
+            "Food & Drinks": "Food & Drinks",
+            "Wellness & Beauty": "Wellness & Beauty",
+            "home": "Home",
+            "Shop": "Shop",
+            "Events": "Events",
+            "About Us": "About Us",
+            "Contact Us": "Contact Us",
+            "How To Find Us": "How To Find Us",
+            "Membership": "Membership",
+            "Send message for us": "Send message for us",
+            "Your name": "Your name",
+            "Phone": "Phone",
+            "Title": "Title",
+            "Content": "Content",
+            "Submit": "Submit",
+            "Booking Event": "Booking Event",
+            "Utilities": "Utilities",
+            "DOWNLOAD MAP IN ROSE VILLA SAIGON": "DOWNLOAD MAP IN ROSE VILLA SAIGON",
+            "viewmenu": "View Menu",
+            "bookingspa": "Booking Now",
+            "thankcontent": "Thank you for spending your quality time to complete your application. We have received it and will be in touch shortly",
+            "thankyou": "THANK YOU"
         }
     },
     "vi": {
-        "pagination": {
-            "previous": "&laquo; Trước",
-            "next": "Tiếp &raquo;"
-        },
         "passwords": {
             "reset": "Mật khẩu của bạn đã được thiết lập lại!",
             "sent": "Chúng tôi đã gửi email liên kết đặt lại mật khẩu của bạn!",
             "throttled": "Vui lòng đợi trước khi thử lại.",
             "token": "Mã thông báo đặt lại mật khẩu này không hợp lệ.",
             "user": "Chúng tôi không thể tìm thấy người dùng có địa chỉ email đó."
+        },
+        "auth": {
+            "failed": "Những thông tin không phù hợp với hồ sơ của chúng tôi.",
+            "throttle": "Quá nhiều lần thử đăng nhập. Vui lòng thử lại trong {seconds} giây."
+        },
+        "pagination": {
+            "previous": "&laquo; Trước",
+            "next": "Tiếp &raquo;"
         },
         "form_membership": {
             "title_founder": "Đăng ký HỘI VIÊN SÁNG LẬP",
@@ -418,41 +423,6 @@ export default {
             },
             "attributes": []
         },
-        "auth": {
-            "failed": "Những thông tin không phù hợp với hồ sơ của chúng tôi.",
-            "throttle": "Quá nhiều lần thử đăng nhập. Vui lòng thử lại trong {seconds} giây."
-        },
-        "pages": {
-            "Address Rose Villa Saigon": "Số 10 Đường số 58, Thảo Điền, Quận 2, Tp Hồ Chí Minh, Việt Nam",
-            "Privacy Policy": "Chính sách bảo mật",
-            "Term of use": "Điều khoản sử dụng",
-            "Login": "Đăng nhập",
-            "Logout": "Đăng xuất",
-            "profile": "Tài Khoản",
-            "membershippackage": "Gói Thành Viên",
-            "Rooms": "Phòng",
-            "Food & Drinks": "Đồ ăn & Nước uống",
-            "Wellness & Beauty": "Sức khỏe & Làm đẹp",
-            "Shop": "Cửa hàng",
-            "Events": "Sự kiện",
-            "About Us": "Giới thiệu",
-            "Contact Us": "Liên hệ",
-            "How To Find Us": "Chỉ đường",
-            "Membership": "Thành viên",
-            "Send message for us": "Gửi tin nhắn cho chúng tôi",
-            "Your name": "Tên của bạn",
-            "Phone": "Số điện thoại",
-            "Title": "Tiêu đề",
-            "Content": "Nội dung",
-            "Submit": "Gửi",
-            "Booking Event": "Booking Event",
-            "Utilities": "Utilities",
-            "DOWNLOAD MAP IN ROSE VILLA SAIGON": "TẢI XUỐNG BẢN ĐỒ ROSE VILLA SAIGON",
-            "viewmenu": "Xem Menu",
-            "bookingspa": "Đặt Lịch Spa",
-            "thankcontent": "CẢM ƠN BẠN ĐÃ HOÀN TẤT ĐƠN ĐĂNG KÝ NÀY. CHÚNG TÔI SẼ LIÊN HỆ VỚI BẠN TRONG THỜI GIAN SỚM NHẤT. ",
-            "thankyou": "XÁC NHẬN ĐƠN ĐĂNG KÝ"
-        },
         "messages": {
             "Add contact error": "Thêm liên hệ thất bại",
             "Phone number already exists": "Số điện thoại đã tồn tại",
@@ -472,6 +442,38 @@ export default {
             "Member registration successfully": "Đăng ký thành viên thành công",
             "You can use this email & phone": "Bạn có thể sử dụng email & số điện thoại này",
             "Incorrect telephone number": "Số điện thoại không chính xác"
+        },
+        "pages": {
+            "Address Rose Villa Saigon": "Số 10 Đường số 58, Thảo Điền, Quận 2, Tp Hồ Chí Minh, Việt Nam",
+            "Privacy Policy": "Chính sách bảo mật",
+            "Term of use": "Điều khoản sử dụng",
+            "Login": "Đăng nhập",
+            "Logout": "Đăng xuất",
+            "profile": "Tài Khoản",
+            "membershippackage": "Gói Thành Viên",
+            "Rooms": "Phòng",
+            "Food & Drinks": "Đồ ăn & Nước uống",
+            "Wellness & Beauty": "Sức khỏe & Làm đẹp",
+            "home": "Trang Chủ",
+            "Shop": "Cửa hàng",
+            "Events": "Sự kiện",
+            "About Us": "Giới thiệu",
+            "Contact Us": "Liên hệ",
+            "How To Find Us": "Chỉ đường",
+            "Membership": "Thành viên",
+            "Send message for us": "Gửi tin nhắn cho chúng tôi",
+            "Your name": "Tên của bạn",
+            "Phone": "Số điện thoại",
+            "Title": "Tiêu đề",
+            "Content": "Nội dung",
+            "Submit": "Gửi",
+            "Booking Event": "Booking Event",
+            "Utilities": "Utilities",
+            "DOWNLOAD MAP IN ROSE VILLA SAIGON": "TẢI XUỐNG BẢN ĐỒ ROSE VILLA SAIGON",
+            "viewmenu": "Xem Menu",
+            "bookingspa": "Đặt Lịch Spa",
+            "thankcontent": "CẢM ƠN BẠN ĐÃ HOÀN TẤT ĐƠN ĐĂNG KÝ NÀY. CHÚNG TÔI SẼ LIÊN HỆ VỚI BẠN TRONG THỜI GIAN SỚM NHẤT. ",
+            "thankyou": "XÁC NHẬN ĐƠN ĐĂNG KÝ"
         }
     }
 }
