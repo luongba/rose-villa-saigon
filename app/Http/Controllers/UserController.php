@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use Validator;
+use Hash;
+use Session;
 
 use App\User;
 use App\Models\UserMeta;
@@ -158,7 +160,7 @@ class UserController extends Controller
 			'usage_criteria' => 'required_if:type_user,2',
 			'bring_to' => 'required_if:type_user,2',
 			'member_other' => 'required_if:type_user,2',
-			'membership_type' => 'required|min:1|max:9',
+			'membership_type' => 'required|min:1',
 			'frequency' => 'required|in:month_3,month_12'
 		],
 		[
@@ -364,6 +366,109 @@ class UserController extends Controller
 			return response()->json([
 				'status' => false,
 				'message' => trans('messages.Change profile error'),
+			]);
+		}
+	}
+
+	private function validateChangePackage($request)
+	{
+		$validator = Validator::make($request, [
+			'membership_type' => 'required|min:1',
+			'frequency' => 'required|in:month_3,month_12'
+		],
+		[
+			'dob.before' => trans('messages.Members must be over 18 years old')
+		]);
+		if ($validator->fails()) {
+			if($validator->errors()->first('membership_type') != null) {
+				return $validator->errors()->first('membership_type');
+			} else if($validator->errors()->first('frequency') != null) {
+				return $validator->errors()->first('frequency');
+			}
+		}
+	}
+
+	public function changePackage(Request $request)
+	{
+		$resultValidate = $this->validateChangePackage($request->all());
+		if ($resultValidate != "") {
+			return response()->json([
+				"status" => false,
+				"message" => $resultValidate
+			]);
+		}
+		$request->merge([
+			'membership_type_id' => $request->membership_type
+		]);
+
+		$params = $request->only('membership_type_id', 'frequency');
+		$resultChange = $this->user->editUserById(Auth::id(), $params);
+		if ($resultChange) {
+			return response()->json([
+				'status' => true,
+				'message' => trans('messages.Change package successfully'),
+			]);
+		} else {
+			return response()->json([
+				'status' => false,
+				'message' => trans('messages.Change package error'),
+			]);
+		}
+	}
+
+	private function validateChangePass($request)
+	{
+		$validator = Validator::make($request, [
+			'old_password' => 'required',
+			'new_password' => 'required|min:6',
+			'confirm_password' => 'required|same:new_password',
+		]);
+		if ($validator->fails()) {
+			if($validator->errors()->first('old_password') != null) {
+				return $validator->errors()->first('old_password');
+			} else if($validator->errors()->first('new_password') != null) {
+				return $validator->errors()->first('new_password');
+			} else if($validator->errors()->first('confirm_password') != null) {
+				return $validator->errors()->first('confirm_password');
+			}
+		}
+	}
+
+	public function changePass(Request $request)
+	{
+		$resultValidate = $this->validateChangePass($request->all());
+		if ($resultValidate != "") {
+			return response()->json([
+				"status" => false,
+				"message" => $resultValidate
+			]);
+		}
+		if (Hash::check($request->old_password, Auth::user()->password) === false) {
+			return response()->json([
+				"state" => false,
+				"message" => trans('messages.Old password is incorrect')
+			]);
+		}
+		if (Hash::check($request->new_password, Auth::user()->password) === true) {
+			return response()->json([
+				"state" => false,
+				"message" => trans('messages.Please enter a password which is not similar then current password')
+			]);
+		}
+		$resultChangePass = Auth::user()->update([
+			'password' => bcrypt($request->new_password)
+		]);
+		if ($resultChangePass) {
+			Session::flush();
+			Auth::logout();
+			return response()->json([
+				"state" => true,
+				"message" => trans('messages.Change password successfully')
+			]);
+		} else {
+			return response()->json([
+				"state" => false,
+				"message" => trans('messages.Change password error')
 			]);
 		}
 	}

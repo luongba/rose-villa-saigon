@@ -1,4 +1,4 @@
-<form action="{{route('user.change_profile')}}" method="post">
+<form action="{{route('user.change_package')}}" method="post">
 	@csrf()
 	<!-- <input type="text" name="name" value="Black Rose">
 	<input type="text" name="email" value="gautrangcb91@gmail.com">
@@ -27,5 +27,18 @@
 	<input type="text" name="bring_to" value="đéo">
 	<input type="text" name="member_other" value="đéo có">
 	<input type="file" name="avatar">
+	<input type="text" name="membership_type" value="1">
+	<input type="text" name="frequency" value="month_3">
 	<input type="submit" value="submit">
 </form>
+
+<fieldset>
+	<legend>Change password</legend>
+	<form action="{{ route('change_pass') }}" method="post">
+		@csrf
+		<label for="">Old pass</label><input type="text" name="old_password">
+		<label for="">New pass</label><input type="text" name="new_password">
+		<label for="">Confirm pass</label><input type="text" name="confirm_password">
+		<input type="submit" value="Change Pass">
+	</form>
+</fieldset>
