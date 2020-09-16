@@ -8,12 +8,16 @@
 	             </a>
 	            <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
                 <li class="profile-user">
-                    <a href="javascript:;">
+                    <a href="{{ route('profile_index')}}">
                     <span>{{ trans('pages.profile') }}</span></a>
                 </li>
                 <li class="member-user">
-                    <a href="javascript:;">
+                    <a href="{{ route('profile_membership')}}">
                     <span>{{ trans('pages.membershippackage') }}</span></a>
+                </li>
+                <li class="member-user">
+                    <a href="{{ route('profile_changepasss')}}">
+                    <span>{{ trans('pages.changepass') }}</span></a>
                 </li>
                 <li class="singout">
                     <a href="{{ route('logout_web') }}">

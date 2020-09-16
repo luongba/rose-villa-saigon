@@ -429,7 +429,7 @@ html {
       margin-right: 0; }
   .room-details__description {
     text-align: left;
-    background: url(image/hair.gif) repeat-y 19.5px 0; }
+    }
     .room-details__description > * {
      
       }

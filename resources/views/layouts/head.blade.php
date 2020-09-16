@@ -3,6 +3,7 @@
 <head>
     <link rel="alternate" href="https://www.rosevillasaigon.com/" hreflang="en" />
     <title>Rose Villa Sài Gòn</title>
+    <link href="{{asset('public/images/logo/logo_small_landing.png')}}" rel="icon">
     <!-- Tell the browser to be responsive to screen width -->
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta name="locale" content="{{ App::getLocale() }}"/>

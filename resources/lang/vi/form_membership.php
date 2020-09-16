@@ -48,7 +48,10 @@ return [
 	'descriptionlaststep15' => 'TÔI HIỂU RẰNG TÔI ĐANG TRONG QUÁ TRÌNH GỬI ĐĂNG KÝ ĐỂ TRỞ THÀNH HỘI VIÊN SÁNG LẬP CỦA ROSE VILLA SAIGON. NẾU ĐƠN CỦA TÔI ĐƯỢC CHẤP NHẬN, ROSE VILLA SAIGON CÓ THỂ LIÊN HỆ TRỰC TIẾP VỚI TÔI ĐỂ THANH TOÁN PHÍ HỘI VIÊN TRƯỚC NGÀY KHAI TRƯƠNG, VÀ CHO NHỮNG LẦN GIA HẠN CHO NHỮNG NĂM TIẾP THEO. TÔI SẼ CỐ GẮNG SẮP XẾP ĐỂ PHÍ HỘI VIÊN CỦA MÌNH ĐƯỢC THANH TOÁN TRƯỚC LẦN ĐẾN CÂU LẠC BỘ.',
 	'descriptionlaststep2' => 'Bằng cách đăng ký, tôi đồng ý tuân theo các điều kiện của câu lạc bộ Rose Villa và thời hạn & điều kiện thành viên',
 
-
+	//CHANGE PASS
+	'old_password' => 'Nhập Lại Mật Khẩu',
+	'new_password' => 'Mật Khẩu Mới',
+	'confirm_password' => 'Nhập Lại Mật Khẩu Mới',
 	
 
 	//step 2 field

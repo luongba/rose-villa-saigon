@@ -119,15 +119,15 @@ Route::group(['middleware' => 'locale'], function() {
 
 	Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function() {
 		Route::get('/',[
-			'as' => 'profile.index',
+			'as' => 'profile_index',
 			'uses' => 'ProfileController@index'
 		]);
 		Route::get('/membership',[
-			'as' => 'profile.membership',
+			'as' => 'profile_membership',
 			'uses' => 'ProfileController@membership'
 		]);
 		Route::get('/change-password',[
-			'as' => 'profile.changepasss',
+			'as' => 'profile_changepasss',
 			'uses' => 'ProfileController@changePassword'
 		]);
 	});

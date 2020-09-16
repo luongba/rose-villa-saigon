@@ -2,6 +2,7 @@
     <div>
         <form class="form-mbs1" method="post" action="" @submit.prevent="submit">
           <div ref="step1" class="stepmbs step1st">
+            <div class="container">
               <FormulateInput
                 :wrapper-class="['form-group required']"
                 :label="$t('form_membership.first_name')"
@@ -61,6 +62,10 @@
                   required: $t('form_membership.required', {attribute: $t('form_membership.gender')})
                 }"
               />
+
+
+
+
               <FormulateInput
                 class="birthday_select lb-time"
                 :wrapper-class="['form-group required']"
@@ -104,6 +109,13 @@
                   required: $t('form_membership.required', {attribute: $t('form_membership.year')})
                 }"
               />
+
+
+
+
+
+
+
               <FormulateInput
                 :wrapper-class="['form-group required']"
                 :label="$t('form_membership.occu')"
@@ -173,6 +185,7 @@
                   required: $t('form_membership.required', {attribute: $t('form_membership.post_code')})
                 }"
               />
+            </div>
           </div>
             <div ref="uploadimage" class="stepmbs step1st">
               <croppie ref="childComponent" :imageUrl="avatar" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
@@ -340,7 +353,7 @@ export default {
         _this.cities = response.data.data
       });
     },
-    getKeyByValue(object, value) {
+    async getKeyByValue(object, value) {
       return Object.keys(object).find(key => object[key] === value);
     },
     submit: function(){

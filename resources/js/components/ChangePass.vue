@@ -1,7 +1,9 @@
 <template>
     <div>
-      <form @submit.prevent="submit"> 
-          <FormulateInput
+      <form @submit.prevent="submit">
+        <div ref="step1" class="stepmbs step1st">
+          <div class="container">
+            <FormulateInput
             :wrapper-class="['form-group']"
             :label="$t('old_password')"
             type="password"
@@ -31,7 +33,11 @@
               required: $t('form_membership.required', {attribute: $t('confirm_password')})
             }"
           />
-          <button ref="stepbutton" class="buttonmbs btnext btf" type="submit">{{ $t('form_membership.submit') }}</button>
+          </div>
+          <div class="button2center">
+            <button ref="stepbutton" class="buttonmbs btnext btf" type="submit">{{ $t('form_membership.submit') }}</button>
+          </div>
+        </div>
       </form>
     </div>
 </template>

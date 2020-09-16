@@ -1036,8 +1036,7 @@ body.singleroom .header{
 	left:-320px;
 }
 body.findus2 .footer-landing, 
-body.shop .footer-landing,
-body.singleroom  .footer-landing {
+body.shop .footer-landing {
     z-index: 99;
     position: fixed;
 	left:0;
@@ -1773,6 +1772,7 @@ body .popup-input-style .vue-tel-input:focus-within {
 .nav-site .navbar-nav{
 	width:360px;
 	margin:0 auto;
+	max-width:100%;
 }
 .nav-site .navbar-nav > li > a{
 	color:#fff;
@@ -2634,10 +2634,15 @@ body.welcome {
 	display: block;
 	z-index:999;
 }
+
+.profile_membership  .logo-landing,
+.profile_changepasss  .logo-landing,
+.profile_index .logo-landing,
 .founder  .logo-landing,
 .regularmember   .logo-landing{
 	display:none;
 }
+
 .logo-landing a{
 	width:100%;
 }
@@ -2778,6 +2783,89 @@ body.welcome {
 }
 .footer-landing .container-fluid{
 	position:relative;
+}
+
+/* langding images */
+.ltout{
+	left:-220px!important; 
+	right:inherit!important;
+	top:-220px !important; 
+	bottom :inherit!important;
+	transition: all 4s; 
+}
+.rtout{
+	right:-220px !important;
+	left:inherit!important;
+	top:-220px !important; 
+	bottom :inherit!important;
+	transition: all 4s; 
+}
+.lbout{
+	left:-220px!important; 
+	right:inherit!important;
+	bottom:-220px !important; 
+	top :inherit!important;
+	transition: all 4s; 
+}
+.rbout{
+	right:-220px !important;
+	left:inherit!important;
+	bottom:-220px !important; 
+	top :inherit!important;
+	transition: all 4s; 
+}
+.mltout{
+	margin-left:-300px;
+	margin-top:-300px;
+}
+.mrtout{
+	margin-right:-300px;
+	margin-top:-300px;
+}
+.mlbout{
+	margin-left:-300px;
+	margin-bottom:-300px;
+}
+.mrbout{
+	margin-right:-300px;
+	margin-bottom:-300px;
+}
+
+.cloud{
+	position:absolute;
+	z-index:10;
+}
+#cloud1{
+	top:20px;
+	left:30px;
+	width:204px;
+	height:180px;
+	background:url(images/floating/6.png) no-repeat;
+	background-size:cover;
+}
+#cloud4{
+	top:20px;
+	right:30px;
+	height:176px;
+	width:204px;
+	background:url(images/floating/1.png) no-repeat;
+	background-size:cover;
+}
+#cloud3{
+	bottom:20px;
+	right:30px;
+	width:204px;
+	height:214px;
+	background:url(images/floating/5.png) no-repeat;
+	background-size:cover;
+}
+#cloud2{
+	left:30px;
+	bottom:20px;
+	width:204px;
+	height:212px;
+	background:url(images/floating/4.png) no-repeat;
+	background-size:cover;
 }
 /* DESGIN VERSION2 */
 /* HEADER */
@@ -4613,6 +4701,24 @@ button, [type="button"], [type="reset"], [type="submit"] {
 		padding-bottom:70px;
 		float:left;
 	}
+
+}
+@media only screen and (min-width: 641px) and (max-width: 1199px){
+	.social-ft{
+		left: 15px;
+		margin-left:0;
+	}
+	.rightcp{
+		width:100%;
+	}
+}
+@media only screen and (min-width: 769px){
+	body.singleroom .footer-landing {
+		z-index: 99;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+	}
 }
 @media only screen and (max-width: 768px){
 	.eventimg{
@@ -4640,6 +4746,9 @@ button, [type="button"], [type="reset"], [type="submit"] {
 	}
 	.innerpage-style1 .nav-site{
 		padding: 40px 0px;
+	}
+	.nav-site{
+		padding-top:50px;
 	}
 }
 @media only screen and (max-width: 640px){
@@ -4704,8 +4813,6 @@ button, [type="button"], [type="reset"], [type="submit"] {
 	.step-membership li.currentstep{
 		display:block;
 	}
-}
-@media only screen and (max-width: 639px){
 	.leftcp{
 		width:100%;
 		text-align:center;
@@ -4720,7 +4827,24 @@ button, [type="button"], [type="reset"], [type="submit"] {
 	.footer-landing .container-fluid {
 		padding-top: 40px;
 	}
+	.rightcp ul{
+		text-align:center;
+	}
+	.rightcp li {
+		float: none;
+		display:inline-block;
+	}
+	.rightcp li:last-child::after {
+		display: none;
+	}
+	.rightcp li:first-child::after {
+		display: inline-block;
+	}
+	.footer-landing{
+		line-height:24px;
+	}
 }
+
 @media only screen and (max-width: 599px){
 	.ctbox1{
 		background:#fff;
@@ -4735,11 +4859,29 @@ button, [type="button"], [type="reset"], [type="submit"] {
 		padding-left:15px;
 		padding-right:15px;
 	}
+	.leftroom{
+		width:100%;
+		padding:0 0 30px 0;
+		border:none;
+	}
+	.rightroom{
+		width:100%;
+		padding:0 0 30px 0;
+	}
+	.singleroom-ct{
+		height:auto;
+	}
+	.singleframe{
+		height:auto;
+	}
 
 }
 
-
-
+@media only screen and (max-width: 360px){
+	.buttonbk button, .buttonbk a {
+		width: 135px;
+	}
+}
 
 /* custom rem */
 @media only screen and (min-width: 1369px){
@@ -4784,6 +4926,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
   }
   .biglogo{
 	  margin:0 auto;
+	 
   }
   .biglogo img{
 	  margin:0 auto;
@@ -4797,7 +4940,13 @@ button, [type="button"], [type="reset"], [type="submit"] {
 	font-size:48px;
 	letter-spacing:8px;
 	line-height:1.2;
-
+  }
+  .scale0{
+	  transform: scale(0); 
+	  transition: all 4s; 
+  }
+  .scale1{
+	 transform: scale(1); 
   }
   .bkv{
 	transform: scale(10);
@@ -4840,7 +4989,6 @@ button, [type="button"], [type="reset"], [type="submit"] {
 	margin-left:auto;
 	margin-right:auto;
 }
-
 
 /* ensure box is displayed block during the transition  */
 .box-transition.box-hidden {

@@ -39,6 +39,7 @@
         "vue-pincode-input": "^0.2.0",
         "vue-range-slider": "^0.6.0",
         "vue-tel-input": "^4.4.0",
+        "vuejs-datepicker": "^1.6.2",
         "vuelidate": "^0.7.5"
     }
 }

@@ -85,9 +85,7 @@
 <script src="{{asset('public/rosevilla/enquire.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('public/rosevilla/slick.min.js')}}"></script>
 <script src="{{asset('public/rosevilla/script.js')}}" type="text/javascript"></script>
-	<script>
-      document.addEventListener("DOMContentLoaded", ready);
-    </script>
+
     <script>
 		var vid = document.getElementById("audio");
 

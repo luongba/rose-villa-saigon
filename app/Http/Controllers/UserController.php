@@ -445,13 +445,13 @@ class UserController extends Controller
 		}
 		if (Hash::check($request->old_password, Auth::user()->password) === false) {
 			return response()->json([
-				"state" => false,
+				"status" => false,
 				"message" => trans('messages.Old password is incorrect')
 			]);
 		}
 		if (Hash::check($request->new_password, Auth::user()->password) === true) {
 			return response()->json([
-				"state" => false,
+				"status" => false,
 				"message" => trans('messages.Please enter a password which is not similar then current password')
 			]);
 		}
@@ -462,12 +462,12 @@ class UserController extends Controller
 			Session::flush();
 			Auth::logout();
 			return response()->json([
-				"state" => true,
+				"status" => true,
 				"message" => trans('messages.Change password successfully')
 			]);
 		} else {
 			return response()->json([
-				"state" => false,
+				"status" => false,
 				"message" => trans('messages.Change password error')
 			]);
 		}

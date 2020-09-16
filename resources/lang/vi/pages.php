@@ -12,6 +12,7 @@ return [
 	'Logout' => 'Đăng xuất',
 	'profile' => 'Tài Khoản',
 	'membershippackage' => 'Gói Thành Viên',
+	'changepass' => 'Đổi Mật Khẩu',
 
 	//nav
 	'Rooms' => 'Phòng',

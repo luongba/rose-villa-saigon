@@ -1,19 +1,15 @@
 export default {
     "en": {
+        "pagination": {
+            "previous": "&laquo; Previous",
+            "next": "Next &raquo;"
+        },
         "passwords": {
             "reset": "Your password has been reset!",
             "sent": "We have emailed your password reset link!",
             "throttled": "Please wait before retrying.",
             "token": "This password reset token is invalid.",
             "user": "We can't find a user with that email address."
-        },
-        "auth": {
-            "failed": "These credentials do not match our records.",
-            "throttle": "Too many login attempts. Please try again in {seconds} seconds."
-        },
-        "pagination": {
-            "previous": "&laquo; Previous",
-            "next": "Next &raquo;"
         },
         "form_membership": {
             "title_founder": "FOUNDER APPLICATION",
@@ -58,6 +54,9 @@ export default {
             "descriptionlaststep1": "I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis",
             "descriptionlaststep15": "I UNDERSTAND THAT I AM APPLYING TO BECOME A FOUNDER MEMBER OF ROSE VILLA SAIGON. IF ACCEPTED, I AGREE THAT I WILL BE RESPONSIBLE FOR MY MEMBERSHIP FEES PRIOR TO THE CLUB’S OPENING, AND FOR SUBSEQUENT ANNUAL RENEWAL FEES.",
             "descriptionlaststep2": "By applying I agree to abide the Rose Villa club sules and term & conditions of membership",
+            "old_password": "Old Password",
+            "new_password": "New Password",
+            "confirm_password": "Confirm Password",
             "reason": "WHY DO YOU WANT TO JOIN ROSE VILLA? ",
             "usage_criteria": "HOW WILL YOU USE THE CLUB?",
             "bring_to": "WHAT WILL YOU BRING TO THE ROSE VILLA COMMUNITY?",
@@ -200,25 +199,9 @@ export default {
             },
             "attributes": []
         },
-        "messages": {
-            "Add contact error": "Add contact error",
-            "Phone number already exists": "Phone number already exists",
-            "Incorrect phone number": "Incorrect phone number",
-            "Update password successfully": "Update password successfully",
-            "Booking successfully": "Booking successfully",
-            "Booking error": "Booking error",
-            "Add contact successfully": "Add contact successfully",
-            "Members must be over 18 years old": "Members must be over 18 years old",
-            "Enter the verification code received from the system": "Enter the verification code received from the system",
-            "Register successfully": "Register successfully",
-            "Register error": "Register error",
-            "You are not a Rose Villa Saigon member": "You are not a Rose Villa Saigon member",
-            "Login successfully": "Login successfully",
-            "Phone or password is not correct": "Phone or password is not correct",
-            "Member registration error": "Member registration error",
-            "Member registration successfully": "Member registration successfully",
-            "You can use this email & phone": "You can use this email & phone",
-            "Incorrect telephone number": "Incorrect telephone number"
+        "auth": {
+            "failed": "These credentials do not match our records.",
+            "throttle": "Too many login attempts. Please try again in {seconds} seconds."
         },
         "pages": {
             "Address Rose Villa Saigon": "No. 10, Street 58, Thao Dien, District 2, Ho Chi Minh city, Vietnam",
@@ -228,6 +211,7 @@ export default {
             "Logout": "Logout",
             "profile": "Profile",
             "membershippackage": "Membership Package",
+            "changepass": "Change Password",
             "Rooms": "Rooms",
             "Food & Drinks": "Food & Drinks",
             "Wellness & Beauty": "Wellness & Beauty",
@@ -251,23 +235,47 @@ export default {
             "bookingspa": "Booking Now",
             "thankcontent": "Thank you for spending your quality time to complete your application. We have received it and will be in touch shortly",
             "thankyou": "THANK YOU"
+        },
+        "messages": {
+            "Add contact error": "Add contact error",
+            "Phone number already exists": "Phone number already exists",
+            "Incorrect phone number": "Incorrect phone number",
+            "Update password successfully": "Update password successfully",
+            "Booking successfully": "Booking successfully",
+            "Booking error": "Booking error",
+            "Add contact successfully": "Add contact successfully",
+            "Members must be over 18 years old": "Members must be over 18 years old",
+            "Enter the verification code received from the system": "Enter the verification code received from the system",
+            "Register successfully": "Register successfully",
+            "Register error": "Register error",
+            "You are not a Rose Villa Saigon member": "You are not a Rose Villa Saigon member",
+            "Login successfully": "Login successfully",
+            "Phone or password is not correct": "Phone or password is not correct",
+            "Member registration error": "Member registration error",
+            "Member registration successfully": "Member registration successfully",
+            "You can use this email & phone": "You can use this email & phone",
+            "Incorrect telephone number": "Incorrect telephone number",
+            "Change profile successfully": "Change profile successfully",
+            "Change profile error": "Change profile error",
+            "Change package successfully": "Change package successfully",
+            "Change package error": "Change package error",
+            "Old password is incorrect": "Old password is incorrect",
+            "Please enter a password which is not similar then current password": "Please enter a password which is not similar then current password",
+            "Change password successfully": "Change password successfully",
+            "Change password error": "Change password error"
         }
     },
     "vi": {
+        "pagination": {
+            "previous": "&laquo; Trước",
+            "next": "Tiếp &raquo;"
+        },
         "passwords": {
             "reset": "Mật khẩu của bạn đã được thiết lập lại!",
             "sent": "Chúng tôi đã gửi email liên kết đặt lại mật khẩu của bạn!",
             "throttled": "Vui lòng đợi trước khi thử lại.",
             "token": "Mã thông báo đặt lại mật khẩu này không hợp lệ.",
             "user": "Chúng tôi không thể tìm thấy người dùng có địa chỉ email đó."
-        },
-        "auth": {
-            "failed": "Những thông tin không phù hợp với hồ sơ của chúng tôi.",
-            "throttle": "Quá nhiều lần thử đăng nhập. Vui lòng thử lại trong {seconds} giây."
-        },
-        "pagination": {
-            "previous": "&laquo; Trước",
-            "next": "Tiếp &raquo;"
         },
         "form_membership": {
             "title_founder": "Đăng ký HỘI VIÊN SÁNG LẬP",
@@ -312,6 +320,9 @@ export default {
             "descriptionlaststep1": "Tôi hiểu rằng tôi đang đăng ký để trở thành hội viên của Rose Villa Saigon. Nếu đơn của tôi được chấp nhận, tôi đồng thanh toán cho phí tham gia, phí hội viên và tất cả những khoản phí hội viên trong tương lai. ",
             "descriptionlaststep15": "TÔI HIỂU RẰNG TÔI ĐANG TRONG QUÁ TRÌNH GỬI ĐĂNG KÝ ĐỂ TRỞ THÀNH HỘI VIÊN SÁNG LẬP CỦA ROSE VILLA SAIGON. NẾU ĐƠN CỦA TÔI ĐƯỢC CHẤP NHẬN, ROSE VILLA SAIGON CÓ THỂ LIÊN HỆ TRỰC TIẾP VỚI TÔI ĐỂ THANH TOÁN PHÍ HỘI VIÊN TRƯỚC NGÀY KHAI TRƯƠNG, VÀ CHO NHỮNG LẦN GIA HẠN CHO NHỮNG NĂM TIẾP THEO. TÔI SẼ CỐ GẮNG SẮP XẾP ĐỂ PHÍ HỘI VIÊN CỦA MÌNH ĐƯỢC THANH TOÁN TRƯỚC LẦN ĐẾN CÂU LẠC BỘ.",
             "descriptionlaststep2": "Bằng cách đăng ký, tôi đồng ý tuân theo các điều kiện của câu lạc bộ Rose Villa và thời hạn & điều kiện thành viên",
+            "old_password": "Nhập Lại Mật Khẩu",
+            "new_password": "Mật Khẩu Mới",
+            "confirm_password": "Nhập Lại Mật Khẩu Mới",
             "reason": "TẠI SAO BẠN CHỌN ROSEVILLA ?",
             "usage_criteria": "BẠN MUỐN THAM GIA CÂU LẠC BỘ NÀO ?",
             "bring_to": "BẠN SẼ MANG LẠI ĐIỀU GÌ CHO CỘNG ĐỒNG ROSEVILLA?",
@@ -424,25 +435,9 @@ export default {
             },
             "attributes": []
         },
-        "messages": {
-            "Add contact error": "Thêm liên hệ thất bại",
-            "Phone number already exists": "Số điện thoại đã tồn tại",
-            "Incorrect phone number": "Số điện thoại không chính xác",
-            "Update password successfully": "Cập nhật mật khẩu thành công",
-            "Booking successfully": "Đặt chỗ thành công",
-            "Booking error": "Đặt chỗ thất bại",
-            "Add contact successfully": "Thêm liên hệ thành công",
-            "Members must be over 18 years old": "Thành viên phải trên 18 tuổi",
-            "Enter the verification code received from the system": "Nhập mã xác minh nhận được từ hệ thống",
-            "Register successfully": "Đăng ký thành công",
-            "Register error": "Đăng ký thất bại",
-            "You are not a Rose Villa Saigon member": "Bạn không phải là thành viên của Rose Villa Saigon",
-            "Login successfully": "Đăng nhập thành công",
-            "Phone or password is not correct": "Số điện thoại hoặc mật khẩu không chính xác",
-            "Member registration error": "Đăng ký thành viên thất bại",
-            "Member registration successfully": "Đăng ký thành viên thành công",
-            "You can use this email & phone": "Bạn có thể sử dụng email & số điện thoại này",
-            "Incorrect telephone number": "Số điện thoại không chính xác"
+        "auth": {
+            "failed": "Những thông tin không phù hợp với hồ sơ của chúng tôi.",
+            "throttle": "Quá nhiều lần thử đăng nhập. Vui lòng thử lại trong {seconds} giây."
         },
         "pages": {
             "Address Rose Villa Saigon": "Số 10 Đường số 58, Thảo Điền, Quận 2, Tp Hồ Chí Minh, Việt Nam",
@@ -452,6 +447,7 @@ export default {
             "Logout": "Đăng xuất",
             "profile": "Tài Khoản",
             "membershippackage": "Gói Thành Viên",
+            "changepass": "Đổi Mật Khẩu",
             "Rooms": "Phòng",
             "Food & Drinks": "Đồ ăn & Nước uống",
             "Wellness & Beauty": "Sức khỏe & Làm đẹp",
@@ -475,6 +471,34 @@ export default {
             "bookingspa": "Đặt Lịch Spa",
             "thankcontent": "CẢM ƠN BẠN ĐÃ HOÀN TẤT ĐƠN ĐĂNG KÝ NÀY. CHÚNG TÔI SẼ LIÊN HỆ VỚI BẠN TRONG THỜI GIAN SỚM NHẤT. ",
             "thankyou": "XÁC NHẬN ĐƠN ĐĂNG KÝ"
+        },
+        "messages": {
+            "Add contact error": "Thêm liên hệ thất bại",
+            "Phone number already exists": "Số điện thoại đã tồn tại",
+            "Incorrect phone number": "Số điện thoại không chính xác",
+            "Update password successfully": "Cập nhật mật khẩu thành công",
+            "Booking successfully": "Đặt chỗ thành công",
+            "Booking error": "Đặt chỗ thất bại",
+            "Add contact successfully": "Thêm liên hệ thành công",
+            "Members must be over 18 years old": "Thành viên phải trên 18 tuổi",
+            "Enter the verification code received from the system": "Nhập mã xác minh nhận được từ hệ thống",
+            "Register successfully": "Đăng ký thành công",
+            "Register error": "Đăng ký thất bại",
+            "You are not a Rose Villa Saigon member": "Bạn không phải là thành viên của Rose Villa Saigon",
+            "Login successfully": "Đăng nhập thành công",
+            "Phone or password is not correct": "Số điện thoại hoặc mật khẩu không chính xác",
+            "Member registration error": "Đăng ký thành viên thất bại",
+            "Member registration successfully": "Đăng ký thành viên thành công",
+            "You can use this email & phone": "Bạn có thể sử dụng email & số điện thoại này",
+            "Incorrect telephone number": "Số điện thoại không chính xác",
+            "Change profile successfully": "Thay đổi thông tin thành công",
+            "Change profile error": "Thay đổi thông tin thất bại",
+            "Change package successfully": "Thay đổi gói thành công",
+            "Change package error": "Thay đổi gói thất bại",
+            "Old password is incorrect": "Mật khẩu cũ không chính xác",
+            "Please enter a password which is not similar then current password": "Vui lòng nhập mật khẩu khác với mật khẩu hiện tại",
+            "Change password successfully": "Thay đổi mật khẩu thành công",
+            "Change password error": "Thay đổi mật khẩu thất bại"
         }
     }
 }

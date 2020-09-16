@@ -12,6 +12,7 @@ return [
 	'Logout' => 'Logout',
 	'profile' => 'Profile',
 	'membershippackage' => 'Membership Package',
+	'changepass' => 'Change Password',
 
 	//nav
 	'Rooms' => 'Rooms',

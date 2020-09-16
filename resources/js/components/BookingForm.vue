@@ -36,13 +36,27 @@
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <label>{{ $t('form_membership.startdate') }}</label>
                                   <div class="form-group popup-input-style2">
-                                       <input type="date" v-model="model.start_at" class="form-control-elm" value="" placeholder="Start Date" autocomplete="off" data-parsley-required>
+					            	<datepicker 
+					            		input-class="form-control-elm" 
+					            		v-model="model.start_at"
+					            		format="MM/dd/yyyy"
+					            		placeholder="mm/dd/yyyy"
+					            		:disabled-dates="disabledDates"
+					            		@input="changeDate($event, 'start_at')"
+					            	></datepicker>
                                   </div>
                               </div>
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <label>{{ $t('form_membership.enddate') }}</label>
                                   <div class="form-group popup-input-style2">
-                                       <input type="date" v-model="model.end_at" class="form-control-elm" value="" placeholder="End Date *" autocomplete="off" data-parsley-required>
+					            	<datepicker 
+					            		input-class="form-control-elm" 
+					            		v-model="model.end_at"
+					            		format="MM/dd/yyyy"
+					            		placeholder="mm/dd/yyyy"
+					            		:disabled-dates="disabledDatesEnd"
+					            		@input="changeDate($event, 'end_at')"
+					            	></datepicker>
                                   </div>
                               </div>
                           </div>
@@ -73,7 +87,13 @@
                           <div class="row" v-if="model.type_booking!=3">
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                   <div class="form-group popup-input-style2">
-                                       <input type="date" v-model="model.date" class="form-control-elm" value="" placeholder="Event Time *" autocomplete="off" data-parsley-required>
+					            	<datepicker 
+					            		input-class="form-control-elm" 
+					            		v-model="model.date"
+					            		format="MM/dd/yyyy"
+					            		placeholder="mm/dd/yyyy"
+					            		:disabled-dates="disabledDates"
+					            	></datepicker>
                                   </div>
                               </div>
                               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -110,17 +130,38 @@
 </template>
 
 <script>
+import Datepicker from 'vuejs-datepicker'
+import moment from 'moment'
 import $ from 'jquery'
 import { BModal, VBModal } from 'bootstrap-vue'
 export default {
   name: 'booking-form',
   props:['text'],
+  components: {
+    Datepicker
+  },
   data() {
+  	const now = new Date()
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  	const minDate = new Date(today)
    return {
     model: {
-      type_booking: 3
+      type_booking: 3,
     }
    }
+  },
+  computed: {
+  	disabledDates() {
+  		return {
+	  		to: new Date()
+  		}
+  	},
+  	disabledDatesEnd() {
+  		let start_at = this.model.start_at != '' ? this.model.start_at : new Date()
+  		return {
+	  		to: start_at ?? new Date()
+  		}
+  	}
   },
   created() {
     this.$eventBus.$on('openBooking', (booking_id, type) => {
@@ -129,12 +170,30 @@ export default {
     })
   },
   methods: {
+  	changeDate: function(e, model){
+  		if(this.model.start_at && this.model.end_at){
+	  		var from = moment(this.model.start_at)
+			var to = moment(this.model.end_at);
+
+			if (from > to) {
+				if(model == 'start_at'){
+			   		this.model.end_at = ''
+				}else {
+			   		this.model.start_at = ''
+				}
+			}
+		}
+  	},
     submit: function(){
       let _this = this
       let params = _this.model
       if(this.model.type_booking != 3){
         params.start_at = this.model.date +" "+ this.model.time
+      }else {
+      	params.start_at = moment(this.model.start_at).format('YYYY-MM-DD')
+      	params.end_at = moment(this.model.end_at).format('YYYY-MM-DD')
       }
+      params.date = moment(this.model.date).format('YYYY-MM-DD')
       axios.post(
           './booking', params
         ).then(function(response){
@@ -143,7 +202,7 @@ export default {
           }else {
             _this.model = {}
             toastr.success(response.data.message)
-            this.$refs.closeModal.click();
+            _this.$refs.closeModal.click();
           }
         });
     }

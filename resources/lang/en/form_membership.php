@@ -48,6 +48,10 @@ return [
 	'descriptionlaststep15' => 'I UNDERSTAND THAT I AM APPLYING TO BECOME A FOUNDER MEMBER OF ROSE VILLA SAIGON. IF ACCEPTED, I AGREE THAT I WILL BE RESPONSIBLE FOR MY MEMBERSHIP FEES PRIOR TO THE CLUB’S OPENING, AND FOR SUBSEQUENT ANNUAL RENEWAL FEES.',
 	'descriptionlaststep2' => 'By applying I agree to abide the Rose Villa club sules and term & conditions of membership',
 
+	//CHANGE PASS
+	'old_password' => 'Old Password',
+	'new_password' => 'New Password',
+	'confirm_password' => 'Confirm Password',
 	
 
 	//step 2 field

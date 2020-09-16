@@ -35,8 +35,9 @@
                     </div>
                 </div>
               </div>
-
-            <button ref="stepbutton" class="buttonmbs btnext btf" type="submit">{{ $t('form_membership.submit') }}</button>
+              <div class="button2center">
+                <button ref="stepbutton" class="buttonmbs btnext btf" type="submit">{{ $t('form_membership.submit') }}</button>
+              </div> 
           </form>
         </div>
     </div>
@@ -53,7 +54,8 @@ export default {
   computed: {
   },
   created() {
-    this.frequency_type = this.membership_type+'-'+this.frequency
+    if(this.membership_type && this.frequency)
+      this.frequency_type = this.membership_type+'-'+this.frequency
     let _this = this
     // get member package
     axios.get(
@@ -71,15 +73,19 @@ export default {
   methods: {
     changeType(option, priceType){
       let vkl = this.frequency_type
-      let arr_fre = vkl.split("-")
-    	console.log(priceType)
-      this.frequency = arr_fre[1]
-      this.membership_type = option.id
+      // let arr_fre = vkl.split("-")
+    	// console.log(priceType)
+      // this.frequency = arr_fre[1]
+      // this.membership_type = option.id
     },
     submit() {
+      let vkl = this.frequency_type
+      let arr_fre = vkl.split("-")
+      let frequency = arr_fre[1]
+      let membership_type = arr_fre[0]
       let params = {
-        membership_type: this.membership_type,
-        frequency: this.frequency
+        membership_type: membership_type,
+        frequency: frequency
       }
       axios.post(
           './change-package', params
