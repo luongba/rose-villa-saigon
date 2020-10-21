@@ -8,7 +8,7 @@ return [
 	'Term of use' => 'Term of use',
 
 	//header
-	'Login' => 'Login',
+	'Login' => 'Member Login',
 	'Logout' => 'Logout',
 	'profile' => 'Profile',
 	'membershippackage' => 'Membership Package',
@@ -47,6 +47,8 @@ return [
 	'bookingspa' => 'Booking Now',
 
 	// thank you 
-	'thankcontent'=>'Thank you for spending your quality time to complete your application. We have received it and will be in touch shortly',
+	'thankcontent'=>'WE HAVE RECEIVED YOUR APPLICATION AND WILL BE IN TOUCH SHORTLY',
+	'thankcontenearly'=>'THANK YOU FOR YOUR QUALITY TIME. YOUR DETAILS WILL NOW BE UPDATED IN OUR MEMBERSHIP SYSTEM',
 	'thankyou'  => 'THANK YOU',
+	'thankyouearly'  => 'THANK YOU',
 ];

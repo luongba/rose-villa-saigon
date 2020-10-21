@@ -12,13 +12,19 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <base href="{{asset('/public/')}}" >
     <!-- CSS Files -->
+
+    <meta name="google-site-verification" content="M8Rg8Qy0HD6j1tZkD_eLYVoEToWWFg_Z-miofHOJWPI" />
+
     @yield('css')
+    <link href="https://allfont.net/allfont.css?fonts=alexandra-script" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{asset('public/webfonts/stylesheet.css')}}">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="{{asset('public/css/bootstrap.css')}}">
     <!-- Optional theme -->
     <link href="https://parsleyjs.org/src/parsley.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('public/css/all.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('public/css/slick-theme.css')}}">
     <link href="{{asset('public/style.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('public/assets/css/curtain.css')}}" rel="stylesheet" media="screen">
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css" rel="stylesheet">

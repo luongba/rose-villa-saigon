@@ -20,7 +20,7 @@ class MembershipTypeController extends Controller
 		$validator = Validator::make($request, [
 			'dob' => 'required|date|before:-18years',
 			'city' => 'required',
-			'type' => 'required|integer|in:'.config('constants.MEMBERSHIP_TYPE_FOUNDER').','.config('constants.MEMBERSHIP_TYPE_REGULAR')
+			'type' => 'required|integer|in:'.config('constants.MEMBERSHIP_TYPE_FOUNDER').','.config('constants.MEMBERSHIP_TYPE_REGULAR').','.config('constants.MEMBERSHIP_TYPE_EARLY_FOUNDER')
 		],
 		[
 			'dob.before' => trans('messages.Members must be over 18 years old')
@@ -62,10 +62,16 @@ class MembershipTypeController extends Controller
 				}
 			} else {
 				if ($year >= 18 && $year <= 30) {
-					$arrIdPack = [15, 16, 19, 20];
+					$arrIdPack = [19, 20];
 				} else {
-					$arrIdPack = [13, 14, 17, 18];
+					$arrIdPack = [17, 18];
 				}
+			}
+		} elseif ($request->type == config('constants.MEMBERSHIP_TYPE_EARLY_FOUNDER')) {
+			if ($year >= 18 && $year <= 30) {
+				$arrIdPack = [22, 24];
+			} else {
+				$arrIdPack = [21, 23];
 			}
 		}
 		$arrPack = $this->membershipType

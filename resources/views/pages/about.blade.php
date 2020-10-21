@@ -3,7 +3,7 @@
   <div class="innerpage-style1 about-page">
     <span class="leftpageimg"></span>
     <span class="rightpageimg"></span>
-    <section class="innercontent content-inner50">
+    <section class="innercontent content-inner50 hp_about">
         <div class="about-ct ctbox1">
           @if($singlepage)
           <h1 class="title-innerpage2">
@@ -19,6 +19,8 @@
           </h1>
           @endif
         </div>
+    </section>
+    <section class="innerimage content-inner50 hp_about" style="background-image: url({{asset('').'public/storage/'.$singlepage->image}});">
     </section>
   </div>
 @endsection

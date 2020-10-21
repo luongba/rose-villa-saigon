@@ -229,7 +229,7 @@ html {
   background: url(../image/arrow-left.png) no-repeat center 48%;
   width: 40px;
   background-size: 12px;
-  top: 0;
+  top: 50%;
   bottom: 0;
   color: transparent;
   border: none;
@@ -237,12 +237,15 @@ html {
   @media screen and (min-width: 770px) {
     .slick-prev, .slick-next {
       width: 105px;
+      height: auto;
       background-size: 25px; } }
   .slick-prev.slick-disabled:before, .slick-next.slick-disabled:before {
     opacity: 0.25;
       outline-style:none;
  }
-
+.slick-prev:before, .slick-next:before {
+  display: none;
+}
 .slick-prev {
   left: 0; }
   [dir="rtl"] .slick-prev {
@@ -329,8 +332,10 @@ html {
   z-index: 1;
   padding: 1em 5% 5em 5%;
   text-align: center; 
-  background:url(../../images/about-left-img.png) no-repeat;
+  /*background:url(../../images/about-left-img.png) no-repeat;*/
   background-size:cover;
+  background-color: #fff;
+  height: 100%;
   
   }
   @media screen and (min-width: 770px) {

@@ -1,12 +1,13 @@
 @extends('master')
 @section('content')
+  <div class="bgfix bgonpage" style="background-image: url({{asset('').'public/storage/'.$singlepage->image}});"></div>
+
   <div class="innerpage-style1 contact-page">
     <span class="leftpageimg"></span>
     <span class="rightpageimg"></span>
-    <section class="innercontent content-inner50">
+    <section class="innercontent content-inner100" style="padding-top: 70px;">
         <div class="contact-ct ctbox1">
           <h1 class="title-innerpage2">
-
             <span><span>{!! ($singlepage != null)?$singlepage->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale'):trans('pages.Contact Us') !!}</span></span>
           </h1>
 

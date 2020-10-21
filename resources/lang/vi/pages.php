@@ -8,7 +8,7 @@ return [
 	'Term of use' => 'Điều khoản sử dụng',
 
 	//header
-	'Login' => 'Đăng nhập',
+	'Login' => 'Member Login',
 	'Logout' => 'Đăng xuất',
 	'profile' => 'Tài Khoản',
 	'membershippackage' => 'Gói Thành Viên',
@@ -50,4 +50,6 @@ return [
 	// thank you 
 	'thankcontent'=>'CẢM ƠN BẠN ĐÃ HOÀN TẤT ĐƠN ĐĂNG KÝ NÀY. CHÚNG TÔI SẼ LIÊN HỆ VỚI BẠN TRONG THỜI GIAN SỚM NHẤT. ',
 	'thankyou'  => 'XÁC NHẬN ĐƠN ĐĂNG KÝ',
+	'thankcontenearly' => 'CẢM ƠN BẠN ĐÃ DÀNH SỰ QUAN TÂM VÀ THỜI GIAN ĐỂ HOÀN TẤT VIỆC ĐĂNG KÝ TRỞ THÀNH HỘI VIÊN DANH DỰ CỦA ROSE VILLA SAIGON. CHÚNG TÔI ĐÃ NHẬN ĐƯỢC THÔNG TIN VÀ SẼ PHẢN HỒI BẠN TRONG THỜI GIAN SỚM NHẤT.',
+	'thankyouearly'  => 'XÁC NHẬN ĐƠN HỘI VIÊN DANH DỰ',
 ];

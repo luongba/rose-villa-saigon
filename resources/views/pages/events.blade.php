@@ -1,24 +1,31 @@
 @extends('master')
 @section('content')
-  @foreach($list_area_event as  $key =>$val)
-    @php
-      $so_du = $key % 2;
-      if ($so_du == 0){
-        $ctshow = 'ctlay-left';
-       }else{
-        $ctshow = 'ctlay-right';
-      }
-    @endphp
-    <div class="sfe sfe{{ $key }} innerpage-style1 {{$ctshow}}" style="background:url('{{$val->UrlThumb}}') no-repeat center center; background-size: cover;">
-      <span class="leftpageimg"></span>
-      <span class="rightpageimg"></span>
-      <section class="innercontent content-inner50">
-        <div class="about-ct ctbox1">
+  <main>
+    <div class="scroller">
+      <div class="slideshow scroller__slideshow">
+        @if($area_event->ListImageGallery)
+          @foreach( $area_event->ListImageGallery as $val_img)
+            <div class="slideshow__item" title="" style="background-image: url({{$val_img['url']}});">
+              {{-- <img src="{{$val_img['url']}}"> --}}
+            </div>
+          @endforeach
+      @else
+        <div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room1.jpg')}});"></div>
+        <div class="slideshow__item" title="" style="background-image: url({{asset('public/images/singleroom/room2.jpg')}});"></div>
+        @endif
+      </div>  
+      <div class="scroller__launcher">
+        <div class="slick-next scroller__launcher__arrow"></div>
+      </div>
+    </div>
+    <div class="sfe sfe0 innerpage-style1">
+      <section class="innercontent content-inner100">
+        <div class=" ctbox1">
           <h1 class="title-innerpage2">
-            <span><span>{!!$val->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')!!}</span></span>
+            <span><span>{!!$area_event->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')!!}</span></span>
           </h1>
           <div class="abct-elm">
-            {!!$val->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
+            {!!$area_event->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
           </div>
           <div class="buttonbk">
               @auth
@@ -26,7 +33,7 @@
                   :classname="'bookingaction radius_4'" 
                   :text="'Booking Event'"
                   :type="'0'"
-                  :booking_id="{{$val->id}}"
+                  :booking_id="{{$area_event->id}}"
                 ></button-show-modal>
               @else
                   <button data-toggle="modal" data-target="#popup-login" type="button" class="btn btn-secondary bookingaction radius_4">Booking Event</button>
@@ -34,9 +41,28 @@
           </div>
           <div class="clear"></div>
         </div>
-    </section>
+      </section>
+      <booking-form :text="'Booking Event'"></booking-form>
     </div>
-  @endforeach
-  <booking-form :text="'Booking Event'"></booking-form>
+    </div>
+  </main>
+
+<link rel="stylesheet" href="{{asset('public/rosevilla/style.css')}}" type="text/css" media="screen" />
+@endsection
+<div class="spa-menu">
+  <ul class="sub-menu">
+      @foreach($list_events as $val_events)
+                <li><a href="{{route('singleEvents',['slug'=>$val_events->slug])}}">{{$val_events->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')}}</a></li>
+                @endforeach
+  </ul>
+</div>
+
+
+@section('script')
+<script src="{{asset('public/rosevilla/enquire.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('public/rosevilla/slick.min.js')}}"></script>
+<script src="{{asset('public/rosevilla/script.js')}}" type="text/javascript"></script>
+
+    
 @endsection
 

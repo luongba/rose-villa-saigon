@@ -243,7 +243,9 @@ class MetaUserController extends VoyagerBaseController
                     $new_user -> frequency = $update_stt -> frequency;
                     $new_user -> save();
                     /*membership type*/
-                    $new_user ->membershipType()->sync($update_stt -> membership_type_id);
+                    if($update_stt -> type_user != 3){
+                        $new_user ->membershipType()->sync($update_stt -> membership_type_id);
+                    }
                     /*end new user*/
                     $update_stt -> status = 1;
                     $update_stt -> save();

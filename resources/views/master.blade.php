@@ -15,6 +15,7 @@
     <script src="{{asset('public/js/bootstrap.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.bundle.js')}}"></script>
     <script src="{{asset('public/js/app.js')}}"></script>
+    <script src="{{asset('public/js/slick.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     @yield('script')
     <script>
@@ -63,6 +64,25 @@
             $('.username-bar').click(function () {
                 $('.custom-dropmenu').slideToggle('slow');
             });
+
+            $(document).on('click', '.textmenu', function(){
+            var mn = $(".indexmenu");
+            if (mn.hasClass("sc0")){
+              mn.removeClass('sc0').addClass('sc1');
+              mn.closest('.landing').addClass('zindex');
+              
+              $('.homelinklogo').css('display','none');
+              $('.maplinklogo').css('display','block');
+            }else{
+              mn.removeClass('sc1').addClass('sc0');
+              $('.maplinklogo').css('display','none');
+              $('.homelinklogo').css('display','block');
+              mn.closest('.landing').removeClass('zindex');
+            }
+
+          }
+        );
+            
         });
     </script>
 </body>

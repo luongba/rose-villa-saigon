@@ -155,13 +155,13 @@ class UserController extends Controller
 			'post_code' => 'required',
 			'country' => 'required',
 			'avatar' => 'required',
-			'type_user' => 'required|integer|in:'.config('constants.MEMBERSHIP_TYPE_FOUNDER').','.config('constants.MEMBERSHIP_TYPE_REGULAR'),
+			'type_user' => 'required|integer|in:'.config('constants.MEMBERSHIP_TYPE_FOUNDER').','.config('constants.MEMBERSHIP_TYPE_REGULAR').','.config('constants.MEMBERSHIP_TYPE_EARLY_FOUNDER'),
 			'reason' => 'required_if:type_user,2',
 			'usage_criteria' => 'required_if:type_user,2',
 			'bring_to' => 'required_if:type_user,2',
 			'member_other' => 'required_if:type_user,2',
-			'membership_type' => 'required|min:1',
-			'frequency' => 'required|in:month_3,month_12'
+			'membership_type' => 'required_unless:type_user,'.config('constants.MEMBERSHIP_TYPE_EARLY_FOUNDER').'|min:1',
+			'frequency' => 'required_unless:type_user,'.config('constants.MEMBERSHIP_TYPE_EARLY_FOUNDER').'|in:month_3,month_12'
 		],
 		[
 			'dob.before' => trans('messages.Members must be over 18 years old')

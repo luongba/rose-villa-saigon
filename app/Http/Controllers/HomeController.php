@@ -60,11 +60,17 @@ class HomeController extends Controller
         $this->bookingRoom = new BookingRoom;
         $this->page = new Page;
 
-        $list_room = $this->room->withTranslations(['en', 'vi'])->get();
+        $list_room = $this->room->withTranslations(['en', 'vi'])->orderBy('created_at', 'asc')->get();
         View::share('list_room', $list_room);
 		
-		$list_areaParty = AreaParty::withTranslations(['en', 'vi'])->get();
+		$list_areaParty = AreaParty::withTranslations(['en', 'vi'])->orderBy('created_at', 'asc')->get();
         View::share('list_areaParty', $list_areaParty);
+
+        $list_wellness_beauty = WellnessBeauty::withTranslations(['en', 'vi'])->orderBy('created_at', 'asc')->get();
+        View::share('list_wellness_beauty', $list_wellness_beauty);
+
+        $list_events = AreaEvent::withTranslations(['en', 'vi'])->orderBy('created_at', 'asc')->get();
+        View::share('list_events', $list_events);
     }
     
     public function welcome(Request $request)
@@ -112,6 +118,11 @@ class HomeController extends Controller
         return view('pages.contact',compact('singlepage'));
     }
 
+    public function earlyFounder(Request $request)
+    {
+        return view('pages.early-founder');
+    }
+
     public function founder(Request $request)
     {
         return view('pages.founder');
@@ -127,7 +138,7 @@ class HomeController extends Controller
     }
     public function findus2(Request $request)
     {
-        return view('pages.findus2');
+        return view('pages.index-bk');
     }
     public function mailblade(Request $request)
     {
@@ -136,6 +147,18 @@ class HomeController extends Controller
     public function thankyou(Request $request)
     {
         return view('pages.thankyou');
+    }
+    public function regular_thankyou(Request $request)
+    {
+        return view('pages.thankyou-regular');
+    }
+    public function founder_thankyou(Request $request)
+    {
+        return view('pages.thankyou-founder');
+    }
+    public function earlyfounder_thankyou(Request $request)
+    {
+        return view('pages.thankyou-early-founder');
     }
     public function singleroom(Request $request)
     {
@@ -150,6 +173,16 @@ class HomeController extends Controller
        //return  $list_food_drink;
 
         return view('pages.single-food-drink',compact('list_food_drink'));
+    }
+    public function singleSpa(Request $request){
+        $wellness_beauty = $this -> wellnessBeauty ->withTranslations()->whereTranslation('slug', '=', $request -> slug)->first();
+        //return $wellness_beauty;
+        return view('pages.spa',compact('wellness_beauty'));
+    }
+    public function singleEvents(Request $request){
+        $area_event = $this -> areaEvent ->withTranslations()->whereTranslation('slug', '=', $request -> slug)->first();
+        //return $wellness_beauty;
+        return view('pages.events',compact('area_event'));
     }
 
     public function membership(Request $request)

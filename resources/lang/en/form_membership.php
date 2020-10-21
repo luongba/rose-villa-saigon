@@ -2,6 +2,7 @@
 
 return [
 	//MembershipForm.vue
+	'title_earlyfounder' => 'EARLY FOUNDER APPLICATION',
 	'title_founder' => 'FOUNDER APPLICATION',
 	'title_regular' => 'MEMBERSHIP APPLICATION',
 
@@ -47,6 +48,8 @@ return [
 	'descriptionlaststep1' => 'I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis',
 	'descriptionlaststep15' => 'I UNDERSTAND THAT I AM APPLYING TO BECOME A FOUNDER MEMBER OF ROSE VILLA SAIGON. IF ACCEPTED, I AGREE THAT I WILL BE RESPONSIBLE FOR MY MEMBERSHIP FEES PRIOR TO THE CLUB’S OPENING, AND FOR SUBSEQUENT ANNUAL RENEWAL FEES.',
 	'descriptionlaststep2' => 'By applying I agree to abide the Rose Villa club sules and term & conditions of membership',
+	'descriptionlaststepEarly' => 'I UNDERSTAND THAT I AM REGISTERING AS AN EARLY FOUNDER MEMBER OF ROSE VILLA SAIGON AND WILL ENJOY MY FIRST YEAR COMPLIMENTARY. AT THE END OF MY FIRST YEAR I WILL HAVE THE OPTION TO CONTINUE MY MEMBERSHIP BY PAYING THE FOUNDER MEMBERSHIP RATE. IF I ACCEPT THE OPTION, I AGREE THAT I WILL BE CONTACTED TO PAY FOR MY MEMBERSHIP FEES, AND FOR SUBSEQUENT RENEWAL FEES BEFORE VISITING THE CLUB.',
+	'early_description' => 'YOUR COMPLIMENTARY ONE YEAR EARLY FOUNDER MEMBERSHIP PROVIDES ACCESS TO ALL CLUB SPACES.',
 
 	//CHANGE PASS
 	'old_password' => 'Old Password',

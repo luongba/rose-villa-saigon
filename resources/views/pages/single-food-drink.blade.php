@@ -2,7 +2,7 @@
 @section('content')
   @foreach($list_food_drink as $key =>$val)
 
-    <div  class="innerpage-style1 ctlay-left" style="background:url('{{$val->UrlThumb}}') no-repeat center center; background-size: cover;">
+    <div  class="innerpage-style1 ctlay-left single-food" style="background:url('{{$val->UrlThumb}}') no-repeat center center; background-size: cover;">
       <span class="leftpageimg"></span>
       <span class="rightpageimg"></span>
       <section class="innercontent content-inner50">
@@ -15,6 +15,7 @@
           </div>
           <div class="buttonbk">
             <a href="javascript:;" class="bookingaction radius_4">View menu</a>
+
               @auth
                 <button-show-modal 
                   :classname="'bookingaction radius_4'" 
@@ -33,4 +34,11 @@
   @endforeach
   <booking-form :text="'Booking Table'"></booking-form>
 @endsection
+<div class="spa-menu">
+  <ul class="sub-menu">
+      @foreach($list_areaParty as $val_areaParty)
+      <li><a href="{{route('singlefooddrink',['slug'=>$val_areaParty->slug])}}">{{$val_areaParty->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')}}</a></li>
+      @endforeach
+  </ul>
+</div>
 

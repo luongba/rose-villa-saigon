@@ -2,6 +2,7 @@
 
 return [
 	//MembershipForm.vue
+	'title_earlyfounder' => 'Đăng ký HỘI VIÊN DANH DỰ',
 	'title_founder' => 'Đăng ký HỘI VIÊN SÁNG LẬP',
 	'title_regular' => 'Đăng ký hội viên',
 
@@ -47,6 +48,8 @@ return [
 	'descriptionlaststep1' => 'Tôi hiểu rằng tôi đang đăng ký để trở thành hội viên của Rose Villa Saigon. Nếu đơn của tôi được chấp nhận, tôi đồng thanh toán cho phí tham gia, phí hội viên và tất cả những khoản phí hội viên trong tương lai. ',
 	'descriptionlaststep15' => 'TÔI HIỂU RẰNG TÔI ĐANG TRONG QUÁ TRÌNH GỬI ĐĂNG KÝ ĐỂ TRỞ THÀNH HỘI VIÊN SÁNG LẬP CỦA ROSE VILLA SAIGON. NẾU ĐƠN CỦA TÔI ĐƯỢC CHẤP NHẬN, ROSE VILLA SAIGON CÓ THỂ LIÊN HỆ TRỰC TIẾP VỚI TÔI ĐỂ THANH TOÁN PHÍ HỘI VIÊN TRƯỚC NGÀY KHAI TRƯƠNG, VÀ CHO NHỮNG LẦN GIA HẠN CHO NHỮNG NĂM TIẾP THEO. TÔI SẼ CỐ GẮNG SẮP XẾP ĐỂ PHÍ HỘI VIÊN CỦA MÌNH ĐƯỢC THANH TOÁN TRƯỚC LẦN ĐẾN CÂU LẠC BỘ.',
 	'descriptionlaststep2' => 'Bằng cách đăng ký, tôi đồng ý tuân theo các điều kiện của câu lạc bộ Rose Villa và thời hạn & điều kiện thành viên',
+	'descriptionlaststepEarly' => 'TÔI HIỂU RẰNG TÔI ĐANG TRỞ THÀNH HỘI VIÊN DANH DỰ CỦA ROSE VILLA SAIGON VÀ SẼ ĐƯỢC HƯỞNG MIỄN PHÍ NHỮNG QUYỀN LỢI CỦA HỘI VIÊN CHO NĂM ĐẦU TIÊN CỦA MÌNH. SAU KHI NĂM ĐẦU TIÊN KẾT THÚC, TÔI CÓ THỂ CHỌN TIẾP TỤC GIA HẠN THẺ HỘI VIÊN CỦA MÌNH BẰNG CÁCH THANH TOÁN PHÍ HỘI VIÊN THEO MỨC PHÍ CỦA HỘI VIÊN SÁNG LẬP. NẾU TÔI CHỌN CÁCH GIA HẠN, TÔI ĐỒNG Ý CHO ROSE VILLA SAIGON LIÊN HỆ VỚI TÔI ĐỂ THANH TOÁN PHÍ HỘI VIÊN NÀY VÀ CHO NHỮNG LẦN GIA HẠN SAU NÀY TRƯỚC LẦN ĐẾN CÂU LẠC BỘ.',
+	'early_description' => 'HỘI VIÊN DANH DỰ SẼ ĐƯỢC ĐẶC QUYỀN SỬ DỤNG MIỄN PHÍ TẤT CẢ KHÔNG GIAN CỦA CÂU LẠC BỘ TRONG NĂM ĐẦU TIÊN.',
 
 	//CHANGE PASS
 	'old_password' => 'Nhập Lại Mật Khẩu',

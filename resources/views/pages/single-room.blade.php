@@ -12,8 +12,8 @@
       <div class="slideshow scroller__slideshow">
       	@if($singleroom->ListImageGallery)
 	      	@foreach( $singleroom->ListImageGallery as $val_img)
-	        	<div class="slideshow__item" title="" >
-	        		<img src="{{$val_img['url']}}">
+	        	<div class="slideshow__item" title="" style="background-image: url({{$val_img['url']}});">
+	        		{{-- <img src="{{$val_img['url']}}"> --}}
 	        	</div>
 	        @endforeach
 	    @else
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="poster visual-pull-left-lap-and-up">
-    	<div class="about-ct ctbox1 singleframe">	
+    	<div class=" ctbox1">	
 		    {{-- <h1 class="poster__title poster__title--ghost"></h1>
 		    <h1 class="poster__title visual-pull-left-lap-and-up"></h1> --}}
 			<h1 class="title-innerpage2">
@@ -81,6 +81,14 @@
 
 <link rel="stylesheet" href="{{asset('public/rosevilla/style.css')}}" type="text/css" media="screen" />
 @endsection
+<div class="spa-menu">
+  <ul class="sub-menu">
+      	@foreach($list_room as $val_room)
+			<li><a href="{{route('singleroom',['slug'=>$val_room->slug])}}">{{$val_room->getTranslatedAttribute('name', config('app.locale'), 'fallbackLocale')}}</a></li>
+    	@endforeach
+	</ul>
+</div>
+
 @section('script')
 <script src="{{asset('public/rosevilla/enquire.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('public/rosevilla/slick.min.js')}}"></script>

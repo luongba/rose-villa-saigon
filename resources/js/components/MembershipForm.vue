@@ -2,6 +2,7 @@
     <section v-else class="content-membership">
       <div class="header-mbs">
         <div class="container">
+          <h3 v-if="type == 'early-founder'">{{ $t('form_membership.title_earlyfounder') }}</h3>
           <h3 v-if="type == 'founder'">{{ $t('form_membership.title_founder') }}</h3>
           <h3 v-if="type == 'regular'">{{ $t('form_membership.title_regular') }}</h3>
           <ul class="step-membership">
@@ -195,7 +196,7 @@
           <div ref="uploadimage" class="stepmbs step1st" v-if="step == 1">
             <croppie ref="childComponent" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
           </div>
-          <div class="stepmbs step2nd" v-if="step == 2 && type != 'founder'">
+          <div class="stepmbs step2nd" v-if="step == 2 && !isFounder">
             <div class="container">
               <FormulateInput
                 :wrapper-class="['form-group required']"
@@ -227,9 +228,24 @@
               />
             </div>
           </div>
-          <div :class="classStep" class="stepmbs" v-if="(step == 2 && type == 'founder') || step == 3 && type != 'founder'">
+          <div :class="classStep" class="stepmbs" v-if="(step == 2 && isFounder) || step == 3 && !isFounder">
             <div class="container">
-              <div class="row flexrow centerflex">
+              <div v-if="earlyfounder" class="text_early_founder  options-mbs radius_4">
+                      <div class="ctbd1"></div>
+                      <div class="ctbd2"></div>
+                      <div class="ctbd3"></div>
+                      <div class="ctbd4"></div>
+                      <div class="ctbd5"></div>
+                      <div class="ctbd6"></div>
+                      <div class="ctbd7"></div>
+                      <div class="ctbd8"></div>
+                <div class="content-tp-mbs">
+                  <p class="text_early">
+                  {{$t('form_membership.early_description')}}
+                  </p>
+                </div>
+              </div>
+              <div v-else class="row flexrow centerflex">
               	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               		<p class="textcenter des-step2">{{ $t('form_membership.step2_desc') }}</p>
               	</div>
@@ -264,17 +280,20 @@
               </div>
             </div> 
           </div>
-          <div :class="classStep" class="stepmbs" v-if="(step == 3 && type == 'founder') || step == 4">
+          <div :class="classStep" class="stepmbs" v-if="(step == 3 && isFounder) || step == 4">
           	<div class="container">
-              <div class="ctstep4">
+              <div v-if="!earlyfounder" class="ctstep4">
                 <h4 class="underline">{{ $t('form_membership.amountdue') }}</h4>
                 <p class="priceop">${{ model.packagePrice }}</p>
                 <h4>{{ $t('form_membership.for') }} {{ model.packageName }} {{ $t('form_membership.membership') }}</h4>
                 <h4 class="underline">{{ $t('form_membership.payment') }}</h4>
-              </div> 
-              <div class="agreestep4">
-	              <p v-if="model.frequency == 'month_3'">{{ $t('form_membership.descriptionlaststep1') }}</p>
-                <p v-if="model.frequency != 'month_3'">{{ $t('form_membership.descriptionlaststep15') }}</p>
+                <div class="agreestep4">
+                  <p v-if="model.frequency == 'month_3'">{{ $t('form_membership.descriptionlaststep1') }}</p>
+                  <p v-if="model.frequency != 'month_3'">{{ $t('form_membership.descriptionlaststep15') }}</p>
+                </div>
+              </div>
+              <div v-else class="agreestep4">
+                <p>{{ $t('form_membership.descriptionlaststepEarly') }}</p>
               </div>
               <div class="agreestep4 pl25">
 	              <input id="checkbox" type="checkbox" v-model="model.agree">
@@ -328,15 +347,13 @@ export default {
     };
   },
   mounted() {
-    if(this.type == "founder"){
-      this.model.type_user = 1
+    if(this.isFounder){
       this.steps = [
                 this.$t('form_membership.step1_title'), 
                 this.$t('form_membership.step3_title'), 
                 this.$t('form_membership.step4_title')
                 ]
     }else {
-      this.model.type_user = 2
       this.steps = [
                 this.$t('form_membership.step1_title'), 
                 this.$t('form_membership.step2_title'), 
@@ -346,7 +363,7 @@ export default {
     }
     let _this = this
     // get countries
-    if(this.type != "founder"){
+    if(!this.isFounder){
       axios.get(
         './country'
       ).then(function(response){
@@ -375,7 +392,7 @@ export default {
         params:{
           dob: "12-08-1920",
           city: "ha noi",
-          type: _this.type == 'founder' ? 1 : 2
+          type: _this.globalType
         }
       }
     ).then(function(response){
@@ -387,16 +404,35 @@ export default {
     
   },
   computed: {
+    isFounder() {
+      return this.type == "founder" || this.type == "early-founder"
+    },
+    earlyfounder() {
+      return this.type == "early-founder"
+    },
+    founder() {
+      return this.type == "founder"
+    },
     classStep() {
       if(this.step == 2){
-        return this.type == 'founder' ? "step3rd" : "step2nd"
+        return this.isFounder ? "step3rd" : "step2nd"
       }else if(this.step == 3){
-        return this.type == 'founder' ? "step4th" : "step3rd"
+        return this.isFounder ? "step4th" : "step3rd"
       }else if(this.step == 1){
         return "stepFirst"
       }else {
         return "stepLast"
       }
+    },
+    globalType() {
+      let type = 2
+      if (this.type == 'founder') {
+        type = 1
+      }else if (this.type == 'early-founder') {
+        type = 3
+      }
+      this.model.type_user = type
+      return type
     }
   },
   methods: {
@@ -529,7 +565,7 @@ export default {
                   params:{
                     dob: _this.model.dob,
                     city: _this.model.city,
-                    type: _this.type == 'founder' ? 1 : 2
+                    type: _this.globalType
                   }
                 }
               ).then(function(response){
@@ -543,7 +579,7 @@ export default {
         }
       }
 
-      if(this.step == 2 && this.type != 'founder'){
+      if(this.step == 2 && !this.isFounder){
         if(
           !this.model.reason || !this.model.bring_to || !this.model.usage_criteria|| !this.model.member_other
           ){
@@ -555,7 +591,12 @@ export default {
         }
       }
 
-      if((this.step == 3 && this.type != 'founder') || (this.step == 2 && this.type == 'founder')){
+      if(this.step == 2 && this.earlyfounder) {
+          this.step++
+          return
+      }
+
+      if((this.step == 3 && !this.isFounder) || (this.step == 2 && this.isFounder)){
         if(!this.model.membership_type){
           toastr.error(this.$t('form_membership.error_select'))
         }else {
@@ -568,7 +609,8 @@ export default {
     },
     submit: function(){
       console.log(this.step)
-        if(!this.model.frequency ){
+      let types = this.type
+        if(!this.model.frequency && !this.earlyfounder ){
           toastr.error(this.$t('form_membership.error_select'))
           return
         }
@@ -595,7 +637,15 @@ export default {
             toastr.error(response.data.message)
           }else {
             toastr.success(response.data.message)
-            setTimeout(() => window.location.href = './thank-you', 1500)
+            console.log(response.data.message)
+            if(types == "regular"){
+              setTimeout(() => window.location.href = './regular-thank-you', 1500)
+            }else if (types == "founder"){
+              setTimeout(() => window.location.href = './founder-thank-you', 1500)
+            }else {
+              setTimeout(() => window.location.href = './early-founder-thank-you', 1500)
+            }
+            // setTimeout(() => window.location.href = './thank-you', 1500)
           }
         });
     },

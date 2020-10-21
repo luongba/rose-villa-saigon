@@ -12,6 +12,7 @@ export default {
             "user": "We can't find a user with that email address."
         },
         "form_membership": {
+            "title_earlyfounder": "EARLY FOUNDER APPLICATION",
             "title_founder": "FOUNDER APPLICATION",
             "title_regular": "MEMBERSHIP APPLICATION",
             "step1_title": "ABOUT YOU",
@@ -54,6 +55,8 @@ export default {
             "descriptionlaststep1": "I understand that I am applying to become a Member of Rose Villa. If accepted, I agree to arrange a payment for my joining fee and initial membership fee, and for all subsequent membership fees on an ongoing basis",
             "descriptionlaststep15": "I UNDERSTAND THAT I AM APPLYING TO BECOME A FOUNDER MEMBER OF ROSE VILLA SAIGON. IF ACCEPTED, I AGREE THAT I WILL BE RESPONSIBLE FOR MY MEMBERSHIP FEES PRIOR TO THE CLUB’S OPENING, AND FOR SUBSEQUENT ANNUAL RENEWAL FEES.",
             "descriptionlaststep2": "By applying I agree to abide the Rose Villa club sules and term & conditions of membership",
+            "descriptionlaststepEarly": "I UNDERSTAND THAT I AM REGISTERING AS AN EARLY FOUNDER MEMBER OF ROSE VILLA SAIGON AND WILL ENJOY MY FIRST YEAR COMPLIMENTARY. AT THE END OF MY FIRST YEAR I WILL HAVE THE OPTION TO CONTINUE MY MEMBERSHIP BY PAYING THE FOUNDER MEMBERSHIP RATE. IF I ACCEPT THE OPTION, I AGREE THAT I WILL BE CONTACTED TO PAY FOR MY MEMBERSHIP FEES, AND FOR SUBSEQUENT RENEWAL FEES BEFORE VISITING THE CLUB.",
+            "early_description": "YOUR COMPLIMENTARY ONE YEAR EARLY FOUNDER MEMBERSHIP PROVIDES ACCESS TO ALL CLUB SPACES.",
             "old_password": "Old Password",
             "new_password": "New Password",
             "confirm_password": "Confirm Password",
@@ -278,6 +281,7 @@ export default {
             "user": "Chúng tôi không thể tìm thấy người dùng có địa chỉ email đó."
         },
         "form_membership": {
+            "title_earlyfounder": "Đăng ký HỘI VIÊN DANH DỰ",
             "title_founder": "Đăng ký HỘI VIÊN SÁNG LẬP",
             "title_regular": "Đăng ký hội viên",
             "step1_title": "LỜI GIỚI THIỆU",
@@ -320,6 +324,8 @@ export default {
             "descriptionlaststep1": "Tôi hiểu rằng tôi đang đăng ký để trở thành hội viên của Rose Villa Saigon. Nếu đơn của tôi được chấp nhận, tôi đồng thanh toán cho phí tham gia, phí hội viên và tất cả những khoản phí hội viên trong tương lai. ",
             "descriptionlaststep15": "TÔI HIỂU RẰNG TÔI ĐANG TRONG QUÁ TRÌNH GỬI ĐĂNG KÝ ĐỂ TRỞ THÀNH HỘI VIÊN SÁNG LẬP CỦA ROSE VILLA SAIGON. NẾU ĐƠN CỦA TÔI ĐƯỢC CHẤP NHẬN, ROSE VILLA SAIGON CÓ THỂ LIÊN HỆ TRỰC TIẾP VỚI TÔI ĐỂ THANH TOÁN PHÍ HỘI VIÊN TRƯỚC NGÀY KHAI TRƯƠNG, VÀ CHO NHỮNG LẦN GIA HẠN CHO NHỮNG NĂM TIẾP THEO. TÔI SẼ CỐ GẮNG SẮP XẾP ĐỂ PHÍ HỘI VIÊN CỦA MÌNH ĐƯỢC THANH TOÁN TRƯỚC LẦN ĐẾN CÂU LẠC BỘ.",
             "descriptionlaststep2": "Bằng cách đăng ký, tôi đồng ý tuân theo các điều kiện của câu lạc bộ Rose Villa và thời hạn & điều kiện thành viên",
+            "descriptionlaststepEarly": "TÔI HIỂU RẰNG TÔI ĐANG TRỞ THÀNH HỘI VIÊN DANH DỰ CỦA ROSE VILLA SAIGON VÀ SẼ ĐƯỢC HƯỞNG MIỄN PHÍ NHỮNG QUYỀN LỢI CỦA HỘI VIÊN CHO NĂM ĐẦU TIÊN CỦA MÌNH. SAU KHI NĂM ĐẦU TIÊN KẾT THÚC, TÔI CÓ THỂ CHỌN TIẾP TỤC GIA HẠN THẺ HỘI VIÊN CỦA MÌNH BẰNG CÁCH THANH TOÁN PHÍ HỘI VIÊN THEO MỨC PHÍ CỦA HỘI VIÊN SÁNG LẬP. NẾU TÔI CHỌN CÁCH GIA HẠN, TÔI ĐỒNG Ý CHO ROSE VILLA SAIGON LIÊN HỆ VỚI TÔI ĐỂ THANH TOÁN PHÍ HỘI VIÊN NÀY VÀ CHO NHỮNG LẦN GIA HẠN SAU NÀY TRƯỚC LẦN ĐẾN CÂU LẠC BỘ.",
+            "early_description": "HỘI VIÊN DANH DỰ SẼ ĐƯỢC ĐẶC QUYỀN SỬ DỤNG MIỄN PHÍ TẤT CẢ KHÔNG GIAN CỦA CÂU LẠC BỘ TRONG NĂM ĐẦU TIÊN.",
             "old_password": "Nhập Lại Mật Khẩu",
             "new_password": "Mật Khẩu Mới",
             "confirm_password": "Nhập Lại Mật Khẩu Mới",

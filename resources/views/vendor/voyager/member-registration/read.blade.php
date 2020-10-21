@@ -108,7 +108,7 @@
                         <h3 class="panel-title">Membership Type</h3>
                     </div>
                     <div class="panel-body" style="padding-top:0;">
-                        <p>{{$dataTypeContent->membershipType->name}}</p>
+                        <p>{{($dataTypeContent->membershipType)?$dataTypeContent->membershipType->name:"none"}}</p>
                    </div>
                    @if($dataTypeContent->frequency)
                    <div class="panel-heading" style="border-bottom:0;">

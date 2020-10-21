@@ -28,9 +28,19 @@ Route::group(['middleware' => 'locale'], function() {
 		'uses' => 'HomeController@events'
 	]);
 
+	Route::get('/events/{slug}', [
+		'as' => 'singleEvents',
+		'uses' => 'HomeController@singleEvents'
+	]);
+
 	Route::get('/spa', [
 		'as' => 'spa',
 		'uses' => 'HomeController@spa'
+	]);
+
+	Route::get('/spa/{slug}', [
+		'as' => 'singleSpa',
+		'uses' => 'HomeController@singleSpa'
 	]);
 
 	Route::get('/food-drink', [
@@ -61,6 +71,10 @@ Route::group(['middleware' => 'locale'], function() {
 		'as' => 'founder',
 		'uses' => 'HomeController@founder'
 	]);
+	Route::get('/early-founder', [
+		'as' => 'early-founder',
+		'uses' => 'HomeController@earlyFounder'
+	]);
 	Route::get('/how-to-find-us', [
 		'as' => 'findus',
 		'uses' => 'HomeController@findus'
@@ -83,6 +97,18 @@ Route::group(['middleware' => 'locale'], function() {
 	Route::get('/thank-you', [
 		'as' => 'thankyou',
 		'uses' => 'HomeController@thankyou'
+	]);	
+	Route::get('/regular-thank-you', [
+		'as' => 'regular_thankyou',
+		'uses' => 'HomeController@regular_thankyou'
+	]);	
+	Route::get('/founder-thank-you', [
+		'as' => 'founder_thankyou',
+		'uses' => 'HomeController@founder_thankyou'
+	]);
+	Route::get('/early-founder-thank-you', [
+		'as' => 'earlyfounder_thankyou',
+		'uses' => 'HomeController@earlyfounder_thankyou'
 	]);
 
 	Route::get('/single-room/{slug}', [

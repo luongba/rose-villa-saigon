@@ -1,10 +1,15 @@
-  <a class="logo-landing" href="http://rosevilla.tntechs.com.vn/public/storage/pdf/Rose%20Villa%20Saigon%20Privacy%20Policy%2027.6.20%20Edited%20No%20CC%20No%20Social.pdf" target="_blank"><img src="{{asset('public/images/logo/logo-rosevilla.png')}}" /></a>
+  <div class="logo-landing">
+  <a class="homelinklogo" href="{{route('welcome')}}" target="_blank"><img src="{{asset('public/images/logo/logo.png')}}" /></a>
+  <a class="maplinklogo" href="http://rosevilla.tntechs.com.vn/public/storage/maps/maplogo.jpg" target="_blank">
+    <img src="{{asset('public/images/logo/mapclick.png')}}" />
+  </a>
+  </div>
   <section class="header-landing landingstyle">
     <div class="container-fluid">
       @if(Auth::user())
             <div class="dropdown user-menu custom-header-user hidden640">
 	            <a class="dropdown-toggle username-bar" href="javascript:;" id="profile-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                  {{Auth::user()->first_name}} {{Auth::user()->last_name}}
+	                  Welcome {{Auth::user()->first_name}} {{Auth::user()->last_name}}
 	             </a>
 	            <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
                 <li class="profile-user">
@@ -30,6 +35,12 @@
             <a class="loginlink-landing" href="javascript:;"  data-toggle="modal" data-target="#popup-login">{{ trans('pages.Login') }}</a>
         </div>
       @endif
+      <div class="head_textmenu">
+        <div class="textmenu">
+          Explore Rose Villa
+        </div>
+      </div>
+      
       <button type="button" id="menu-btn" class="menuhome navbar-toggle collapsed">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -54,4 +65,10 @@
       </div>
     </div>
   </section>
-
+  <div class="landing landingstyle">
+    <div class="innerpage-style1 fixheightfull">
+      <div class="container indexmenu sc0">
+        @include('layouts.nav')
+      </div>
+    </div>
+  </div>

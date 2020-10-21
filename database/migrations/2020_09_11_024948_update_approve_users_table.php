@@ -35,7 +35,7 @@ class UpdateApproveUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_metas', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->text('address_two')->nullable(false)->change();
             $table->unsignedBigInteger('membership_type_id')->nullable(false)->change();
             $table->string('frequency')->nullable(false)->change();
