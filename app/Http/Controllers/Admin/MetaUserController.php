@@ -6,6 +6,7 @@ use TCG\Voyager\Facades\Voyager;
 use App\Models\UserMeta;
 use App\User;
 use App\Events\AfterConfirmMembership;
+use App\Events\PushDataCreateUserToAPI;
 use Auth;
 
 //use TCG\Voyager\Http\Controllers\VoyagerBaseController as BaseVoyagerBaseController;
@@ -254,6 +255,9 @@ class MetaUserController extends VoyagerBaseController
                     /*sent email*/
                     $data['password'] = $password;
                     event(new AfterConfirmMembership($update_stt, $data));
+
+                    /*sent request create user to api*/
+                    event(new PushDataCreateUserToAPI($new_user, 1));
                 }
                 
 
