@@ -640,6 +640,9 @@ a.sociallink i{
 	text-transform: uppercase;
 	text-shadow: 0 0 10px rgba(0, 0, 0, 1), 0 0 3px rgba(0, 0, 0, 1), 0 0 7px rgba(0, 0, 0, 0.5);
 }
+.spa-menu ul li a:hover {
+	color: #c18e30;
+}
 .findus-page .innercontent {
 	padding-top: 100px;
 }
@@ -2399,8 +2402,14 @@ div.permissions li i{
 	float:left;
 	text-align: center;
 	font-size:24px;
+	color: #fff;
 	
 }
+.content-editer-room  p,
+.content-editer-room  span {
+	color: #fff !important;
+}
+
 .bed-number{
 	margin-bottom:10px;
 }
@@ -3237,7 +3246,7 @@ transition: all 3s;
 }
 .about-page .hp_about {
 	padding-top: 150px;
-	background: #fff;
+	/*background: #fff;*/
 	height: 100%;
 }
 .innerimage.hp_about {
@@ -3262,7 +3271,7 @@ transition: all 3s;
 	padding-top:61px;
 	width: 52%;
 	overflow-y: scroll;
-	background-color: #fff;
+	/*background-color: #fff;*/
 }
 .ctlay-right .content-inner50 {
 	float:right;
@@ -3408,8 +3417,11 @@ transition: all 3s;
 	width:491px;
 	background:url(images/About-Us.png) no-repeat;
 }
-.about-page  .about-ct{
-	background:#fff;
+.getPage .about-ct {
+	background: transparent;
+}
+.getPage .about-ct .abct-elm h4 {
+	color: #fff;
 }
 .contact-ct{
 	width:539px;
@@ -3422,7 +3434,21 @@ transition: all 3s;
 	width:500px;
 	background:url(images/bg/frame.png) no-repeat;
 }
-
+.getPage .title-innerpage2 {
+	top: 0;
+}
+.getPage .title-innerpage2 span {
+	height: auto;
+}
+.hp_about .ctbox1 {
+	padding-top: 55px;
+}
+.singlefooddrink .title-innerpage2 span span {
+	color: #333;
+}
+.singlefooddrink .abct-elm p span {
+	color: #636363 !important;
+}
 .title-innerpage2{
 	height:78px;
 	width:240px;
@@ -3433,7 +3459,7 @@ transition: all 3s;
 }
 
 .singleroom .title-innerpage2{
-	background:url(images/bg-title.png) no-repeat;
+	/*background:url(images/bg-title.png) no-repeat;*/
 	height:157px;
 	width:247px;
 	top:-50px;
@@ -3461,7 +3487,7 @@ transition: all 3s;
 	display:table-cell;
 	text-align:center;
 	font-size:24px;
-	color:#252525;
+	color:#fff;
 	text-transform:uppercase;
 }
 /*
@@ -3477,6 +3503,14 @@ transition: all 3s;
 	margin:0px auto;
 	text-align:justify;
 	padding:0 5px;
+}
+.abct-elm p,
+.abct-elm span {
+	color: #fff !important;
+}
+body.contact .title-innerpage2 span span, 
+body.findus .title-innerpage2 span span {
+	color: #333;
 }
 .singleroom-ct{
 	width:450px;
@@ -3851,8 +3885,8 @@ h3.title-post-1::after{
 	left:20px;
 	border-radius:18px;
 	overflow:hidden;
-	background:rgba(0,0,255,0.2);
-	z-index:999;
+	background:rgba(255,255,255,0.2);
+	z-index:9999;
 }
 /*
 .control-off{
