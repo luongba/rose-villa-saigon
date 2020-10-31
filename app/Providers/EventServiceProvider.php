@@ -49,6 +49,9 @@ class EventServiceProvider extends ServiceProvider
         //
         'App\Events\AfterRegisterMember' => [
             'App\Listeners\SendMailNofityReceivedApplication'
+        ],
+        'App\Events\PushDataCreateUserToAPI' => [
+            'App\Listeners\DoPushDataCreateUserAPI'
         ]
     ];
 
