@@ -55,7 +55,8 @@ class DoPushDataCreateUserAPI {
                     'postalCode' => $user->post_code,
                     'email' => $user->email,
                     'mobilePhoneNumber' => $user->phone,
-                    'memberType' => $user->membership_type_id
+                    'memberType' => $user->membership_type_id,
+                    'image' => $user->FullLinkAvatar
                 ]
         ];
         $promise = $this->client->request('POST', $url, $body);
