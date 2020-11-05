@@ -227,6 +227,16 @@ Route::group(['middleware' => 'locale'], function() {
 				'as' => 'users.post_create_member',
 				'uses' => 'Admin\VoyagerUserController@post_create_member'
 			]);
+
+			Route::get('/update-users-data-from-smile', [
+				'as' => 'users.update_users_data_from_smile',
+				'uses' => 'Admin\VoyagerUserController@update_users_data_from_smile'
+			]);
+			// update_user_data_from_smile
+			Route::get('/update-user-data-from-smile/{id}', [
+				'as' => 'users.update_user_data_from_smile',
+				'uses' => 'Admin\VoyagerUserController@update_user_data_from_smile'
+			]);
 		});
 		Voyager::routes();
 	});
