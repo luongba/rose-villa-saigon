@@ -48,7 +48,6 @@
   </main>
 
 <link rel="stylesheet" href="{{asset('public/rosevilla/style.css')}}" type="text/css" media="screen" />
-@endsection
 <div class="spa-menu">
   <ul class="sub-menu">
       @foreach($list_events as $val_events)
@@ -56,6 +55,8 @@
                 @endforeach
   </ul>
 </div>
+@endsection
+
 
 
 @section('script')

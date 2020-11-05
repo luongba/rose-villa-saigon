@@ -622,10 +622,13 @@ a.sociallink i{
 .spa-menu {
 	position: fixed;
     left: 0;
-    bottom: 80px;
-    z-index: 9999;
+    bottom: 50px;
     width: 100%;
     text-align: center;
+    z-index: 999;
+}
+.singleroom .ctbox1 {
+	padding-top: 75px;
 }
 .spa-menu ul {
     margin: 0;
@@ -643,6 +646,7 @@ a.sociallink i{
 .spa-menu ul li a:hover {
 	color: #c18e30;
 }
+
 .findus-page .innercontent {
 	padding-top: 100px;
 }
@@ -4733,6 +4737,9 @@ button, [type="button"], [type="reset"], [type="submit"] {
 	}*/
 }
 @media only screen and (max-width: 1440px){
+	.singleroom-ct {
+	    height: 280px;
+	}
 	.logo-landing a img {
 		width: 80px;
 		margin: 0 auto;
