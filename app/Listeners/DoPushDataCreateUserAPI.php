@@ -59,12 +59,26 @@ class DoPushDataCreateUserAPI {
                     'image' => $user->FullLinkAvatar
                 ]
         ];
+        $urlAvatar = "http://rosevilla.tntechs.com.vn/public/storage/avatar/img2020110508253540297600.jpeg";
+        if ($urlAvatar && $urlAvatar != '' && $this->get_http_response_code($urlAvatar) == "200") {
+            $body['multipart'] = [
+                'name' => 'image',
+                'contents' => file_get_contents($urlAvatar),
+                'filename' => 'avatar_' . $user->id
+            ];
+        };
         $promise = $this->client->request('POST', $url, $body);
+        dd($promise);
     }
 
     public function failed(PushDataCreateUserToAPI $event, $exception)
     {
         dd($exception);
+    }
+
+    private function get_http_response_code($url) {
+        $headers = get_headers($url);
+        return substr($headers[0], 9, 3);
     }
     
 }

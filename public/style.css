@@ -3962,6 +3962,12 @@ h3.title-post-1::after{
     color: #fff;
     margin-top: 130px;
 }
+body.contact .innerpage-membership, 
+body.regularmember .innerpage-membership, 
+body.founder .innerpage-membership, 
+body.early-founder .innerpage-membership{
+	min-height: 785px;
+}
 .banner-member{
 	width:100%;
 	float:left;
