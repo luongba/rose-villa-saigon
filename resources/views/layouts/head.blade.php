@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="">
+<html lang="en">
 <head>
     <link rel="alternate" href="https://www.rosevillasaigon.com/" hreflang="en" />
     <title>Rose Villa Sài Gòn</title>

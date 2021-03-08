@@ -33,12 +33,12 @@
   </div>
   @endforeach
   <booking-form :text="'Booking Table'"></booking-form>
-@endsection
-<div class="spa-menu">
+  <div class="spa-menu">
   <ul class="sub-menu">
       @foreach($list_areaParty as $val_areaParty)
       <li><a href="{{route('singlefooddrink',['slug'=>$val_areaParty->slug])}}">{{$val_areaParty->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')}}</a></li>
       @endforeach
   </ul>
 </div>
+@endsection
 

@@ -1,0 +1,147 @@
+@font-face{
+    font-family: Algerian;
+    src: url(../font/Algerian\ Regular.ttf);
+  }
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Algerian;
+}
+.wrapper{
+    position:relative;
+}
+.logo{
+    width: 78px;
+    height: 94px;
+    margin: 0 12rem;
+}
+.control{
+    position: absolute;
+    top: 73px;
+    display: flex;
+    align-items: center;
+    left: 48.9%;
+    transform: translateX(-50%);
+}
+.img__logo{
+    width: 100%;
+}
+.container{
+    background: url(../images/mainlayerweb.png);
+    width: 100%;
+    position: fixed;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    bottom: 0;
+}
+.menu__list{
+    list-style: none;
+    padding: 0;
+    width: 15rem;
+    opacity: 0;
+    height: 28rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s linear;
+
+}
+.menu__item{
+    margin-bottom: 1.2rem;
+}
+.menu__link{
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+    
+}
+.control__menu{
+    cursor: pointer;
+    user-select: none;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1rem;
+
+    /* display: none; */
+}
+.control__menu-text{
+    float: right;
+}
+.control__login{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.6);
+   
+    /* display: none; */
+}
+.control__login-text{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+}
+.icon-a{
+    margin-right: 0.3rem;
+}
+.menu__show{
+    opacity: 1;
+}
+.footer__follow{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.img__follow{
+    width: 1.4rem;
+    margin-bottom: 0.4rem ;
+    
+}
+.text__follow{
+    margin: 0.4rem 0;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+.menu__footer{
+    list-style: none;
+    display: flex;
+
+}
+.menu__footer-item{
+    margin: 0 0.3rem;
+}
+.menu__footer-link{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 0.7rem;
+}
+.control__menu:hover,
+.control__login:hover,
+.menu__footer-link:hover,
+.menu__link:hover{
+    text-decoration: underline
+}
+.control__menu1{
+    width: 86px;
+    display: none;
+    height: 10rem;
+    background: url(../images/longden_left.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.control__login1{
+    width: 86px;
+    display: none;
+    height: 10rem;
+    background: url(../images/longden_right.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+

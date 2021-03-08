@@ -80,7 +80,6 @@
   </main>
 
 <link rel="stylesheet" href="{{asset('public/rosevilla/style.css')}}" type="text/css" media="screen" />
-@endsection
 <div class="spa-menu">
   <ul class="sub-menu">
       	@foreach($list_room as $val_room)
@@ -88,6 +87,8 @@
     	@endforeach
 	</ul>
 </div>
+@endsection
+
 
 @section('script')
 <script src="{{asset('public/rosevilla/enquire.min.js')}}" type="text/javascript"></script>

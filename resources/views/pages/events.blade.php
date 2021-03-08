@@ -24,7 +24,7 @@
           <h1 class="title-innerpage2">
             <span><span>{!!$area_event->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')!!}</span></span>
           </h1>
-          <div class="abct-elm">
+          <div class="abct-elm event-abct-elm">
             {!!$area_event->getTranslatedAttribute('description', config('app.locale'), 'fallbackLocale')!!}
           </div>
           <div class="buttonbk">
@@ -48,7 +48,6 @@
   </main>
 
 <link rel="stylesheet" href="{{asset('public/rosevilla/style.css')}}" type="text/css" media="screen" />
-@endsection
 <div class="spa-menu">
   <ul class="sub-menu">
       @foreach($list_events as $val_events)
@@ -56,6 +55,8 @@
                 @endforeach
   </ul>
 </div>
+@endsection
+
 
 
 @section('script')

@@ -53,7 +53,7 @@ Route::group(['middleware' => 'locale'], function() {
 	]);
 
 
-	Route::get('/about', [
+	Route::get('/our-story', [
 		'as' => 'about',
 		'uses' => 'HomeController@about'
 	]);
@@ -66,7 +66,10 @@ Route::group(['middleware' => 'locale'], function() {
 		'as' => 'regularmember',
 		'uses' => 'HomeController@regularmember'
 	]);
-
+	Route::get('/the-club', [
+		'as' => 'the-club',
+		'uses' => 'HomeController@theclub'
+	]);
 	Route::get('/founder', [
 		'as' => 'founder',
 		'uses' => 'HomeController@founder'
@@ -104,7 +107,7 @@ Route::group(['middleware' => 'locale'], function() {
 	]);	
 	Route::get('/founder-thank-you', [
 		'as' => 'founder_thankyou',
-		'uses' => 'HomeController@founder_thankyou'
+		'uses' => 'HomeControlaaler@founder_thankyou'
 	]);
 	Route::get('/early-founder-thank-you', [
 		'as' => 'earlyfounder_thankyou',

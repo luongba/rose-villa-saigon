@@ -33,10 +33,11 @@
     </div>
     <ul class="navbar-nav">
         {{-- <li class="nav-item {{ Route::currentRouteNamed('welcome') ? 'active' : '' }}"><a class="nav-link" href="{{route('welcome')}}">{{ trans('pages.home') }}</a></li> --}}
-        <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('getPage',['slug'=>'about'])}}">{{ trans('pages.About Us') }}</a></li>
+        <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('getPage',['slug'=>'our-story'])}}">Our Story</a></li>
         <li class="nav-item has-child-menu">
             <a class="nav-link" href="javascript:;">{{ trans('pages.Membership') }}</a>
             <ul class="sub-menu">
+              <li><a href="{{route('the-club')}}">The Club</a></li>
                 <li><a href="{{route('regularmember')}}">Regular Application</a></li>
                 <li><a href="{{route('founder')}}">Founder Application</a></li>
                 <li><a href="{{route('early-founder')}}">Early Founder Application</a></li>
@@ -62,9 +63,11 @@
         <li class="nav-item has-child-menu">
             <a class="nav-link" href="javascript:;">{{ trans('pages.Wellness & Beauty') }}</a>
             <ul class="sub-menu">
+              @if(!empty($list_wellness_beauty))
                 @foreach($list_wellness_beauty as $val_wellness_beauty)
                 <li><a href="{{route('singleSpa',['slug'=>$val_wellness_beauty->slug])}}">{{$val_wellness_beauty->getTranslatedAttribute('name', config('app.locale'), 'fallbackLocale')}}</a></li>
                 @endforeach
+              @endif
             </ul>
         </li>
 
@@ -74,9 +77,11 @@
         <li class="nav-item has-child-menu">
             <a class="nav-link" href="javascript:;">{{ trans('pages.Events') }}</a>
             <ul class="sub-menu">
+              @if(!empty($list_events))
                 @foreach($list_events as $val_events)
                 <li><a href="{{route('singleEvents',['slug'=>$val_events->slug])}}">{{$val_events->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')}}</a></li>
                 @endforeach
+              @endif
             </ul>
         </li>
 
@@ -85,6 +90,33 @@
         <li class="nav-item {{ Route::currentRouteNamed('contact') ? 'active' : '' }}"><a class="nav-link" href="{{route('contact')}}">{{ trans('pages.Contact Us') }}</a></li>
 
         <li class="nav-item {{ Route::currentRouteNamed('findus') ? 'active' : '' }}"><a class="nav-link" href="{{route('findus')}}">{{ trans('pages.How To Find Us') }}</a></li>
+<!--         <li class="nav-item">
+                    <div class="footer__follow">
+                      <a href="ttps://www.instagram.com/"><img src="../../../public/images/icons/icon.jpg" alt="" class="img__follow"></a>
+                        
+                        <p class="text__follow">Follow us</p>
+                        <p class="text__follow">ROSEVILLASAIGON</p>
+                        
+                    </div>
+                    <ul class="menu__footer">
+                        <li class="menu__footer-item">
+                            <a href="http://rosevilla.tntechs.com.vn/contact" class="menu__footer-link">
+                                contact
+                            </a></li>
+                        <li class="menu__footer-item">
+                            <a href="mailto:workwithus@rosevillasaigon.com" class="menu__footer-link">
+                                CAREERS
+                            </a></li>
+                        <li class="menu__footer-item">
+                            <a href="mailto:press@rosevillasaigon.com" class="menu__footer-link">
+                                PRESS
+                            </a></li>
+                        <li class="menu__footer-item">
+                            <a href="" class="menu__footer-link">
+                                LEGAL
+                            </a></li>
+                    </ul>
+            </li> -->
     </ul>
 </nav>
     

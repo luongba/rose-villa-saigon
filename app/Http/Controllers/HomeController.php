@@ -103,7 +103,10 @@ class HomeController extends Controller
 
     public function about(Request $request)
     {
-        return view('pages.about');
+        $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', $slug)->first();
+        if(!$singlepage) return abort();
+        //return $singlepage;
+        return view('pages.about',compact('singlepage'));
     }
 
     public function shop(Request $request)
@@ -127,6 +130,15 @@ class HomeController extends Controller
     {
         return view('pages.founder');
     }
+    public function theclub(Request $request)
+    {
+         $slug = 'the-club';
+        $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', $slug)->first();
+        if(!$singlepage) return abort();
+        //return $singlepage;
+        return view('pages.the-club',compact('singlepage'));
+    }
+
 
     public function regularmember(Request $request)
     {
@@ -459,6 +471,7 @@ class HomeController extends Controller
     /*knight*/
     public function getPage($slug){
         $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', $slug)->first();
+        if(!$singlepage) return abort();
         //return $singlepage;
         return view('pages.about',compact('singlepage'));
     }

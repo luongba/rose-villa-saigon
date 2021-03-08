@@ -1,6 +1,6 @@
   <div class="logo-landing">
   <a class="homelinklogo" href="{{route('welcome')}}" target="_blank"><img src="{{asset('public/images/logo/logo.png')}}" /></a>
-  <a class="maplinklogo" href="http://rosevilla.tntechs.com.vn/public/storage/maps/maplogo.jpg" target="_blank">
+  <a class="maplinklogo" href="http://rosevilla.tntechs.com.vn/public/images/maplogo.jpg" target="_blank">
     <img src="{{asset('public/images/logo/mapclick.png')}}" />
   </a>
   </div>

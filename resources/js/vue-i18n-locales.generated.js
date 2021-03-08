@@ -210,7 +210,7 @@ export default {
             "Address Rose Villa Saigon": "No. 10, Street 58, Thao Dien, District 2, Ho Chi Minh city, Vietnam",
             "Privacy Policy": "Privacy Policy",
             "Term of use": "Term of use",
-            "Login": "Login",
+            "Login": "Member Login",
             "Logout": "Logout",
             "profile": "Profile",
             "membershippackage": "Membership Package",
@@ -236,8 +236,10 @@ export default {
             "DOWNLOAD MAP IN ROSE VILLA SAIGON": "DOWNLOAD MAP IN ROSE VILLA SAIGON",
             "viewmenu": "View Menu",
             "bookingspa": "Booking Now",
-            "thankcontent": "Thank you for spending your quality time to complete your application. We have received it and will be in touch shortly",
-            "thankyou": "THANK YOU"
+            "thankcontent": "WE HAVE RECEIVED YOUR APPLICATION AND WILL BE IN TOUCH SHORTLY",
+            "thankcontenearly": "THANK YOU FOR YOUR QUALITY TIME. YOUR DETAILS WILL NOW BE UPDATED IN OUR MEMBERSHIP SYSTEM",
+            "thankyou": "THANK YOU",
+            "thankyouearly": "THANK YOU"
         },
         "messages": {
             "Add contact error": "Add contact error",
@@ -449,7 +451,7 @@ export default {
             "Address Rose Villa Saigon": "Số 10 Đường số 58, Thảo Điền, Quận 2, Tp Hồ Chí Minh, Việt Nam",
             "Privacy Policy": "Chính sách bảo mật",
             "Term of use": "Điều khoản sử dụng",
-            "Login": "Đăng nhập",
+            "Login": "Member Login",
             "Logout": "Đăng xuất",
             "profile": "Tài Khoản",
             "membershippackage": "Gói Thành Viên",
@@ -476,7 +478,9 @@ export default {
             "viewmenu": "Xem Menu",
             "bookingspa": "Đặt Lịch Spa",
             "thankcontent": "CẢM ƠN BẠN ĐÃ HOÀN TẤT ĐƠN ĐĂNG KÝ NÀY. CHÚNG TÔI SẼ LIÊN HỆ VỚI BẠN TRONG THỜI GIAN SỚM NHẤT. ",
-            "thankyou": "XÁC NHẬN ĐƠN ĐĂNG KÝ"
+            "thankyou": "XÁC NHẬN ĐƠN ĐĂNG KÝ",
+            "thankcontenearly": "CẢM ƠN BẠN ĐÃ DÀNH SỰ QUAN TÂM VÀ THỜI GIAN ĐỂ HOÀN TẤT VIỆC ĐĂNG KÝ TRỞ THÀNH HỘI VIÊN DANH DỰ CỦA ROSE VILLA SAIGON. CHÚNG TÔI ĐÃ NHẬN ĐƯỢC THÔNG TIN VÀ SẼ PHẢN HỒI BẠN TRONG THỜI GIAN SỚM NHẤT.",
+            "thankyouearly": "XÁC NHẬN ĐƠN HỘI VIÊN DANH DỰ"
         },
         "messages": {
             "Add contact error": "Thêm liên hệ thất bại",

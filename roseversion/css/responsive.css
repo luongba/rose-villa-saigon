@@ -1,0 +1,483 @@
+@media (min-width: 2880px){
+    .menu__list {
+        width: 20rem;
+        height: 47rem;
+        padding-left: 0;
+    }
+    .menu__item {
+        margin-bottom: 2.5rem;
+    }
+    .menu__link {
+        font-size: 1.6rem;
+    }
+    .menu__footer-link {
+        font-size: 1.4rem;
+    }
+    .text__follow {
+        margin: 0.6rem 0;
+        font-size: 1.4rem;
+    }
+    .img__follow {
+        width: 2.4rem;
+        margin-bottom: 0.4rem;
+
+    }
+    .control {
+        top: 125px;
+        align-items: center;
+        left: 48.6%;
+    }
+    .control__menu {
+        font-size: 1.8rem;
+    }
+    .logo {
+        width: 135px;
+        height: auto;
+        margin: 0 20rem;
+    }
+    .control__login-text {
+        font-size: 1.8rem;
+    }
+    
+
+}
+@media (min-width: 2560px) and (max-width: 2879px){
+    .menu__list {
+        width: 20rem;
+        height: 43rem;
+        padding-left: 0;
+    }
+    .menu__item {
+        margin-bottom: 1.5rem;
+    }
+    .menu__link {
+        font-size: 1.6rem;
+    }
+    .menu__footer-link {
+        font-size: 1.4rem;
+    }
+    .text__follow {
+        margin: 0.6rem 0;
+        font-size: 1.4rem;
+    }
+    .img__follow {
+        width: 2.4rem;
+        margin-bottom: 0.4rem;
+
+    }
+    .control {
+        top: 112px;
+        left: 48.8%;
+        
+    }
+    .control__menu {
+        font-size: 1.4rem;
+    }
+    .logo {
+        width: 110px;
+        height: auto;
+        margin: 0 17rem;
+    }
+    .control__login-text {
+        font-size: 1.4rem;
+    }
+    
+
+}
+@media (max-width: 1600px){
+    .menu__list {
+        width: 20rem;
+        height: 22rem;
+    }
+    .menu__item {
+        margin-bottom: 0.4rem;
+    }
+    .menu__link {
+        font-size: 0.8rem;
+    }
+    .menu__footer-link {
+        font-size: 0.6rem;
+    }
+    .text__follow {
+        margin: 0.6rem 0;
+        font-size: 0.6rem;
+    }
+    .img__follow {
+        width: 1.4rem;
+        margin-bottom: 0.4rem;
+        margin-top: 1rem;
+
+    }
+    .control {
+        top: 57px;
+        left: 50.5%;
+    }
+    .control__menu {
+        width: 10.5rem;
+        font-size: 0.8rem;
+    }
+    .logo {
+        width: 60px;
+        height: auto;
+        margin: 0 10rem;
+    }
+    .control__login-text {
+        width: 12rem;
+        font-size: 0.8rem;
+    }
+    
+
+}
+
+@media (max-width: 1440px){
+    .control__menu {
+        font-size: 0.8rem;
+    }
+    .control__login-text{
+        font-size: 0.8rem;
+    }
+    .menu__list {
+        width: 20rem;
+        height: 23rem;
+    }
+    .menu__item {
+        margin-bottom: 0.6rem;
+    }
+    .control{
+        left: 50.5%;
+        top: 60px;
+    }
+    .logo{
+        width: 65px;
+    }
+    .menu__footer-link{
+        font-size: 0.6rem;
+    }
+    .img__follow {
+        width: 1.4rem;
+        margin-bottom: 0.4rem;
+        /* margin-top: 1rem; */
+        margin-top: 0;
+    }
+}
+@media (max-width: 1366px){
+    .menu__list {
+        margin-top: 4rem;
+    }
+    .menu__item {
+        margin-bottom: 0.6rem;
+    }
+    .control{
+        left: 52.5%;
+        top: 48px;
+    }
+    .logo{
+        width: 48px;
+        margin: 0 8rem;
+    }
+    .menu__footer-link{
+        font-size: 0.5rem;
+    }
+    .control__menu {
+        font-size: 0.7rem;
+        margin-bottom: 1rem;
+        width: 7.2rem;
+    }
+    .control__login-text {
+        font-size: 0.7rem;
+        margin-bottom: 1rem;
+    }
+    .menu__item{
+        margin-bottom: 0.3rem;
+    }
+    .menu__link{
+        font-size: 0.7rem;
+    }
+    .img__follow {
+        margin-top: 0.3rem;
+        width: 1rem;
+        margin-bottom: 0.3rem;
+    }
+    .text__follow{
+        font-size: 0.5rem;
+        margin: 0.3rem;
+    }
+    .menu__footer-link{
+        font-size: 0.5rem;
+    }
+}
+@media (max-width: 1024px){
+    .menu__list{
+        margin-top: 4rem;
+    }
+    .menu__item {
+        margin-bottom: 0.6rem;
+    }
+    .control{
+        left: 50.7%;
+        top: 388px;
+    }
+    .logo{
+        width: 60px;
+    }
+    .menu__footer-link{
+        font-size: 0.6rem;
+    }
+    .control__menu {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        width: 8.1rem;
+    }
+    .control__login-text {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        width: 9.5rem;
+    }
+    .menu__item{
+        margin-bottom: 0.3rem;
+    }
+    .menu__link{
+        font-size: 0.8rem;
+    }
+    .img__follow {
+        width: 1rem;
+        margin-bottom: 0.3rem;
+    }
+    .text__follow{
+        font-size: 0.6rem;
+    }
+    .menu__footer-link{
+        font-size: 0.6rem;
+    }
+}
+@media (max-width: 768px){
+    .container{
+        background: url(../images/mainlayerwebfix1.png);
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: center;
+            background-size: contain;
+    }
+    .menu__list{
+        margin-top: 0rem;
+        height: 24rem;
+    }
+    .menu__item {
+        margin-bottom: 0.6rem;
+    }
+    .menu__link {
+        font-size: 1.2rem;
+    }
+    .logo{
+        width: 75px;
+        margin: 0 9rem;
+    }
+    .control {
+        left: 51.6%;
+        top: 147px;
+        margin-top: 0;
+    }
+    
+    .text__follow {
+        font-size: 0.8rem;
+    }
+    .menu__footer-link{
+        font-size: 0.8rem;
+    }
+}
+@media only screen and (max-width: 540px){
+    .logo {
+        width: 60px;
+        margin: 0px 6rem;
+    }
+    .control {
+        top: 100px;
+        left: 53.7%;
+    }
+    .menu__link {
+        font-size: 1rem;
+    }
+    .menu__list {
+        margin-left: 0rem;
+        margin-top: 5rem;
+    }
+    .menu__item {
+        margin-bottom: 0.2rem;
+    }
+    .text__follow {
+        font-size: 0.8rem;
+    }
+    .menu__footer-link {
+        font-size: 0.8rem;
+    }
+}
+@media only screen and (max-width: 425px){
+    .container{
+            background-size: 170%;
+            background-position-x: 50%;
+    }
+    .logo{
+        width: 94px;
+        margin: 0px 4rem;
+        
+    }
+    .control__menu1{
+        display: block;
+    }
+    .control__menu1:hover{
+        background: url(../images/longden_left-active.png);
+        background-size: contain;
+    background-repeat: no-repeat;
+    }
+    .control__login1{
+        display: block;
+    }
+    .control__login1:hover{
+        background: url(../images/longden_right-active.png);
+        background-size: contain;
+    background-repeat: no-repeat;
+    }
+
+    .control__menu{
+        
+        display: none;
+    }
+    .control__login{
+    
+        display: none;
+    }
+    .control {
+        top: -19px;
+        left: 50%;
+    }
+    .menu__list{
+        padding: 0.5rem;
+        margin-top: 0;
+    }
+    .menu__link {
+        font-size: 1.2rem;
+    }
+    .text__follow {
+        font-size: 1rem;
+    }
+    .menu__footer-link{
+        font-size: 1rem;
+    }
+
+}
+@media (max-width: 411px){
+    .logo {
+        width: 80px;
+        margin: 0px 4rem;
+    }
+    .control {
+        top: 0px;
+        left: 50%;
+    }
+    .menu__link {
+        font-size: 1rem;
+    }
+    .menu__list {
+        margin-top: 1rem;
+    }
+    .text__follow {
+        font-size: 0.8rem;
+    }
+    .menu__footer-link {
+        font-size: 0.8rem;
+    }
+    .menu__item {
+        margin-bottom: 0.6rem;
+    }
+}
+@media only screen 
+    and (device-width : 411px) 
+    and (device-height : 823px) { 
+        .control {
+            top: 40px;
+            left: 50%;
+        }
+    }
+@media (max-width: 375px){
+    .menu__list{
+        margin-left: -0.5rem;
+        margin-top: 3rem;
+    }
+    .menu__item{
+        margin-bottom: 0.5rem;
+    }
+    .control {
+        top: -8px;
+        left: 50%;
+    }
+    .control__menu1{
+        width: 80px;
+    }
+    .control__login1{
+        width: 80px;
+    }
+    .logo {
+        width: 67px;
+        height: 94px;
+        margin: 0px 4rem;
+    }
+    .img__logo{
+        width: 100%;
+    }
+    .menu__link{
+        font-size: 0.8rem;
+    }
+    .text__follow {
+        font-size: 0.7rem;
+    }
+    .menu__footer-link{
+        font-size: 0.7rem;
+    }
+}
+@media only screen 
+    and (device-width : 375px) 
+    and (device-height : 812px) 
+    and (-webkit-device-pixel-ratio : 3) { 
+        .control {
+            top: 70px;
+            left: 50%;
+        }
+    }
+@media (max-width: 320px){
+    .menu__list{
+        margin-left: -0.5rem;
+        margin-top: 5rem;
+    }
+    .control {
+        top: 0px;
+        left: 50%;
+    }
+    .control__menu1{
+        width: 80px;
+    }
+    .control__login1{
+        width: 80px;
+    }
+    .logo {
+        width: 60px;
+        height: 94px;
+        margin: -2rem 3rem 0 3rem;
+    }
+    .img__logo{
+        width: 100%;
+    }
+    .menu__link{
+        font-size: 0.8rem;
+    }
+    .text__follow {
+        font-size: 0.7rem;
+    }
+    .menu__footer-link{
+        font-size: 0.7rem;
+    }
+    .menu__item {
+        margin-bottom: 0.2rem;
+    }
+}
+
+
