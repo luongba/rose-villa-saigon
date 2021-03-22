@@ -9,7 +9,7 @@
         @endif
         <div class="bgfix"></div>
         @yield('content')
-        @include('layouts.footer')
+{{--         @include('layouts.footer') --}}
     </div>
     <script src="{{asset('public/js/jquery-2.1.3.min.js')}}"></script>
     <script src="{{asset('public/js/bootstrap.js')}}"></script>

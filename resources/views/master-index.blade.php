@@ -85,7 +85,7 @@
         <li class="nav-item nav-center {{ Route::currentRouteNamed('findus') ? 'active' : '' }}"><a class="nav-link nav-link-new" href="{{route('findus')}}">{{ trans('pages.How To Find Us') }}</a></li>
         <li class="nav-item nav-center">
                     <div class="footer__follow">
-                      <a href="ttps://www.instagram.com/"><img src="../../../public/images/icons/icon.jpg" alt="" class="img__follow"></a>
+                      <a href="ttps://www.instagram.com/"><img src="public/images/icons/icon.jpg" alt="" class="img__follow"></a>
                         
                         <p class="text__follow">Follow us</p>
                         <p class="text__follow">ROSEVILLASAIGON</p>
@@ -121,14 +121,41 @@
             </div>
             
             <a href="http://rosevilla.tntechs.com.vn/" class="homelinklogo1">
-                <img src="../../../public/images/bg/logo.png" alt="" class="img__logo">
+                <img src="public/images/bg/logo.png" alt="" class="img__logo">
             </a>
-            <a href="http://rosevilla.tntechs.com.vn/public/images/maplogo.jpg" target="_blank" class="maplinklogo1"><img class="icon-mapclick" src="../../../public/images/icons/mapclick.png"></a>
+            <a href="http://rosevilla.tntechs.com.vn" target="_blank" class="maplinklogo1"><img class="icon-mapclick" src="public/images/icons/mapclick.png"></a>
             </a>
             <a href="javascript:;" data-toggle="modal" data-target="#popup-login" class="control__login">
                 <h4 class="control__login-text">
-                    <i class="fas fa-sign-out-alt icon-a"></i>
-                    MEMBER LOGIN
+                           @if(Auth::user())
+                <div class="dropdown user-menu custom-header-user">
+                    <a class="dropdown-toggle username-bar" href="javascript:;" id="profile-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          {{Auth::user()->first_name}} {{Auth::user()->last_name}}
+                     </a>
+                    <ul class="dropdown-menu custom-dropmenu" aria-labelledby="profile-menu">
+                      <li class="profile-user">
+                          <a href="{{ route('profile_index')}}">
+                          <span>{{ trans('pages.profile') }}</span></a>
+                      </li>
+                      <li class="member-user">
+                          <a href="{{ route('profile_membership')}}">
+                          <span>{{ trans('pages.membershippackage') }}</span></a>
+                      </li>
+                      <li class="member-user">
+                          <a href="{{ route('profile_changepasss')}}">
+                          <span>{{ trans('pages.changepass') }}</span></a>
+                      </li>
+                      <li class="singout">
+                          <a href="{{ route('logout_web') }}">
+                          <span>{{ trans('pages.Logout') }}</span></a>
+                      </li>
+                    </ul>
+                </div>
+        @else
+            <div class="account-section show640">
+                <a class="loginlink-landing" href="javascript:;"  data-toggle="modal" data-target="#popup-login">{{ trans('pages.Login') }}</a>
+            </div>
+         @endif
                 </h4>
             </a>
 

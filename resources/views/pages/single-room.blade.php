@@ -8,7 +8,8 @@
   	<audio id="audio" autoplay>
    		<source type="audio/mp3" src="{{asset('public/assets/audio/La vie en rose - Louis Armstrong.mp3')}}">
   	</audio>
-    <div class="scroller">
+  	@foreach($room as $value)
+  	<div class="scroller">
       <div class="slideshow scroller__slideshow">
       	@if($singleroom->ListImageGallery)
 	      	@foreach( $singleroom->ListImageGallery as $val_img)
@@ -31,14 +32,14 @@
 		    {{-- <h1 class="poster__title poster__title--ghost"></h1>
 		    <h1 class="poster__title visual-pull-left-lap-and-up"></h1> --}}
 			<h1 class="title-innerpage2">
-		        <span><span>{{$singleroom->getTranslatedAttribute('name', config('app.locale'), 'fallbackLocale')}}</span></span>
+		        <span><span>{{$value->name}}</span></span>
 		    </h1>
 		    <div class="abct-elm singleroom-ct scrollcustom">
 			    <div class="[ layout layout--medium ] room-details">
 			    	<div class="leftroom">
 				    	<div class="layout__item desk-one-whole room-details__amenities">
 				          <div class="room-details__icons">
-				            <div class="detailroom bed-number"><strong>{{$singleroom->area}}</strong> m2 | <strong>{{$singleroom->bed}}</strong> p</div>
+				            <div class="detailroom bed-number"><strong>{{$value->area}}</strong> m2 | <strong>{{$value->bed}}</strong> p</div>
 				            {{-- <div class="detailroom person-number">{{$singleroom->person}} người </div> --}}
 				            <div class="detailroom icondr">
 				            	<div class="icr first-icr">	
@@ -87,6 +88,8 @@
     	@endforeach
 	</ul>
 </div>
+  	@endforeach
+    
 @endsection
 
 

@@ -1,4 +1,4 @@
-  <div class="logo-landing">
+  <div class="logo-landing logo-landing2">
   <a class="homelinklogo" href="{{route('welcome')}}" target="_blank"><img src="{{asset('public/images/logo/logo.png')}}" /></a>
   <a class="maplinklogo" href="http://rosevilla.tntechs.com.vn/public/images/maplogo.jpg" target="_blank">
     <img src="{{asset('public/images/logo/mapclick.png')}}" />

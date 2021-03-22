@@ -8,38 +8,23 @@
       </div>
     </div>
   </div>
-
-  <div class="bg_rem" id="bg_rem">
-    <div class="align-center">
-      <div class="biglogo">
-        <img  src="{{asset('public/images/logo/logo_big_landing.png')}}" class="" data-sampler="Rose Villa Sai Gon" />
-      </div>
-      <div class="textlanding">
-        <p class="barakah">-2021-</p>
-        <p>Private Members Club</p>
-        <p>Elegant escapism for the eternally curious</p>
-      </div>
-      <div class="smalllogo tinisize">
-        <img src="{{asset('public/images/logo/logo_small_landing.png')}}" class="" data-sampler="Rose Villa Sai Gon" />
-      </div>
-    </div>
     
   </div>
   <div class="welcome-layout"> 
-    <img  src="{{asset('public/images/imagesfloat/lion-layer-bottom-left.png')}}" class="flef flef1 flefout" />
-    <img  src="{{asset('public/images/imagesfloat/bird-layer-center.png')}}" class="flef flef2 flefout" />
-    <img  src="{{asset('public/images/imagesfloat/deer-bottom-right.png')}}" class="flef flef4 flefout" />
-    <img  src="{{asset('public/images/imagesfloat/animation-left.png')}}" class="flef left-flower flefout" />
-    <img  src="{{asset('public/images/imagesfloat/animation-right.png')}}" class="flef right-flower flefout" />
-    <img  src="{{asset('public/images/imagesfloat/rose-layer-bottom.png')}}" class="flef flef5 flefout" />
-    <img  src="{{asset('public/images/imagesfloat/Face-eye-center-layer.png')}}" class="flef flef6 flefout" />
-    <img  src="{{asset('public/images/imagesfloat/rose-left-web.png')}}" class="flef flef7 flefout" />
-    <img  src="{{asset('public/images/imagesfloat/rose-right-web.png')}}" class="flef flef8 flefout" />
-    <img  src="{{asset('public/images/imagesfloat/rose-bottom-web.png')}}" class="flef flef9 flefout" />
+    <img  src="{{asset('public/images/imagesfloat/lion-layer-bottom-left.png')}}" class="flef flef1 " />
+    <img  src="{{asset('public/images/imagesfloat/bird-layer-center.png')}}" class="flef flef2 " />
+    <img  src="{{asset('public/images/imagesfloat/deer-bottom-right.png')}}" class="flef flef4 " />
+    <img  src="{{asset('public/images/imagesfloat/animation-left.png')}}" class="flef left-flower " />
+    <img  src="{{asset('public/images/imagesfloat/animation-right.png')}}" class="flef right-flower " />
+    <img  src="{{asset('public/images/imagesfloat/rose-layer-bottom.png')}}" class="flef flef5 " />
+    <img  src="{{asset('public/images/imagesfloat/Face-eye-center-layer.png')}}" class="flef flef6 " />
+    <img  src="{{asset('public/images/imagesfloat/rose-left-web.png')}}" class="flef flef7 " />
+    <img  src="{{asset('public/images/imagesfloat/rose-right-web.png')}}" class="flef flef8 " />
+    <img  src="{{asset('public/images/imagesfloat/rose-bottom-web.png')}}" class="flef flef9 " />
     
-        <div class="textlanding scale0">
+        <div class="textlanding">
           <h1 class="wctext">Welcome<br/>To The World of <br/> <strong class="font-center">ROSE VILLA</strong></h1>
-          <div class="openbutton scale0">
+          <div class="openbutton">
             <span class="clickviewsite">Enter</span>
             <span class="soundon">Sound On</span>
           </div>
@@ -109,11 +94,11 @@
             $('body').find('.content-custom-width').css('visibility','visible');
           }, 1000);
       }
-      $(document).on('click', '.bg_rem', function(){
-         $(this).fadeOut(4000);
-         $('body').find('.scale0').addClass('scale1'); 
-         $('.flef ').removeClass('flefout'); 
-      });
+      // $(document).on('click', '.bg_rem', function(){
+      //    $(this).fadeOut(4000);
+      //    $('body').find('.scale0').addClass('scale1'); 
+      //    $('.flef ').removeClass('flefout'); 
+      // });
       $(document).on('click', '.clickviewsite', function(){
         // $(this).closest('.bg_rem').addClass("box-transition box-hidden");
           $(this).closest('.welcome-layout').find('.flef').addClass('flefout');

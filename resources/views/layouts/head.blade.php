@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('public/css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('public/css/slick-theme.css')}}">
     <link href="{{asset('public/style.css')}}" rel="stylesheet" media="screen">
+    <link href="{{asset('public/style-new.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('public/assets/css/curtain.css')}}" rel="stylesheet" media="screen">
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">

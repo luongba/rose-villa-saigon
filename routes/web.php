@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 	return view('welcome');
 });
+Route::get('/login','UsersController@index');
+Route::post('/login-loading','UsersController@login')->name('login.loading');
 
 Route::group(['middleware' => 'locale'], function() {
 	Route::get('/', [

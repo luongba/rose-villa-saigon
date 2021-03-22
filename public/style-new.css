@@ -1,0 +1,47 @@
+/*Ourstory*/
+
+.row-set{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 9;
+	bottom: 0;
+}
+
+
+.title-innerpage-new{
+	color: black;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 5px;
+	margin-bottom: 40px;
+}
+
+.abct-elmtt p{
+	color: black !important;
+	text-align: center;
+	margin-bottom: 2rem !important;
+}
+.abct-elmtt{
+	width: 100%;
+    height: 445px;
+    overflow-y: auto;
+    line-height: 40px;
+    margin: 0px auto;
+    text-align: center;
+    text-align: justify;
+    padding: 0 5px;
+}
+
+.logo-landing2{
+	z-index: 9;
+	
+}
+@media (max-width: 769px) { 
+	.row-set{
+	position: relative;
+	}
+
+}

@@ -174,10 +174,11 @@ class HomeController extends Controller
     }
     public function singleroom(Request $request)
     {
+        $room = Room::withTranslations()->get();
         $singleroom = $this -> room ->withTranslations()->whereTranslation('slug', '=', $request -> slug)->first();
        // return  $singleroom;
 
-        return view('pages.single-room',compact('singleroom'));
+        return view('pages.single-room')->with(compact('singleroom','room'));
     }
 	public function singlefooddrink(Request $request)
     {

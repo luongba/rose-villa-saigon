@@ -5105,7 +5105,7 @@ button, [type="button"], [type="reset"], [type="submit"] {
 	  max-width:300px;
   }
   .wctext{
-	transition: all 4s; 
+	transition: all 2s; 
 	font-size:50px;
 	letter-spacing:8px;
 	line-height:1.5;
