@@ -1,6 +1,10 @@
-@extends('master')
+@extends('masternew')
 @section('content')
-  <div class="innerpage-membership">
+  <div class="innerpage-membership mgt-resize">
+    <div class="to-up" style="display: none;">
+          <a><i class="fas fa-chevron-up"></i></a>
+      </div>
+        @include('layouts.header_black')
     <section class="banner-member">
       <div class="container">
         <div class="row">

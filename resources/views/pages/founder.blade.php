@@ -1,6 +1,9 @@
-@extends('master')
+@extends('masternew')
 @section('content')
-  <div class="innerpage-membership">
+  <div class="innerpage-membership mgt-resize">
+    <div class="header-tclub">
+       @include('layouts.header_black')
+    </div>
     <section class="banner-member">
       <div class="container">
         <div class="row">

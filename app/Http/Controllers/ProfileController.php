@@ -57,8 +57,26 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $user->metas = "test";
-        return view('pages.profile', compact('user'));
+        $tgs = DB::table('membership_type_users')->where('user_id',$user->id )->get();
+        foreach($tgs as $tg){
+             $memberType = DB::table('membership_types')->where('id',$tg->membership_type_id)->first();
+        }
+        return view('pages.profile', compact('user', 'memberType'));
+    }
+    public function updateProfile(Request $request, $id){
+        $fullName = $request->fullName;
+        $split = explode(" ", $fullName);
+        User::find($id)->update([
+            'first_name' => $split[0],
+            'last_name' => $split[1],
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address_one' => $request->address,
+            'occupation' =>$request->occupation,
+            'dob' => $request->day
+
+        ]);
+        return redirect()->back();
     }
 
     public function membership()

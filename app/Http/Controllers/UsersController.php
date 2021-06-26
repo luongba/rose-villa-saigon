@@ -9,16 +9,19 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Models\GetUser;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\CheckLogin;
 session_start();
 class UsersController extends Controller
 {
 	public function index(){
-		return view('login');
+
+		return view('pages.login');
 	}
-    public function login(Request $request){
+    public function login(CheckLogin $request){
+    	$route =  Session::get('route');
         		$credentials = [
 			
-			'email' => $request->email,
+			'phone' => $request->phone,
 			'password' => $request->password,
 		];
 		if (Auth::attempt($credentials)) {
@@ -26,16 +29,16 @@ class UsersController extends Controller
 			if ($user->type_user === 0) {
 				$data = array();
 				$data['url'] = route('welcome');
-				return Redirect::to('/');
+				return Redirect::to($route);
 			} else {
 				$data = array();
 				$data = array();
 				$data['url'] = route('welcome');
-				return Redirect::to('/');
+				return Redirect::to($route);
 			}
 		} else {
 			Session::put('messages','Tài khoản hoặc mật khẩu không chính xác !');
-			return Redirect::to('/loginn');
+			return Redirect::to('/login');
 		}
     }
 }

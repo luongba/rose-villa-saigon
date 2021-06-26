@@ -37,7 +37,7 @@ window.addEventListener("load", function() {
 
     // get our plane element
     var planeElements = document.getElementsByClassName("curtain");
-    var speed = 20;
+    var speed = 30;
     var steps = 4;
 
     var vs = `
@@ -153,7 +153,7 @@ window.addEventListener("load", function() {
     var animationsecond=false;
     simplePlanesecond && simplePlanesecond.onReady(function() {
         // set a fov of 35 to reduce perspective
-        simplePlanesecond.setPerspective(35);
+        simplePlanesecond.setPerspective(10);
 
         // apply a little effect once everything is ready
         deltas.max = 2;
@@ -162,22 +162,23 @@ window.addEventListener("load", function() {
         var wrapper = document.getElementById("page-wrap");
         var audio = document.getElementById("audio");
         var client_width = wrapper.clientWidth/2;
+        var imgLeft = wrapper.children[1];
+        var imgRight = wrapper.children[2];
         //simplePlanesecond.textures[0].setScale(0.25, 0.25);
         //simplePlanesecond.textures[0].setOffset(-0.5, 0);
         
         wrapper.addEventListener("mousemove", function(e) {
             if(!animationsecond){
-                simplePlanesecond.setPerspective(25);
+                simplePlanesecond.setPerspective(10);
                 handleMovement(e, simplePlanesecond);
             }
             
         });
 
-        
         wrapper.addEventListener("click", function(e) {
             if(!animationsecond){
                 animationsecond = true;
-                simplePlanesecond.setPerspective(125);
+                simplePlanesecond.setPerspective(90);
      
                   var width = 0;
                   var step = 10;
@@ -189,7 +190,12 @@ window.addEventListener("load", function() {
                     } else {
                       step++;
                       width+= steps*(1+ 10/step); 
+
                       simplePlanesecond.setRelativePosition( 1*width,0, 0);
+                      if (step >=100) {
+                        
+                      }
+
                     }
                   }
 
@@ -200,7 +206,7 @@ window.addEventListener("load", function() {
                     wrapper.style.display = 'none';
                     // document.getElementsByClassName("header");
                     // audio.remove();
-                }, 5000);
+                }, 6000);
             }
         });
         setTimeout(function(){
@@ -240,7 +246,7 @@ window.addEventListener("load", function() {
         
         wrapper.addEventListener("mousemove", function(e) {
             if(!animation){
-                simplePlane.setPerspective(25);
+                simplePlane.setPerspective(10);
                 handleMovement(e, simplePlane);
             }
             
@@ -252,7 +258,7 @@ window.addEventListener("load", function() {
              if(!animation){
                 animation = true;
             
-                simplePlane.setPerspective(125);
+                simplePlane.setPerspective(90);
      
                   var width = 0;
                   var step = 10;
@@ -272,7 +278,7 @@ window.addEventListener("load", function() {
                 setTimeout(function(){
                     wrapper.style.display = 'none';
                     // audio.remove();
-                }, 5000);
+                }, 6000);
                 
             }
         });

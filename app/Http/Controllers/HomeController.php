@@ -72,22 +72,40 @@ class HomeController extends Controller
         $list_events = AreaEvent::withTranslations(['en', 'vi'])->orderBy('created_at', 'asc')->get();
         View::share('list_events', $list_events);
     }
-    
+
+    public function map(){
+        Session::put('route',url()->current());
+        return view('pages.map');
+    }
+    public function yourMembership(){
+        Session::put('route',url()->current());
+        return view('pages.your-membership');
+    }
+    public function photo(){
+        Session::put('route',url()->current());
+        return view('pages.photo');
+    }
     public function welcome(Request $request)
     {
+        Session::put('route',url()->current());
+        $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', 'our-story')->first();
 
-        return view('pages.index');
+        return view('pages.index')->with(compact('singlepage'));
     } 
 
     public function events(Request $request)
     {
+        Session::put('route',url()->current());
+        return view('pages.eventCalendar');
+    }
 
-        $list_area_event = $this->areaEvent->withTranslations()->get();
-        return view('pages.events',compact('list_area_event'));
-    } 
+    public function bookingDetails(){
+        return view('pages.booking-detail');
+    }
 
     public function spa(Request $request)
     {
+        Session::put('route',url()->current());
         /*$list_areaParty = $this->areaParty->withTranslations()->get();
         return( $list_areaParty);*/
 
@@ -97,13 +115,15 @@ class HomeController extends Controller
 
     public function fooddrink(Request $request)
     {
+        Session::put('route',url()->current());
         $list_food_drink = $this->areaParty->withTranslations()->get();
         return view('pages.food-drink',compact('list_food_drink'));
     } 
 
     public function about(Request $request)
     {
-        $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', $slug)->first();
+        Session::put('route',url()->current());
+        $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', 'our-story')->first();
         if(!$singlepage) return abort();
         //return $singlepage;
         return view('pages.about',compact('singlepage'));
@@ -111,11 +131,20 @@ class HomeController extends Controller
 
     public function shop(Request $request)
     {
-        return view('pages.shop');
+        $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', 'shop')->first();
+        Session::put('route',url()->current());
+
+        return view('pages.shop',compact('singlepage'));
+    }
+
+    public function contactus(){
+        Session::put('route',url()->current());
+        return view('pages.contactus');
     }
 
     public function contact(Request $request)
     {
+        Session::put('route',url()->current());
         $slug = 'contact-us';
         $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', $slug)->first();
         return view('pages.contact',compact('singlepage'));
@@ -123,83 +152,123 @@ class HomeController extends Controller
 
     public function earlyFounder(Request $request)
     {
+        Session::put('route',url()->current());
         return view('pages.early-founder');
     }
 
     public function founder(Request $request)
     {
+        Session::put('route',url()->current());
         return view('pages.founder');
     }
     public function theclub(Request $request)
     {
+        Session::put('route',url()->current());
+        
          $slug = 'the-club';
         $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', $slug)->first();
         if(!$singlepage) return abort();
         //return $singlepage;
         return view('pages.the-club',compact('singlepage'));
     }
+    public function legalCookie(){
+        return view('pages.cookie-policy');
+    }
+
+    public function legalPrivacy()
+    {
+        return view('pages.cookie-privacy');
+    }
+    public function legalTerms()
+    {
+        return view('pages.legal-terms');
+    }
+    public function testimg(Request $request){
+        Session::put('route',url()->current());
+        $get_image = $request->file('product_image');
+        if($get_image){
+            $extension = $get_image->getClientOriginalExtension();
+            $name = time().'_'.$get_image->getClientOriginalName();
+            $get_image->move('public/storage/pages',$name);
+            $request->session()->put('messege', 'Thêm sản phẩm thành công !!');
+            return redirect()->back();
+    }
+}
 
 
     public function regularmember(Request $request)
     {
+        Session::put('route',url()->current());
         return view('pages.regular-member');
     }
     public function findus(Request $request)
     {
+        Session::put('route',url()->current());
         return view('pages.findus');
     }
     public function findus2(Request $request)
     {
+        Session::put('route',url()->current());
         return view('pages.index-bk');
     }
     public function mailblade(Request $request)
     {
+        Session::put('route',url()->current());
         return view('pages.mail');
     }
     public function thankyou(Request $request)
     {
+        Session::put('route',url()->current());
         return view('pages.thankyou');
     }
     public function regular_thankyou(Request $request)
     {
+        Session::put('route',url()->current());
         return view('pages.thankyou-regular');
     }
     public function founder_thankyou(Request $request)
     {
+        Session::put('route',url()->current());
         return view('pages.thankyou-founder');
     }
     public function earlyfounder_thankyou(Request $request)
     {
+        Session::put('route',url()->current());
         return view('pages.thankyou-early-founder');
     }
-    public function singleroom(Request $request)
+    public function stay()
     {
-        $room = Room::withTranslations()->get();
-        $singleroom = $this -> room ->withTranslations()->whereTranslation('slug', '=', $request -> slug)->first();
-       // return  $singleroom;
+        Session::put('route',url()->current());
 
-        return view('pages.single-room')->with(compact('singleroom','room'));
+        return view('pages.stay');
     }
-	public function singlefooddrink(Request $request)
+	public function entertain(Request $request)
     {
+        Session::put('route',url()->current());
         $list_food_drink = $this -> areaParty ->withTranslations()->whereTranslation('slug', '=', $request -> slug)->get();
        //return  $list_food_drink;
 
-        return view('pages.single-food-drink',compact('list_food_drink'));
+        return view('pages.entertain',compact('list_food_drink'));
     }
-    public function singleSpa(Request $request){
-        $wellness_beauty = $this -> wellnessBeauty ->withTranslations()->whereTranslation('slug', '=', $request -> slug)->first();
-        //return $wellness_beauty;
-        return view('pages.spa',compact('wellness_beauty'));
+    public function relax(){
+        Session::put('route',url()->current());
+        return view('pages.relax');
     }
-    public function singleEvents(Request $request){
+    public function celebrate(Request $request){
         $area_event = $this -> areaEvent ->withTranslations()->whereTranslation('slug', '=', $request -> slug)->first();
         //return $wellness_beauty;
-        return view('pages.events',compact('area_event'));
+        return view('pages.celebrate',compact('area_event'));
+    }
+    public function dine(){
+        return view('pages.dine');
+    }
+    public function dine_menu(){
+        return view('pages.dine-menu');
     }
 
     public function membership(Request $request)
     {
+        Session::put('route',url()->current());
         if (Auth::user()) {
             return view('pages.membership');
         } else {
@@ -474,7 +543,7 @@ class HomeController extends Controller
         $singlepage = $this -> page ->withTranslations()->whereTranslation('slug', '=', $slug)->first();
         if(!$singlepage) return abort();
         //return $singlepage;
-        return view('pages.about',compact('singlepage'));
+        return view('pages.index',compact('singlepage'));
     }
     /*endknight*/
 }

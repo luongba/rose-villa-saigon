@@ -22,7 +22,7 @@ class DoPushDataCreateUserAPI {
     {
         $this->client = new Client([
             // Base URI is used with relative requests
-            'base_uri' => 'http://ep.atsolutions.com.vn:8123/api/',
+            'base_uri' => 'http://14.241.240.87:8123/api/',
             // You can set any number of default request options.
             // 'timeout'  => 2.0,
         ]);
@@ -44,6 +44,7 @@ class DoPushDataCreateUserAPI {
         $url = 'users/' . $user->id;
         $body = [
             'json' => [
+                    'id' => $user->id,
                     'firstName' => $user->first_name,
                     'lastName' => $user->last_name,
                     'gender' => $user->gender,
@@ -59,7 +60,7 @@ class DoPushDataCreateUserAPI {
                     'image' => $user->FullLinkAvatar
                 ]
         ];
-        $urlAvatar = "http://rosevilla.tntechs.com.vn/public/storage/avatar/img2020110508253540297600.jpeg";
+        $urlAvatar = "";
         if ($urlAvatar && $urlAvatar != '' && $this->get_http_response_code($urlAvatar) == "200") {
             $body['multipart'] = [
                 'name' => 'image',

@@ -1,5 +1,5 @@
   <div class="logo-landing logo-landing2">
-  <a class="homelinklogo" href="{{route('welcome')}}" target="_blank"><img src="{{asset('public/images/logo/logo.png')}}" /></a>
+  <a class="homelinklogo" href="{{route('welcome')}}" target="_blank"><img src="{{asset('public/images/logo/big-logo.png')}}" /></a>
   <a class="maplinklogo" href="http://rosevilla.tntechs.com.vn/public/images/maplogo.jpg" target="_blank">
     <img src="{{asset('public/images/logo/mapclick.png')}}" />
   </a>
@@ -47,7 +47,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button> <!-- Responsive nav button end -->
-      <div class="optionlang">
+      <div class="optionlang optionlang2">
       	<div class="chooselang">
       		<span class="{{ config('app.locale') == "en" ? 'active' : '' }}"  id="en">EN</span>
       		<span class="{{ config('app.locale') == "vi" ? 'active' : '' }}"  id="vi">VI</span>

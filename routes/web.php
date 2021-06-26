@@ -9,15 +9,14 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| contains the "web" middle
+ware group. Now create something great!
 |
 */
 
 Route::get('/', function () {
 	return view('welcome');
 });
-Route::get('/login','UsersController@index');
-Route::post('/login-loading','UsersController@login')->name('login.loading');
 
 Route::group(['middleware' => 'locale'], function() {
 	Route::get('/', [
@@ -25,14 +24,26 @@ Route::group(['middleware' => 'locale'], function() {
 		'uses' => 'HomeController@welcome'
 	]);
 
+	Route::get('/login','UsersController@index')->name('login');
+	Route::get('/contact-us', 'HomeController@contactus')->name('contactus');
+	Route::post('/login-loading','UsersController@login')->name('login.loading');
+
 	Route::get('/events', [
 		'as' => 'events',
 		'uses' => 'HomeController@events'
 	]);
+	Route::get('/booking-details', [
+		'as' => 'booking.details',
+		'uses' => 'HomeController@bookingDetails'
+	]);
 
-	Route::get('/events/{slug}', [
-		'as' => 'singleEvents',
-		'uses' => 'HomeController@singleEvents'
+	Route::get('/map','HomeController@map')->name('map');
+
+	Route::get('/galleryphoto', 'HomeController@photo')->name('photo');
+
+	Route::get('/celebrate', [
+		'as' => 'celebrate',
+		'uses' => 'HomeController@celebrate'
 	]);
 
 	Route::get('/spa', [
@@ -40,25 +51,42 @@ Route::group(['middleware' => 'locale'], function() {
 		'uses' => 'HomeController@spa'
 	]);
 
-	Route::get('/spa/{slug}', [
-		'as' => 'singleSpa',
-		'uses' => 'HomeController@singleSpa'
+	Route::get('/your-membership', [
+		'as' => 'your-membership',
+		'uses' => 'HomeController@yourMembership'
+	]);
+
+
+	Route::get('/relax', [
+		'as' => 'relax',
+		'uses' => 'HomeController@relax'
 	]);
 
 	Route::get('/food-drink', [
 		'as' => 'fooddrink',
 		'uses' => 'HomeController@fooddrink'
 	]);
-	Route::get('/food-drink/{slug}', [
-		'as' => 'singlefooddrink',
-		'uses' => 'HomeController@singlefooddrink'
+	Route::prefix('dine')->group(function () {
+    Route::get('/', [
+		'as' => 'dine',
+		'uses' => 'HomeController@dine'
+	]);
+	Route::get('/menu', [
+		'as' => 'dine-menu',
+		'uses' => 'HomeController@dine_menu'
+	]);
+	});
+	Route::get('/entertain', [
+		'as' => 'entertain',
+		'uses' => 'HomeController@entertain'
 	]);
 
 
 	Route::get('/our-story', [
-		'as' => 'about',
+		'as' => 'our-story',
 		'uses' => 'HomeController@about'
 	]);
+	// Route::get('/our-story', 'HomeController@about')->name('home.about');
 
 	Route::get('/shop', [
 		'as' => 'shop',
@@ -116,9 +144,9 @@ Route::group(['middleware' => 'locale'], function() {
 		'uses' => 'HomeController@earlyfounder_thankyou'
 	]);
 
-	Route::get('/single-room/{slug}', [
-		'as' => 'singleroom',
-		'uses' => 'HomeController@singleroom'
+	Route::get('/stay', [
+		'as' => 'stay',
+		'uses' => 'HomeController@stay'
 	]);
 
 	Route::post('contact', 'HomeController@addContact')->name('add_contact');
@@ -148,10 +176,29 @@ Route::group(['middleware' => 'locale'], function() {
 		'uses' => 'HomeController@update_password'
 	]);
 
+	Route::prefix('legal')->group(function () {
+    Route::get('/cookie-policy', [
+    	'as' => 'legal.cookie',
+    	'uses' => 'HomeController@legalCookie'
+    ]);
+    Route::get('/privacy-policy', [
+    	'as' => 'legal.privacy',
+    	'uses' => 'HomeController@legalPrivacy'
+    ]);
+    Route::get('/terms', [
+    	'as' => 'legal.terms',
+    	'uses' => 'HomeController@legalTerms'
+    ]);
+});
+
 	Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function() {
 		Route::get('/',[
 			'as' => 'profile_index',
 			'uses' => 'ProfileController@index'
+		]);
+		Route::post('/post/{id}',[
+			'as' => 'profile_update',
+			'uses' => 'ProfileController@updateProfile'
 		]);
 		Route::get('/membership',[
 			'as' => 'profile_membership',

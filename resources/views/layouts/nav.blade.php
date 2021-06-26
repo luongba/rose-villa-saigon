@@ -33,21 +33,21 @@
     </div>
     <ul class="navbar-nav">
         {{-- <li class="nav-item {{ Route::currentRouteNamed('welcome') ? 'active' : '' }}"><a class="nav-link" href="{{route('welcome')}}">{{ trans('pages.home') }}</a></li> --}}
-        <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('getPage',['slug'=>'our-story'])}}">Our Story</a></li>
-        <li class="nav-item has-child-menu">
-            <a class="nav-link" href="javascript:;">{{ trans('pages.Membership') }}</a>
-            <ul class="sub-menu">
+        <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('getPage',['slug'=>'our-story'])}}">{{ trans('pages.OurStory') }}</a></li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('the-club')}}">{{ trans('pages.Club') }}</a>
+            {{-- <ul class="sub-menu">
               <li><a href="{{route('the-club')}}">The Club</a></li>
                 <li><a href="{{route('regularmember')}}">Regular Application</a></li>
                 <li><a href="{{route('founder')}}">Founder Application</a></li>
                 <li><a href="{{route('early-founder')}}">Early Founder Application</a></li>
-            </ul>
+            </ul> --}}
         </li>
         <li class="nav-item has-child-menu">
         	<a class="nav-link" href="javascript:;">{{ trans('pages.Rooms') }}</a>
         	<ul class="sub-menu">
                 @foreach($list_room as $val_room)
-        		<li><a href="{{route('singleroom',['slug'=>$val_room->slug])}}">{{$val_room->getTranslatedAttribute('name', config('app.locale'), 'fallbackLocale')}}</a></li>
+        		<li><a href="{{route('stay',['slug'=>$val_room->slug])}}">{{$val_room->getTranslatedAttribute('name', config('app.locale'), 'fallbackLocale')}}</a></li>
                 @endforeach
         	</ul>
         </li>
@@ -55,7 +55,7 @@
             <a class="nav-link" href="javascript:;">{{ trans('pages.Food & Drinks') }}</a>
             <ul class="sub-menu">
                 @foreach($list_areaParty as $val_areaParty)
-                <li><a href="{{route('singlefooddrink',['slug'=>$val_areaParty->slug])}}">{{$val_areaParty->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')}}</a></li>
+                <li><a href="{{route('dine',['slug'=>$val_areaParty->slug])}}">{{$val_areaParty->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')}}</a></li>
                 @endforeach
             </ul>
         </li>
@@ -65,7 +65,7 @@
             <ul class="sub-menu">
               @if(!empty($list_wellness_beauty))
                 @foreach($list_wellness_beauty as $val_wellness_beauty)
-                <li><a href="{{route('singleSpa',['slug'=>$val_wellness_beauty->slug])}}">{{$val_wellness_beauty->getTranslatedAttribute('name', config('app.locale'), 'fallbackLocale')}}</a></li>
+                <li><a href="{{route('relax',['slug'=>$val_wellness_beauty->slug])}}">{{$val_wellness_beauty->getTranslatedAttribute('name', config('app.locale'), 'fallbackLocale')}}</a></li>
                 @endforeach
               @endif
             </ul>
@@ -79,7 +79,7 @@
             <ul class="sub-menu">
               @if(!empty($list_events))
                 @foreach($list_events as $val_events)
-                <li><a href="{{route('singleEvents',['slug'=>$val_events->slug])}}">{{$val_events->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')}}</a></li>
+                <li><a href="{{route('events',['slug'=>$val_events->slug])}}">{{$val_events->getTranslatedAttribute('title', config('app.locale'), 'fallbackLocale')}}</a></li>
                 @endforeach
               @endif
             </ul>

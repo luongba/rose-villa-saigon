@@ -17,7 +17,69 @@
     <script src="{{asset('public/js/app.js')}}"></script>
     <script src="{{asset('public/js/slick.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js"></script>
+        <script src="{{ asset('public/js/jquery.malihu.PageScroll2id.js') }}"></script>
+
     @yield('script')
+    <script>
+            $(window).on("load",function(){
+                
+                /* Page Scroll to id fn call */
+                $(".menu_list-sec a,a[href='#top'],a[rel='m_PageScroll2id']").mPageScroll2id({
+                    highlightSelector:"#navigation-menu a"
+                });
+                
+                /* demo functions */
+                $("a[rel='next']").click(function(e){
+                    e.preventDefault();
+                    var to=$(this).parent().parent("section").next().attr("id");
+                    $.mPageScroll2id("scrollTo",to);
+                });
+                
+            });
+    </script>
+    <script type="text/javascript">
+        var menu_item = document.querySelectorAll('.menu__item-sec');
+        var dots = document.querySelectorAll('.icon-dots');
+        var title = document.querySelectorAll('.title-right');
+        var title_after =document.querySelectorAll(".title_after");
+        menu_item[0].addEventListener('click', function(){
+            dots[0].classList.add('icon-dots-active');
+            dots[1].classList.remove('icon-dots-active');
+            dots[2].classList.remove('icon-dots-active');
+            title[0].classList.add('title-right-active');
+            title[1].classList.remove('title-right-active');
+            title[2].classList.remove('title-right-active');
+            title_after[0].classList.add('title_after-active');
+            title_after[1].classList.remove('title_after-active');
+            title_after[2].classList.remove('title_after-active');
+
+
+        });
+        menu_item[1].addEventListener('click', function(){
+            dots[1].classList.add('icon-dots-active');
+            dots[0].classList.remove('icon-dots-active');
+            dots[2].classList.remove('icon-dots-active');
+            title[1].classList.add('title-right-active');
+            title[0].classList.remove('title-right-active');
+            title[2].classList.remove('title-right-active');
+             title_after[1].classList.add('title_after-active');
+           title_after[0].classList.remove('title_after-active');
+              title_after[2].classList.remove('title_after-active');
+        })
+        menu_item[2].addEventListener('click', function(){
+            dots[2].classList.add('icon-dots-active');
+            dots[1].classList.remove('icon-dots-active');
+            dots[0].classList.remove('icon-dots-active');
+            title[2].classList.add('title-right-active');
+            title[1].classList.remove('title-right-active');
+            title[0].classList.remove('title-right-active');
+             title_after[2].classList.add('title_after-active');
+             title_after[1].classList.remove('title_after-active');
+             title_after[0].classList.remove('title_after-active');
+
+        })
+    </script>
     <script>
         $(document).ready(function() {
             $('#menu-btn').click(function () {

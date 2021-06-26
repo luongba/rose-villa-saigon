@@ -42,11 +42,11 @@
                 <label for="last-name"><span>{{ $t('form_membership.phonenumber') }}</span></label>
                 <div class="field-wrap">
                   <vue-tel-input 
-                  	mode="international"
-                  	v-model="model.phone_number" 
-                  	@validate="checkPhone" 
-                  	:preferredCountries="['VN', 'US']" 
-                  	:placeholder="$t('form_membership.phonenumber')"
+                    mode="international"
+                    v-model="model.phone_number" 
+                    @validate="checkPhone" 
+                    :preferredCountries="['VN', 'US']" 
+                    :placeholder="$t('form_membership.phonenumber')"
                   ></vue-tel-input>
                 </div>
                 <ul class="formulate-input-errors" v-if="model.phone_number && validphone">
@@ -189,6 +189,23 @@
                   required: $t('form_membership.required', {attribute: $t('form_membership.post_code')})
                 }"
               />
+              <label style="    text-align: center;
+    display: block;
+    color: #000;
+    font-weight: 400;
+    text-transform: uppercase;">Membership Type</label>
+              <div class="checkbox" style="display: flex; justify-content: center;padding: 10px 0;">
+                <div class="member-type" style="margin-right:60px;">
+                  
+                  <input type="checkbox" style="transform: scale(2);padding: 10px;margin-right: 10px;background-color: #000;" id="checkbox1">
+                  <label for="checkbox1">CLUB</label>
+                </div>
+                <div class="member-type">
+                  
+                  <input type="checkbox" style="transform: scale(2);padding: 10px; margin-right: 10px; background-color: #000;" id="checkbox2">
+                  <label for="checkbox2">WELLNES</label>
+                </div>
+              </div>
 
             </div>
           </div>
@@ -196,6 +213,7 @@
           <div ref="uploadimage" class="stepmbs step1st" v-if="step == 1">
             <croppie ref="childComponent" @showCrop="showCrop" @hideCrop="hideCrop" @cropImage="cropImage"></croppie>
           </div>
+
           <div class="stepmbs step2nd" v-if="step == 2 && !isFounder">
             <div class="container">
               <FormulateInput
@@ -246,9 +264,9 @@
                 </div>
               </div>
               <div v-else class="row flexrow centerflex">
-              	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              		<p class="textcenter des-step2">{{ $t('form_membership.step2_desc') }}</p>
-              	</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <p class="textcenter des-step2">{{ $t('form_membership.step2_desc') }}</p>
+                </div>
                 <div :class="[option.id == model.membership_type ? 'active' : '', 'col-lg-3 col-md-3 col-sm-6 col-xs-12']" v-for="option in options">
                     <div class="options-mbs radius_4">
                       <div class="ctbd1"></div>
@@ -281,7 +299,7 @@
             </div> 
           </div>
           <div :class="classStep" class="stepmbs" v-if="(step == 3 && isFounder) || step == 4">
-          	<div class="container">
+            <div class="container">
               <div v-if="!earlyfounder" class="ctstep4">
                 <h4 class="underline">{{ $t('form_membership.amountdue') }}</h4>
                 <p class="priceop">${{ model.packagePrice }}</p>
@@ -296,10 +314,10 @@
                 <p>{{ $t('form_membership.descriptionlaststepEarly') }}</p>
               </div>
               <div class="agreestep4 pl25">
-	              <input id="checkbox" type="checkbox" v-model="model.agree">
-	              <label for="checkbox">{{ $t('form_membership.descriptionlaststep2') }}</label>
+                <input id="checkbox" type="checkbox" v-model="model.agree">
+                <label for="checkbox">{{ $t('form_membership.descriptionlaststep2') }}</label>
               </div>
-           	</div>
+            </div>
 
           </div>
           <div ref="stepbutton" class="container" v-if="step != 0">
@@ -308,9 +326,16 @@
             ">{{ $t('form_membership.back') }}</button>
             <a href="Javascript:;" class="buttonmbs btnext btf" v-if="step<steps.length" type="button" @click="next">{{ $t('form_membership.next') }}</a>
             <!-- <button class="btn btn-primary buttonmbs btnext" v-if="step<steps.length" type="button" @click="next">Next</button> -->
+
             <button class="buttonmbs btnext btf" v-if="step==steps.length" type="submit">{{ $t('form_membership.submit') }}</button>
             </div>
+                      <p class="text-content"><a class="phone-size" href="tel:+842836362211">(+84) 28 3636 2211 . </a><a class="phone-size" href="tel:+842837442211">(+84) 28 3744 2211</a><br> NO.10 <span class="icon-resize">✦</span> STREET 58 <span class="icon-resize">✦</span> THAO DIEN WARD ✦ THU DUC <span class="icon-resize">✦</span> HO CHI MINH CITY <span class="icon-resize">✦</span> VIETNAM</p>
+                       <img style="width: 40px; display: block !important;margin: 0 auto;" src="public/images/icons/no.png" alt="">
+                      <p class="text-content text-wc" style="margin: 0">
+                   <a href="mailto:workwithus@rosevillasaigon.com" class="mailto-rose" style="font-size: 14px"><span class="member__style">Welcome</span>@ROSEVILLASAIGON.COM</a></p>
+                   <p class="text-content"><a style="color: #000; font-size: 14px; padding-bottom: 20px;" href="">ROSEVILLASAIGON.COM</a></p>
           </div>
+
         </form>
       </div>
     </section>
@@ -502,7 +527,7 @@ export default {
     changeType(option, priceType){
       let vkl = this.model.frequency_type
       let arr_fre = vkl.split("-")
-    	console.log(priceType)
+      console.log(priceType)
       this.model.frequency = arr_fre[1]
       this.model.membership_type = option.id
       this.model.packageName = priceType.name
@@ -547,18 +572,18 @@ export default {
           toastr.error(this.$t('form_membership.error_avatar'))
           return
         }else {
-        	// validate
-  		    axios.post(
-  		      './check-phone-email', {
-  		          phone: _this.model.phone,
-  		          email: _this.model.email
-  		      }
-  		    ).then(function(response){
-  		      if(response.data.status == false){
-  		        toastr.error(response.data.message)
+          // validate
+          axios.post(
+            './check-phone-email', {
+                phone: _this.model.phone,
+                email: _this.model.email
+            }
+          ).then(function(response){
+            if(response.data.status == false){
+              toastr.error(response.data.message)
               _this.step = 1
-  		        return false
-  		      }else {
+              return false
+            }else {
               // get member package
               axios.get(
                 './membership-type',{
@@ -570,11 +595,12 @@ export default {
                 }
               ).then(function(response){
                 _this.options = response.data
+                console.log(_this.options)
               })
               _this.step++
               return
             }
-  		    })
+          })
 
         }
       }
@@ -655,3 +681,18 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .text-content{
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #000 !important;
+  }
+  .text-content a{
+    font-size: 18px;
+
+    color: #000 !important;
+  }
+  .button2center{
+    margin-bottom: 25px !important;
+  }
+</style>

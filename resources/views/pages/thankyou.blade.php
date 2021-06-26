@@ -1,17 +1,32 @@
-@extends('master')
+@extends('masternew')
 @section('content')
-  <div class="innerpage-style1 thankyou-page">
-    <section class="innercontent simpe-content-page">
-    	<div class="container">
-    		<div class="content-thankyou-page">
-          <img class="imgthankyou" src="{{asset('public/images/logo/logo_topthannkyou.png')}}" alt="Rose Villa Sài Gòn" width="85" height="85"/>
-          <h3>{{ trans('pages.thankyou') }}</h3>
-          <p>{!! trans('pages.thankcontent') !!}</p>
-          <p><strong>Warm Regards,<br/>
-The Rose Villa Team.</strong></p>
-    	  </div>
-        <div class="clear"></div>
+<div class="contact-bg">
+{{--  <img class="bg-left" src="{{ asset('public/images/bg/contact-left-bg.png') }}" alt="">
+  <img class="bg-right" src="{{ asset('public/images/bg/contact-right-bg.png') }}" alt=""> --}}
+  <div class="to-up" style="display: none;">
+          <a><i class="fas fa-chevron-up"></i></a>
       </div>
-    </section>
+  <div class="header-resize">
+    @include('layouts.headernew')
   </div>
+            <div class="container__contact">
+                <div class="content-membership-enquiry-page" >
+              <img class="thankyou-text" src="{{ asset('public/images/images/thank-you-text.png') }}" alt="">
+
+              <p class="text-content">THANK YOU FOR YOUR QUALITY TIME. YOUR DETAILS WILL NOW BE UPDATED IN OUR MEMBERSHIP SYSTEM.</p>
+               <p class="text-content text-wc">
+               <a href="mailto:workwithus@rosevillasaigon.com" class="mailto-rose"><span class="member__style">Welcome</span>@ROSEVILLASAIGON.COM</a></p>
+            </p>
+              <p class="text-content"><a style="color: #fff" href="{{ route('welcome') }}">ROSEVILLASAIGON.COM</a></p>
+              <p></p>
+              
+              <p></p>
+                
+              </div>
+            <div class="clear"></div>
+          </div>
+  
+</div>
+
 @endsection
+

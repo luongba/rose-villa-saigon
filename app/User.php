@@ -17,7 +17,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'role_id', 'email', 'email_verified_at', 'avatar', 'type_user', 'password', 'phone', 'phone_verified_at', 'status'
+        'first_name', 'last_name', 'role_id', 'email', 'email_verified_at', 'avatar', 'type_user', 'password', 'phone', 'phone_verified_at', 'status','address_one','occupation','dob'
     ];
 
     /**
@@ -70,6 +70,9 @@ class User extends \TCG\Voyager\Models\User
     public function getFullLinkAvatarAttribute()
     {
         return asset('') . 'public/storage/' . $this->avatar;
+    }
+    public function memberType(){
+        return $this->belongsTo('App\Models\MembershipType','membership_type_id');
     }
     /*END ATTRIBUTE*/
 }

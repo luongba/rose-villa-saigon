@@ -132,8 +132,8 @@ html {
     		
     ?>
     <div class="form-group">
-      <label for="email" class="form-label">Email</label>
-      <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
+      <label for="email" class="form-label">Phone</label>
+      <input id="email" name="phone" type="text" placeholder="VD: 0123456789" class="form-control">
       <span class="form-message"></span>
     </div>
 

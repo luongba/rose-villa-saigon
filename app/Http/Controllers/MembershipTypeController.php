@@ -47,33 +47,11 @@ class MembershipTypeController extends Controller
 		}
 		$year = Carbon::now()->diffInYears(Carbon::parse($request->dob));
 		$arrIdPack = array();
-		if ($request->type == config('constants.MEMBERSHIP_TYPE_FOUNDER')) {
-			if ($year >= 18 && $year <= 30) {
-				$arrIdPack = [9, 11];
-			} else {
-				$arrIdPack = [8, 10];
-			}
-		} elseif ($request->type == config('constants.MEMBERSHIP_TYPE_REGULAR')) {
-			if ($request->city == "Hồ Chí Minh" || $request->city == 'ho-chi-minh') {
 				if ($year >= 18 && $year <= 30) {
 					$arrIdPack = [15, 16];
 				} else {
 					$arrIdPack = [13, 14];
 				}
-			} else {
-				if ($year >= 18 && $year <= 30) {
-					$arrIdPack = [19, 20];
-				} else {
-					$arrIdPack = [17, 18];
-				}
-			}
-		} elseif ($request->type == config('constants.MEMBERSHIP_TYPE_EARLY_FOUNDER')) {
-			if ($year >= 18 && $year <= 30) {
-				$arrIdPack = [22, 24];
-			} else {
-				$arrIdPack = [21, 23];
-			}
-		}
 		$arrPack = $this->membershipType
 		->whereIn('id', $arrIdPack)
 		->where('type', $request->type)

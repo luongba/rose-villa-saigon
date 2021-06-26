@@ -39,7 +39,8 @@
     </div>
     <ul class="navbar-nav">
         {{-- <li class="nav-item {{ Route::currentRouteNamed('welcome') ? 'active' : '' }}"><a class="nav-link" href="{{route('welcome')}}">{{ trans('pages.home') }}</a></li> --}}
-        <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('getPage',['slug'=>'our-story'])}}">Our Story</a></li>
+        <li class="nav-item {{ Route::currentRouteNamed('about') ? 'active' : '' }}"><a class="nav-link" href="{{route('getPage',['slug'=>'our-story'])}}">{{ trans('pages.OurStory') }}</a></li>
+
         <li class="nav-item has-child-menu">
             <a class="nav-link" href="javascript:;">{{ trans('pages.Membership') }}</a>
             <ul class="sub-menu">
@@ -50,7 +51,7 @@
             </ul>
         </li>
         <li class="nav-item has-child-menu">
-        	<a class="nav-link" href="javascript:;">{{ trans('pages.Rooms') }}</a>
+        	<a class="nav-link" href="javascript:;">{{ trans('pages.Stay') }}</a>
         	<ul class="sub-menu">
                 @foreach($list_room as $val_room)
         		<li><a href="{{route('singleroom',['slug'=>$val_room->slug])}}">{{$val_room->getTranslatedAttribute('name', config('app.locale'), 'fallbackLocale')}}</a></li>
